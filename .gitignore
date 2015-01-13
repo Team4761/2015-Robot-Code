@@ -1,0 +1,34 @@
+#Binaries
+*.class
+*.ear
+*.jar
+*.war
+
+#Eclipse
+bin/
+.classpath
+.loadpath
+.project
+.settings/
+
+#IntelliJ
+.idea/
+*.eml
+*.iml
+*.userlibraries
+
+#Logs
+hs_err_pid* #JVM crashes
+
+#Vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+
+#FRC Projects
+build/
+j2meclasses/
+suite/
