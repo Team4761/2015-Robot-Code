@@ -24,6 +24,4 @@ public class RobotMap {
 	public static RobotDrive robotDrive = new RobotDrive(1, 2, 3, 4);
 	
 	public static final Gyro gyro = new Gyro(0);
-	
-	public static Accumulator joystickAccumulator = new Accumulator();
 }

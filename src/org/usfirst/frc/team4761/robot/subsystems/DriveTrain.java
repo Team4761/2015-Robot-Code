@@ -1,28 +1,41 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import org.usfirst.frc.team4761.robot.Adjust;
+import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.RobotDrive.MotorType;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class DriveTrain extends Subsystem {
-	boolean selfAdjust = true;
+	private static double accumulator = 0;
 	
-	RobotDrive robotDrive = RobotMap.robotDrive;
-	Adjust adjust = new Adjust();
+	RobotDrive robotDrive = RobotMap.robotDrive;	
+	Gyro gyro = RobotMap.gyro;
+
+    PIDSource gyroSource = gyro;
+	DrivePIDOutput drivePIDOutput = new DrivePIDOutput();
+    
+	PIDController pidController = new PIDController(0.01, 0, 0, gyroSource, drivePIDOutput, 0.01);
+
+	public DriveTrain () {
+		pidController.setContinuous(true);
+		
+		pidController.enable();
+		
+		SmartDashboard.putData("PID", pidController);
+	}
 	
-    GyroSensor gyroSensor = new GyroSensor();
 	// Put methods for controlling this subsystem
     // here. Call these from Commands.
-    
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -41,19 +54,23 @@ public class DriveTrain extends Subsystem {
     }
     
     public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
-    	if (joystick2.getRawButton(2)) {
-    		System.out.println("TEST");
-    		selfAdjust = !selfAdjust;
-    	}
-    	
-    	if (selfAdjust) {
-    		//robotDrive.mecanumDrive_Polar(joystick2.getMagnitude(), -(joystick2.getDirectionDegrees()), joystick1.getX());
-    		System.out.println("Angle: " + gyroSensor.getAngle() + " Accumulator: " + adjust.getValue() + " Self Adjust: " + selfAdjust);
-    		adjust.add(convert(joystick1.getX() * 2, joystick1));
-    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), adjust.difference(gyroSensor.getAngle()), gyroSensor.getAngle());
+    	if (!(joystick2.getRawButton(2))) { // Hold down button two when sliding against walls
+    		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Self Adjust: True"); 		
+    		
+    		double tmp = convert(joystick1.getX() * 5, joystick1);
+    		if (Math.abs(tmp) < 0.01) { // Filter out random noise
+    			accumulator += tmp;
+    		}
+    		
+        	pidController.setSetpoint(accumulator);
+        	
+    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), convert(drivePIDOutput.getValue(), joystick1), gyro.getAngle());
     	} else {
-    		System.out.println("Angle: " + gyroSensor.getAngle() + " Accumulator: " + adjust.getValue() + " Self Adjust: " + selfAdjust);
-    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, gyroSensor.getAngle());
+    		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Self Adjust: True"); 		
+    		
+    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, gyro.getAngle());
+    		
+    		accumulator = gyro.getAngle(); // Reset the accumulator so the robot doesn't jerk when button two is released
     	}
     }
 }

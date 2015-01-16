@@ -19,7 +19,7 @@ import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain driveTrain = new DriveTrain();;
+	public static final DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
 	public Command driveForward;
 	public Command driveWithJoysticks;
