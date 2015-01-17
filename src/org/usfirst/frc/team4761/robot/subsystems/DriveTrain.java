@@ -27,7 +27,7 @@ public class DriveTrain extends Subsystem {
     PIDSource gyroSensor = gyro;
 	DrivePIDOutput drivePIDOutput = new DrivePIDOutput();
     
-	PIDController pidController = new PIDController(0.01, 0.00025, 0.01, gyroSensor, drivePIDOutput);
+	PIDController pidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, drivePIDOutput);
 
 	public DriveTrain () {
 		pidController.enable();
@@ -74,7 +74,7 @@ public class DriveTrain extends Subsystem {
         	
     		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), drivePIDOutput.getValue(), gyro.getAngle());
     	} else {
-    		System.out.println("Angle: " + gyro.getAngle() % 360 + " Accumulator: " + accumulator % 360 + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Reset: " + reset + " Self Adjust: false"); 		
+    		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Reset: " + reset + " Self Adjust: false"); 		
     		
     		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, gyro.getAngle());
     		
