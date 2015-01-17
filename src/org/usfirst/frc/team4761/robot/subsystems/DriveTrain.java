@@ -53,6 +53,8 @@ public class DriveTrain extends Subsystem {
     }
     
     public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
+		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1)); 
+		
     	if (joystick1.getRawButton(2)) { // Press to move the robot to 0 degrees
     		reset = true;
     		if (Math.abs(accumulator) > 0) {
@@ -63,8 +65,6 @@ public class DriveTrain extends Subsystem {
     	}
     	
     	if (!(joystick2.getRawButton(2))) { // Hold down button two when sliding against walls
-    		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) * 2 + " Reset: " + reset + " Self Adjust: true"); 		
-    		
     		double tmp = convert(joystick1.getX(), joystick1) * 3.5;
     		if (Math.abs(tmp) > 0.05) { // Filter out noise
     			accumulator += tmp;
@@ -74,8 +74,6 @@ public class DriveTrain extends Subsystem {
         	
     		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), drivePIDOutput.getValue(), gyro.getAngle());
     	} else {
-    		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Reset: " + reset + " Self Adjust: false"); 		
-    		
     		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, gyro.getAngle());
     		
     		accumulator = gyro.getAngle(); // Reset the accumulator so the robot doesn't jerk when button two is released
