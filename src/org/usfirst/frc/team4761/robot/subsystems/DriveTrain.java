@@ -24,14 +24,12 @@ public class DriveTrain extends Subsystem {
     PIDSource gyroSource = gyro;
 	DrivePIDOutput drivePIDOutput = new DrivePIDOutput();
     
-	PIDController pidController = new PIDController(0.01, 0, 0, gyroSource, drivePIDOutput, 0.01);
+	PIDController pidController = new PIDController(0.01, 0.0001, 0, gyroSource, drivePIDOutput);
 
 	public DriveTrain () {
 		pidController.setContinuous(true);
 		
 		pidController.enable();
-		
-		SmartDashboard.putData("PID", pidController);
 	}
 	
 	// Put methods for controlling this subsystem
@@ -55,16 +53,16 @@ public class DriveTrain extends Subsystem {
     
     public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
     	if (!(joystick2.getRawButton(2))) { // Hold down button two when sliding against walls
-    		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Self Adjust: True"); 		
+    		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) * 2 + " Self Adjust: True"); 		
     		
-    		double tmp = convert(joystick1.getX() * 5, joystick1);
-    		if (Math.abs(tmp) < 0.01) { // Filter out random noise
+    		double tmp = convert(joystick1.getX() * 3, joystick1);
+    		if (Math.abs(tmp) > 0.05) { // Filter out noise
     			accumulator += tmp;
     		}
     		
-        	pidController.setSetpoint(accumulator);
+    		pidController.setSetpoint(accumulator);
         	
-    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), convert(drivePIDOutput.getValue(), joystick1), gyro.getAngle());
+    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), drivePIDOutput.getValue(), gyro.getAngle());
     	} else {
     		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Self Adjust: True"); 		
     		
