@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4761.robot.commands.DriveForward;
 import org.usfirst.frc.team4761.robot.commands.DriveWithJoysticks;
+import org.usfirst.frc.team4761.robot.commands.Teleop;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 
 /**
@@ -22,7 +23,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
 	public Command driveForward;
-	public Command driveWithJoysticks;
+	public Command teleop;
 
     Command autonomousCommand;
 
@@ -34,7 +35,7 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
         // instantiate the command used for the autonomous period
 		driveForward = new DriveForward();
-		driveWithJoysticks = new DriveWithJoysticks();
+		teleop = new Teleop();
     }
 	
 	public void disabledPeriodic() {
@@ -60,7 +61,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        driveWithJoysticks.start();
+        teleop.start();
     }
 
     /**

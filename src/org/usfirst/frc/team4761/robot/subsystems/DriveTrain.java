@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
+import org.usfirst.frc.team4761.robot.DrivePIDSource;
+import org.usfirst.frc.team4761.robot.OI;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
@@ -23,14 +25,12 @@ public class DriveTrain extends Subsystem {
 	RobotDrive robotDrive = RobotMap.robotDrive;	
 	Gyro gyro = RobotMap.gyro;
 
-    PIDSource gyroSource = gyro;
+    PIDSource gyroSensor = gyro;
 	DrivePIDOutput drivePIDOutput = new DrivePIDOutput();
     
-	PIDController pidController = new PIDController(0.01, 0.00025, 0.025, gyroSource, drivePIDOutput);
+	PIDController pidController = new PIDController(0.01, 0.00025, 0.01, gyroSensor, drivePIDOutput);
 
 	public DriveTrain () {
-		pidController.setContinuous(true);
-		
 		pidController.enable();
 	}
 	
@@ -66,7 +66,7 @@ public class DriveTrain extends Subsystem {
     	if (!(joystick2.getRawButton(2))) { // Hold down button two when sliding against walls
     		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) * 2 + " Reset: " + reset + " Self Adjust: true"); 		
     		
-    		double tmp = convert(joystick1.getX() * 3.5, joystick1);
+    		double tmp = convert(joystick1.getX(), joystick1) * 3.5;
     		if (Math.abs(tmp) > 0.05) { // Filter out noise
     			accumulator += tmp;
     		}
@@ -75,7 +75,7 @@ public class DriveTrain extends Subsystem {
         	
     		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), drivePIDOutput.getValue(), gyro.getAngle());
     	} else {
-    		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Reset: " + reset + " Self Adjust: false"); 		
+    		System.out.println("Angle: " + gyro.getAngle() % 360 + " Accumulator: " + accumulator % 360 + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1) + " Reset: " + reset + " Self Adjust: false"); 		
     		
     		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, gyro.getAngle());
     		
