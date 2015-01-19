@@ -2,7 +2,6 @@ package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Victor;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -21,6 +20,7 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
+	// new RobotDrive(frontLeftMotor, rearLeftMotor, frontRightMotor, rearRightMotor);
 	public static RobotDrive robotDrive = new RobotDrive(1, 2, 3, 4);
 	
 	public static final Gyro gyro = new Gyro(0);

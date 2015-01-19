@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4761.robot.commands.DriveForward;
-import org.usfirst.frc.team4761.robot.commands.DriveWithJoysticks;
 import org.usfirst.frc.team4761.robot.commands.Teleop;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 
