@@ -32,7 +32,6 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-        // instantiate the command used for the autonomous period
 		driveForward = new DriveForward();
 		teleop = new Teleop();
     }
@@ -42,7 +41,6 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
         if (autonomousCommand != null) autonomousCommand.start();
         driveForward.start();
     }

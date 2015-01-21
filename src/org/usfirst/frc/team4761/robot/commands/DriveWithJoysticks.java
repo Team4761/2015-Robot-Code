@@ -11,8 +11,6 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveWithJoysticks extends Command {
 
     public DriveWithJoysticks() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.driveTrain);
     }
 
@@ -27,7 +25,7 @@ public class DriveWithJoysticks extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return false; // Run forever
     }
 
     // Called once after isFinished returns true
