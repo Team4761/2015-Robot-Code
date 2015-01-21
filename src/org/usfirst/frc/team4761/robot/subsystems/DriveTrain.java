@@ -36,6 +36,10 @@ public class DriveTrain extends Subsystem {
     	robotDrive.drive(leftSpeed, rightSpeed);
     }
     
+    public void slide (double speed) {
+    	
+    }
+    
     // Get z-axis and scale it
     public double getZ(Joystick joystick) {
     	return (-0.2 * joystick.getZ() + 0.5);
