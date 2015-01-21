@@ -14,8 +14,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class DriveTrain extends Subsystem {
-	private boolean reset = false;
-	
 	private static double accumulator = 0;
 	
 	RobotDrive robotDrive = RobotMap.robotDrive;	
@@ -53,7 +51,6 @@ public class DriveTrain extends Subsystem {
 		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1)); 
 		
     	if (joystick1.getRawButton(2)) { // Press to move the robot to 0 degrees
-    		reset = true;
     		if (Math.abs(accumulator) > 0) {
     			accumulator -= accumulator % 360;
     		} else {
