@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveForward extends Command {
+public class SlideLeft extends Command {
 
-    public DriveForward() {
-    	requires(Robot.driveTrain);
+    public SlideLeft() {
+        requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -19,8 +19,8 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	setTimeout(1);
-    	Robot.driveTrain.drive(1, 1);
+    	setTimeout(5);
+    	Robot.driveTrain.slide(0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -30,7 +30,7 @@ public class DriveForward extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.drive(0, 0);
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same

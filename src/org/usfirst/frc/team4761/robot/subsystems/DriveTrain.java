@@ -37,7 +37,15 @@ public class DriveTrain extends Subsystem {
     }
     
     public void slide (double speed) {
-    	
+    	// The values are inverted for a reason
+    	RobotMap.leftFrontMotor.set(speed);
+    	RobotMap.leftRearMotor.set(-speed);
+    	RobotMap.rightFrontMotor.set(-speed);
+    	RobotMap.rightRearMotor.set(speed);
+    }
+    
+    public void stop () {
+    	robotDrive.drive(0, 0);
     }
     
     // Get z-axis and scale it

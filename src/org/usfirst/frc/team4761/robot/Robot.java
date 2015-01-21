@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team4761.robot.commands.DriveForward;
+import org.usfirst.frc.team4761.robot.commands.Autonomous;
 import org.usfirst.frc.team4761.robot.commands.Teleop;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 
@@ -32,8 +32,8 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-		driveForward = new DriveForward();
 		teleop = new Teleop();
+		autonomousCommand = new Autonomous();
     }
 	
 	public void disabledPeriodic() {
@@ -42,7 +42,6 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
         if (autonomousCommand != null) autonomousCommand.start();
-        driveForward.start();
     }
 
     /**
