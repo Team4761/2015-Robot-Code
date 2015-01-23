@@ -22,7 +22,7 @@ public class DriveTrain extends Subsystem {
     PIDSource gyroSensor = gyro;
 	DrivePIDOutput drivePIDOutput = new DrivePIDOutput();
     
-	PIDController pidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, drivePIDOutput); // (P, I, D, input, output)
+	PIDController pidController = new PIDController(0.01, 0.00025, 0, gyroSensor, drivePIDOutput); // (P, I, D, input, output)
 
 	public DriveTrain () {
 		pidController.enable();
