@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
+import org.usfirst.frc.team4761.robot.DistancePIDSource;
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
@@ -14,34 +15,50 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class DriveTrain extends Subsystem {
-	private static double accumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
+	private static double rotateAccumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
+	private static double distanceAccumulator = 0;
 	
 	RobotDrive robotDrive = RobotMap.robotDrive;
+	
 	Gyro gyro = RobotMap.gyro;
-
     PIDSource gyroSensor = gyro;
-	DrivePIDOutput drivePIDOutput = new DrivePIDOutput();
     
-	PIDController pidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, drivePIDOutput); // (P, I, D, input, output)
+    DistancePIDSource distancePIDSource = new DistancePIDSource();
+    
+	DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
+	DrivePIDOutput driveDistancePIDOutput = new DrivePIDOutput();
+    
+	PIDController gyroPidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
 
-	public DriveTrain () {
-		pidController.enable();
+	PIDController distancePidController = new PIDController(0.01, 0.00025, 0, distancePIDSource, driveDistancePIDOutput);
+	
+	public DriveTrain () {		
+		gyroPidController.enable();
+		
+		gyroPidController.setSetpoint(0);
 	}
 	
     public void initDefaultCommand() {
     	
     }
     
-    public void drive (double leftSpeed, double rightSpeed) {
-    	robotDrive.drive(leftSpeed, rightSpeed);
+    // x and y = -1.0 - 1.0
+    public void drive (double x, double y, double rotate) {
+    	rotateAccumulator += rotate;
+    	gyroPidController.setSetpoint(rotateAccumulator);
+    	
+    	robotDrive.mecanumDrive_Cartesian(y, x, driveGyroPIDOutput.getValue(), gyro.getAngle());
     }
     
-    public void slide (double speed) {
-    	// The values are inverted for a reason
-    	RobotMap.leftFrontMotor.set(speed);
-    	RobotMap.leftRearMotor.set(-speed);
-    	RobotMap.rightFrontMotor.set(-speed);
-    	RobotMap.rightRearMotor.set(speed);
+    public void autoDrive (double x, double distance, double rotate) {
+    	System.out.println(distancePIDSource.getDistance());
+    	//distanceAccumulator += distance / 100;
+    	distancePidController.setSetpoint(distanceAccumulator);
+    	
+    	rotateAccumulator += rotate;
+    	gyroPidController.setSetpoint(rotateAccumulator);
+    	
+    	robotDrive.mecanumDrive_Cartesian(0, x, driveGyroPIDOutput.getValue(), gyro.getAngle());
     }
     
     public void stop () {
@@ -59,29 +76,29 @@ public class DriveTrain extends Subsystem {
     }
     
     public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
-		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + accumulator + " DrivePIDOutput: " + convert(drivePIDOutput.getValue(), joystick1)); 
+		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1)); 
 		
     	if (joystick1.getRawButton(2)) { // Press to move the robot to 0 degrees
-    		if (Math.abs(accumulator) > 0) {
-    			accumulator -= accumulator % 360;
+    		if (Math.abs(rotateAccumulator) > 0) {
+    			rotateAccumulator -= rotateAccumulator % 360;
     		} else {
-    			accumulator += accumulator % 360;
+    			rotateAccumulator += rotateAccumulator % 360;
     		}
     	}
     	
     	if (!(joystick2.getRawButton(2))) { // Hold down button two when sliding against walls
     		double joystickChange = convert(joystick1.getX(), joystick1) * 3.5;
     		if (Math.abs(joystickChange) > 0.05) { // Filter out noise
-    			accumulator += joystickChange;
+    			rotateAccumulator += joystickChange;
     		}
     		
-    		pidController.setSetpoint(accumulator);
+    		gyroPidController.setSetpoint(rotateAccumulator);
         	
-    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), drivePIDOutput.getValue(), gyro.getAngle());
+    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), driveGyroPIDOutput.getValue(), gyro.getAngle());
     	} else {
     		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, gyro.getAngle());
     		
-    		accumulator = gyro.getAngle(); // Reset the accumulator so the robot doesn't jerk when button two is released
+    		rotateAccumulator = gyro.getAngle(); // Reset the accumulator so the robot doesn't jerk when button two is released
     	}
     }
 }

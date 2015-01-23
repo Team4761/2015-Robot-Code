@@ -16,6 +16,7 @@ public class DriveWithJoysticks extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -30,7 +31,7 @@ public class DriveWithJoysticks extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.drive(0, 0);
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same

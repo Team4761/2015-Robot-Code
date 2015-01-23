@@ -15,12 +15,12 @@ public class SlideLeft extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(100);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	setTimeout(5);
-    	Robot.driveTrain.slide(0.5);
+    	Robot.driveTrain.autoDrive(0, 0, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

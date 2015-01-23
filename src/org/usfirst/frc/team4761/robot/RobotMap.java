@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Victor;
@@ -19,4 +20,6 @@ public class RobotMap {
 	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 	
 	public static final Gyro gyro = new Gyro(0);
+	
+	public static final AnalogInput distanceSensor = new AnalogInput(2);
 }
