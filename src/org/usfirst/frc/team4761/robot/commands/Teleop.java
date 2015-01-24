@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class Teleop extends CommandGroup {
     
-    public  Teleop() {
+    public  Teleop () {
     	addParallel(new DriveWithJoysticks());
     }
 }

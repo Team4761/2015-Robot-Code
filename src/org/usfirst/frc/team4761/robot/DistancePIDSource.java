@@ -8,13 +8,9 @@ import edu.wpi.first.wpilibj.PIDSource;
  */
 public class DistancePIDSource implements PIDSource {
     private AnalogInput sensor = RobotMap.distanceSensor;
-
-    public void initDefaultCommand() {
-
-    }
     
     private double toMilliVolts (double voltage) {
-    	return voltage * 1000;
+    	return voltage * 100;
     }
     
     public double getDistance () {
@@ -22,7 +18,7 @@ public class DistancePIDSource implements PIDSource {
     }
 
 	@Override
-	public double pidGet() {
+	public double pidGet () {
 		return getDistance();
 	}
 }

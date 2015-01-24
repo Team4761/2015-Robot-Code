@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -30,28 +29,28 @@ public class Robot extends IterativeRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
-    public void robotInit() {
+    public void robotInit () {
 		oi = new OI();
 		teleop = new Teleop();
 		autonomousCommand = new Autonomous();
     }
 	
-	public void disabledPeriodic() {
+	public void disabledPeriodic () {
 		Scheduler.getInstance().run();
 	}
 
-    public void autonomousInit() {
+    public void autonomousInit () {
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
     /**
      * This function is called periodically during autonomous
      */
-    public void autonomousPeriodic() {
+    public void autonomousPeriodic () {
         Scheduler.getInstance().run();
     }
 
-    public void teleopInit() {
+    public void teleopInit () {
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
@@ -64,21 +63,21 @@ public class Robot extends IterativeRobot {
      * This function is called when the disabled button is hit.
      * You can use it to reset subsystems before shutting down.
      */
-    public void disabledInit(){
+    public void disabledInit () {
 
     }
 
     /**
      * This function is called periodically during operator control
      */
-    public void teleopPeriodic() {
+    public void teleopPeriodic () {
         Scheduler.getInstance().run();
     }
     
     /**
      * This function is called periodically during test mode
      */
-    public void testPeriodic() {
+    public void testPeriodic () {
         LiveWindow.run();
     }
 }

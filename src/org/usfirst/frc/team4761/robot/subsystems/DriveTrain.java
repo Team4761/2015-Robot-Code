@@ -38,7 +38,7 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setSetpoint(0);
 	}
 	
-    public void initDefaultCommand() {
+    public void initDefaultCommand () {
     	
     }
     
@@ -52,13 +52,14 @@ public class DriveTrain extends Subsystem {
     
     public void autoDrive (double x, double distance, double rotate) {
     	System.out.println(distancePIDSource.getDistance());
-    	//distanceAccumulator += distance / 100;
+    	distanceAccumulator += distance;
     	distancePidController.setSetpoint(distanceAccumulator);
     	
     	rotateAccumulator += rotate;
     	gyroPidController.setSetpoint(rotateAccumulator);
     	
-    	robotDrive.mecanumDrive_Cartesian(0, x, driveGyroPIDOutput.getValue(), gyro.getAngle());
+    	robotDrive.mecanumDrive_Cartesian(x, driveDistancePIDOutput.getValue(), 0, gyro.getAngle());
+    	//robotDrive.mecanumDrive_Cartesian(x, driveDistancePIDOutput.getValue(), driveGyroPIDOutput.getValue(), gyro.getAngle());
     }
     
     public void stop () {
@@ -66,7 +67,7 @@ public class DriveTrain extends Subsystem {
     }
     
     // Get z-axis and scale it
-    public double getZ(Joystick joystick) {
+    public double getZ (Joystick joystick) {
     	return (-0.2 * joystick.getZ() + 0.5);
     }
     
