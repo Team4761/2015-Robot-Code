@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import org.usfirst.frc.team4761.robot.DistancePIDSource;
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
@@ -16,21 +15,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveTrain extends Subsystem {
 	private static double rotateAccumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
-	private static double distanceAccumulator = 0;
 	
 	RobotDrive robotDrive = RobotMap.robotDrive;
 	
 	Gyro gyro = RobotMap.gyro;
     PIDSource gyroSensor = gyro;
     
-    DistancePIDSource distancePIDSource = new DistancePIDSource();
-    
 	DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
-	DrivePIDOutput driveDistancePIDOutput = new DrivePIDOutput();
     
 	PIDController gyroPidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
-
-	PIDController distancePidController = new PIDController(0.01, 0.00025, 0, distancePIDSource, driveDistancePIDOutput);
 	
 	public DriveTrain () {		
 		gyroPidController.enable();
@@ -38,28 +31,14 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setSetpoint(0);
 	}
 	
-    public void initDefaultCommand () {
-    	
-    }
+    public void initDefaultCommand () {}
     
-    // x and y = -1.0 - 1.0
+    // x and y = -1.0 - 1.0 & rotate is to infinity
     public void drive (double x, double y, double rotate) {
     	rotateAccumulator += rotate;
     	gyroPidController.setSetpoint(rotateAccumulator);
     	
-    	robotDrive.mecanumDrive_Cartesian(y, x, driveGyroPIDOutput.getValue(), gyro.getAngle());
-    }
-    
-    public void autoDrive (double x, double distance, double rotate) {
-    	System.out.println(distancePIDSource.getDistance());
-    	distanceAccumulator += distance;
-    	distancePidController.setSetpoint(distanceAccumulator);
-    	
-    	rotateAccumulator += rotate;
-    	gyroPidController.setSetpoint(rotateAccumulator);
-    	
-    	robotDrive.mecanumDrive_Cartesian(x, driveDistancePIDOutput.getValue(), 0, gyro.getAngle());
-    	//robotDrive.mecanumDrive_Cartesian(x, driveDistancePIDOutput.getValue(), driveGyroPIDOutput.getValue(), gyro.getAngle());
+    	robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), gyro.getAngle());
     }
     
     public void stop () {
@@ -67,7 +46,7 @@ public class DriveTrain extends Subsystem {
     }
     
     // Get z-axis and scale it
-    public double getZ (Joystick joystick) {
+    public double getZ  (Joystick joystick) {
     	return (-0.2 * joystick.getZ() + 0.5);
     }
     
