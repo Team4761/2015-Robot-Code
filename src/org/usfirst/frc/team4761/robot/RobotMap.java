@@ -12,10 +12,17 @@ import edu.wpi.first.wpilibj.Victor;
  * floating around.
  */
 public class RobotMap {
+	// Old robot
 	public static Victor leftFrontMotor = new Victor(1);
 	public static Victor leftRearMotor = new Victor(2);
 	public static Victor rightFrontMotor = new Victor(3);
 	public static Victor rightRearMotor = new Victor(4);
+	
+	// New robot
+	/*public static Victor leftFrontMotor = new Victor(3);
+	public static Victor leftRearMotor = new Victor(0);
+	public static Victor rightFrontMotor = new Victor(2);
+	public static Victor rightRearMotor = new Victor(1);*/
 	
 	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 	

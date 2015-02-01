@@ -33,6 +33,8 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		teleop = new Teleop();
 		autonomousCommand = new Autonomous();
+		
+		RobotMap.gyro.reset();
     }
 	
 	public void disabledPeriodic () {
