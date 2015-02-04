@@ -13,8 +13,8 @@ public class LogToFile extends Command {
 	private DistanceSensor sensor = new DistanceSensor();
 	private Logger log;
 	
-	public LogToFile (String path) {
-		log = new Logger("4761", LoggingMode.LOG, path);
+	public LogToFile (String name, String path) {
+		log = new Logger(name, LoggingMode.LOG, path);
 	}
 	
 	protected void initialize () {
