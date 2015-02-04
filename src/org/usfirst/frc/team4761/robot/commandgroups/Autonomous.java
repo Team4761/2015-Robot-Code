@@ -1,4 +1,8 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.usfirst.frc.team4761.robot.commandgroups;
+
+import org.usfirst.frc.team4761.robot.commands.GetDistance;
+import org.usfirst.frc.team4761.robot.commands.LogToFile;
+import org.usfirst.frc.team4761.robot.commands.StopWheels;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

@@ -1,4 +1,7 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.usfirst.frc.team4761.robot.commandgroups;
+
+import org.usfirst.frc.team4761.robot.commands.DriveWithJoysticks;
+import org.usfirst.frc.team4761.robot.commands.LogToFile;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
