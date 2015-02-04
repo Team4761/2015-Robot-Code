@@ -15,11 +15,9 @@ public class Logger {
 	private String lName;
 	private String msgFormat = "[%s] %s - %s";
 	
-	private File output;
-	private File outputStreams[] = new File[5];
+	private File output = new File("/home/lvuser/log.txt");;
 	
 	private LoggingMode lMode = LoggingMode.CONSOLE;
-
 	/**
 	 * Logger. Can log messages.
 	 * @param name Name of the logger. This should usually describe the type of
@@ -40,10 +38,6 @@ public class Logger {
 	public Logger (String name, LoggingMode mode) {
 		lName = name;
 		lMode = mode;
-		
-		if (mode == LoggingMode.FILE || mode == LoggingMode.LOG) {
-			output = new File("/home/lvuser/log.txt");
-		}
 	}
 	
 	/**
@@ -58,7 +52,11 @@ public class Logger {
 		lName = name;
 		lMode = mode;
 		output = new File(outputFile);
-		
+		try {
+			new FileWriter(output.getPath(), false); // Overwrite old log files
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 	}
 	
 	/**
@@ -113,42 +111,31 @@ public class Logger {
 	 * @param level Level of the message
 	 */
 	private void handleMessage (String message, Level level) {
-		String str = String.format(msgFormat, level, lName, message);
+		if(LogManager.getMinimumLevel().ordinal() <= level.ordinal()) {
+			String str = String.format(msgFormat, level, lName, message);
+			switch (lMode) {
+				case CONSOLE:
+					System.out.println(str);
+					break;
 		
-		switch (lMode) {
-			case CONSOLE:
-				System.out.println(str);
-		    	break;
-		
-			case LOG:
-				System.out.println(str);
-				// No break so it will also log to a file
-		    	
-			case FILE:
-				if (outputStreams[level.ordinal()] == null) {
+				case LOG:
+					System.out.println(str);
+					// No break so it will also log to a file
+					
+				case FILE:
 					try {
 						FileWriter fileWriter = new FileWriter(output.getPath(), true);
 						BufferedWriter bw = new BufferedWriter(fileWriter);
 						bw.write(str + "\n");
 						bw.close();
-					} catch (IOException e) {
+					}
+					catch (IOException e) {
 						e.printStackTrace();
 					}
-			    	break;
+					break;
 				}
-		}
-		
-		if (outputStreams[level.ordinal()] != null) {
-			try {
-				FileWriter fileWriter = new FileWriter(outputStreams[level.ordinal()].getPath(), true);
-				BufferedWriter bw = new BufferedWriter(fileWriter);
-				bw.write(str + "\n");
-				bw.close();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
 		}
-	}
 	
 	/**
 	 * Gets the format of log strings.
@@ -170,11 +157,10 @@ public class Logger {
 	}
 	
 	/**
-	 * Make a level output stream output to a file
-	 * @param level
-	 * @param file
+	 * Set the level of logging
+	 * @param level the level you want to log at
 	 */
-	public void setFilterFile (Level level, File file) {
-		outputStreams[level.ordinal()] = file;
+	public void setLevel (Level level) {
+		LogManager.setMinimumLevel(level);
 	}
 }
