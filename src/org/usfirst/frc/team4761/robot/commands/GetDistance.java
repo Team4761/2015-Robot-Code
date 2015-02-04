@@ -26,16 +26,13 @@ public class GetDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.driveTrain.drive(0.15, 0.15, 0);
+    	Robot.driveTrain.drive(0.15, 0.15, 0);
     	
     	if (isTimedOut()) {
 	    	double distance = distanceSensor.getDistance();
 	    	
 	    	if (distance < 30) {
-	    		System.out.println("Barrel at: " + distance);
 	    		onDistance = true;
-	    	} else {
-	    		System.out.println(distance);
 	    	}
     	}
     }
