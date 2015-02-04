@@ -21,12 +21,13 @@ public class GetDistance extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	onDistance = false;
     	setTimeout(1); // Ignore weird first values
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.drive(0.15, 0.15, 0);
+    	//Robot.driveTrain.drive(0.15, 0.15, 0);
     	
     	if (isTimedOut()) {
 	    	double distance = distanceSensor.getDistance();

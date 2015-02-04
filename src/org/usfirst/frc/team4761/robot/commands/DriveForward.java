@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot.commands;
 
+import org.usfirst.frc.team4761.robot.DistanceSensor;
 import org.usfirst.frc.team4761.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,6 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveForward extends Command {
+	public boolean onDistance = false;
+	
+	DistanceSensor distanceSensor = new DistanceSensor();
 
     public DriveForward() {
         // Use requires() here to declare subsystem dependencies
@@ -17,16 +21,25 @@ public class DriveForward extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.drive(0, 0.05, 0);
+    	Robot.driveTrain.drive(0.15, 0.15, 0);
+    	
+    	if (isTimedOut()) {
+	    	double distance = distanceSensor.getDistance();
+	    	
+	    	if (distance < 30) {
+	    		onDistance = true;
+	    	}
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return GetDistance.onDistance;
+        return onDistance;
     }
 
     // Called once after isFinished returns true
