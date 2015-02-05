@@ -47,7 +47,7 @@ public class DriveTrain extends Subsystem {
     
     // Get z-axis and scale it
     public double getZ  (Joystick joystick) {
-    	return (-0.2 * joystick.getZ() + 0.5);
+    	return (-0.3 * joystick.getZ() + 0.5);
     }
     
     // Calculate new speed based on the scaled z-axis

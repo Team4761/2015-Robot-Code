@@ -3,19 +3,15 @@ package org.usfirst.frc.team4761.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.simonandews.robolog.Logger;
-import org.simonandews.robolog.LoggingMode;
 import org.usfirst.frc.team4761.robot.DistanceSensor;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
 *
 */
 public class LogToFile extends Command {	
 	private DistanceSensor sensor = new DistanceSensor();
-	private Logger log;
-	
-	public LogToFile (String name, String path) {
-		log = new Logger(name, LoggingMode.LOG, path);
-	}
+	private Logger log = RobotMap.log;
 	
 	protected void initialize () {
 	}

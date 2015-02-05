@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous extends CommandGroup {
     
     public  Autonomous () {
-    	addParallel(new LogToFile("Distance", "/home/lvuser/log.txt"));
+    	addParallel(new LogToFile());
     	addSequential(new DriveForward());
     }
 }
