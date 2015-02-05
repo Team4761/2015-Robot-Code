@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.Joystick;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	public static Joystick joystick1;
-	public static Joystick joystick2;
-	public static Joystick buttons; // Buttons on the control board
+	public Joystick joystick1;
+	public Joystick joystick2;
+	public Joystick buttons; // Buttons on the control board
 	
 	public OI () {
 		joystick1 = new Joystick(0);
