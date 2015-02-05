@@ -1,4 +1,4 @@
-package org.simonandews.robolog;
+package org.simonandrews.robolog;
 
 /**
  * Defines ways of sending log output.

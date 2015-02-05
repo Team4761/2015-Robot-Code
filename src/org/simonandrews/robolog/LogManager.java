@@ -1,4 +1,4 @@
-package org.simonandews.robolog;
+package org.simonandrews.robolog;
 
 public class LogManager {
 	private static Level minLevel = Level.INFO; //Minimum level is INFO by default

@@ -1,4 +1,4 @@
-package org.simonandews.robolog;
+package org.simonandrews.robolog;
 
 import java.io.BufferedWriter;
 import java.io.File;

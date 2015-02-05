@@ -1,4 +1,4 @@
-package org.simonandews.robolog;
+package org.simonandrews.robolog;
 
 /**
  * Defines log urgency levels.
