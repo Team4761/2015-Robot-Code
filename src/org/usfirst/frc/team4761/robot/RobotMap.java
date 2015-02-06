@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
-import org.simonandews.robolog.Logger;
-import org.simonandews.robolog.LoggingMode;
+import org.simonandrews.robolog.Logger;
+import org.simonandrews.robolog.LoggingMode;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Gyro;
