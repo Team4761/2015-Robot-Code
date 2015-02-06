@@ -5,6 +5,7 @@ import org.simonandews.robolog.LoggingMode;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -31,6 +32,7 @@ public class RobotMap {
 	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 	
 	public static final Gyro gyro = new Gyro(0);
+	public static final I2C newGyro = new I2C(I2C.Port.kMXP, 1101000);
 	
 	public static final AnalogInput distanceSensor = new AnalogInput(2);
 	

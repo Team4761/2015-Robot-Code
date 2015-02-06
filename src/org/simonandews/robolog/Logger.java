@@ -111,7 +111,7 @@ public class Logger {
 	 * @param level Level of the message
 	 */
 	private void handleMessage (String message, Level level) {
-		if(LogManager.getMinimumLevel().ordinal() <= level.ordinal()) {
+		if(LogManager.getMinimumLevel().ordinal() >= level.ordinal()) {
 			String str = String.format(msgFormat, level, lName, message);
 			switch (lMode) {
 				case CONSOLE:
