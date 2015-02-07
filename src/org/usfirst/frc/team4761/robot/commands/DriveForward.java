@@ -9,6 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveForward extends Command {
+	private double deltaTime = 0;
+	private long begin = 0, end = 0;
+	
 	DistanceSensor distanceSensor = new DistanceSensor();
 
     public DriveForward() {
@@ -23,12 +26,15 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.drive(0.15, 0.15, 0);
+    	begin = System.nanoTime();
+    	Robot.driveTrain.drive(0.15, 0.15, 0, deltaTime);
+		deltaTime = (begin - end) / 1000000000.0;
+		end = System.nanoTime();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut() && distanceSensor.getDistance() < 30;
+        return distanceSensor.getDistance() < 30;
     }
 
     // Called once after isFinished returns true

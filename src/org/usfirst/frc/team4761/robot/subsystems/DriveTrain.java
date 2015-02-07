@@ -1,12 +1,12 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
+import org.usfirst.frc.team4761.robot.GyroPIDSource;
+import org.usfirst.frc.team4761.robot.GyroSensor;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.PIDSource;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -18,8 +18,8 @@ public class DriveTrain extends Subsystem {
 	
 	RobotDrive robotDrive = RobotMap.robotDrive;
 	
-	Gyro gyro = RobotMap.gyro;
-    PIDSource gyroSensor = gyro;
+	GyroSensor gyro = new GyroSensor();
+	GyroPIDSource gyroSensor = new GyroPIDSource(gyro);
     
 	DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
     
@@ -34,11 +34,12 @@ public class DriveTrain extends Subsystem {
     public void initDefaultCommand () {}
     
     // x and y = -1.0 - 1.0 & rotate is to infinity
-    public void drive (double x, double y, double rotate) {
+    public void drive (double x, double y, double rotate, double deltaTime) {
     	rotateAccumulator += rotate;
     	gyroPidController.setSetpoint(rotateAccumulator);
     	
-    	robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), gyro.getAngle());
+    	robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), gyro.getDegrees(deltaTime));
+    	gyroSensor.setDeltaTime(deltaTime);
     }
     
     public void stop () {
@@ -55,8 +56,10 @@ public class DriveTrain extends Subsystem {
     	return (input * getZ(joystick));
     }
     
-    public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
-		System.out.println("Angle: " + gyro.getAngle() + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1)); 
+    public void driveWithJoysticks (Joystick joystick1, Joystick joystick2, double deltaTime) {
+    	double degrees = gyro.getDegrees(deltaTime);
+    	
+		System.out.println("Angle: " + degrees + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1)); 
 		
     	if (joystick1.getRawButton(2)) { // Press to move the robot to 0 degrees
     		if (Math.abs(rotateAccumulator) > 0) {
@@ -74,11 +77,11 @@ public class DriveTrain extends Subsystem {
     		
     		gyroPidController.setSetpoint(rotateAccumulator);
         	
-    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), driveGyroPIDOutput.getValue(), gyro.getAngle());
+    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), driveGyroPIDOutput.getValue(), degrees);
     	} else {
-    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, gyro.getAngle());
+    		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, degrees);
     		
-    		rotateAccumulator = gyro.getAngle(); // Reset the accumulator so the robot doesn't jerk when button two is released
+    		rotateAccumulator = gyro.getDegrees(deltaTime); // Reset the accumulator so the robot doesn't jerk when button two is released
     	}
     }
 }

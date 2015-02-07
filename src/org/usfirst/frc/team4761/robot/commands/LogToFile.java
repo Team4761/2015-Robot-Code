@@ -1,11 +1,13 @@
 package org.usfirst.frc.team4761.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.DistanceSensor;
+import org.usfirst.frc.team4761.robot.GyroSensor;
 import org.usfirst.frc.team4761.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
 *
@@ -25,7 +27,6 @@ public class LogToFile extends Command {
 	protected boolean isFinished () {
 		return false;
 	}
-	
 	protected void end () {
 		
 	}

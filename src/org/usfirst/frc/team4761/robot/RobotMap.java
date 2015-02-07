@@ -31,8 +31,11 @@ public class RobotMap {
 	
 	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 	
-	public static final Gyro gyro = new Gyro(0);
-	public static final I2C newGyro = new I2C(I2C.Port.kMXP, 1101000);
+	// Old Gyro
+	//public static final Gyro gyro = new Gyro(0);
+	
+	// New Gyro
+	public static final I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
 	public static final AnalogInput distanceSensor = new AnalogInput(2);
 	
