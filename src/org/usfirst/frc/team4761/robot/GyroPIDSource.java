@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
+
 import edu.wpi.first.wpilibj.PIDSource;
 
 public class GyroPIDSource implements PIDSource {

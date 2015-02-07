@@ -2,8 +2,8 @@ package org.usfirst.frc.team4761.robot.subsystems;
 
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.GyroPIDSource;
-import org.usfirst.frc.team4761.robot.GyroSensor;
 import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;

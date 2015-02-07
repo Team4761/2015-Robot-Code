@@ -1,7 +1,8 @@
 package org.usfirst.frc.team4761.robot.commands;
 
-import org.usfirst.frc.team4761.robot.DistanceSensor;
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,7 +13,7 @@ public class DriveForward extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
 	
-	DistanceSensor distanceSensor = new DistanceSensor();
+	DistanceSensor distanceSensor = new DistanceSensor(RobotMap.mediumDistanceSensor1);
 
     public DriveForward() {
         // Use requires() here to declare subsystem dependencies

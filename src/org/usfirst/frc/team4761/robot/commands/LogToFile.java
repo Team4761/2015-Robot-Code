@@ -2,8 +2,8 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
-import org.usfirst.frc.team4761.robot.DistanceSensor;
 import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 

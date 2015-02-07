@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot;
+package org.usfirst.frc.team4761.robot.sensors;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 
