@@ -21,7 +21,7 @@ public class LogToFile extends Command {
 	}
 	
 	protected void execute () {
-		log.dev(Double.toString(sensor.getVoltage()));
+		log.dev(Double.toString(sensor.getShortDistance()));
 	}
 	
 	protected boolean isFinished () {
