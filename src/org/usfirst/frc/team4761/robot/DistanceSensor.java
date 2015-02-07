@@ -3,7 +3,11 @@ package org.usfirst.frc.team4761.robot;
 import edu.wpi.first.wpilibj.AnalogInput;
 
 public class DistanceSensor {
-	AnalogInput sensor = RobotMap.distanceSensor;
+	AnalogInput sensor;
+	
+	public DistanceSensor (AnalogInput sensor) {
+		this.sensor = sensor;
+	}
 	
 	// New medium range sensor
 	public double getLongDistance () {
