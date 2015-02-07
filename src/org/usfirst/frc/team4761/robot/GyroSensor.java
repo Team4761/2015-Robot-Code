@@ -21,7 +21,7 @@ public class GyroSensor {
 	
 	public double getDegrees (double deltaTime) {
 		byte[] angle = new byte[1];
-		gyro.read(0x47, 1, angle); // Ony read from on register (I don't know why the other one doesn't work)
+		gyro.read(0x47, 1, angle); // Only read from on register (I don't know why the other one doesn't work)
 		
 		double rotation = (angle[0] * deltaTime) * 2; // I don't know why * 2 makes this work
 		
