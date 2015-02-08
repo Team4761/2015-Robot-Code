@@ -1,17 +1,16 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class PlowReverse extends Command {
+public class RcOff extends Command {
 	
-	DoubleSolenoid solenoid = Robot.plower.solenoid; 
+	DoubleSolenoid solenoid = Robot.rcGrabber.solenoid; 
 	
-	public PlowReverse(){
-		requires(Robot.plower);
+	public RcOff(){
+		requires(Robot.rcGrabber);
 	}
 	
     protected void initialize() {
@@ -19,7 +18,7 @@ public class PlowReverse extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	solenoid.set(DoubleSolenoid.Value.kOff);
     }
 
     protected boolean isFinished() {

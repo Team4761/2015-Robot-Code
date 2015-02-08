@@ -6,12 +6,12 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class PlowForward extends Command {
+public class RcLift extends Command {
 	
-	DoubleSolenoid solenoid = Robot.plower.solenoid; 
+	DoubleSolenoid solenoid = Robot.rcGrabber.solenoid; 
 	
-	public PlowForward(){
-		requires(Robot.plower);
+	public RcLift(){
+		requires(Robot.rcGrabber);
 	}
 	
     protected void initialize() {
@@ -19,7 +19,7 @@ public class PlowForward extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kForward);
+    	solenoid.set(DoubleSolenoid.Value.kReverse);
     }
 
     protected boolean isFinished() {
