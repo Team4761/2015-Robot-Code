@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class PlowOff extends Command {
 	
-	DoubleSolenoid solenoid = RobotMap.plowerS2; 
+	DoubleSolenoid solenoid = Robot.plower.solenoid; 
 	
 	public PlowOff(){
-		requires(Robot.elevator);
+		requires(Robot.plower);
 	}
 	
     protected void initialize() {
