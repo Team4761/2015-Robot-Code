@@ -3,7 +3,7 @@ package org.usfirst.frc.team4761.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Arm with a hook on the end that can grab RCs
  */
 public class RCGrabber extends Subsystem {
     

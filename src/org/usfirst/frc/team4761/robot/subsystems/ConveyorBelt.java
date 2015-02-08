@@ -3,7 +3,7 @@ package org.usfirst.frc.team4761.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Conveyor belt for moving RCs through the robot
  */
 public class ConveyorBelt extends Subsystem {
     
