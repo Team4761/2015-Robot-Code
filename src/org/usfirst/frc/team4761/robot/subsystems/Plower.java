@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Wedge for moving totes out of the way.
  */
 public class Plower extends Subsystem {
     

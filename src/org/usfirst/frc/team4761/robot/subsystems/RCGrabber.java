@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * Arm with a hook on the end that can grab RCs
  */
 public class RCGrabber extends Subsystem {
     
