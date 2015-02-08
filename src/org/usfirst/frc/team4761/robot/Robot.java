@@ -9,8 +9,10 @@ import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
+import org.usfirst.frc.team4761.robot.subsystems.LowerConveyorBelt;
 import org.usfirst.frc.team4761.robot.subsystems.Plower;
 import org.usfirst.frc.team4761.robot.subsystems.RCGrabber;
+import org.usfirst.frc.team4761.robot.subsystems.UpperConveyerBelt;
 import org.usfirst.frc.team4761.robot.commands.RcLower;
 import org.usfirst.frc.team4761.robot.commands.RcOff;
 import org.usfirst.frc.team4761.robot.commands.RcLift;
@@ -23,10 +25,13 @@ import org.usfirst.frc.team4761.robot.commands.RcLift;
  * directory.
  */
 public class Robot extends IterativeRobot {
-
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static final RCGrabber rcGrabber = new RCGrabber();
 	public static final Plower plower = new Plower();
+	public static final Elevator elevator = new Elevator();
+	public static final LowerConveyorBelt lowerConveyorBelt = new LowerConveyorBelt();
+	public static final UpperConveyerBelt upperConveyorBelt = new UpperConveyerBelt();
+	
 	public static OI oi;
 	public Command driveForward;
 	public Command teleop;
