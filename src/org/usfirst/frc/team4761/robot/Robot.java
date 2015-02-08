@@ -8,6 +8,10 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4761.robot.subsystems.Elevator;
+import org.usfirst.frc.team4761.robot.commands.PnFor;
+import org.usfirst.frc.team4761.robot.commands.PnOff;
+import org.usfirst.frc.team4761.robot.commands.PnRev;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,9 +23,13 @@ import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
+	public static final Elevator elevator = new Elevator();
 	public static OI oi;
 	public Command driveForward;
 	public Command teleop;
+    public Command pnRev;
+    public Command pnFor;
+    public Command pnOff;
 
     Command autonomousCommand;
 
@@ -33,6 +41,9 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		teleop = new Teleop();
 		autonomousCommand = new Autonomous();
+        pnRev = new PnRev();
+        pnOff = new PnOff();
+        pnFor = new PnFor();
     }
 	
 	public void disabledPeriodic () {

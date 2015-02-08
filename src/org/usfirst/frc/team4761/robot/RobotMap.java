@@ -4,6 +4,7 @@ import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -42,4 +43,6 @@ public class RobotMap {
 	public static final AnalogInput shortDistanceSensor1 = new AnalogInput(1);
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
+	
+	public static DoubleSolenoid elevatorS1 = new DoubleSolenoid(0, 0, 1);  
 }
