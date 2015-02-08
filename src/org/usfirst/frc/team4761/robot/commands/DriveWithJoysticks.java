@@ -24,7 +24,7 @@ public class DriveWithJoysticks extends Command {
     protected void execute () {
     	begin = System.nanoTime();
     	Robot.driveTrain.driveWithJoysticks(Robot.oi.joystick1, Robot.oi.joystick2, deltaTime);
-		deltaTime = (begin - end) / 1000000.0;
+		deltaTime = (begin - end) / 1000000000.0;
 		end = System.nanoTime();
     	
     }
