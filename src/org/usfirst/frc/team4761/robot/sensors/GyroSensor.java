@@ -10,6 +10,10 @@ import edu.wpi.first.wpilibj.I2C;
  * Ask Jake Kinsella if you really need an explanation of this code
 */
 
+/**
+ * MPU-6050 gyro.
+ * Datasheet: http://invensense.com/mems/gyro/documents/PS-MPU-6000A-00v3.4.pdf
+ */
 public class GyroSensor {
 	private static double degrees = 0; // The accumulated degrees from the get rotations per second function
 	

@@ -2,6 +2,10 @@ package org.usfirst.frc.team4761.robot.sensors;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 
+/**
+ * Represents GP2Y0A02YK0F datasensor.
+ * Datasheet: https://www.sparkfun.com/datasheets/Sensors/Infrared/gp2y0a02yk_e.pdf
+ */
 public class DistanceSensor {
 	AnalogInput sensor;
 	
