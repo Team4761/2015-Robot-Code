@@ -6,7 +6,8 @@ import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * If the distance sensor on the elevator is above the top of a stack of totes,
+ * move the elevator down until it is level with the top of the stack.
  */
 public class MoveElevatorDownToStackTop extends Command {
 	DistanceSensor ds = new DistanceSensor(RobotMap.shortDistanceSensor1);

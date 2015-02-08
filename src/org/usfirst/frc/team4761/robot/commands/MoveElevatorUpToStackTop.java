@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Moves the elevator up
+ * If the distance sensor on the elevator is below the top of a stack of totes,
+ * move the elevator up until it is level with the top of the stack.
  */
 public class MoveElevatorUpToStackTop extends Command {
 
