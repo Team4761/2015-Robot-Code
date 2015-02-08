@@ -29,7 +29,7 @@ public class DriveForward extends Command {
     protected void execute() {
     	begin = System.nanoTime();
     	Robot.driveTrain.drive(0.15, 0.15, 0, deltaTime);
-		deltaTime = (begin - end) / 1000000000.0;
+		deltaTime = (begin - end) / 1000000.0;
 		end = System.nanoTime();
     }
 

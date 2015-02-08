@@ -4,6 +4,7 @@ import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -11,17 +12,27 @@ import edu.wpi.first.wpilibj.command.Command;
 *
 */
 public class LogToFile extends Command {
+	private double deltaTime = 0;
+	private long begin = 0, end = 0;
+	
+	private GyroSensor gyro = new GyroSensor();
 	private DistanceSensor mediumDistanceSensor1 = new DistanceSensor(RobotMap.mediumDistanceSensor1);
 	private DistanceSensor shortDistanceSensor1 = new DistanceSensor(RobotMap.shortDistanceSensor1);
 	private Logger log = RobotMap.log;
 	
 	protected void initialize () {
 		log.setLevel(Level.FATAL);
+		setTimeout(1);
 	}
 	
 	protected void execute () {
-		log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getShortDistance()));
-		log.dev("Short: " + Double.toString(shortDistanceSensor1.getShortDistance()));
+		begin = System.nanoTime();
+		//log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getShortDistance()));
+		//log.dev("Short: " + Double.toString(shortDistanceSensor1.getShortDistance()));
+		log.dev("Gyro: " + Double.toString(gyro.getDegrees(deltaTime)));
+		//log.dev("Temperature: " + Double.toString(gyro.getTemp()));
+		deltaTime = (begin - end) / 1000000.0;
+		end = System.nanoTime();
 	}
 	
 	protected boolean isFinished () {
