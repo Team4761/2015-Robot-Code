@@ -44,5 +44,7 @@ public class RobotMap {
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 	
-	public static DoubleSolenoid elevatorS1 = new DoubleSolenoid(0, 0, 1);  
+	public static DoubleSolenoid elevatorS1 = new DoubleSolenoid(0, 0, 1); 
+	
+	public static DoubleSolenoid plowerS2 = new DoubleSolenoid(0, 2, 3);
 }

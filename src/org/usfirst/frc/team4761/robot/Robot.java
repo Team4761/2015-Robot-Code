@@ -9,9 +9,9 @@ import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
-import org.usfirst.frc.team4761.robot.commands.PnFor;
-import org.usfirst.frc.team4761.robot.commands.PnOff;
-import org.usfirst.frc.team4761.robot.commands.PnRev;
+import org.usfirst.frc.team4761.robot.commands.LiftForward;
+import org.usfirst.frc.team4761.robot.commands.LiftOff;
+import org.usfirst.frc.team4761.robot.commands.LiftReverse;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,9 +27,12 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public Command driveForward;
 	public Command teleop;
-    public Command pnRev;
-    public Command pnFor;
-    public Command pnOff;
+    public Command liftRev;
+    public Command liftFor;
+    public Command liftOff;
+    public Command plowRev;
+    public Command plowFor;
+    public Command plowOff;
 
     Command autonomousCommand;
 
@@ -41,9 +44,12 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		teleop = new Teleop();
 		autonomousCommand = new Autonomous();
-        pnRev = new PnRev();
-        pnOff = new PnOff();
-        pnFor = new PnFor();
+        liftRev = new LiftReverse();
+        liftOff = new LiftOff();
+        liftFor = new LiftForward();
+        plowRev = new LiftReverse();
+        plowOff = new LiftOff();
+        plowFor = new LiftForward();
     }
 	
 	public void disabledPeriodic () {

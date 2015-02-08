@@ -15,7 +15,7 @@ public class  Lift extends Command {
 	public static DoubleSolenoid.Value off = DoubleSolenoid.Value.kOff;
 	
 	
-	DoubleSolenoid solenoid;
+	DoubleSolenoid solenoid = RobotMap.elevatorS1;
 	
 	public Lift(){
 		dbSV = forward;
@@ -23,7 +23,6 @@ public class  Lift extends Command {
 	
     public Lift(DoubleSolenoid.Value value) {
     	
-    	solenoid = RobotMap.elevatorS1;
     	dbSV = value;
 
         requires(Robot.elevator);
@@ -34,7 +33,7 @@ public class  Lift extends Command {
 
     protected void execute() {
     	solenoid.set(dbSV);
-    	setTimeout(1);
+    	setTimeout(1); // Note! This makes it wait one second!
     }
 
     // Make this return true when this Command no longer needs to run execute()
