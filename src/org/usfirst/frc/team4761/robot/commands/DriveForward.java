@@ -27,10 +27,12 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	begin = System.nanoTime();
+    	begin = System.currentTimeMillis() % 1000;
+		
     	Robot.driveTrain.drive(0.15, 0.15, 0, deltaTime);
-		deltaTime = (begin - end) / 1000000000.0;
-		end = System.nanoTime();
+
+		deltaTime = (begin - end) / 1000.0;
+		end = System.currentTimeMillis() % 1000;
     }
 
     // Make this return true when this Command no longer needs to run execute()

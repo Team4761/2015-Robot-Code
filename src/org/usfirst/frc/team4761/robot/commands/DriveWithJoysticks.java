@@ -22,10 +22,12 @@ public class DriveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute () {
-    	begin = System.nanoTime();
+    	begin = System.currentTimeMillis() % 1000;
+		
     	Robot.driveTrain.driveWithJoysticks(Robot.oi.joystick1, Robot.oi.joystick2, deltaTime);
-		deltaTime = (begin - end) / 1000000000.0;
-		end = System.nanoTime();
+
+		deltaTime = (begin - end) / 1000.0;
+		end = System.currentTimeMillis() % 1000;
     	
     }
 
