@@ -25,10 +25,12 @@ public class RobotMap {
 	public static Victor rightRearMotor = new Victor(4);
 	
 	// New robot
-	/*public static VictorSP leftFrontMotor = new VictorSP(3);
-	public static VictorSP leftRearMotor = new VictorSP(0);
-	public static VictorSP rightFrontMotor = new VictorSP(2);
-	public static VictorSP rightRearMotor = new VictorSP(1);*/
+	/*
+	 * public static VictorSP leftFrontMotor = new VictorSP(3);
+	 * public static VictorSP leftRearMotor = new VictorSP(0);
+	 * public static VictorSP rightFrontMotor = new VictorSP(2);
+	 * public static VictorSP rightRearMotor = new VictorSP(1);
+	 */
 	
 	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 	
@@ -39,12 +41,10 @@ public class RobotMap {
 	public static final I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
 	public static final AnalogInput mediumDistanceSensor1 = new AnalogInput(0);
-
 	public static final AnalogInput shortDistanceSensor1 = new AnalogInput(1);
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 	
 	public static DoubleSolenoid rcpneumatic = new DoubleSolenoid(0, 0, 1); 
-	
 	public static DoubleSolenoid plowpneumatic = new DoubleSolenoid(0, 2, 3);
 }

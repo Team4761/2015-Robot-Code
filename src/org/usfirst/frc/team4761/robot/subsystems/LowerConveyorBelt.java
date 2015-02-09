@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class LowerConveyorBelt extends Subsystem {
 	//FIXME: Replace null with actual port numbers.
-	private static int sc_port = (Integer) null;
+	private static final int sc_port = (Integer) null;
 	
     public static TalonSRX speedController = new TalonSRX(sc_port);
     
