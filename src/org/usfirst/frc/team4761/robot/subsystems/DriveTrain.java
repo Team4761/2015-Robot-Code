@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- * Base of the robot with wheels attatched to it.
+ * Base of the robot with wheels attached to it.
  */
 public class DriveTrain extends Subsystem {
 	private static double rotateAccumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
