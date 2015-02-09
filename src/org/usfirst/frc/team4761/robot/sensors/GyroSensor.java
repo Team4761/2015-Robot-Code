@@ -41,7 +41,10 @@ public class GyroSensor {
 		
 		int rotation = (highOrder << 8) + lowOrder;
 		
-		degrees += (rotation / 131.0) * deltaTime;
+		double newRotation = (rotation / 131.0) * deltaTime;
+		if (newRotation > 1 || newRotation < - 1) { // Filter out noise
+			degrees += newRotation;
+		}
 		
 		return degrees;
 	}
