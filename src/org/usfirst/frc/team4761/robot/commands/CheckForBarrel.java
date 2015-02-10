@@ -1,24 +1,19 @@
 package org.usfirst.frc.team4761.robot.commands;
 
-import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Move the robot forward, using mecanum wheels.
+ * Just waits until a barrel is found
  */
-public class DriveForward extends Command {
-	private double deltaTime = 0;
-	private long begin = 0, end = 0;
-	
-	DistanceSensor distanceSensor = new DistanceSensor(RobotMap.shortDistanceSensor1);
+public class CheckForBarrel extends Command {
+	DistanceSensor distanceSensor = new DistanceSensor(RobotMap.shortDistanceSensor2);
 
-    public DriveForward() {
+    public CheckForBarrel() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
@@ -27,21 +22,11 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	begin = System.currentTimeMillis() % 1000;
-		
-    	Robot.driveTrain.drive(0.15, 0, 0, deltaTime);
-
-		deltaTime = (begin - end) / 1000.0;
-		end = System.currentTimeMillis() % 1000;
-		
-		if (distanceSensor.getShortDistance() < 10) {
-			setTimeout(0.5);
-		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return distanceSensor.getShortDistance() < 10 && isTimedOut();
+        return distanceSensor.getShortDistance() < 25;
     }
 
     // Called once after isFinished returns true

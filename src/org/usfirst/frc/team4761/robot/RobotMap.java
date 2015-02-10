@@ -44,6 +44,7 @@ public class RobotMap {
 	
 	public static final AnalogInput mediumDistanceSensor1 = new AnalogInput(0);
 	public static final AnalogInput shortDistanceSensor1 = new AnalogInput(1);
+	public static final AnalogInput shortDistanceSensor2 = new AnalogInput(2); // Please update when ports are finalized
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 	
