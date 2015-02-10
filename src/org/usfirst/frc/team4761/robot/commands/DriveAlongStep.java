@@ -12,8 +12,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveAlongStep extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
+	private boolean forward = true;
 
-    public DriveAlongStep() {
+    public DriveAlongStep (boolean forward) {
+    	this.forward = forward;
+    	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -26,7 +29,11 @@ public class DriveAlongStep extends Command {
     protected void execute() {
     	begin = System.currentTimeMillis() % 1000;
 		
-    	Robot.driveTrain.drive(0.15, 0.15, 0, deltaTime); // Update for higher speed
+    	if (forward) {
+    		Robot.driveTrain.drive(0.15, 0.15, 0, deltaTime); // Update for higher speed
+    	} else {
+    		Robot.driveTrain.drive(0.15, -0.15, 0, deltaTime); // Update for higher speed
+    	}
 
 		deltaTime = (begin - end) / 1000.0;
 		end = System.currentTimeMillis() % 1000;
