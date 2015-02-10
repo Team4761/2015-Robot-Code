@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
 
@@ -32,7 +33,8 @@ public class RobotMap {
 	 * public static VictorSP rightRearMotor = new VictorSP(1);
 	 */
 	
-	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
+	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, 
+			leftRearMotor, rightFrontMotor, rightRearMotor);
 	
 	// Old Gyro
 	//public static final Gyro gyro = new Gyro(0);
@@ -47,4 +49,9 @@ public class RobotMap {
 	
 	public static DoubleSolenoid rcpneumatic = new DoubleSolenoid(0, 0, 1); 
 	public static DoubleSolenoid plowpneumatic = new DoubleSolenoid(0, 2, 3);
+	
+	//FIXME: Set ports as soon as hardware is out!
+	public static TalonSRX lowerConveyorBeltMotor = new TalonSRX((Integer) null);
+    public static Victor upperConveyorBeltMotor = new Victor((Integer) null); //actual hardware may not be a victor
+	public static Victor elevatorMotor = new Victor((Integer) null);
 }
