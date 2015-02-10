@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
+import org.usfirst.frc.team4761.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -8,10 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * controller.
  */
 public class LowerConveyorBelt extends Subsystem {
-	//FIXME: Replace null with actual port numbers.
-	private static final int sc_port = (Integer) null;
-	
-    public static TalonSRX speedController = new TalonSRX(sc_port);
+	private static TalonSRX speedController = RobotMap.lowerConveyorBeltMotor;
     
     public void initDefaultCommand() {
     }

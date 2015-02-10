@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
+import org.usfirst.frc.team4761.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -8,11 +10,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * and down, and putting them on top of piles.
  */
 public class Elevator extends Subsystem {
-	//FIXME: Replace null with actual port numbers
-	private static final int sc_port = (Integer) null;
 	//TODO: Check if this speed is appropriate when the hardware exists.
 	private static double speed = 0.3;
-	public static Victor speedController = new Victor(sc_port);
+	private static Victor speedController = RobotMap.elevatorMotor;
     
 	public void initDefaultCommand() {
     }
