@@ -7,7 +7,6 @@ import org.usfirst.frc.team4761.robot.commands.RcSpinIn;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class RcPickUp extends CommandGroup {
-    
     public  RcPickUp() {
     	addSequential(new RcLift());
     	addSequential(new RcSpinIn());

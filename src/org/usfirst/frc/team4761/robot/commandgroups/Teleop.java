@@ -6,7 +6,7 @@ import org.usfirst.frc.team4761.robot.commands.LogToFile;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * The command that is run when the robot enters teleop mode.
  */
 public class Teleop extends CommandGroup {
     

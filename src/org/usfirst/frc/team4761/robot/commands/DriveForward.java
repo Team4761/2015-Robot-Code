@@ -7,7 +7,7 @@ import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Move the robot forward, using mecanum wheels.
  */
 public class DriveForward extends Command {
 	private double deltaTime = 0;

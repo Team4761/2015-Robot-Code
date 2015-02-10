@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Drive the robot around, using joysticks to control it.
  */
 public class DriveWithJoysticks extends Command {
 	private double deltaTime = 0;
