@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot.commands;
 
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 
@@ -15,6 +16,7 @@ public class MoveElevatorDownToStackTop extends Command {
     public MoveElevatorDownToStackTop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.elevator);
     }
 
     // Called just before this Command runs the first time

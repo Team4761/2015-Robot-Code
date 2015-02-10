@@ -16,8 +16,6 @@ public class DriveForward extends Command {
 	DistanceSensor distanceSensor = new DistanceSensor(RobotMap.shortDistanceSensor1);
 
     public DriveForward() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.driveTrain);
     }
 
