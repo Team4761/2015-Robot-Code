@@ -47,4 +47,8 @@ public class RobotMap {
 	
 	public static DoubleSolenoid rcpneumatic = new DoubleSolenoid(0, 0, 1); 
 	public static DoubleSolenoid plowpneumatic = new DoubleSolenoid(0, 2, 3);
+	
+	// New Robot
+	public static AnalogInput rcPot = new AnalogInput(5); // TODO: Change port numbers?
+	public static VictorSP spinner = new VictorSP(5); // TODO: Change port numbers.
 }
