@@ -13,7 +13,7 @@ public class DriveForward extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
 	
-	DistanceSensor distanceSensor = new DistanceSensor(RobotMap.mediumDistanceSensor1);
+	DistanceSensor distanceSensor = new DistanceSensor(RobotMap.shortDistanceSensor1);
 
     public DriveForward() {
         // Use requires() here to declare subsystem dependencies
@@ -29,15 +29,19 @@ public class DriveForward extends Command {
     protected void execute() {
     	begin = System.currentTimeMillis() % 1000;
 		
-    	Robot.driveTrain.drive(0.15, 0.15, 0, deltaTime);
+    	Robot.driveTrain.drive(0.15, 0, 0, deltaTime);
 
 		deltaTime = (begin - end) / 1000.0;
 		end = System.currentTimeMillis() % 1000;
+		
+		if (distanceSensor.getShortDistance() < 10) {
+			setTimeout(0.5);
+		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return distanceSensor.getLongDistance() < 25;
+        return distanceSensor.getShortDistance() < 10 && isTimedOut();
     }
 
     // Called once after isFinished returns true
