@@ -35,16 +35,8 @@ public class Robot extends IterativeRobot {
 	public static final UpperConveyerBelt upperConveyorBelt = new UpperConveyerBelt();
 	
 	public static OI oi;
-	public Command driveForward;
-	public Command teleop;
-    public Command liftRev;
-    public Command liftFor;
-    public Command liftOff;
-    public Command plowRev;
-    public Command plowFor;
-    public Command plowOff;
-
-    Command autonomousCommand;
+	public Command teleOpCommand;
+	public Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -52,14 +44,8 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit () {
 		oi = new OI();
-		teleop = new Teleop();
+		teleOpCommand = new Teleop();
 		autonomousCommand = new Autonomous();
-        liftRev = new RcLift();
-        liftOff = new RcOff();
-        liftFor = new RcLower();
-        plowRev = new RcLift();
-        plowOff = new RcOff();
-        plowFor = new RcLower();
     }
 	
 	public void disabledPeriodic () {
@@ -83,7 +69,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        teleop.start();
+        teleOpCommand.start();
     }
 
     /**
