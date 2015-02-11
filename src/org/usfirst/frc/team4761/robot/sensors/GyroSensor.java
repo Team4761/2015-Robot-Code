@@ -43,11 +43,12 @@ public class GyroSensor {
 		gyro.read(0x47, 2, angle);
 		int highOrder = (int) angle[0];
 		int lowOrder = uByteToInt(angle[1]);
+		//int lowOrder = (int) angle[1];
 		
-		int rotation = (highOrder << 8) + lowOrder;
+		int rotation = (highOrder << 8) | lowOrder;
 		
 		double newRotation = (rotation / 131.0) * deltaTime;
-		if (newRotation > 1 || newRotation < - 1) { // Filter out noise
+		if (newRotation > 0.5 || newRotation < -0.5) { // Filter out noise
 			degrees += newRotation;
 		}
 		
