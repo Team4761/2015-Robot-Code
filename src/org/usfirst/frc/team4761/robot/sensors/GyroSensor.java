@@ -43,7 +43,6 @@ public class GyroSensor {
 		gyro.read(0x47, 2, angle);
 		int highOrder = (int) angle[0];
 		int lowOrder = uByteToInt(angle[1]);
-		//int lowOrder = (int) angle[1];
 		
 		int rotation = (highOrder << 8) | lowOrder;
 		
