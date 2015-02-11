@@ -11,8 +11,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RcPickUp extends CommandGroup {
     
     public  RcPickUp (boolean forward) {
-    	addParallel(new DriveAlongStep(forward));
-    	addSequential(new CheckForBarrel());
     	addSequential(new RcLift());
     	addSequential(new RcSpinIn());
     	addSequential(new RcLower());
