@@ -19,7 +19,7 @@ public class RaiseRcGrabber extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	Robot.rcGrabber.set(DoubleSolenoid.Value.kReverse);
     }
 
     protected boolean isFinished() {

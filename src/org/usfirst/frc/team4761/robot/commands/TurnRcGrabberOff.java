@@ -18,7 +18,7 @@ public class TurnRcGrabberOff extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kOff);
+    	Robot.rcGrabber.set(DoubleSolenoid.Value.kOff);
     }
 
     protected boolean isFinished() {

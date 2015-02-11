@@ -22,7 +22,7 @@ public class RcGrabberBase extends PIDSubsystem {
     // Initialize your subsystem here
     public RcGrabberBase() {
     	super("RCSpinner", 0.0, 0.0, 0.0);
-    	setAbsoluteTolerance(.05);
+    	setAbsoluteTolerance(0.05);
     	setSetpoint(0);
     	getPIDController().setContinuous();
     	enable();
