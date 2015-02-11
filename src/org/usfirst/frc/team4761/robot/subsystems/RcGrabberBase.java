@@ -1,46 +1,37 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import org.usfirst.frc.team4761.robot.Robot;
+import edu.wpi.first.wpilibj.command.Subsystem;
+
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
  * Motor that spins {@link org.usfirst.frc.team4761.robot.subsystems.RcGrabber
  * the RC Grabber}.
  */
-public class RcGrabberBase extends PIDSubsystem {
-	
-	public Double outside = 0.0; // TODO: Get correct setpoint.
-	public Double inside = 1.0;  // TODO: Get correct setpoint.
-	
-	AnalogInput potentiometer = RobotMap.rcPot;
+public class RcGrabberBase extends Subsystem {	
+	DigitalInput in = RobotMap.spinnerDI1;
+	DigitalInput out = RobotMap.spinnerDI2;
 	VictorSP spinner = RobotMap.spinner;
 	
-	// Initialize your subsystem here
-	public RcGrabberBase() {
-		super("RCSpinner", 0.0, 0.0, 0.0);
-		setAbsoluteTolerance(0.05);
-		setSetpoint(0);
-		getPIDController().setContinuous();
-		enable();
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		//setDefaultCommand(new MySpecialCommand());
+	public RcGrabberBase(){}
+	
+	public Boolean outTriggered(){
+		return out.get();
 	}
 	
-	protected double returnPIDInput() {
-		return potentiometer.getAverageVoltage();
+	public Boolean inTriggered(){
+		return in.get();
 	}
 	
-	protected void usePIDOutput(double output) {
-		spinner.set(output);
-	}
-	
-	public Boolean isDone() {
-		return (Math.abs(Robot.rcGrabberBase.getSetpoint() - Robot.rcGrabberBase.getPosition()) < .05);
+	public void spinnerSet(Double speed){
+		spinner.set(speed);
 	}
 }

@@ -58,7 +58,13 @@ public class RobotMap {
 	public static DoubleSolenoid plowpneumatic = new DoubleSolenoid(0, 2, 3);
 	
 	// New Robot
-	public static AnalogInput rcPot = new AnalogInput(5); // TODO: Change port numbers?
+	/**
+	 * Digital inputs for the limit switches of the rcGrabberBase.</br>
+	 */
+	
+	public static DigitalInput spinnerDI1 = new DigitalInput(0);
+	public static DigitalInput spinnerDI2 = new DigitalInput(1);
+	
 	public static VictorSP spinner = new VictorSP(5); // TODO: Change port numbers.
 	
 	// FIXME: Set ports as soon as hardware is out!
