@@ -17,32 +17,18 @@ public class DistanceSensor {
 	}
 	
 	/**
-	 * New medium range sensor
-	 * GP2Y0A02YK0F distance sensor
-	 * @return Distance in centimeters
+	 * Get voltage output of the sensor
+	 * @return
 	 */
-	public double getLongDistance () {
-		double voltage = sensor.getVoltage();
-		return 306.439 + voltage * (-512.611 + voltage * (382.268 + voltage * (-129.893 + voltage * 16.2537)));
+	public double getVoltage () {
+		return sensor.getVoltage();
 	}
 	
 	/**
-	 * New short range sensor
-	 * GP2D120XJ00F distance sensor
-	 * @return Distance in centimeters.
+	 * Get distance in centimeters
+	 * @return Distance in centimeters
 	 */
-	public double getShortDistance () {
-		double voltage = sensor.getVoltage();
-		double distance = 17.298 * Math.pow(voltage, 2) - 66.8913 * voltage + 58.504; //TODO: not use exponents
-		
-		if (distance < 0) { // Filter out values less than 0
-			return 0;
-		}
-		
-		return distance;
-	}
-	
-	public double getVoltage () {
-		return sensor.getVoltage();
+	public double getDistance() {
+		return (Double) null;
 	}
 }

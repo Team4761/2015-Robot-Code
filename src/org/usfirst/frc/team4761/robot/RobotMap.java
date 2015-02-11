@@ -2,6 +2,8 @@ package org.usfirst.frc.team4761.robot;
 
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
+import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
+import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -42,9 +44,9 @@ public class RobotMap {
 	// New Gyro
 	public static final I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
-	public static final AnalogInput mediumDistanceSensor1 = new AnalogInput(0);
-	public static final AnalogInput shortDistanceSensor1 = new AnalogInput(1);
-	public static final AnalogInput shortDistanceSensor2 = new AnalogInput(2); // Please update when ports are finalized
+	public static final MediumDistanceSensor mediumDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(0));
+	public static final ShortDistanceSensor shortDistanceSensor1 = new ShortDistanceSensor(new AnalogInput(1));
+	public static final ShortDistanceSensor shortDistanceSensor2 = new ShortDistanceSensor(new AnalogInput(2)); // Please update when ports are finalized
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 	

@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
+import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * Just waits until a barrel is found
  */
 public class CheckForBarrel extends Command {
-	DistanceSensor distanceSensor = new DistanceSensor(RobotMap.shortDistanceSensor2);
+	ShortDistanceSensor distanceSensor = RobotMap.shortDistanceSensor2;
 
     public CheckForBarrel() {
         // Use requires() here to declare subsystem dependencies
@@ -26,7 +27,7 @@ public class CheckForBarrel extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return distanceSensor.getShortDistance() < 25;
+        return distanceSensor.getDistance() < 25;
     }
 
     // Called once after isFinished returns true

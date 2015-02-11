@@ -7,6 +7,10 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
+/**
+ * Motor that spins {@link org.usfirst.frc.team4761.robot.subsystems.RcGrabber
+ * the RC Grabber}.
+ */
 public class RcGrabberBase extends PIDSubsystem {
 
 	public Double outside = 0.0; // TODO: Get correct setpoint.
