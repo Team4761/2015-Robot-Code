@@ -3,7 +3,6 @@ package org.usfirst.frc.team4761.robot.commands;
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
@@ -19,7 +18,7 @@ public class LogToFile extends Command {
 	
 	private GyroSensor gyro = new GyroSensor();
 	private MediumDistanceSensor mediumDistanceSensor1 = RobotMap.mediumDistanceSensor1;
-	private ShortDistanceSensor shortDistanceSensor1 = RobotMap.shortDistanceSensor1;
+	private ShortDistanceSensor shortDistanceSensor1 = RobotMap.elevatorDistanceSensor;
 	private Logger log = RobotMap.log;
 	
 	protected void initialize () {

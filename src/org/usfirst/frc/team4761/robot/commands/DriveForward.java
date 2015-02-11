@@ -2,7 +2,6 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -14,7 +13,7 @@ public class DriveForward extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
 	
-	ShortDistanceSensor distanceSensor = RobotMap.shortDistanceSensor1;
+	ShortDistanceSensor distanceSensor = RobotMap.elevatorDistanceSensor;
 
     public DriveForward() {
     	requires(Robot.driveTrain);

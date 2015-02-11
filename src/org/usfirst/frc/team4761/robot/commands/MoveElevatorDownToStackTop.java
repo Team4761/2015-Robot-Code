@@ -2,7 +2,6 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -12,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * move the elevator down until it is level with the top of the stack.
  */
 public class MoveElevatorDownToStackTop extends Command {
-	ShortDistanceSensor ds = RobotMap.shortDistanceSensor1;
+	ShortDistanceSensor ds = RobotMap.elevatorDistanceSensor;
 	
     public MoveElevatorDownToStackTop() {
         // Use requires() here to declare subsystem dependencies
