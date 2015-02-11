@@ -10,9 +10,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Plower extends Subsystem {
     
-	public DoubleSolenoid solenoid = RobotMap.plowpneumatic;
+	private DoubleSolenoid solenoid = RobotMap.plowpneumatic;
 
     public void initDefaultCommand() {
+    }
+    
+    public void set (DoubleSolenoid.Value value) {
+    	solenoid.set(value);
     }
 }
 

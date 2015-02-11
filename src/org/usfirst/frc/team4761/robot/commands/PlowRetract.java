@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class PlowRetract extends Command {
 	
-	DoubleSolenoid solenoid = Robot.plower.solenoid; 
-	
 	public PlowRetract(){
 		requires(Robot.plower);
 	}
@@ -19,7 +17,7 @@ public class PlowRetract extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kReverse);
+    	Robot.plower.set(DoubleSolenoid.Value.kReverse);
     }
 
     protected boolean isFinished() {
