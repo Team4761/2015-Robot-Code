@@ -25,14 +25,6 @@ public class RobotMap {
 	public static Victor rightFrontMotor = new Victor(3);
 	public static Victor rightRearMotor = new Victor(4);
 	
-	// New robot
-	/*
-	 * public static VictorSP leftFrontMotor = new VictorSP(3);
-	 * public static VictorSP leftRearMotor = new VictorSP(0);
-	 * public static VictorSP rightFrontMotor = new VictorSP(2);
-	 * public static VictorSP rightRearMotor = new VictorSP(1);
-	 */
-	
 	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, 
 			leftRearMotor, rightFrontMotor, rightRearMotor);
 	

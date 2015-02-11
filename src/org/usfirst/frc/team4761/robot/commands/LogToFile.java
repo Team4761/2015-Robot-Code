@@ -28,8 +28,8 @@ public class LogToFile extends Command {
 	protected void execute () {
 		begin = System.currentTimeMillis() % 1000;
 		
-		log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getShortDistance()));
-		log.dev("Short: " + Double.toString(shortDistanceSensor1.getShortDistance()));
+		//log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getShortDistance()));
+		//log.dev("Short: " + Double.toString(shortDistanceSensor1.getShortDistance()));
 		log.dev("Gyro: " + Double.toString(gyro.getDegrees(deltaTime)));
 		
 		deltaTime = (begin - end) / 1000.0;
