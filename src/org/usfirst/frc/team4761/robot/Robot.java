@@ -11,12 +11,9 @@ import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
 import org.usfirst.frc.team4761.robot.subsystems.LowerConveyorBelt;
 import org.usfirst.frc.team4761.robot.subsystems.Plower;
-import org.usfirst.frc.team4761.robot.subsystems.RCGrabber;
+import org.usfirst.frc.team4761.robot.subsystems.RcGrabber;
 import org.usfirst.frc.team4761.robot.subsystems.RcGrabberBase;
 import org.usfirst.frc.team4761.robot.subsystems.UpperConveyerBelt;
-import org.usfirst.frc.team4761.robot.commands.LowerRcGrabber;
-import org.usfirst.frc.team4761.robot.commands.TurnRcGrabberOff;
-import org.usfirst.frc.team4761.robot.commands.RaiseRcGrabber;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,7 +24,7 @@ import org.usfirst.frc.team4761.robot.commands.RaiseRcGrabber;
  */
 public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final RCGrabber rcGrabber = new RCGrabber();
+	public static final RcGrabber rcGrabber = new RcGrabber();
 	public static final RcGrabberBase rcGrabberBase = new RcGrabberBase();
 	public static final Plower plower = new Plower();
 	public static final Elevator elevator = new Elevator();
