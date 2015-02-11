@@ -69,7 +69,7 @@ public class RobotMap {
 	
 	// FIXME: Set ports as soon as hardware is out!
 	public static TalonSRX lowerConveyorBeltMotor = new TalonSRX((Integer) null);
-    public static Victor upperConveyorBeltMotor = new Victor((Integer) null); //actual hardware may not be a victor
-	public static Victor elevatorMotor = new Victor((Integer) null);
+    public static VictorSP upperConveyorBeltMotor = new VictorSP((Integer) null); //actual hardware may not be a victor
+	public static VictorSP elevatorMotor = new VictorSP((Integer) null);
 
 }
