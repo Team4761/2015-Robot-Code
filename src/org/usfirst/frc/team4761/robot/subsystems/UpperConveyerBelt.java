@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
@@ -10,7 +11,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 public class UpperConveyerBelt extends Subsystem {
 	//FIXME: Update this entire class for when the actual hardware comes out.
 	private static double speed = 0.3;
-	private static Victor speedController = RobotMap.upperConveyorBeltMotor;
+	private static VictorSP speedController = RobotMap.upperConveyorBeltMotor;
 	
 	public void initDefaultCommand() {
 	}
