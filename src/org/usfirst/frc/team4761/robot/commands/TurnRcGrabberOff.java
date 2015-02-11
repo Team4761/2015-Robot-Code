@@ -1,16 +1,15 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RcLower extends Command {
+public class TurnRcGrabberOff extends Command {
 	
 	DoubleSolenoid solenoid = Robot.rcGrabber.solenoid; 
 	
-	public RcLower(){
+	public TurnRcGrabberOff(){
 		requires(Robot.rcGrabber);
 	}
 	
@@ -19,7 +18,7 @@ public class RcLower extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kForward);
+    	solenoid.set(DoubleSolenoid.Value.kOff);
     }
 
     protected boolean isFinished() {

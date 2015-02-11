@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
-public class RCSpinner extends PIDSubsystem {
+public class RcGrabberBase extends PIDSubsystem {
 
 	public Double outside = 0.0; // TODO: Get correct setpoint.
 	public Double inside = 1.0;  // TODO: Get correct setpoint.
@@ -16,7 +16,7 @@ public class RCSpinner extends PIDSubsystem {
 	VictorSP spinner = RobotMap.spinner;
 	
     // Initialize your subsystem here
-    public RCSpinner() {
+    public RcGrabberBase() {
     	super("RCSpinner", 0.0, 0.0, 0.0);
     	setAbsoluteTolerance(.05);
     	setSetpoint(0);
@@ -38,6 +38,6 @@ public class RCSpinner extends PIDSubsystem {
     }
     
     public Boolean isDone(){
-    	return (Math.abs(Robot.rcSpinner.getSetpoint() - Robot.rcSpinner.getPosition()) < .05);
+    	return (Math.abs(Robot.rcGrabberBase.getSetpoint() - Robot.rcGrabberBase.getPosition()) < .05);
     }
 }

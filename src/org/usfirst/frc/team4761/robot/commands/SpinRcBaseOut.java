@@ -4,14 +4,14 @@ import org.usfirst.frc.team4761.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RcSpinIn extends Command {
-    public RcSpinIn() {
-    	requires(Robot.rcSpinner);
+public class SpinRcBaseOut extends Command {
+    public SpinRcBaseOut() {
+    	requires(Robot.rcGrabberBase);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.rcSpinner.setSetpoint(Robot.rcSpinner.inside);
+    	Robot.rcGrabberBase.setSetpoint(Robot.rcGrabberBase.outside);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -20,7 +20,7 @@ public class RcSpinIn extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.rcSpinner.isDone();
+    	return Robot.rcGrabberBase.isDone();
     }
 
     // Called once after isFinished returns true
