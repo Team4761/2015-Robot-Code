@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4761.robot;
 
+import org.usfirst.frc.team4761.robot.commands.*;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -15,5 +18,12 @@ public class OI {
 		joystick1 = new Joystick(0);
 		joystick2 = new Joystick(1);
 		buttons = new Joystick(2);
+		
+		SmartDashboard.putData("RC Lower", new RcLower());
+		SmartDashboard.putData("RC Lift", new RcLift());
+		SmartDashboard.putData("RC Off", new RcOff());
+		SmartDashboard.putData("Plow Extend", new PlowExtend());
+		SmartDashboard.putData("Plow Off", new PlowOff());
+		SmartDashboard.putData("Plow Retract", new PlowRetract());
 	}
 }
