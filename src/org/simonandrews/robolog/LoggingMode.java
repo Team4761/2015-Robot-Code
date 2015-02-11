@@ -2,6 +2,7 @@ package org.simonandrews.robolog;
 
 /**
  * Defines ways of sending log output.
+ *
  * @author Simon Andrews
  * @author Jake Kinsella
  */

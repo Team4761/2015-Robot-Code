@@ -9,6 +9,7 @@ public class ShortDistanceSensor extends DistanceSensor {
 	public ShortDistanceSensor(AnalogInput sensor) {
 		super(sensor);
 	}
+	
 	public double getDistance() {
 		double voltage = sensor.getVoltage();
 		double distance = 17.298 * Math.pow(voltage, 2) - 66.8913 * voltage + 58.504; //TODO: not use exponents

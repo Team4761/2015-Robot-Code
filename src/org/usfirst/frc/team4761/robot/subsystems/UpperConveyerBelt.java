@@ -1,10 +1,8 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import org.usfirst.frc.team4761.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.SafePWM;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
  *
@@ -13,10 +11,12 @@ public class UpperConveyerBelt extends Subsystem {
 	//FIXME: Update this entire class for when the actual hardware comes out.
 	private static double speed = 0.3;
 	private static Victor speedController = RobotMap.upperConveyorBeltMotor;
+	
 	public void initDefaultCommand() {
-    }
+	}
+	
 	public static void go() {
-		if(speed > 0) { //Conveyor belt can only go one way
+		if (speed > 0) { //Conveyor belt can only go one way
 			speedController.set(speed);
 		}
 	}

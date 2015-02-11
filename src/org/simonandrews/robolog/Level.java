@@ -2,6 +2,7 @@ package org.simonandrews.robolog;
 
 /**
  * Defines log urgency levels.
+ *
  * @author Simon Andrews
  */
 public enum Level {
