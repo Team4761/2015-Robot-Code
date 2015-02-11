@@ -8,15 +8,6 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
-import org.usfirst.frc.team4761.robot.subsystems.Elevator;
-import org.usfirst.frc.team4761.robot.subsystems.LowerConveyorBelt;
-import org.usfirst.frc.team4761.robot.subsystems.Plower;
-import org.usfirst.frc.team4761.robot.subsystems.RCGrabber;
-import org.usfirst.frc.team4761.robot.subsystems.RCSpinner;
-import org.usfirst.frc.team4761.robot.subsystems.UpperConveyerBelt;
-import org.usfirst.frc.team4761.robot.commands.RcLower;
-import org.usfirst.frc.team4761.robot.commands.RcOff;
-import org.usfirst.frc.team4761.robot.commands.RcLift;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,12 +18,6 @@ import org.usfirst.frc.team4761.robot.commands.RcLift;
  */
 public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final RCGrabber rcGrabber = new RCGrabber();
-	public static final RCSpinner rcSpinner = new RCSpinner();
-	public static final Plower plower = new Plower();
-	public static final Elevator elevator = new Elevator();
-	public static final LowerConveyorBelt lowerConveyorBelt = new LowerConveyorBelt();
-	public static final UpperConveyerBelt upperConveyorBelt = new UpperConveyerBelt();
 	
 	public static OI oi;
 	public Command driveForward;
@@ -54,12 +39,6 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		teleop = new Teleop();
 		autonomousCommand = new Autonomous();
-        liftRev = new RcLift();
-        liftOff = new RcOff();
-        liftFor = new RcLower();
-        plowRev = new RcLift();
-        plowOff = new RcOff();
-        plowFor = new RcLower();
     }
 	
 	public void disabledPeriodic () {
