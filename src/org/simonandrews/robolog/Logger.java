@@ -17,7 +17,6 @@ public class Logger {
 	private String msgFormat = "[%s] %s - %s";
 	
 	private File output = new File("/home/lvuser/log.txt");
-	;
 	
 	private LoggingMode lMode = LoggingMode.CONSOLE;
 	
