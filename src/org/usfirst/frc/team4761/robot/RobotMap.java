@@ -49,16 +49,18 @@ public class RobotMap {
 	 * Jake says its not being used right now.<br/>
 	 * */
 	public static final MediumDistanceSensor mediumDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(0));
+	
 	/**
 	 * A distance sensor on the elevator.<br/>
 	 * */
 	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
+	
 	/**
 	 * The distance sensor to check for barrels.<br/>
 	 * */
 	public static final ShortDistanceSensor barrelSensor = new ShortDistanceSensor(new AnalogInput(2)); // Please update when ports are finalized
 	
-	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
+	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	
 	public static DoubleSolenoid rcpneumatic = new DoubleSolenoid(0, 0, 1); 
 	public static DoubleSolenoid plowpneumatic = new DoubleSolenoid(0, 2, 3);
