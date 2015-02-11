@@ -17,7 +17,7 @@ public class PlowExtend extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kForward);
+    	Robot.plower.set(DoubleSolenoid.Value.kForward);
     }
 
     protected boolean isFinished() {
