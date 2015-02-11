@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class PlowOff extends Command {
 	
-	DoubleSolenoid solenoid = Robot.plower.solenoid; 
-	
 	public PlowOff(){
 		requires(Robot.plower);
 	}
@@ -19,7 +17,7 @@ public class PlowOff extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kOff);
+    	Robot.plower.set(DoubleSolenoid.Value.kOff);
     }
 
     protected boolean isFinished() {

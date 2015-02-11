@@ -6,9 +6,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class PlowExtend extends Command {
-	
-	DoubleSolenoid solenoid = Robot.plower.solenoid; 
+public class PlowExtend extends Command { 
 	
 	public PlowExtend(){
 		requires(Robot.plower);
@@ -19,7 +17,7 @@ public class PlowExtend extends Command {
     }
 
     protected void execute() {
-    	solenoid.set(DoubleSolenoid.Value.kForward);
+    	Robot.plower.set(DoubleSolenoid.Value.kForward);
     }
 
     protected boolean isFinished() {
