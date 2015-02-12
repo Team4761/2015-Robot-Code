@@ -2,6 +2,8 @@ package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
 import org.usfirst.frc.team4761.robot.commands.*;
 
 /**
@@ -24,5 +26,6 @@ public class OI {
 		SmartDashboard.putData("Plow Extend", new PlowExtend());
 		SmartDashboard.putData("Plow Off", new PlowOff());
 		SmartDashboard.putData("Plow Retract", new PlowRetract());
+		SmartDashboard.putData("RCPickUp", new RcPickUp());
 	}
 }
