@@ -16,7 +16,10 @@ import org.usfirst.frc.team4761.robot.commands.LogToFile;
  * GitHub</a> about this command.
  */
 public class Autonomous extends CommandGroup {
-	
+	/*
+	 * TODO: after check for barrel completes, robot must go forward a bit and
+	 * then do the RcPickUp.
+	 */
 	public Autonomous() {
 		addParallel(new LogToFile());
 		addSequential(new DriveForward());
