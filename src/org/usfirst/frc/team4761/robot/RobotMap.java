@@ -14,19 +14,19 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  * floating around.
  */
 public class RobotMap {
-	// Old robot
-	public static Victor leftFrontMotor = new Victor(1);
-	public static Victor leftRearMotor = new Victor(2);
-	public static Victor rightFrontMotor = new Victor(3);
-	public static Victor rightRearMotor = new Victor(4);
-	
-	// New robot
-	/*
-	 * public static VictorSP leftFrontMotor = new VictorSP(3);
-	 * public static VictorSP leftRearMotor = new VictorSP(0);
-	 * public static VictorSP rightFrontMotor = new VictorSP(2);
-	 * public static VictorSP rightRearMotor = new VictorSP(1);
+	/* 
+	 * Old robot
+	 * public static Victor leftFrontMotor = new Victor(1);
+	 * public static Victor leftRearMotor = new Victor(2);
+	 * public static Victor rightFrontMotor = new Victor(3);
+	 * public static Victor rightRearMotor = new Victor(4);
 	 */
+	
+	public static VictorSP leftFrontMotor = new VictorSP(3);
+	public static VictorSP leftRearMotor = new VictorSP(0);
+	public static VictorSP rightFrontMotor = new VictorSP(2);
+	public static VictorSP rightRearMotor = new VictorSP(1);
+	
 	
 	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor,
 			leftRearMotor, rightFrontMotor, rightRearMotor);
@@ -42,7 +42,7 @@ public class RobotMap {
 	 * team4761.robot.commands.LogToFile Log To File Command}. Jake says its 
 	 * not being used right now.
 	 */
-	public static final MediumDistanceSensor mediumDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(0));
+	//public static final MediumDistanceSensor mediumDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(0));
 	
 	/**
 	 * A distance sensor on the elevator.
@@ -60,8 +60,8 @@ public class RobotMap {
 	public static DoubleSolenoid plowPneumatic = new DoubleSolenoid(0, 2, 3);
 	
 	// New Robot
-	public static AnalogInput rcPot = new AnalogInput(5); // TODO: Change port numbers?
-	public static VictorSP spinner = new VictorSP(5); // TODO: Change port numbers.
+	public static AnalogInput rcPot = new AnalogInput(5); //TODO: Remove after merge
+	public static VictorSP spinner = new VictorSP(4);
 	
 	public static TalonSRX innerConveyorBeltMotor = new TalonSRX(6);
 	public static TalonSRX outerConveyorBeltMotor = new TalonSRX(7);
