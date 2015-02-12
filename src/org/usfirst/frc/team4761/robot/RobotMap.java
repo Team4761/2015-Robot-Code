@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.*;
 
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
-import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
@@ -62,10 +61,10 @@ public class RobotMap {
 	// New Robot
 	public static AnalogInput rcPot = new AnalogInput(5); //TODO: Remove after merge
 	public static VictorSP spinner = new VictorSP(4);
+	
 	/**
 	 * Digital inputs for the limit switches of the rcGrabberBase.</br>
 	 */
-	
 	public static DigitalInput spinnerDI1 = new DigitalInput(0);
 	public static DigitalInput spinnerDI2 = new DigitalInput(1);
 	
