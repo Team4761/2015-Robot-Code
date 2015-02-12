@@ -37,18 +37,19 @@ public class RobotMap {
 	public static final I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
 	/**
-	 * A distance sensor that is only used in {@link org.usfirst.frc.team4761.robot.commands.LogToFile}.<br/>
-	 * Jake says its not being used right now.<br/>
+	 * A distance sensor that is only used in the {@link org.usfirst.frc.
+	 * team4761.robot.commands.LogToFile Log To File Command}. Jake says its 
+	 * not being used right now.
 	 */
 	public static final MediumDistanceSensor mediumDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(0));
 	
 	/**
-	 * A distance sensor on the elevator.<br/>
+	 * A distance sensor on the elevator.
 	 */
 	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
 	
 	/**
-	 * The distance sensor to check for barrels.<br/>
+	 * The distance sensor to check for barrels.
 	 */
 	public static final ShortDistanceSensor barrelSensor = new ShortDistanceSensor(new AnalogInput(2)); // Please update when ports are finalized
 	
