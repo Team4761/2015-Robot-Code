@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.*;
+
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
@@ -55,16 +56,15 @@ public class RobotMap {
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	
-	public static DoubleSolenoid rcpneumatic = new DoubleSolenoid(0, 0, 1);
-	public static DoubleSolenoid plowpneumatic = new DoubleSolenoid(0, 2, 3);
+	public static DoubleSolenoid rcPneumatic = new DoubleSolenoid(0, 0, 1);
+	public static DoubleSolenoid plowPneumatic = new DoubleSolenoid(0, 2, 3);
 	
 	// New Robot
 	public static AnalogInput rcPot = new AnalogInput(5); // TODO: Change port numbers?
 	public static VictorSP spinner = new VictorSP(5); // TODO: Change port numbers.
 	
-	// FIXME: Set ports as soon as hardware is out!
-	public static TalonSRX lowerConveyorBeltMotor = new TalonSRX((Integer) null);
-	public static VictorSP upperConveyorBeltMotor = new VictorSP((Integer) null); //actual hardware may not be a victor
-	public static VictorSP elevatorMotor = new VictorSP((Integer) null);
+	public static TalonSRX innerConveyorBeltMotor = new TalonSRX(6);
+	public static TalonSRX outerConveyorBeltMotor = new TalonSRX(7);
+	public static VictorSP elevatorMotor = new VictorSP(5);
 	
 }

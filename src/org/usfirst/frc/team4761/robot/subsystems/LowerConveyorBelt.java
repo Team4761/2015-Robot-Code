@@ -9,7 +9,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * controller.
  */
 public class LowerConveyorBelt extends Subsystem {
-	private static TalonSRX speedController = RobotMap.lowerConveyorBeltMotor;
+	private static TalonSRX speedController = RobotMap.innerConveyorBeltMotor;
 	
 	public void initDefaultCommand() {
 	}

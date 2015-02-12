@@ -9,7 +9,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  */
 public class Plower extends Subsystem {
 	
-	private DoubleSolenoid solenoid = RobotMap.plowpneumatic;
+	private DoubleSolenoid solenoid = RobotMap.plowPneumatic;
 	
 	public void initDefaultCommand() {
 	}
