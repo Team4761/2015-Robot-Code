@@ -17,8 +17,6 @@ public class RcGrabberBase extends Subsystem {
 	
 	@Override
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 	public RcGrabberBase(){}

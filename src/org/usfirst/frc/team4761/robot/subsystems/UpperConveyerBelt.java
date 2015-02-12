@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
- *
+ * Conveyor belt attached to the elevator that can move totes on it onto the
+ * top of a stack.
  */
 public class UpperConveyerBelt extends Subsystem {
-	//FIXME: Update this entire class for when the actual hardware comes out.
 	private static double speed = 0.3;
 	private static TalonSRX speedController = RobotMap.elevatorConveyorBeltMotor;
 	
