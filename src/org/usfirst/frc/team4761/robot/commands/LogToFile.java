@@ -16,7 +16,6 @@ public class LogToFile extends Command {
 	private long begin = 0, end = 0;
 	
 	private GyroSensor gyro = new GyroSensor();
-	private MediumDistanceSensor mediumDistanceSensor1 = RobotMap.mediumDistanceSensor1;
 	private ShortDistanceSensor shortDistanceSensor1 = RobotMap.elevatorDistanceSensor;
 	private Logger log = RobotMap.log;
 	
@@ -27,8 +26,6 @@ public class LogToFile extends Command {
 	
 	protected void execute() {
 		begin = System.currentTimeMillis() % 1000;
-		
-		log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getDistance()));
 		log.dev("Short: " + Double.toString(shortDistanceSensor1.getDistance()));
 		log.dev("Gyro: " + Double.toString(gyro.getDegrees(deltaTime)));
 		
