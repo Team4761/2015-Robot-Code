@@ -11,7 +11,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 public class UpperConveyerBelt extends Subsystem {
 	//FIXME: Update this entire class for when the actual hardware comes out.
 	private static double speed = 0.3;
-	private static TalonSRX speedController = RobotMap.outerConveyorBeltMotor;
+	private static TalonSRX speedController = RobotMap.elevatorConveyorBeltMotor;
 	
 	public void initDefaultCommand() {
 	}
