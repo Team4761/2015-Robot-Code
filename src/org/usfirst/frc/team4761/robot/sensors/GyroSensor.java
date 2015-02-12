@@ -1,7 +1,8 @@
 package org.usfirst.frc.team4761.robot.sensors;
 
-import edu.wpi.first.wpilibj.I2C;
 import org.usfirst.frc.team4761.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.I2C;
 
 /*
  * IMPORTANT!!!
@@ -10,7 +11,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 */
 
 /**
- * Class for working with the I2C powered MPU-6050 gyro. Would probably also
+ * Class for working with the I2C powered MPU-6050 gyro. Would probably also 
  * work with an MPU-6000 if we get one in the future.
  * <a href="http://invensense.com/mems/gyro/mpu6050.html">Product Spec</a>.
  */
@@ -19,17 +20,17 @@ public class GyroSensor {
 	
 	private I2C gyro = RobotMap.gyro;
 	
-	public GyroSensor() {
+	public GyroSensor () {
 		gyro.write(0x6B, 0x00); // Power
-		gyro.write(0x1A, 0x20); // Basic Config
+		gyro.write(0x1A, 0x26); // Basic Config
 		gyro.write(0x1B, 0x00); // Gyro Config
 		
 		degrees = 0;
 	}
 	
-	private int uByteToInt(byte number) {
+	private int uByteToInt (byte number) {
 		int iNumber = number & 0b01111111;
-		
+
 		if (number < 0) {
 			iNumber += 128;
 		}
@@ -37,23 +38,28 @@ public class GyroSensor {
 		return iNumber;
 	}
 	
-	public double getDegrees(double deltaTime) {
-		byte[] angle = new byte[2];
-		gyro.read(0x47, 2, angle);
-		int highOrder = (int) angle[0];
-		int lowOrder = uByteToInt(angle[1]);
+	public double getDegrees (double deltaTime) {
+		byte[] dataReady = new byte[1];
+		gyro.read(0x3A, 1, dataReady);
 		
-		int rotation = (highOrder << 8) | lowOrder;
-		
-		double newRotation = (rotation / 131.0) * deltaTime;
-		if (newRotation > 2 || newRotation < -2) { // Filter out noise
-			degrees += newRotation;
+		if ((dataReady[0] & 0x00000001) == 1) {
+			byte[] angle = new byte[2];
+			gyro.read(0x47, 2, angle);
+			int highOrder = (int) angle[0];
+			int lowOrder = uByteToInt(angle[1]);
+			
+			int rotation = (highOrder << 8) + lowOrder;
+			
+			double newRotation = rotation / 131.0 * 0.0186;
+			if (newRotation > 0.25 || newRotation < -0.25) { // Filter out noise
+				degrees += newRotation;
+			}
 		}
 		
 		return degrees;
 	}
 	
-	public double getTemp() {
+	public double getTemp () {
 		byte[] bTemp = new byte[2];
 		gyro.read(0x41, 2, bTemp);
 		int highOrder = (int) bTemp[0];
