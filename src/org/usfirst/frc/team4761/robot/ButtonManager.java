@@ -12,24 +12,17 @@ public class ButtonManager
 {
 	static JoystickButton[][] buttons = new JoystickButton[3][11];
 	static ArrayList<ButtonCommand> list = new ArrayList<ButtonCommand>();
-	static Joystick jstick, jstick2, buttonBoard;
+	static Joystick[] joysticks = new Joystick[3];
 	static boolean inited = false;
-	public static final int LEFT_JOYSTICK = 0;
-	public static final int RIGHT_JOYSTICK = 1;
-	public static final int BUTTON_BOARD = 2;
+	public static final int LEFT_JOYSTICK = 0, RIGHT_JOYSTICK = 1, BUTTON_BOARD = 2;
 	private ButtonManager(){}
 	private void init()
 	{
-		jstick = new Joystick(0);
-		jstick2 = new Joystick(1);
-		buttonBoard = new Joystick(2);
+		for (int i = 0; i < 3; i++)
+			joysticks[i] = new Joystick(i);
 		for (int x = 0; x < buttons.length; x++)
-		{
-			buttons[0][x] = new JoystickButton(jstick, x);
-			buttons[1][x] = new JoystickButton(jstick2, x);
-			buttons[2][x] = new JoystickButton(buttonBoard, x);
-		}
-		
+			for (int i = 0; i < 3; i++)
+				buttons[i][x] = new JoystickButton(joysticks[i], x);
 		new Thread(new ButtonManagerHandler()).start();
 		inited = true;
 	}
@@ -69,8 +62,8 @@ public class ButtonManager
 				for (ButtonCommand command : list)
 				{
 					boolean state = command.stick.getRawButton(command.button);
-					if (command.last==false && state==true)	// if the button has just been pressed
-					{										// toggle whether or not the command is active
+					if (command.last==false && state==true)
+					{
 						command.toggled = !command.toggled;
 						if (command.toggled)
 							command.command.start();
@@ -86,19 +79,13 @@ public class ButtonManager
 	{
 		int button;
 		Command command;
-		boolean toggled = false;
-		boolean last = false;
+		boolean toggled = false, last = false;
 		Joystick stick;
 		private ButtonCommand(int button, int jystick, Command command)
 		{
 			this.button = button;
 			this.command = command;
-			if (jystick==ButtonManager.LEFT_JOYSTICK)
-				stick = ButtonManager.jstick;
-			else if (jystick==ButtonManager.RIGHT_JOYSTICK)
-				stick = ButtonManager.jstick2;
-			else
-				stick = ButtonManager.buttonBoard;
+			stick = ButtonManager.joysticks[jystick];
 		}
 	}
 }
