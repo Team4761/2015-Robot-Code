@@ -68,8 +68,8 @@ public class RobotMap {
 	public static DigitalInput spinnerDI1 = new DigitalInput(0);
 	public static DigitalInput spinnerDI2 = new DigitalInput(1);
 	
-	public static TalonSRX innerConveyorBeltMotor = new TalonSRX(6);
-	public static TalonSRX outerConveyorBeltMotor = new TalonSRX(7);
+	public static TalonSRX mainConveyorBeltMotor = new TalonSRX(6);
+	public static TalonSRX elevatorConveyorBeltMotor = new TalonSRX(7);
 	public static VictorSP elevatorMotor = new VictorSP(5);
 	
 }
