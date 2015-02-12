@@ -20,14 +20,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	
 	public static OI oi;
-	public Command driveForward;
 	public Command teleop;
-    public Command liftRev;
-    public Command liftFor;
-    public Command liftOff;
-    public Command plowRev;
-    public Command plowFor;
-    public Command plowOff;
 
     Command autonomousCommand;
 
