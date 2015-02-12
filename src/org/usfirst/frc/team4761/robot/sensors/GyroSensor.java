@@ -22,7 +22,7 @@ public class GyroSensor {
 	
 	public GyroSensor () {
 		gyro.write(0x6B, 0x00); // Power
-		gyro.write(0x1A, 0x20); // Basic Config
+		gyro.write(0x1A, 0x26); // Basic Config
 		gyro.write(0x1B, 0x00); // Gyro Config
 		
 		degrees = 0;
@@ -39,16 +39,21 @@ public class GyroSensor {
 	}
 	
 	public double getDegrees (double deltaTime) {
-		byte[] angle = new byte[2];
-		gyro.read(0x47, 2, angle);
-		int highOrder = (int) angle[0];
-		int lowOrder = uByteToInt(angle[1]);
+		byte[] dataReady = new byte[1];
+		gyro.read(0x3A, 1, dataReady);
 		
-		int rotation = (highOrder << 8) | lowOrder;
-		
-		double newRotation = (rotation / 131.0) * deltaTime;
-		if (newRotation > 2 || newRotation < -2) { // Filter out noise
-			degrees += newRotation;
+		if ((dataReady[0] & 0x00000001) == 1) {
+			byte[] angle = new byte[2];
+			gyro.read(0x47, 2, angle);
+			int highOrder = (int) angle[0];
+			int lowOrder = uByteToInt(angle[1]);
+			
+			int rotation = (highOrder << 8) + lowOrder;
+			
+			double newRotation = rotation / 131.0 * 0.0186;
+			if (newRotation > 0.25 || newRotation < -0.25) { // Filter out noise
+				degrees += newRotation;
+			}
 		}
 		
 		return degrees;
