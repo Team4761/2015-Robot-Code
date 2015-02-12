@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4761.robot.Robot;
 
 /**
- *
+ * Drive along the step
  */
 public class DriveAlongStep extends Command {
 	private double deltaTime = 0;
