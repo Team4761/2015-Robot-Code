@@ -62,6 +62,12 @@ public class RobotMap {
 	// New Robot
 	public static AnalogInput rcPot = new AnalogInput(5); //TODO: Remove after merge
 	public static VictorSP spinner = new VictorSP(4);
+	/**
+	 * Digital inputs for the limit switches of the rcGrabberBase.</br>
+	 */
+	
+	public static DigitalInput spinnerDI1 = new DigitalInput(0);
+	public static DigitalInput spinnerDI2 = new DigitalInput(1);
 	
 	public static TalonSRX innerConveyorBeltMotor = new TalonSRX(6);
 	public static TalonSRX outerConveyorBeltMotor = new TalonSRX(7);
