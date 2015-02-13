@@ -24,9 +24,7 @@ public class GyroSensor {
 		gyro.write(0x6B, 0x00); // Power
 		gyro.write(0x1A, 0x26); // Basic Config
 		gyro.write(0x1B, 0x00); // Gyro Config
-		//gyro.write(0x38, 0x01);
-		
-		degrees = 0;
+		gyro.write(0x38, 0x01);
 	}
 	
 	private int uByteToInt (byte number) {
