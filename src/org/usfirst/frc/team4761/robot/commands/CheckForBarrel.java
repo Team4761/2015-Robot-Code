@@ -16,18 +16,15 @@ public class CheckForBarrel extends Command {
 		// eg. requires(chassis);
 	}
 	
-	// Called just before this Command runs the first time
 	protected void initialize() {
 	}
-	
-	// Called repeatedly when this Command is scheduled to run
+
 	protected void execute() {
 	}
-	
-	// Make this return true when this Command no longer needs to run execute()
+
 	protected boolean isFinished() {
-		//TODO: Take care of spikes
-		distance = distanceSensor.getDistance();
+		//TODO: Take care of spike at beginning.
+		distance = getMovingAverage(distanceSensor.getDistance());
 		if(distance < 25) { //at a barrel
 			if(distance - lastDistance < 0) { //sensor at ideal grabbing spot
 				return true;
@@ -37,12 +34,27 @@ public class CheckForBarrel extends Command {
 		return false;
 	}
 	
-	// Called once after isFinished returns true
 	protected void end() {
 	}
 	
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
+	}
+	
+	private double[] array = new double[3];
+	private int count = 0;
+	/**
+	 * Get next number in simple moving average data. SMA is the unweighted
+	 * mean of the previous <i>n</i> data. I'm bad at explaining this, so check
+	 * <a href="https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average">Wikipedia</a> 
+	 * if you are confused.
+	 * @param number Next number to work with
+	 * @return SMA'd number
+	 */
+	private double getMovingAverage(double number) {
+		//TODO: Filter out noise in the beginning. First couple number should be ignored.
+		//TODO: tweak values to consistently produce a smooth graph.
+		array[count % 3] = number;
+		count++;
+		return (array[0] + array[1] + array[2]) / 3;
 	}
 }
