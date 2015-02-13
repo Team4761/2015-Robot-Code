@@ -23,7 +23,7 @@ public class DriveTrain extends Subsystem {
     
 	DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
     
-	PIDController gyroPidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
+	public PIDController gyroPidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
 	
 	public DriveTrain () {
 		robotDrive.setInvertedMotor(MotorType.kFrontRight, true);

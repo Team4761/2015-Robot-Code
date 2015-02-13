@@ -3,6 +3,7 @@ package org.usfirst.frc.team4761.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
 import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
 import org.usfirst.frc.team4761.robot.commands.*;
@@ -35,5 +36,6 @@ public class OI {
 		
 		// Bind buttons
 		buttonManager.onPress(2, 0, new TurnToZero());
+		buttonManager.onPress(3, 0, new ResetGyro()); // CHECK BUTTON
 	}
 }

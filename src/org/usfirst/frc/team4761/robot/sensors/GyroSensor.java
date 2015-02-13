@@ -41,6 +41,10 @@ public class GyroSensor {
 		return -degrees;
 	}
 	
+	public void setDegrees (double rotation) {
+		degrees = rotation;
+	}
+	
 	public boolean updateDegrees (double deltaTime) {
 		byte[] dataReady = new byte[1];
 		gyro.read(0x3A, 1, dataReady);
