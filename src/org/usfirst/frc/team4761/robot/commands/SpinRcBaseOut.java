@@ -19,13 +19,13 @@ public class SpinRcBaseOut extends Command {
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		Robot.rcGrabberBase.spinnerSet(0.0);
 		return Robot.rcGrabberBase.outTriggered();
 		
 	}
 	
 	// Called once after isFinished returns true
 	protected void end() {
+		Robot.rcGrabberBase.spinnerSet(0.0);
 	}
 	
 	// Called when another command which requires one or more of the same
