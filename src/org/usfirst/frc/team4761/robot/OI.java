@@ -27,5 +27,8 @@ public class OI {
 		SmartDashboard.putData("Plow Off", new PlowOff());
 		SmartDashboard.putData("Plow Retract", new PlowRetract());
 		SmartDashboard.putData("RCPickUp", new RcPickUp());
+		SmartDashboard.putData("Spin Out", new SpinRcBaseOut());
+		SmartDashboard.putData("Spin In", new SpinRcBaseIn());
+		SmartDashboard.putData("Conveyer", new ConveyorForward());
 	}
 }

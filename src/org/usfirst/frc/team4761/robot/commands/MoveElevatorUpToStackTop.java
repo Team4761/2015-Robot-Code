@@ -12,14 +12,25 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 public class MoveElevatorUpToStackTop extends Command {
 	
 	ShortDistanceSensor ds = RobotMap.elevatorDistanceSensor;
+	Double distance = 20.0;
 	
-	public MoveElevatorUpToStackTop() {
+	public MoveElevatorUpToStackTop(Double dist, ShortDistanceSensor dists) {
+		distance = dist;
+		ds = dists;
+		requires(Robot.elevator);
+	}
+	
+	public MoveElevatorUpToStackTop(Double dist){
+		requires(Robot.elevator);
+	}
+	
+	public MoveElevatorUpToStackTop(){
 		requires(Robot.elevator);
 	}
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		if (ds.getDistance() > 20) {
+		if (ds.getDistance() > distance) {
 			this.cancel(); //elevator is already above stack top,
 		}
 	}
