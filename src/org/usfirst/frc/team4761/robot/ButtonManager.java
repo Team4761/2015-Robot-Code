@@ -57,8 +57,9 @@ public class ButtonManager {
 	}
 	
 	private void checkInit() {
-		if (!inited)
+		if (!inited) {
 			init();
+		}
 	}
 	
 	private class ButtonManagerHandler implements Runnable {
@@ -66,7 +67,7 @@ public class ButtonManager {
 			while (true) {
 				for (ButtonCommand command : list) {
 					boolean state = command.stick.getRawButton(command.button);
-					if (command.last==false && state==true) {
+					if (command.last == false && state == true) {
 						command.toggled = !command.toggled;
 						if (command.toggled) {
 							command.command.start();
