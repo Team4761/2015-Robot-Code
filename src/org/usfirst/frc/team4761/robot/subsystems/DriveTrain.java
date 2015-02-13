@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Base of the robot with wheels attached to it.
  */
 public class DriveTrain extends Subsystem {
-	private static double rotateAccumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
+	public double rotateAccumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
 	
 	RobotDrive robotDrive = RobotMap.robotDrive;
 	
@@ -63,15 +63,8 @@ public class DriveTrain extends Subsystem {
     	double degrees = GyroSensor.getDegrees();
     	
 		System.out.println("Angle: " + degrees + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1)); 
-		
-    	if (joystick1.getRawButton(2)) { // Press to move the robot to 0 degrees
-    		if (Math.abs(rotateAccumulator) > 0) {
-    			rotateAccumulator -= rotateAccumulator % 360;
-    		} else {
-    			rotateAccumulator += rotateAccumulator % 360;
-    		}
-    	}
     	
+		// This button is too heavily integrated with DriveTrain to use ButtonManager.java
     	if (!(joystick2.getRawButton(2))) { // Hold down button two when sliding against walls
     		double joystickChange = convert(joystick1.getX(), joystick1) * 3.5;
     		if (Math.abs(joystickChange) > 0.05) { // Filter out noise

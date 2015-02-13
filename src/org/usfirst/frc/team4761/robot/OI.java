@@ -3,6 +3,7 @@ package org.usfirst.frc.team4761.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
 import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
 import org.usfirst.frc.team4761.robot.commands.*;
 
@@ -14,6 +15,7 @@ public class OI {
 	public Joystick joystick1;
 	public Joystick joystick2;
 	public Joystick buttons; // Buttons on the control board
+	public ButtonManager buttonManager;
 	
 	public OI() {
 		joystick1 = new Joystick(0);
@@ -30,5 +32,8 @@ public class OI {
 		SmartDashboard.putData("Spin Out", new SpinRcBaseOut());
 		SmartDashboard.putData("Spin In", new SpinRcBaseIn());
 		SmartDashboard.putData("Conveyer", new ConveyorForward());
+		
+		// Bind buttons
+		buttonManager.onPress(2, 0, new TurnToZero());
 	}
 }
