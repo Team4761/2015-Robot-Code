@@ -79,7 +79,7 @@ public class ButtonManager {
 				for (ButtonCommand command : list) {
 					boolean state = command.stick.getRawButton(command.button);
 					if (command.last == false && state == true) {
-						if (toggleable) {
+						if (command.toggleable) {
 							command.toggled = !command.toggled;
 							if (command.toggled) {
 								command.command.start();
