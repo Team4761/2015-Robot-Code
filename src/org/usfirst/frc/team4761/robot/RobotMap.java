@@ -14,25 +14,13 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  * floating around.
  */
 public class RobotMap {
-	/* 
-	 * Old robot
-	 * public static Victor leftFrontMotor = new Victor(1);
-	 * public static Victor leftRearMotor = new Victor(2);
-	 * public static Victor rightFrontMotor = new Victor(3);
-	 * public static Victor rightRearMotor = new Victor(4);
-	 */
-	
 	public static VictorSP leftFrontMotor = new VictorSP(3);
-	public static VictorSP leftRearMotor = new VictorSP(0);
+	public static VictorSP leftRearMotor = new VictorSP(1);
 	public static VictorSP rightFrontMotor = new VictorSP(2);
-	public static VictorSP rightRearMotor = new VictorSP(1);
+	public static VictorSP rightRearMotor = new VictorSP(0);
 	
 	
-	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor,
-			leftRearMotor, rightFrontMotor, rightRearMotor);
-	
-	// Old Gyro
-	//public static final Gyro gyro = new Gyro(0);
+	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 	
 	// New Gyro
 	public static final I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
@@ -57,7 +45,7 @@ public class RobotMap {
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	
 	public static DoubleSolenoid rcPneumatic = new DoubleSolenoid(0, 0, 1);
-	public static DoubleSolenoid plowPneumatic = new DoubleSolenoid(0, 2, 3);
+	public static DoubleSolenoid plowPneumatic = new DoubleSolenoid(0, 6, 7);
 	
 	// New Robot
 	public static AnalogInput rcPot = new AnalogInput(5); //TODO: Remove after merge

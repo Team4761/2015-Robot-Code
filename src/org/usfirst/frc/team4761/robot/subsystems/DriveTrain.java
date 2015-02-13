@@ -8,6 +8,7 @@ import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -18,14 +19,16 @@ public class DriveTrain extends Subsystem {
 	
 	RobotDrive robotDrive = RobotMap.robotDrive;
 	
-	GyroSensor gyro = new GyroSensor();
 	GyroPIDSource gyroSensor = new GyroPIDSource();
     
 	DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
     
 	PIDController gyroPidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
 	
-	public DriveTrain () {		
+	public DriveTrain () {
+		robotDrive.setInvertedMotor(MotorType.kFrontRight, true);
+		robotDrive.setInvertedMotor(MotorType.kRearRight, true);
+		
 		gyroPidController.enable();
 		
 		gyroPidController.setSetpoint(0);
