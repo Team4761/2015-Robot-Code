@@ -33,6 +33,9 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		teleop = new Teleop();
 		autonomousCommand = new Autonomous();
+		
+	   	Thread thread = new Thread(new GyroThread());
+    	thread.start();
     }
 	
 	public void disabledPeriodic () {
@@ -40,8 +43,6 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit () {
-    	Thread thread = new Thread(new GyroThread());
-    	thread.start();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
@@ -53,8 +54,6 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit () {
-    	Thread thread = new Thread(new GyroThread());
-    	thread.start();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
