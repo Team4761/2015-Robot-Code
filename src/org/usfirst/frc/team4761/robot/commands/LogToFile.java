@@ -15,8 +15,8 @@ public class LogToFile extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
 	
-	private DistanceSensor mediumDistanceSensor1 = new DistanceSensor(RobotMap.mediumDistanceSensor1);
-	private DistanceSensor shortDistanceSensor1 = new DistanceSensor(RobotMap.shortDistanceSensor1);
+	//private DistanceSensor mediumDistanceSensor1 = new DistanceSensor(RobotMap.mediumDistanceSensor1);
+	//private DistanceSensor shortDistanceSensor1 = new DistanceSensor(RobotMap.shortDistanceSensor1);
 	private Logger log = RobotMap.log;
 	
 	protected void initialize () {

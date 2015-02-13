@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.*;
 
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
+import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
