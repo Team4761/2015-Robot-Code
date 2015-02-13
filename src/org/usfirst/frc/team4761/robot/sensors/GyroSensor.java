@@ -24,6 +24,7 @@ public class GyroSensor {
 		gyro.write(0x6B, 0x00); // Power
 		gyro.write(0x1A, 0x26); // Basic Config
 		gyro.write(0x1B, 0x00); // Gyro Config
+		//gyro.write(0x38, 0x01);
 		
 		degrees = 0;
 	}
@@ -38,11 +39,15 @@ public class GyroSensor {
 		return iNumber;
 	}
 	
-	public double getDegrees (double deltaTime) {
+	public static double getDegrees () {
+		return -degrees;
+	}
+	
+	public void updateDegrees (double deltaTime) {
 		byte[] dataReady = new byte[1];
 		gyro.read(0x3A, 1, dataReady);
 		
-		if ((dataReady[0] & 0x00000001) == 1) {
+		if ((dataReady[0] & 0x00000001) > 0) {
 			byte[] angle = new byte[2];
 			gyro.read(0x47, 2, angle);
 			int highOrder = (int) angle[0];
@@ -50,13 +55,11 @@ public class GyroSensor {
 			
 			int rotation = (highOrder << 8) + lowOrder;
 			
-			double newRotation = rotation / 131.0 * 0.0186;
-			if (newRotation > 0.25 || newRotation < -0.25) { // Filter out noise
+			double newRotation = (rotation / 131.0) * 0.05;
+			if (newRotation > 0.05 || newRotation < -0.05) { // Filter out noise
 				degrees += newRotation;
 			}
 		}
-		
-		return degrees;
 	}
 	
 	public double getTemp () {

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
+import org.usfirst.frc.team4761.robot.sensors.GyroThread;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 
 /**
@@ -39,6 +40,8 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit () {
+    	Thread thread = new Thread(new GyroThread());
+    	thread.start();
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
@@ -50,6 +53,8 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit () {
+    	Thread thread = new Thread(new GyroThread());
+    	thread.start();
 		// This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove

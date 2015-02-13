@@ -19,7 +19,7 @@ public class DriveTrain extends Subsystem {
 	RobotDrive robotDrive = RobotMap.robotDrive;
 	
 	GyroSensor gyro = new GyroSensor();
-	GyroPIDSource gyroSensor = new GyroPIDSource(gyro);
+	GyroPIDSource gyroSensor = new GyroPIDSource();
     
 	DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
     
@@ -38,7 +38,7 @@ public class DriveTrain extends Subsystem {
     	rotateAccumulator += rotate;
     	gyroPidController.setSetpoint(rotateAccumulator);
     	
-    	robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), gyro.getDegrees(deltaTime));
+    	robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), GyroSensor.getDegrees());
     	gyroSensor.setDeltaTime(deltaTime);
     }
     
@@ -57,7 +57,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public void driveWithJoysticks (Joystick joystick1, Joystick joystick2, double deltaTime) {
-    	double degrees = gyro.getDegrees(deltaTime);
+    	double degrees = GyroSensor.getDegrees();
     	
 		System.out.println("Angle: " + degrees + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1)); 
 		
@@ -81,7 +81,7 @@ public class DriveTrain extends Subsystem {
     	} else {
     		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, degrees);
     		
-    		rotateAccumulator = gyro.getDegrees(deltaTime); // Reset the accumulator so the robot doesn't jerk when button two is released
+    		rotateAccumulator = GyroSensor.getDegrees(); // Reset the accumulator so the robot doesn't jerk when button two is released
     	}
     }
 }

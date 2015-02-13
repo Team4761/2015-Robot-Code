@@ -7,10 +7,7 @@ import edu.wpi.first.wpilibj.PIDSource;
 public class GyroPIDSource implements PIDSource {
 	private double deltaTime = 0;
 	
-	private GyroSensor gyro;
-	
-	public GyroPIDSource (GyroSensor gyro) {
-		this.gyro = gyro;
+	public GyroPIDSource () {
 	}
 
 	public void setDeltaTime (double deltaTime) {
@@ -19,6 +16,6 @@ public class GyroPIDSource implements PIDSource {
 	
 	@Override
 	public double pidGet() {
-		return gyro.getDegrees(deltaTime);
+		return GyroSensor.getDegrees();
 	}
 }
