@@ -11,6 +11,7 @@ public class CheckForBarrel extends Command {
 	ShortDistanceSensor distanceSensor = RobotMap.barrelSensor;
 	double distance;
 	double lastDistance;
+	int disregardCount = 0;
 	public CheckForBarrel() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -23,14 +24,18 @@ public class CheckForBarrel extends Command {
 	}
 
 	protected boolean isFinished() {
-		//TODO: Take care of spike at beginning.
-		distance = getMovingAverage(distanceSensor.getDistance());
-		if(distance < 25) { //at a barrel
-			if(distance - lastDistance < 0) { //sensor at ideal grabbing spot
-				return true;
+		if(disregardCount >= 10) {
+			distance = getMovingAverage(distanceSensor.getDistance());
+			if(distance < 25) { //at a barrel
+				if(distance - lastDistance < 0) { //sensor at ideal grabbing spot
+					return true;
+				}
 			}
+			lastDistance = distance;
 		}
-		lastDistance = distance;
+		else {
+			disregardCount++;
+		}
 		return false;
 	}
 	
