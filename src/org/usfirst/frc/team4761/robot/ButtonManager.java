@@ -87,10 +87,10 @@ public class ButtonManager {
 		boolean toggled = false, last = false;
 		Joystick stick;
 		
-		private ButtonCommand(int button, int jystick, Command command) {
+		private ButtonCommand(int button, int joystick, Command command) {
 			this.button = button;
 			this.command = command;
-			stick = ButtonManager.joysticks[jystick];
+			stick = ButtonManager.joysticks[joystick];
 		}
 	}
 }
