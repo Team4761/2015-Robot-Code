@@ -53,7 +53,18 @@ public class ButtonManager {
 	 */
 	public void setToggle(int button, int joystick, Command command) {
 		checkInit();
-		list.add(new ButtonCommand(button, joystick, command));
+		new ButtonCommand(button, joystick, command, true);
+	}
+	
+	/**
+	 * Start the specified command whenever the button is pressed (alternative to onPress).
+	 * @param button	an int specifying the button to be used
+	 * @param joystick	an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
+	 * @param command	an instance of a Command to be run 
+	 */
+	public void runOnPress(int button, int joystick, Command command) {
+		checkInit();
+		new ButtonCommand(button, joystick, command, false);
 	}
 	
 	private void checkInit() {
@@ -68,11 +79,15 @@ public class ButtonManager {
 				for (ButtonCommand command : list) {
 					boolean state = command.stick.getRawButton(command.button);
 					if (command.last == false && state == true) {
-						command.toggled = !command.toggled;
-						if (command.toggled) {
-							command.command.start();
+						if (toggleable) {
+							command.toggled = !command.toggled;
+							if (command.toggled) {
+								command.command.start();
+							} else {
+								command.command.cancel();
+							}
 						} else {
-							command.command.cancel();
+							command.command.start();
 						}
 					}
 					command.last = state;
@@ -84,13 +99,15 @@ public class ButtonManager {
 	private class ButtonCommand {
 		int button;
 		Command command;
-		boolean toggled = false, last = false;
+		boolean toggled = false, last = false, toggleable;
 		Joystick stick;
 		
-		private ButtonCommand(int button, int joystick, Command command) {
+		private ButtonCommand(int button, int joystick, Command command, boolean toggleable) {
 			this.button = button;
 			this.command = command;
+			this.toggleable = toggleable;
 			stick = ButtonManager.joysticks[joystick];
+			ButtonManager.list.add(this);
 		}
 	}
 }
