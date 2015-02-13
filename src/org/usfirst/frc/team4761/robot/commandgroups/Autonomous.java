@@ -19,12 +19,12 @@ public class Autonomous extends CommandGroup {
 	
 	public Autonomous() {
 		addParallel(new LogToFile());
-		addSequential(new DriveForward());
+		/*addSequential(new DriveForward());
 		addSequential(new CheckForBarrel());
 		addSequential(new CheckForBarrel());
 		addSequential(new RcPickUp());
 		addSequential(new RcPickUp());
 		addSequential(new RcPickUp());
-		addSequential(new RcPickUp());
+		addSequential(new RcPickUp());*/
 	}
 }

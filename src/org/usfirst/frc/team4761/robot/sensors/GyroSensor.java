@@ -41,7 +41,7 @@ public class GyroSensor {
 		return -degrees;
 	}
 	
-	public void updateDegrees (double deltaTime) {
+	public boolean updateDegrees (double deltaTime) {
 		byte[] dataReady = new byte[1];
 		gyro.read(0x3A, 1, dataReady);
 		
@@ -53,11 +53,15 @@ public class GyroSensor {
 			
 			int rotation = (highOrder << 8) + lowOrder;
 			
-			double newRotation = (rotation / 131.0) * 0.05;
+			double newRotation = (rotation / 131.0) * deltaTime;
 			if (newRotation > 0.05 || newRotation < -0.05) { // Filter out noise
 				degrees += newRotation;
 			}
+			
+			return true;
 		}
+		
+		return false;
 	}
 	
 	public double getTemp () {
