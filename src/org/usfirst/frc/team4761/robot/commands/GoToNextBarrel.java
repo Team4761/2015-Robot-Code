@@ -30,8 +30,7 @@ public class GoToNextBarrel extends Command {
 				log.info("At barrel! Ending...");
 				return true;
 			}
-		}
-		else {
+		} else {
 			log.info("Not paying attention yet...");
 			disregardCount++;
 		}
