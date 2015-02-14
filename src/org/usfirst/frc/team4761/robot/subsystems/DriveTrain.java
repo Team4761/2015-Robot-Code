@@ -37,12 +37,11 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	// x and y = -1.0 - 1.0 & rotate is to infinity
-	public void drive(double x, double y, double rotate, double deltaTime) {
+	public void drive(double x, double y, double rotate) {
 		rotateAccumulator += rotate;
 		gyroPidController.setSetpoint(rotateAccumulator);
 		
 		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), GyroSensor.getDegrees());
-		gyroSensor.setDeltaTime(deltaTime);
 	}
 	
 	public void stop() {
@@ -59,7 +58,7 @@ public class DriveTrain extends Subsystem {
 		return (input * getZ(joystick));
 	}
 	
-	public void driveWithJoysticks(Joystick joystick1, Joystick joystick2, double deltaTime) {
+	public void driveWithJoysticks(Joystick joystick1, Joystick joystick2) {
 		double degrees = GyroSensor.getDegrees();
 		
 		System.out.println("Angle: " + degrees + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1));

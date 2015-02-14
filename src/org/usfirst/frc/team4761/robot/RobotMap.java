@@ -50,8 +50,8 @@ public class RobotMap {
 	/**
 	 * Digital inputs for the limit switches of the rcGrabberBase.</br>
 	 */
-	public static DigitalInput spinnerDI1 = new DigitalInput(8);
-	public static DigitalInput spinnerDI2 = new DigitalInput(9);
+	public static DigitalInput spinnerDI1 = new DigitalInput(9);
+	public static DigitalInput spinnerDI2 = new DigitalInput(8);
 	
 	/**
 	 * Digital inputs for the limit switch on the bottom of the elevator

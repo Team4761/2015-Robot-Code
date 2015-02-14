@@ -7,8 +7,6 @@ import org.usfirst.frc.team4761.robot.Robot;
  * Drive along the step
  */
 public class DriveAlongStep extends Command {
-	private double deltaTime = 0;
-	private long begin = 0, end = 0;
 	
 	public DriveAlongStep() {
 		requires(Robot.driveTrain);
@@ -20,12 +18,7 @@ public class DriveAlongStep extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		begin = System.currentTimeMillis() % 1000;
-		
-		Robot.driveTrain.drive(0.15, -0.15, 0, deltaTime); // Update for higher speed
-		
-		deltaTime = (begin - end) / 1000.0;
-		end = System.currentTimeMillis() % 1000;
+		Robot.driveTrain.drive(0.15, -0.15, 0); // Update for higher speed
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

@@ -18,18 +18,18 @@ public class RcGrabberBase extends Subsystem {
 	protected void initDefaultCommand() {
 	}
 	
-	public RcGrabberBase() {
+	public RcGrabberBase () {
 	}
 	
-	public Boolean outTriggered() {
-		return out.get();
+	public Boolean outTriggered () {
+		return !out.get();
 	}
 	
-	public Boolean inTriggered() {
-		return in.get();
+	public Boolean inTriggered () {
+		return !in.get();
 	}
 	
-	public void spinnerSet(Double speed) {
+	public void spinnerSet (Double speed) {
 		spinner.set(speed);
 	}
 }

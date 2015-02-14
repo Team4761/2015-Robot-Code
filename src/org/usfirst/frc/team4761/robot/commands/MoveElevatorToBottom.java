@@ -32,7 +32,7 @@ public class MoveElevatorToBottom extends Command {
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return di.get() && isTimedOut();
+		return !di.get() && isTimedOut();
 	}
 	
 	// Called once after isFinished returns true

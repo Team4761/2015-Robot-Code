@@ -24,12 +24,7 @@ public class DriveForward extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		begin = System.currentTimeMillis() % 1000;
-		
-		Robot.driveTrain.drive(0.15, 0, 0, deltaTime);
-		
-		deltaTime = (begin - end) / 1000.0;
-		end = System.currentTimeMillis() % 1000;
+		Robot.driveTrain.drive(0.15, 0, 0);
 		
 		if (distanceSensor.getDistance() < 10) {
 			setTimeout(0.5);
