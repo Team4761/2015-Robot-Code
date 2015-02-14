@@ -25,6 +25,7 @@ public class ResetGyro extends Command {
 		// Needs to be tested to find appropriate value
 		gyro.setDegrees(90);
 		Robot.driveTrain.gyroPidController.setSetpoint(90);
+		Robot.driveTrain.rotateAccumulator = 90;
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
