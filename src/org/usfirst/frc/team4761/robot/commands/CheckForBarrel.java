@@ -25,13 +25,10 @@ public class CheckForBarrel extends Command {
 
 	protected boolean isFinished() {
 		if(disregardCount >= 10) {
-			distance = getMovingAverage(distanceSensor.getDistance());
-			if(distance < 25) { //at a barrel
-				if(distance - lastDistance < 0) { //sensor at ideal grabbing spot
-					return true;
-				}
+			distance = distanceSensor.getDistance();
+			if(distance < 250) {
+				return true;
 			}
-			lastDistance = distance;
 		}
 		else {
 			disregardCount++;
@@ -43,23 +40,5 @@ public class CheckForBarrel extends Command {
 	}
 	
 	protected void interrupted() {
-	}
-	
-	private double[] array = new double[3];
-	private int count = 0;
-	/**
-	 * Get next number in simple moving average data. SMA is the unweighted
-	 * mean of the previous <i>n</i> data. I'm bad at explaining this, so check
-	 * <a href="https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average">Wikipedia</a> 
-	 * if you are confused.
-	 * @param number Next number to work with
-	 * @return SMA'd number
-	 */
-	private double getMovingAverage(double number) {
-		//TODO: Filter out noise in the beginning. First couple number should be ignored.
-		//TODO: tweak values to consistently produce a smooth graph.
-		array[count % 3] = number;
-		count++;
-		return (array[0] + array[1] + array[2]) / 3;
 	}
 }
