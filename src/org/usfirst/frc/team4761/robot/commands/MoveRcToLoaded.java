@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class MoveRcToLoaded extends Command {
 
-	ShortDistanceSensor loadSensor = RobotMap.conveyorDistanceSensor;
+	//ShortDistanceSensor loadSensor = RobotMap.conveyorDistanceSensor;
 	
 	protected void initialize() {
 		requires(Robot.mainConveyorBelt);
@@ -19,9 +19,9 @@ public class MoveRcToLoaded extends Command {
 	}
 
 	protected boolean isFinished() {
-		if (loadSensor.getDistance() < 30)	// if the sensor reads less than 30cm, there is something on the conveyor belt
+		//if (loadSensor.getDistance() < 30)	// if the sensor reads less than 30cm, there is something on the conveyor belt
 			return true;
-		return false;
+		//return false;
 	}
 
 	protected void end() {
