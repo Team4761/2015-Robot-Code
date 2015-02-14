@@ -30,6 +30,7 @@ public class RobotMap {
 	public static final ShortDistanceSensor barrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(0));
 	
 	/**
+<<<<<<< HEAD
 	 * A distance sensor on the elevator.
 	 */
 	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
@@ -66,7 +67,7 @@ public class RobotMap {
 	public static DigitalInput elevatorDI = new DigitalInput(2);
 	
 	public static Talon mainConveyorBeltMotor = new Talon(6);
-	public static Talon elevatorConveyorBeltMotor = new Talon(7);
+	public static VictorSP elevatorConveyorBeltMotor = new VictorSP(7);
 	public static VictorSP elevatorMotor1 = new VictorSP(8);
 	public static VictorSP elevatorMotor2 = new VictorSP(9);
 }

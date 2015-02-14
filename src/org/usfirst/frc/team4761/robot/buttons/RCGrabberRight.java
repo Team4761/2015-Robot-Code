@@ -25,7 +25,7 @@ public class RCGrabberRight extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return !Robot.oi.buttons.getRawButton(8) || !Robot.rcGrabberBase.outTriggered();
+    	return !Robot.oi.buttons.getRawButton(8) || Robot.rcGrabberBase.outTriggered();
     }
 
     // Called once after isFinished returns true
