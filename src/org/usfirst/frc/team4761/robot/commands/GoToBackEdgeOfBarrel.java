@@ -28,9 +28,9 @@ public class GoToBackEdgeOfBarrel extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-		if(disregardCount >= 3) {
+		if (disregardCount >= 3) {
 			distance = distanceSensor.getDistance();
-			if(distance > 260) {
+			if (distance > 260) {
 				log.info("At back edge of barrel! Ending...");
 				return true;
 			}

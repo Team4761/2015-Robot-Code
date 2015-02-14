@@ -24,9 +24,9 @@ public class GoToNextBarrel extends Command {
 	}
 
 	protected boolean isFinished() {
-		if(disregardCount >= 5) {
+		if (disregardCount >= 5) {
 			distance = distanceSensor.getDistance();
-			if(distance < 250) {
+			if (distance < 250) {
 				log.info("At barrel! Ending...");
 				return true;
 			}
