@@ -59,7 +59,7 @@ public class OI {
 		// Bind buttons for joysticks
 		//buttonManager.onPress(2, 0, new TurnToZero());
 		//buttonManager.onPress(3, 0, new ResetGyro()); // CHECK BUTTON
-		/*buttonManager.runWhilePressed(11, 0, new MainConveyorForward());
+		buttonManager.runWhilePressed(11, 0, new MainConveyorForward());
 		buttonManager.runWhilePressed(10, 0, new MainConveyorBackward());
 		
 		buttonManager.runWhilePressed(6, 0, new LiftConveyorForward());
@@ -74,6 +74,6 @@ public class OI {
 		buttonManager.runOnPress(3, 0, new RaiseRcGrabber());
 		buttonManager.runOnPress(2, 0, new LowerRcGrabber());
 		
-		buttonManager.setToggle(11, 1, new WedgeToggle());*/
+		buttonManager.setToggle(11, 1, new WedgeToggle());
 	}
 }
