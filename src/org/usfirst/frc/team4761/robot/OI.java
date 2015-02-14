@@ -26,7 +26,7 @@ public class OI {
 		
 		SmartDashboard.putData("RC Lower", new RcLower());
 		SmartDashboard.putData("RC Lift", new RcLift());
-		SmartDashboard.putData("RC Off", new RcOff());
+		SmartDashboard.putData("RC Off", new RcGrabberOff());
 		SmartDashboard.putData("Plow Extend", new PlowExtend());
 		SmartDashboard.putData("Plow Off", new PlowOff());
 		SmartDashboard.putData("Plow Retract", new PlowRetract());
