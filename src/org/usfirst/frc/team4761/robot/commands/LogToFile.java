@@ -24,7 +24,7 @@ public class LogToFile extends Command {
 	
 	protected void execute() {
 		//log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getShortDistance()));
-		log.dev("Short: " + Double.toString(shortDistanceSensor1.getDistance()));
+		//log.dev("Short: " + Double.toString(shortDistanceSensor1.getDistance()));
 		//log.dev("Gyro: " + Double.toString(GyroSensor.getDegrees()));
 		//System.out.println(!RobotMap.elevatorDI.get());
 	}

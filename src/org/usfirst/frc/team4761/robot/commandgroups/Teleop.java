@@ -11,6 +11,6 @@ public class Teleop extends CommandGroup {
 	
 	public Teleop() {
 		addParallel(new LogToFile());
-		addParallel(new DriveWithJoysticks());
+		//addParallel(new DriveWithJoysticks());
 	}
 }

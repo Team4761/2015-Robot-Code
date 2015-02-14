@@ -17,7 +17,6 @@ public class LowerRcGrabber extends Command {
 	}
 	
 	protected void initialize() {
-		setTimeout(1);
 	}
 	
 	protected void execute() {
@@ -25,7 +24,7 @@ public class LowerRcGrabber extends Command {
 	}
 	
 	protected boolean isFinished() {
-		return isTimedOut();
+		return true;
 	}
 	
 	protected void end() {
