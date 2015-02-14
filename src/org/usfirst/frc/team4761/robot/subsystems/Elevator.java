@@ -16,12 +16,16 @@ public class Elevator extends Subsystem {
 	public void initDefaultCommand() {
 	}
 	
-	public void raise() {
+	public void raise () {
 		speedController.set(speed);
 	}
 	
-	public void lower() {
+	public void lower () {
 		speedController.set(-speed);
+	}
+	
+	public void stop () {
+		speedController.set(0);
 	}
 }
 
