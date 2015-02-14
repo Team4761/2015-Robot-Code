@@ -1,19 +1,20 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
- * Just waits until a barrel is found
+ * Moves the robot forward until a barrel is detected.
  */
-public class CheckForBarrel extends Command {
+public class GoToNextBarrel extends Command {
 	ShortDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
 	double distance;
 	int disregardCount = 0;
-	public CheckForBarrel() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+	public GoToNextBarrel() {
+		requires(Robot.driveTrain);
 	}
 	
 	protected void initialize() {

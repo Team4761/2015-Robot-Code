@@ -6,15 +6,15 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
- * Move the robot forward, using mecanum wheels.
+ * Drive the robot to the step.
  */
-public class DriveForward extends Command {
+public class DriveToStep extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
 	
 	ShortDistanceSensor distanceSensor = RobotMap.elevatorDistanceSensor;
 	
-	public DriveForward() {
+	public DriveToStep() {
 		requires(Robot.driveTrain);
 	}
 	

@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc.team4761.robot.commands.CheckForBarrel;
-import org.usfirst.frc.team4761.robot.commands.DriveForward;
+
+import org.usfirst.frc.team4761.robot.commands.DriveAlongStep;
+import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
+import org.usfirst.frc.team4761.robot.commands.DriveToStep;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
 
 /**
@@ -17,13 +19,13 @@ import org.usfirst.frc.team4761.robot.commands.LogToFile;
 public class Autonomous extends CommandGroup {
 	
 	public Autonomous() {
+		//TODO: Accommodate for other robots getting to RCs before us
 		addParallel(new LogToFile());
-		addSequential(new DriveForward());
-		addSequential(new CheckForBarrel());
-		addSequential(new CheckForBarrel());
+		addSequential(new DriveToStep());
+		addParallel(new DriveAlongStep());
+		addSequential(new GoToNextBarrel());
 		addSequential(new RcPickUp());
-		addSequential(new RcPickUp());
-		addSequential(new RcPickUp());
+		addSequential(new GoToNextBarrel());
 		addSequential(new RcPickUp());
 	}
 }
