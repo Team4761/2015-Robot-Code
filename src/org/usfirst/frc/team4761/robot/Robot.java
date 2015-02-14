@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +32,8 @@ public class Robot extends IterativeRobot {
 	public static final RcGrabber rcGrabber = new RcGrabber();
 	public static final RcGrabberBase rcGrabberBase = new RcGrabberBase();
 	public static final LiftConveyorBelt liftConveyorBelt = new LiftConveyorBelt();
+	
+	public static Compressor compressor;
 	
 	public static OI oi;
 	public Command teleop;
@@ -93,5 +96,9 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic () {
         LiveWindow.run();
+        if (compressor==null){
+        	compressor = new Compressor();
+        }
+        if(!compressor.enabled())System.out.println("Compressor isn't enabled?");
     }
 }
