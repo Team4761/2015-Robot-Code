@@ -12,7 +12,7 @@ public class DriveToStep extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
 	
-	ShortDistanceSensor distanceSensor = RobotMap.elevatorBarrelDistanceSensor;
+	ShortDistanceSensor distanceSensor = RobotMap.outerConveyorRearDistanceSensor;
 	
 	public DriveToStep() {
 		requires(Robot.driveTrain);

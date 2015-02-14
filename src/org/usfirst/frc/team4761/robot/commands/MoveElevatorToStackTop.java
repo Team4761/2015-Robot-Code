@@ -11,7 +11,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  */
 public class MoveElevatorToStackTop extends Command {
 	
-	ShortDistanceSensor sensor = RobotMap.elevatorBarrelDistanceSensor;
+	ShortDistanceSensor sensor = RobotMap.outerConveyorRearDistanceSensor;
 	Double distance = 20.0;
 	
 	public MoveElevatorToStackTop() {
