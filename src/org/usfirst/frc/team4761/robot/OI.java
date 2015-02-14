@@ -41,9 +41,6 @@ public class OI {
 		SmartDashboard.putData("Elevator To Bottom", new MoveElevatorToBottom());
 		SmartDashboard.putData("Conveyer Forward", new MainConveyorForward());
 		SmartDashboard.putData("Conveyer Backward", new MainConveyorBackward());
-		SmartDashboard.putData("Spin In", new SpinRcBaseIn());
-		SmartDashboard.putData("Spin Out", new SpinRcBaseOut());
-		SmartDashboard.putData("Conveyer", new MainConveyorForward());
 		
 		// Comment these out when joysticks are not plugged in
 		// Bind buttons
