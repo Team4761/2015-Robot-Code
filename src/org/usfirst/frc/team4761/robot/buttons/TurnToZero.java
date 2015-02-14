@@ -17,20 +17,22 @@ public class TurnToZero extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Math.abs(Robot.driveTrain.rotateAccumulator) > 0) {
+    	/*if (Math.abs(Robot.driveTrain.rotateAccumulator) > 0) {
     		Robot.driveTrain.rotateAccumulator -= Robot.driveTrain.rotateAccumulator % 360;
 		} else {
 			Robot.driveTrain.rotateAccumulator += Robot.driveTrain.rotateAccumulator % 360;
-		}
+		}*/
+    	System.out.println("Test");
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
