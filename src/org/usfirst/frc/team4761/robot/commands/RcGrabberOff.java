@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4761.robot.Robot;
 
-public class RcLift extends Command {
+public class RcGrabberOff extends Command {
 	
 	DoubleSolenoid solenoid = Robot.rcGrabber.solenoid;
 	
-	public RcLift() {
+	public RcGrabberOff() {
 		requires(Robot.rcGrabber);
 	}
 	
@@ -17,7 +17,7 @@ public class RcLift extends Command {
 	}
 	
 	protected void execute() {
-		solenoid.set(DoubleSolenoid.Value.kReverse);
+		solenoid.set(DoubleSolenoid.Value.kOff);
 	}
 	
 	protected boolean isFinished() {
