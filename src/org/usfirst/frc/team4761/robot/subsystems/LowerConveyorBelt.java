@@ -8,7 +8,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * Conveyor belt for moving RCs through the robot. Uses a Talon SRX speed
  * controller.
  */
-public class MainConveyorBelt extends Subsystem {
+public class LowerConveyorBelt extends Subsystem {
 	private static TalonSRX speedController = RobotMap.mainConveyorBeltMotor;
 	
 	public void initDefaultCommand() {

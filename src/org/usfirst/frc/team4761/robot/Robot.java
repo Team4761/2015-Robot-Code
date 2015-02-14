@@ -21,8 +21,8 @@ public class Robot extends IterativeRobot {
 	public static final RcGrabberBase rcGrabberBase = new RcGrabberBase();
 	public static final Plower plower = new Plower();
 	public static final Elevator elevator = new Elevator();
-	public static final MainConveyorBelt lowerConveyorBelt = new MainConveyorBelt();
-	public static final ElevatorConveyorBelt upperConveyorBelt = new ElevatorConveyorBelt();
+	public static final LowerConveyorBelt lowerConveyorBelt = new LowerConveyorBelt();
+	public static final UpperConveyorBelt upperConveyorBelt = new UpperConveyorBelt();
 	
 	public static OI oi;
 	public Command teleOpCommand;

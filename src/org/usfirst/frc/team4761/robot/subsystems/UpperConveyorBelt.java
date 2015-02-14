@@ -9,7 +9,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * Conveyor belt attached to the elevator that can move totes on it onto the
  * top of a stack.
  */
-public class ElevatorConveyorBelt extends Subsystem {
+public class UpperConveyorBelt extends Subsystem {
 	private static double speed = 0.3;
 	private static TalonSRX speedController = RobotMap.elevatorConveyorBeltMotor;
 	
