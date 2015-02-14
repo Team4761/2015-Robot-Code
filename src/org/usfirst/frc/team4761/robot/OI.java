@@ -11,6 +11,8 @@ import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
 import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
 import org.usfirst.frc.team4761.robot.commands.*;
 
+import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.*;
+
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
@@ -26,21 +28,23 @@ public class OI {
 		joystick2 = new Joystick(1);
 		buttons = new Joystick(2);
 		
-		//SmartDashboard.putData("RC Lower", new LowerRcGrabber());
-		//SmartDashboard.putData("RC Lift", new RaiseRcGrabber());
-		//SmartDashboard.putData("RC Off", new RcGrabberOff());
-		//SmartDashboard.putData("Plow Extend", new PlowExtend());
-		//SmartDashboard.putData("Plow Off", new PlowOff());
-		//SmartDashboard.putData("Plow Retract", new PlowRetract());
-		//SmartDashboard.putData("RCPickUp", new RcPickUp());
-		SmartDashboard.putData("Spin In", new SpinRcBaseIn());
-		SmartDashboard.putData("Spin Out", new SpinRcBaseOut());
-		SmartDashboard.putData("Conveyer", new MainConveyorForward());
-		
-		SmartDashboard.putData("Drive To Step", new DriveToStep());
-		SmartDashboard.putData("Drive Along Step", new DriveAlongStep());
-		SmartDashboard.putData("Go to next barrel", new GoToNextBarrel());
-		SmartDashboard.putData("Pick up RC", new RcPickUp());
+		putData("RC Lower", new LowerRcGrabber());
+		putData("RC Lift", new RaiseRcGrabber());
+		putData("RC Off", new RcGrabberOff());
+		putData("Plow Extend", new PlowExtend());
+		putData("Plow Off", new PlowOff());
+		putData("Plow Retract", new PlowRetract());
+		putData("RCPickUp", new RcPickUp());
+		putData("Spin In", new SpinRcBaseIn());
+		putData("Spin Out", new SpinRcBaseOut());
+		putData("Conveyer", new MainConveyorForward());
+		putNumber("Elevator Speed", 0.2);
+		putData("Elevator Up", new MoveElevator(true));
+		putData("Elevator Down", new MoveElevator(false));
+		putData("Drive To Step", new DriveToStep());
+		putData("Drive Along Step", new DriveAlongStep());
+		putData("Go to next barrel", new GoToNextBarrel());
+		putData("Pick up RC", new RcPickUp());
 		
 		// Comment these out when joysticks are not plugged in
 		// Bind buttons
