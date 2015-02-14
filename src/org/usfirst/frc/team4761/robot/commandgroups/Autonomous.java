@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.commands.DriveAlongStep;
+import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
 import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
 import org.usfirst.frc.team4761.robot.commands.DriveToStep;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
@@ -29,10 +30,15 @@ public class Autonomous extends CommandGroup {
 		addParallel(new DriveAlongStep());
 		log.info("Going to next barrel");
 		addSequential(new GoToNextBarrel());
-		log.info("Barrel detected. Picking up");
+		log.info("Barrel detected. Going to back edge");
+		addSequential(new GoToBackEdgeOfBarrel());
+		log.info("Picking up");
 		addSequential(new RcPickUp());
+		log.info("Picked up");
 		addSequential(new GoToNextBarrel());
-		log.info("Barrel detected. Picking up");
+		log.info("Barrel detected. Going to back edge");
+		addSequential(new GoToBackEdgeOfBarrel());
+		log.info("Picking up");
 		addSequential(new RcPickUp());
 	}
 }
