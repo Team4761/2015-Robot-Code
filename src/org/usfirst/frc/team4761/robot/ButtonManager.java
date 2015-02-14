@@ -97,7 +97,6 @@ public class ButtonManager {
 					}
 					command.last = state;
 				}
-				try{Thread.sleep(20);}catch(Exception e){System.out.println("The ButtonManager thread was interupted :(");}
 			}
 		}
 	}

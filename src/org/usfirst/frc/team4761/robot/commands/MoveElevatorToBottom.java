@@ -19,10 +19,6 @@ public class MoveElevatorToBottom extends Command {
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		setTimeout(10); // If the switch still returns false after this time just stop it
-		if (di.get()) {
-			this.cancel();
-		}
 	}
 	
 	// Called repeatedly when this Command is scheduled to run
@@ -32,15 +28,17 @@ public class MoveElevatorToBottom extends Command {
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return di.get() && isTimedOut();
+		return !di.get();
 	}
 	
 	// Called once after isFinished returns true
 	protected void end() {
+		Robot.elevator.stop();
 	}
 	
 	// Called when another command which requires one or more of the same
 	// subsystems is scheduled to run
 	protected void interrupted() {
+		end();
 	}
 }

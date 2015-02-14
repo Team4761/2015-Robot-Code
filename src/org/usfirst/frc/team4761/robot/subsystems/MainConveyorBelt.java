@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
@@ -9,14 +11,12 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * controller.
  */
 public class MainConveyorBelt extends Subsystem {
-	private static TalonSRX speedController = RobotMap.mainConveyorBeltMotor;
+	private static Talon speedController = RobotMap.mainConveyorBeltMotor;
 	
 	public void initDefaultCommand() {
 	}
 	
 	public void go(double speed) {
-		if (speed > 0) { //conveyor belt can only go one way
-			speedController.set(speed);
-		}
+		speedController.set(speed);
 	}
 }

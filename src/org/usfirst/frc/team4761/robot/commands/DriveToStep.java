@@ -26,7 +26,7 @@ public class DriveToStep extends Command {
 	protected void execute() {
 		begin = System.currentTimeMillis() % 1000;
 		
-		Robot.driveTrain.drive(0.15, 0, 0, deltaTime);
+		Robot.driveTrain.drive(0.15, 0, deltaTime);
 		
 		deltaTime = (begin - end) / 1000.0;
 		end = System.currentTimeMillis() % 1000;
