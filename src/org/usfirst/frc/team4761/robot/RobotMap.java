@@ -30,14 +30,19 @@ public class RobotMap {
 	public static final ShortDistanceSensor barrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(0));
 	
 	/**
-	 * A distance sensor on the elevator.
-	 */
-	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
-	
-	/**
 	 * A distance sensor on the conveyer to check if the barrel is in position.
 	 */
 	//public static final ShortDistanceSensor conveyorDistanceSensor = new ShortDistanceSensor(new AnalogInput(2));
+	
+	/**
+	 * A distance sensor on the elevator that senses barrels on the conveyor belt.
+	 */
+	public static final ShortDistanceSensor elevatorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(2));
+	
+	/**
+	 * A distance sensor on the elevator that senses the top of the Tote stack.
+	 */
+	public static final ShortDistanceSensor elevatorToteDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	public static Level minLogLevel = Level.DEV;
@@ -61,7 +66,7 @@ public class RobotMap {
 	public static DigitalInput elevatorDI = new DigitalInput(2);
 	
 	public static Talon mainConveyorBeltMotor = new Talon(6);
-	public static Talon elevatorConveyorBeltMotor = new Talon(7);
+	public static VictorSP elevatorConveyorBeltMotor = new VictorSP(7);
 	public static VictorSP elevatorMotor1 = new VictorSP(8);
 	public static VictorSP elevatorMotor2 = new VictorSP(9);
 }

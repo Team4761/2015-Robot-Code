@@ -25,7 +25,7 @@ public class Autonomous extends CommandGroup {
 		//TODO: Accommodate for other robots getting to RCs before us
 		log.info("Started logging to file");
 		addParallel(new LogToFile());
-		log.info("Driving to step");
+		/*log.info("Driving to step");
 		addSequential(new DriveToStep());
 		log.info("Adding parallel command drive along step.");
 		addParallel(new DriveAlongStep());
@@ -43,6 +43,6 @@ public class Autonomous extends CommandGroup {
 		log.info("Barrel detected. Going to back edge");
 		addSequential(new GoToBackEdgeOfBarrel());
 		log.info("Picking up");
-		addSequential(new RcPickUp());
+		addSequential(new RcPickUp());*/
 	}
 }

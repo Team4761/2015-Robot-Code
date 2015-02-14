@@ -41,9 +41,10 @@ public class MoveElevator extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if (up) {
-    		return !Robot.oi.buttons.getRawButton(9);
+    		return !Robot.oi.buttons.getRawButton(6);
     	} else {
-    		return !Robot.oi.buttons.getRawButton(8) || !RobotMap.elevatorDI.get();
+    		//return !Robot.oi.buttons.getRawButton(5) || !RobotMap.elevatorDI.get();
+    		return !Robot.oi.buttons.getRawButton(5);
     	}
     }
 
