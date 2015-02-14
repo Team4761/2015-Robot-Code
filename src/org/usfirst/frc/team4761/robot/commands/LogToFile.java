@@ -9,7 +9,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
 /**
- *
+ * A command to utilize logging with simon's {@link org.simonandrews.robolog robolog library}.
  */
 public class LogToFile extends Command {
 	

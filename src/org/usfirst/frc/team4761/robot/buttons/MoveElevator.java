@@ -6,11 +6,15 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- *
+ * A command that moves the elevator either up or down.
  */
 public class MoveElevator extends Command {
 	boolean up = true;
-
+/**
+ * 
+ * @param up Boolean that determines whether or not to move the {@link org.usfirst.frc.team4761.robot.subsystems.Elevator elevator} upwards (True)
+ * or downwards (False);
+ */
     public MoveElevator(boolean up) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

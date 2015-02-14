@@ -4,6 +4,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4761.robot.Robot;
 
+/**
+ * Turn off the pneumatics of the {@link org.usfirst.frc.team4761.robot.subsystems.Plow plow}.
+ * @author mathias
+ */
+
 public class PlowOff extends Command {
 	
 	public PlowOff() {

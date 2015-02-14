@@ -4,6 +4,10 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4761.robot.Robot;
 
+/**
+ * A command to lower the RcGrabber pneumatics in the {@link org.usfirst.frc.team4761.robot.subsystem.RcGrabber RcGrabber}.
+ * @author mathias
+ */
 public class LowerRcGrabber extends Command {
 	
 	DoubleSolenoid solenoid = Robot.rcGrabber.solenoid;
