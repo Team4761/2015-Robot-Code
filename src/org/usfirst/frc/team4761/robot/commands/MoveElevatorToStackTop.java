@@ -9,7 +9,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  * If the distance sensor on the elevator is below the top of a stack of totes,
  * move the elevator up until it is level with the top of the stack.
  */
-public class MoveElevatorUpToStackTop extends Command {
+public class MoveElevatorToStackTop extends Command {
 	
 	ShortDistanceSensor sensor = RobotMap.elevatorDistanceSensor;
 	Double distance = 20.0;
