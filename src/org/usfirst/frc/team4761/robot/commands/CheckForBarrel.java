@@ -10,7 +10,6 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 public class CheckForBarrel extends Command {
 	ShortDistanceSensor distanceSensor = RobotMap.barrelSensor;
 	double distance;
-	double lastDistance;
 	int disregardCount = 0;
 	public CheckForBarrel() {
 		// Use requires() here to declare subsystem dependencies
