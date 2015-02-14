@@ -35,10 +35,16 @@ public class RobotMap {
 	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
 	
 	/**
-	 * A distance sensor on the conveyer to check if the barrel is in position.
+	 * Distance sensor on the front of the outer conveyor belt. Used for
+	 * detecting when an object has left the belt.
 	 */
-	//public static final ShortDistanceSensor conveyorDistanceSensor = new ShortDistanceSensor(new AnalogInput(2));
-	
+	public static final ShortDistanceSensor outerConveyorFrontDistanceSensor = new ShortDistanceSensor(new AnalogInput(2));
+	/**
+	 * Distance sensor on the rear of the outer conveyor belt. Used for
+	 * detecting something. TODO: Figure out what it's use is.
+	 */
+	public static final ShortDistanceSensor outerConveyorRearDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
+
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	public static Level minLogLevel = Level.DEV;
 	
@@ -46,7 +52,6 @@ public class RobotMap {
 	public static DoubleSolenoid plowPneumatic = new DoubleSolenoid(0, 6, 7);
 	
 	// New Robot
-	public static AnalogInput rcPot = new AnalogInput(5); //TODO: Remove after merge
 	public static VictorSP spinner = new VictorSP(4);
 	
 	/**
