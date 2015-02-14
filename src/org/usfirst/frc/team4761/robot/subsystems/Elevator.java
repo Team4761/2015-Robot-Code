@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import org.usfirst.frc.team4761.robot.RobotMap;
@@ -17,11 +16,11 @@ public class Elevator extends Subsystem {
 	public void initDefaultCommand() {
 	}
 	
-	public static void raise() {
+	public void raise() {
 		speedController.set(speed);
 	}
 	
-	public static void lower() {
+	public void lower() {
 		speedController.set(-speed);
 	}
 }
