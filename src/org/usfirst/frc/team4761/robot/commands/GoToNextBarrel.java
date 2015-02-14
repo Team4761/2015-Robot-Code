@@ -3,7 +3,6 @@ package org.usfirst.frc.team4761.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.simonandrews.robolog.Logger;
-import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
@@ -16,7 +15,6 @@ public class GoToNextBarrel extends Command {
 	int disregardCount = 0;
 	Logger log = new Logger("Go To Next Barrel");
 	public GoToNextBarrel() {
-		requires(Robot.driveTrain);
 	}
 	
 	protected void initialize() {
