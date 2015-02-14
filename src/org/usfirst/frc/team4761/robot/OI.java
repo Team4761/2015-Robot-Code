@@ -13,6 +13,7 @@ import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
+import org.usfirst.frc.team4761.robot.buttons.WedgeIn;
 import org.usfirst.frc.team4761.robot.buttons.WedgeOut;
 import org.usfirst.frc.team4761.robot.buttons.WedgeToggle;
 import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
