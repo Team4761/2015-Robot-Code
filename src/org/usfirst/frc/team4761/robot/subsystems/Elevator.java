@@ -9,23 +9,25 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * and down, and putting them on top of piles.
  */
 public class Elevator extends Subsystem {
-	//TODO: Check if this speed is appropriate when the hardware exists.
-	private static double speed = 0.3;
-	private static VictorSP speedController = RobotMap.elevatorMotor;
+	private static VictorSP speedController1 = RobotMap.elevatorMotor1;
+	private static VictorSP speedController2 = RobotMap.elevatorMotor2;
 	
 	public void initDefaultCommand() {
 	}
 	
 	public void raise () {
-		speedController.set(speed);
+		speedController1.set(-0.6);
+		speedController2.set(-0.6);
 	}
 	
 	public void lower () {
-		speedController.set(-speed);
+		speedController1.set(0.2);
+		speedController2.set(0.2);
 	}
 	
 	public void stop () {
-		speedController.set(0);
+		speedController1.set(0);
+		speedController2.set(0);
 	}
 }
 

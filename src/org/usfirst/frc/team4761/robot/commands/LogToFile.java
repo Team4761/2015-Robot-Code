@@ -12,8 +12,6 @@ import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
  *
  */
 public class LogToFile extends Command {
-	private double deltaTime = 0;
-	private long begin = 0, end = 0;
 	
 	//private DistanceSensor mediumDistanceSensor1 = new DistanceSensor(RobotMap.mediumDistanceSensor1);
 	//private DistanceSensor shortDistanceSensor1 = new DistanceSensor(RobotMap.shortDistanceSensor1);
@@ -21,19 +19,13 @@ public class LogToFile extends Command {
 	
 	protected void initialize() {
 		log.setLevel(Level.FATAL);
-		setTimeout(1);
 	}
 	
 	protected void execute() {
-		begin = System.currentTimeMillis() % 1000;
-		
 		//log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getShortDistance()));
 		//log.dev("Short: " + Double.toString(shortDistanceSensor1.getShortDistance()));
 		//log.dev("Gyro: " + Double.toString(GyroSensor.getDegrees()));
-		System.out.println(Robot.rcGrabberBase.in.get() + " " + Robot.rcGrabberBase.out.get());
-		
-		deltaTime = (begin - end) / 1000.0;
-		end = System.currentTimeMillis() % 1000;
+		System.out.println(!RobotMap.elevatorDI.get());
 	}
 	
 	protected boolean isFinished() {
