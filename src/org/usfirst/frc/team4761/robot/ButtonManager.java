@@ -11,21 +11,19 @@ import java.util.ArrayList;
  */
 public class ButtonManager {
 	static boolean inited = false;
-	public static final int LEFT_JOYSTICK = 0, RIGHT_JOYSTICK = 1, BUTTON_BOARD = 2;
+	public static final int LEFT = 0, RIGHT = 1, BUTTONS = 2;
 	
 	static ArrayList<ButtonCommand> list = new ArrayList<ButtonCommand>();
 	
-	static JoystickButton[][] buttons = new JoystickButton[3][11];
-	static Joystick[] joysticks = new Joystick[3];
+	static JoystickButton[][] buttons = new JoystickButton[3][20];
+	static Joystick[] joysticks = {new Joystick(LEFT), new Joystick(RIGHT), new Joystick(BUTTONS)};
 	
 	private ButtonManager() {
 	}
 	
 	private void init() {
-		for (int i = 0; i < 3; i++) {
-			joysticks[i] = new Joystick(i);
-		}
-		
+		try
+		{
 		for (int x = 0; x < buttons.length; x++) {
 			for (int i = 0; i < 3; i++) {
 				buttons[i][x] = new JoystickButton(joysticks[i], x);
@@ -34,6 +32,12 @@ public class ButtonManager {
 		
 		new Thread(new ButtonManagerHandler()).start();
 		inited = true;
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error in ButtonManager init!");
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -80,6 +84,8 @@ public class ButtonManager {
 	
 	private class ButtonManagerHandler implements Runnable {
 		public void run() {
+			try
+			{
 			while (true) {
 				for (ButtonCommand command : list) {
 					boolean state = command.stick.getRawButton(command.button);
@@ -88,16 +94,22 @@ public class ButtonManager {
 							command.toggled = !command.toggled;
 							if (command.toggled) {
 								command.command.start();
-							}else {
+							} else {
 								command.command.cancel();
 							}
-						}else {
+						} else {
 							command.command.start();
 						}
 					}
 					command.last = state;
 				}
 			}
+			}
+		catch (Exception e)
+		{
+			System.out.println("Error in ButtonManagerHandler thread!");
+			e.printStackTrace();
+		}
 		}
 	}
 	
@@ -108,11 +120,19 @@ public class ButtonManager {
 		Joystick stick;
 		
 		private ButtonCommand(int button, int joystick, Command command, boolean toggleable) {
+			try
+			{
 			this.button = button;
 			this.command = command;
 			this.toggleable = toggleable;
 			stick = ButtonManager.joysticks[joystick];
 			ButtonManager.list.add(this);
+			}
+		catch (Exception e)
+		{
+			System.out.println("Error creating a ButtonCommand!");
+			e.printStackTrace();
+		}
 		}
 	}
 }
