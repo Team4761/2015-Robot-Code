@@ -33,6 +33,11 @@ public class RobotMap {
 	 * A distance sensor on the elevator.
 	 */
 	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
+	
+	/**
+	 * A distance sensor on the conveyer to check if the barrel is in position.
+	 */
+	public static final ShortDistanceSensor conveyorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
 
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	
