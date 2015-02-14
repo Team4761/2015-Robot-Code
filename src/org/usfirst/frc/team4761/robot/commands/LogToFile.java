@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
@@ -27,7 +29,8 @@ public class LogToFile extends Command {
 		
 		//log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getShortDistance()));
 		//log.dev("Short: " + Double.toString(shortDistanceSensor1.getShortDistance()));
-		log.dev("Gyro: " + Double.toString(GyroSensor.getDegrees()));
+		//log.dev("Gyro: " + Double.toString(GyroSensor.getDegrees()));
+		System.out.println(Robot.rcGrabberBase.in.get() + " " + Robot.rcGrabberBase.out.get());
 		
 		deltaTime = (begin - end) / 1000.0;
 		end = System.currentTimeMillis() % 1000;

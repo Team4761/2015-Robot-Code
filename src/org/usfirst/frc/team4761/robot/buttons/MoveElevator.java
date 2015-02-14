@@ -33,15 +33,12 @@ public class MoveElevator extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (isTimedOut()) {
-    		Robot.elevator.stop();
-    	}
-    	
         return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.elevator.stop();
     }
 
     // Called when another command which requires one or more of the same

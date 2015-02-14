@@ -36,7 +36,7 @@ public class RobotMap {
 	/**
 	 * A distance sensor on the conveyer to check if the barrel is in position.
 	 */
-	public static final ShortDistanceSensor conveyorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
+	//public static final ShortDistanceSensor conveyorDistanceSensor = new ShortDistanceSensor(new AnalogInput(2));
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	
@@ -50,8 +50,8 @@ public class RobotMap {
 	/**
 	 * Digital inputs for the limit switches of the rcGrabberBase.</br>
 	 */
-	public static DigitalInput spinnerDI1 = new DigitalInput(0);
-	public static DigitalInput spinnerDI2 = new DigitalInput(1);
+	public static DigitalInput spinnerDI1 = new DigitalInput(8);
+	public static DigitalInput spinnerDI2 = new DigitalInput(9);
 	
 	/**
 	 * Digital inputs for the limit switch on the bottom of the elevator
