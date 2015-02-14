@@ -73,7 +73,7 @@ public class DriveTrain extends Subsystem {
 			gyroPidController.setSetpoint(rotateAccumulator);
 			
 			robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), driveGyroPIDOutput.getValue(), degrees);
-		}else {
+		} else {
 			robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, degrees);
 			
 			rotateAccumulator = GyroSensor.getDegrees(); // Reset the accumulator so the robot doesn't jerk when button two is released

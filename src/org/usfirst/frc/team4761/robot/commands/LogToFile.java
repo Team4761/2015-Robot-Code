@@ -12,6 +12,7 @@ import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
  *
  */
 public class LogToFile extends Command {
+	boolean button4 = true, button5 = true;
 	
 	//private DistanceSensor mediumDistanceSensor1 = new DistanceSensor(RobotMap.mediumDistanceSensor1);
 	//private DistanceSensor shortDistanceSensor1 = new DistanceSensor(RobotMap.shortDistanceSensor1);
@@ -25,7 +26,22 @@ public class LogToFile extends Command {
 		//log.dev("Medium: " + Double.toString(mediumDistanceSensor1.getShortDistance()));
 		//log.dev("Short: " + Double.toString(shortDistanceSensor1.getShortDistance()));
 		//log.dev("Gyro: " + Double.toString(GyroSensor.getDegrees()));
-		System.out.println(!RobotMap.elevatorDI.get());
+
+		if (Robot.oi.joystick1.getRawButton(4)) {
+			button4 = !button4;
+			if (!button4) {
+				Robot.elevator.raise();
+			} else {
+				Robot.elevator.stop();
+			}
+		} else if (Robot.oi.joystick1.getRawButton(5)) {
+			button5 = !button5;
+			if (!button5) {
+				Robot.elevator.lower();
+			} else {
+				Robot.elevator.stop();
+			}
+		}
 	}
 	
 	protected boolean isFinished() {

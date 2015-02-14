@@ -16,12 +16,12 @@ public class SpinRcBaseIn extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.rcGrabberBase.spinnerSet(0.9);
+		Robot.rcGrabberBase.spinnerSet(-0.9);
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Robot.rcGrabberBase.inTriggered();
+		return Robot.rcGrabberBase.outTriggered();
 		
 	}
 	
