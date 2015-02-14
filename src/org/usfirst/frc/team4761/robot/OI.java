@@ -35,19 +35,12 @@ public class OI {
 		SmartDashboard.putData("RCPickUp", new RcPickUp());
 		SmartDashboard.putData("Spin Out", new SpinRcBaseOut());
 		SmartDashboard.putData("Spin In", new SpinRcBaseIn());
+		SmartDashboard.putNumber("Elevator Speed", 0.2);
 		SmartDashboard.putData("Elevator Up", new MoveElevator(true));
 		SmartDashboard.putData("Elevator Down", new MoveElevator(false));
 		SmartDashboard.putData("Elevator To Bottom", new MoveElevatorToBottom());
 		SmartDashboard.putData("Conveyer Forward", new MainConveyorForward());
 		SmartDashboard.putData("Conveyer Backward", new MainConveyorBackward());
-
-		//SmartDashboard.putData("RC Lower", new LowerRcGrabber());
-		//SmartDashboard.putData("RC Lift", new RaiseRcGrabber());
-		//SmartDashboard.putData("RC Off", new RcGrabberOff());
-		//SmartDashboard.putData("Plow Extend", new PlowExtend());
-		//SmartDashboard.putData("Plow Off", new PlowOff());
-		//SmartDashboard.putData("Plow Retract", new PlowRetract());
-		//SmartDashboard.putData("RCPickUp", new RcPickUp());
 		SmartDashboard.putData("Spin In", new SpinRcBaseIn());
 		SmartDashboard.putData("Spin Out", new SpinRcBaseOut());
 		SmartDashboard.putData("Conveyer", new MainConveyorForward());
