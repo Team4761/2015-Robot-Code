@@ -4,7 +4,9 @@ import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class AddDigitalInputsToDashboard extends Command {
 	DigitalInput[] inputs = new DigitalInput[10];
@@ -15,7 +17,7 @@ public class AddDigitalInputsToDashboard extends Command {
 
 	protected void execute() {
 		for (int i = 0; i < 10; i++)
-		  SmartDashboard.put("DI_" + i, inputs[i].get());
+		  SmartDashboard.putBoolean("DI_" + i, inputs[i].get());
 	}
 
 	protected boolean isFinished() {

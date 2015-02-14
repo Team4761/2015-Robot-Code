@@ -37,7 +37,8 @@ public class OI {
 		putData("RCPickUp", new RcPickUp());
 		putData("Spin In", new SpinRcBaseIn());
 		putData("Spin Out", new SpinRcBaseOut());
-		putData("Conveyer", new MainConveyorForward());
+		putData("Conveyer Forward", new MainConveyorForward());
+		putData("Conveyer Backward", new MainConveyorBackward());
 		putNumber("Elevator Speed", 0.2);
 		putData("Elevator Up", new MoveElevator(true));
 		putData("Elevator Down", new MoveElevator(false));
