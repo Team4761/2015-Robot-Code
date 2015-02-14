@@ -30,8 +30,8 @@ public class OI {
 		//SmartDashboard.putData("Plow Off", new PlowOff());
 		//SmartDashboard.putData("Plow Retract", new PlowRetract());
 		//SmartDashboard.putData("RCPickUp", new RcPickUp());
-		SmartDashboard.putData("Spin In", new SpinRcBaseOut());
-		SmartDashboard.putData("Spin Out", new SpinRcBaseIn());
+		SmartDashboard.putData("Spin In", new SpinRcBaseIn());
+		SmartDashboard.putData("Spin Out", new SpinRcBaseOut());
 		SmartDashboard.putData("Conveyer", new MainConveyorForward());
 		
 		// Comment these out when joysticks are not plugged in
