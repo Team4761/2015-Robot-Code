@@ -14,10 +14,12 @@ public class MoveElevatorToStackTop extends Command {
 	ShortDistanceSensor sensor = RobotMap.elevatorDistanceSensor;
 	Double distance = 20.0;
 	
+	public MoveElevatorToStackTop() {
+		requires(Robot.elevator);
+	}
+	
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		requires(Robot.elevator);
-		
 		if (sensor.getDistance() > distance) {
 			this.cancel(); // Elevator is already above stack top
 		}
