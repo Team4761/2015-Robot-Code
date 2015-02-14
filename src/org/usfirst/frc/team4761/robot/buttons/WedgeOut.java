@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class WedgeIn extends Command {
+public class WedgeOut extends Command {
 
-    public WedgeIn() {
+    public WedgeOut() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.plower);
@@ -22,7 +22,7 @@ public class WedgeIn extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.plower.set(DoubleSolenoid.Value.kForward);
+    	Robot.plower.set(DoubleSolenoid.Value.kReverse);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,6 +37,5 @@ public class WedgeIn extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
