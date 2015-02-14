@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.*;
 
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
-import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
@@ -26,22 +25,15 @@ public class RobotMap {
 	public static final I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
 	/**
-	 * A distance sensor that is only used in the {@link org.usfirst.frc.
-	 * team4761.robot.commands.LogToFile Log To File Command}. Jake says its 
-	 * not being used right now.
+	 * A distance sensor that senses the barrels for auto-mode.
 	 */
-	//public static final MediumDistanceSensor mediumDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(0));
+	public static final ShortDistanceSensor barrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(0));
 	
 	/**
 	 * A distance sensor on the elevator.
 	 */
 	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
-	
-	/**
-	 * The distance sensor to check for barrels.
-	 */
-	public static final ShortDistanceSensor barrelSensor = new ShortDistanceSensor(new AnalogInput(2)); // Please update when ports are finalized
-	
+
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	
 	public static DoubleSolenoid rcPneumatic = new DoubleSolenoid(0, 0, 1);

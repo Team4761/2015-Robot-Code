@@ -8,7 +8,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  * Just waits until a barrel is found
  */
 public class CheckForBarrel extends Command {
-	ShortDistanceSensor distanceSensor = RobotMap.barrelSensor;
+	ShortDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
 	
 	public CheckForBarrel() {
 		// Use requires() here to declare subsystem dependencies
