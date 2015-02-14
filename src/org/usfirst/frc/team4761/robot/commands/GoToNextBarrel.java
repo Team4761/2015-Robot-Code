@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
@@ -13,6 +14,7 @@ public class GoToNextBarrel extends Command {
 	ShortDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
 	double distance;
 	int disregardCount = 0;
+	Logger log = new Logger("Go To Next Barrel");
 	public GoToNextBarrel() {
 		requires(Robot.driveTrain);
 	}
@@ -27,10 +29,12 @@ public class GoToNextBarrel extends Command {
 		if(disregardCount >= 10) {
 			distance = distanceSensor.getDistance();
 			if(distance < 250) {
+				log.info("At barrel! Ending...");
 				return true;
 			}
 		}
 		else {
+			log.info("Not paying attention yet...");
 			disregardCount++;
 		}
 		return false;

@@ -23,6 +23,7 @@ public class OI {
 		joystick2 = new Joystick(1);
 		buttons = new Joystick(2);
 		
+		/*
 		SmartDashboard.putData("RC Lower", new LowerRcGrabber());
 		SmartDashboard.putData("RC Lift", new RaiseRcGrabber());
 		SmartDashboard.putData("RC Off", new RcGrabberOff());
@@ -33,9 +34,17 @@ public class OI {
 		SmartDashboard.putData("Spin Out", new SpinRcBaseOut());
 		SmartDashboard.putData("Spin In", new SpinRcBaseIn());
 		SmartDashboard.putData("Conveyer", new MainConveyorForward());
+		*/
+		
+		SmartDashboard.putData("Drive To Step", new DriveToStep());
+		SmartDashboard.putData("Drive Along Step", new DriveAlongStep());
+		SmartDashboard.putData("Go to next barrel", new GoToNextBarrel());
+		SmartDashboard.putData("Pick up RC", new RcPickUp());
 		
 		// Bind buttons
+		/*
 		buttonManager.onPress(2, 0, new TurnToZero());
 		buttonManager.onPress(3, 0, new ResetGyro()); // CHECK BUTTON
+		*/
 	}
 }

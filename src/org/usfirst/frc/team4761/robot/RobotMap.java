@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.*;
+import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
@@ -39,6 +40,7 @@ public class RobotMap {
 	public static final ShortDistanceSensor conveyorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
 	
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
+	public static Level minLogLevel = Level.DEV;
 	
 	public static DoubleSolenoid rcPneumatic = new DoubleSolenoid(0, 0, 1);
 	public static DoubleSolenoid plowPneumatic = new DoubleSolenoid(0, 6, 7);
