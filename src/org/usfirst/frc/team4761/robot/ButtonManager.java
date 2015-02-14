@@ -22,6 +22,8 @@ public class ButtonManager {
 	}
 	
 	private void init() {
+		try
+		{
 		for (int x = 0; x < buttons.length; x++) {
 			for (int i = 0; i < 3; i++) {
 				buttons[i][x] = new JoystickButton(joysticks[i], x);
@@ -30,6 +32,12 @@ public class ButtonManager {
 		
 		new Thread(new ButtonManagerHandler()).start();
 		inited = true;
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error in ButtonManager init!");
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -76,6 +84,8 @@ public class ButtonManager {
 	
 	private class ButtonManagerHandler implements Runnable {
 		public void run() {
+			try
+			{
 			while (true) {
 				for (ButtonCommand command : list) {
 					boolean state = command.stick.getRawButton(command.button);
@@ -94,6 +104,12 @@ public class ButtonManager {
 					command.last = state;
 				}
 			}
+			}
+		catch (Exception e)
+		{
+			System.out.println("Error in ButtonManagerHandler thread!");
+			e.printStackTrace();
+		}
 		}
 	}
 	
@@ -104,11 +120,19 @@ public class ButtonManager {
 		Joystick stick;
 		
 		private ButtonCommand(int button, int joystick, Command command, boolean toggleable) {
+			try
+			{
 			this.button = button;
 			this.command = command;
 			this.toggleable = toggleable;
 			stick = ButtonManager.joysticks[joystick];
 			ButtonManager.list.add(this);
+			}
+		catch (Exception e)
+		{
+			System.out.println("Error creating a ButtonCommand!");
+			e.printStackTrace();
+		}
 		}
 	}
 }
