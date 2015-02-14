@@ -40,10 +40,7 @@ public class OI {
 		putData("Go to next barrel", new GoToNextBarrel());
 		putData("Pick up RC", new RcPickUp());
 		
-		// Comment these out when joysticks are not plugged in
-		// Bind buttons
-		//buttonManager.onPress(2, 0, new TurnToZero());
-		//buttonManager.onPress(3, 0, new ResetGyro()); // CHECK BUTTON
+		// Bind buttons for button boards
 		buttonManager.runWhilePressed(2, 2, new MainConveyorForward());
 		buttonManager.runWhilePressed(1, 2, new MainConveyorBackward());
 		
@@ -57,6 +54,26 @@ public class OI {
 		buttonManager.runWhilePressed(13, 2, new MoveElevator(false, 0.25));
 		
 		buttonManager.setToggle(10, 2, new WedgeToggle());
-		buttonManager.runOnPress(11, 2, new RCGrabberToggle());
+		buttonManager.setToggle(11, 2, new RCGrabberToggle());
+		
+		// Bind buttons for joysticks
+		//buttonManager.onPress(2, 0, new TurnToZero());
+		//buttonManager.onPress(3, 0, new ResetGyro()); // CHECK BUTTON
+		buttonManager.runWhilePressed(11, 0, new MainConveyorForward());
+		buttonManager.runWhilePressed(10, 0, new MainConveyorBackward());
+		
+		buttonManager.runWhilePressed(6, 0, new LiftConveyorUp());
+		buttonManager.runWhilePressed(7, 0, new LiftConveyorDown());
+		
+		buttonManager.runWhilePressed(8, 0, new RCGrabberRight());
+		buttonManager.runWhilePressed(9, 0, new RCGrabberLeft());
+		
+		buttonManager.runWhilePressed(6, 1, new MoveElevator(true, 0.5));
+		buttonManager.runWhilePressed(7, 1, new MoveElevator(false, 0.25));
+		
+		buttonManager.runOnPress(3, 0, new RaiseRcGrabber());
+		buttonManager.runOnPress(2, 0, new LowerRcGrabber());
+		
+		buttonManager.setToggle(11, 1, new WedgeToggle());
 	}
 }
