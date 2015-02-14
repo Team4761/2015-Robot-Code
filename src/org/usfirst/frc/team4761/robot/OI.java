@@ -3,9 +3,13 @@ package org.usfirst.frc.team4761.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4761.robot.buttons.LiftConveyorDown;
+import org.usfirst.frc.team4761.robot.buttons.LiftConveyorUp;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.MoveElevator;
+import org.usfirst.frc.team4761.robot.buttons.RCGrabberLeft;
+import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
@@ -30,17 +34,7 @@ public class OI {
 		joystick2 = new Joystick(1);
 		buttons = new Joystick(2);
 		
-		putData("RC Lower", new LowerRcGrabber());
-		putData("RC Lift", new RaiseRcGrabber());
-		putData("RC Off", new RcGrabberOff());
-		putData("Plow Extend", new PlowExtend());
-		putData("Plow Off", new PlowOff());
-		putData("Plow Retract", new PlowRetract());
 		putData("RCPickUp", new RcPickUp());
-		putData("Spin In", new SpinRcBaseIn());
-		putData("Spin Out", new SpinRcBaseOut());
-		putData("Conveyer Forward", new MainConveyorForward());
-		putData("Conveyer Backward", new MainConveyorBackward());
 		putData("Drive To Step", new DriveToStep());
 		putData("Drive Along Step", new DriveAlongStep());
 		putData("Go to next barrel", new GoToNextBarrel());
@@ -53,11 +47,16 @@ public class OI {
 		buttonManager.runWhilePressed(2, 2, new MainConveyorForward());
 		buttonManager.runWhilePressed(1, 2, new MainConveyorBackward());
 		
-		buttonManager.runWhilePressed(9, 2, new MoveElevator(true, 0.5));
-		buttonManager.runWhilePressed(8, 2, new MoveElevator(false, 0.25));
+		buttonManager.runWhilePressed(6, 2, new LiftConveyorUp());
+		buttonManager.runWhilePressed(5, 2, new LiftConveyorDown());
+		
+		buttonManager.runWhilePressed(8, 2, new RCGrabberRight());
+		buttonManager.runWhilePressed(9, 2, new RCGrabberLeft());
+		
+		buttonManager.runWhilePressed(12, 2, new MoveElevator(true, 0.5));
+		buttonManager.runWhilePressed(13, 2, new MoveElevator(false, 0.25));
 		
 		buttonManager.setToggle(10, 2, new WedgeToggle());
-		buttonManager.runOnPress(12, 2, new RaiseRcGrabber());
-		buttonManager.runOnPress(13, 2, new LowerRcGrabber());
+		buttonManager.runOnPress(11, 2, new RCGrabberToggle());
 	}
 }
