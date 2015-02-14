@@ -34,8 +34,7 @@ public class GoToBackEdgeOfBarrel extends Command {
 				log.info("At back edge of barrel! Ending...");
 				return true;
 			}
-		}
-		else {
+		} else {
 			log.info("Not paying attention yet...");
 			disregardCount++;
 		}
