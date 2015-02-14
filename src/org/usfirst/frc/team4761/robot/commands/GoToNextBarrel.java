@@ -3,6 +3,7 @@ package org.usfirst.frc.team4761.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.MovingAverageCalculator;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
@@ -14,6 +15,7 @@ public class GoToNextBarrel extends Command {
 	double distance;
 	int disregardCount = 0;
 	Logger log = new Logger("Go To Next Barrel");
+	MovingAverageCalculator mac = new MovingAverageCalculator(10);
 	public GoToNextBarrel() {
 	}
 	
@@ -26,7 +28,8 @@ public class GoToNextBarrel extends Command {
 	protected boolean isFinished() {
 		if (disregardCount >= 5) {
 			distance = distanceSensor.getDistance();
-			if (distance < 40) {
+			mac.add(distance);
+			if (mac.getAverage() < 40) {
 				log.info("At barrel! Ending...");
 				return true;
 			}

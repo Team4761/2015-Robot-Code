@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.MovingAverageCalculator;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
@@ -14,8 +15,8 @@ public class GoToBackEdgeOfBarrel extends Command {
 	double distance;
 	int disregardCount = 0;
 	Logger log = new Logger("Go Back Edge of Barrel");
+	MovingAverageCalculator mac = new MovingAverageCalculator(10);
     public GoToBackEdgeOfBarrel() {
-        
     }
 
     // Called just before this Command runs the first time
@@ -30,7 +31,8 @@ public class GoToBackEdgeOfBarrel extends Command {
     protected boolean isFinished() {
 		if (disregardCount >= 3) {
 			distance = distanceSensor.getDistance();
-			if (distance > 40) {
+			mac.add(distance);
+			if (mac.getAverage() > 40) {
 				log.info("At back edge of barrel! Ending...");
 				return true;
 			}
