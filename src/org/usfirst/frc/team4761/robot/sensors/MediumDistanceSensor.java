@@ -20,4 +20,7 @@ public class MediumDistanceSensor extends DistanceSensor {
 		return 306.439 + voltage * (-512.611 + voltage * (382.268 + voltage * (-129.893 + voltage * 16.2537)));
 	}
 	
+	public double getVoltage () {
+		return sensor.getVoltage();
+	}
 }

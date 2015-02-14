@@ -1,8 +1,13 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import org.usfirst.frc.team4761.robot.commands.CheckForBarrel;
-import org.usfirst.frc.team4761.robot.commands.DriveForward;
+
+import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.commands.DriveAlongStep;
+import org.usfirst.frc.team4761.robot.commands.DriveBackAlongStep;
+import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
+import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
+import org.usfirst.frc.team4761.robot.commands.DriveToStep;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
 
 /**
@@ -15,15 +20,29 @@ import org.usfirst.frc.team4761.robot.commands.LogToFile;
  * GitHub</a> about this command.
  */
 public class Autonomous extends CommandGroup {
-	
+	Logger log = new Logger("Autonomous");
 	public Autonomous() {
+		//TODO: Accommodate for other robots getting to RCs before us
+		log.info("Started logging to file");
 		addParallel(new LogToFile());
-		/*addSequential(new DriveForward());
-		addSequential(new CheckForBarrel());
-		addSequential(new CheckForBarrel());
+		log.info("Driving to step");
+		addSequential(new DriveToStep());
+		log.info("Adding parallel command drive along step.");
+		addParallel(new DriveAlongStep());
+		
+		addParallel(new DriveBackAlongStep());
+		
+		log.info("Going to next barrel");
+		addSequential(new GoToNextBarrel());
+		log.info("Barrel detected. Going to back edge");
+		addSequential(new GoToBackEdgeOfBarrel());
+		log.info("Picking up");
 		addSequential(new RcPickUp());
+		log.info("Picked up");
+		addSequential(new GoToNextBarrel());
+		log.info("Barrel detected. Going to back edge");
+		addSequential(new GoToBackEdgeOfBarrel());
+		log.info("Picking up");
 		addSequential(new RcPickUp());
-		addSequential(new RcPickUp());
-		addSequential(new RcPickUp());*/
 	}
 }

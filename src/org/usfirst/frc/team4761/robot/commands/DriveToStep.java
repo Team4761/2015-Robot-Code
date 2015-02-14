@@ -6,15 +6,15 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
- * Move the robot forward, using mecanum wheels.
+ * Drive the robot to the step.
  */
-public class DriveForward extends Command {
+public class DriveToStep extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
 	
 	ShortDistanceSensor distanceSensor = RobotMap.elevatorDistanceSensor;
 	
-	public DriveForward() {
+	public DriveToStep() {
 		requires(Robot.driveTrain);
 	}
 	
@@ -24,7 +24,12 @@ public class DriveForward extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.driveTrain.drive(0.15, 0, 0);
+		begin = System.currentTimeMillis() % 1000;
+		
+		Robot.driveTrain.drive(0.15, 0, deltaTime);
+		
+		deltaTime = (begin - end) / 1000.0;
+		end = System.currentTimeMillis() % 1000;
 		
 		if (distanceSensor.getDistance() < 10) {
 			setTimeout(0.5);
