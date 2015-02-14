@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commandgroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
+import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.commands.DriveAlongStep;
 import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
 import org.usfirst.frc.team4761.robot.commands.DriveToStep;
@@ -17,15 +18,21 @@ import org.usfirst.frc.team4761.robot.commands.LogToFile;
  * GitHub</a> about this command.
  */
 public class Autonomous extends CommandGroup {
-	
+	Logger log = new Logger("Autonomous");
 	public Autonomous() {
 		//TODO: Accommodate for other robots getting to RCs before us
+		log.info("Started logging to file");
 		addParallel(new LogToFile());
+		log.info("Driving to step");
 		addSequential(new DriveToStep());
+		log.info("Adding parallel command drive along step.");
 		addParallel(new DriveAlongStep());
+		log.info("Going to next barrel");
 		addSequential(new GoToNextBarrel());
+		log.info("Barrel detected. Picking up");
 		addSequential(new RcPickUp());
 		addSequential(new GoToNextBarrel());
+		log.info("Barrel detected. Picking up");
 		addSequential(new RcPickUp());
 	}
 }

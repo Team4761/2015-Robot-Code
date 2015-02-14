@@ -36,7 +36,14 @@ public class DriveTrain extends Subsystem {
 	public void initDefaultCommand() {
 	}
 	
-	// x and y = -1.0 - 1.0 & rotate is to infinity
+	/**
+	 * Drive the robot. Basically a fancy wrapper around mecanumDrive_Cartesian
+	 * but with some special features.
+	 * @param x Power for moving on x-axis
+	 * @param y Power for moving on y-axis
+	 * @param rotate Rotation of the robot
+	 * @param deltaTime ¯\(°_o)/¯ 
+	 */
 	public void drive(double x, double y, double rotate, double deltaTime) {
 		rotateAccumulator += rotate;
 		gyroPidController.setSetpoint(rotateAccumulator);
