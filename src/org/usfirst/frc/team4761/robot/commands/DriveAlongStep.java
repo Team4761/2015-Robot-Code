@@ -21,7 +21,7 @@ public class DriveAlongStep extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		begin = System.currentTimeMillis() % 1000;
-
+		
 		Robot.driveTrain.drive(0.15, -0.15, 0, deltaTime); // Update for higher speed
 		
 		deltaTime = (begin - end) / 1000.0;

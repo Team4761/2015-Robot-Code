@@ -5,17 +5,17 @@ public class GyroThread implements Runnable {
 	
 	public static GyroSensor sensor = new GyroSensor();
 	
-	public void run () {
+	public void run() {
 		while (true) {
 			if (sensor.updateDegrees(deltaTime)) {
 				deltaTime = 0.05;
-			} else {
+			}else {
 				deltaTime += 0.05;
 			}
 			
 			try {
 				Thread.sleep(50);
-			} catch (InterruptedException e) {
+			}catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}

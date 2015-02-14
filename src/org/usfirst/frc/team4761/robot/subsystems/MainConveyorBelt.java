@@ -11,10 +11,10 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 public class MainConveyorBelt extends Subsystem {
 	private static TalonSRX speedController = RobotMap.mainConveyorBeltMotor;
 	
-	public void initDefaultCommand () {
+	public void initDefaultCommand() {
 	}
 	
-	public void go (double speed) {
+	public void go(double speed) {
 		if (speed > 0) { //conveyor belt can only go one way
 			speedController.set(speed);
 		}

@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-
 import org.usfirst.frc.team4761.robot.commands.CheckForBarrel;
 import org.usfirst.frc.team4761.robot.commands.DriveForward;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;

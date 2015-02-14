@@ -1,16 +1,15 @@
 package org.usfirst.frc.team4761.robot;
 
-import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
-
 import edu.wpi.first.wpilibj.PIDSource;
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
 public class GyroPIDSource implements PIDSource {
 	private double deltaTime = 0;
 	
-	public GyroPIDSource () {
+	public GyroPIDSource() {
 	}
-
-	public void setDeltaTime (double deltaTime) {
+	
+	public void setDeltaTime(double deltaTime) {
 		this.deltaTime = deltaTime;
 	}
 	

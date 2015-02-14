@@ -2,7 +2,6 @@ package org.usfirst.frc.team4761.robot.subsystems;
 
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
@@ -12,10 +11,10 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 public class LiftConveyorBelt extends Subsystem {
 	private static TalonSRX speedController = RobotMap.elevatorConveyorBeltMotor;
 	
-	public void initDefaultCommand () {
+	public void initDefaultCommand() {
 	}
 	
-	public void go (double speed) {
+	public void go(double speed) {
 		if (speed > 0) { //Conveyor belt can only go one way
 			speedController.set(speed);
 		}

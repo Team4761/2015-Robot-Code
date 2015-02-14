@@ -1,9 +1,10 @@
 package org.usfirst.frc.team4761.robot;
 
-import java.util.ArrayList;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
+
+import java.util.ArrayList;
 
 /**
  * Allows for easy mapping of Joystick buttons to the execution of commands.
@@ -17,9 +18,10 @@ public class ButtonManager {
 	static JoystickButton[][] buttons = new JoystickButton[3][11];
 	static Joystick[] joysticks = new Joystick[3];
 	
-	private ButtonManager () {}
+	private ButtonManager() {
+	}
 	
-	private void init () {
+	private void init() {
 		for (int i = 0; i < 3; i++) {
 			joysticks[i] = new Joystick(i);
 		}
@@ -36,20 +38,22 @@ public class ButtonManager {
 	
 	/**
 	 * Starts the specified command whenever the button is pressed.
-	 * @param button	an int specifying the button to be used
-	 * @param joystick	an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
-	 * @param command	an instance of a Command to be run 
+	 *
+	 * @param button   an int specifying the button to be used
+	 * @param joystick an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
+	 * @param command  an instance of a Command to be run
 	 */
-	public void onPress (int button, int joystick, Command command) {
+	public void onPress(int button, int joystick, Command command) {
 		checkInit();
 		buttons[joystick][button].whenPressed(command);
 	}
 	
 	/**
 	 * Toggle the execution of the specified command whenever the button is pressed.
-	 * @param button	an int specifying the button to be used
-	 * @param joystick	an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
-	 * @param command	an instance of a Command to be run 
+	 *
+	 * @param button   an int specifying the button to be used
+	 * @param joystick an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
+	 * @param command  an instance of a Command to be run
 	 */
 	public void setToggle(int button, int joystick, Command command) {
 		checkInit();
@@ -58,9 +62,10 @@ public class ButtonManager {
 	
 	/**
 	 * Start the specified command whenever the button is pressed (alternative to onPress).
-	 * @param button	an int specifying the button to be used
-	 * @param joystick	an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
-	 * @param command	an instance of a Command to be run 
+	 *
+	 * @param button   an int specifying the button to be used
+	 * @param joystick an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
+	 * @param command  an instance of a Command to be run
 	 */
 	public void runOnPress(int button, int joystick, Command command) {
 		checkInit();
@@ -83,10 +88,10 @@ public class ButtonManager {
 							command.toggled = !command.toggled;
 							if (command.toggled) {
 								command.command.start();
-							} else {
+							}else {
 								command.command.cancel();
 							}
-						} else {
+						}else {
 							command.command.start();
 						}
 					}
