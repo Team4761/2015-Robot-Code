@@ -3,6 +3,7 @@ package org.usfirst.frc.team4761.robot.buttons;
 import org.usfirst.frc.team4761.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,10 +25,11 @@ public class MoveElevator extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double speed = SmartDashboard.getNumber("Elevator Speed");
     	if (up) {
-    		Robot.elevator.raise();
+    		Robot.elevator.set(-speed);
     	} else {
-    		Robot.elevator.lower();
+    		Robot.elevator.set(speed);
     	}
     }
 
@@ -44,5 +46,6 @@ public class MoveElevator extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
