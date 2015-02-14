@@ -30,7 +30,6 @@ public class RobotMap {
 	public static final ShortDistanceSensor barrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(0));
 	
 	/**
-<<<<<<< HEAD
 	 * A distance sensor on the elevator.
 	 */
 	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
