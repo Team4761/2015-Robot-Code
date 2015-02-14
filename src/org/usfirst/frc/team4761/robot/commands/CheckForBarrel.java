@@ -9,31 +9,35 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  */
 public class CheckForBarrel extends Command {
 	ShortDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
-	
+	double distance;
+	int disregardCount = 0;
 	public CheckForBarrel() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
 	
-	// Called just before this Command runs the first time
 	protected void initialize() {
 	}
-	
-	// Called repeatedly when this Command is scheduled to run
+
 	protected void execute() {
 	}
-	
-	// Make this return true when this Command no longer needs to run execute()
+
 	protected boolean isFinished() {
-		return distanceSensor.getDistance() < 25;
+		if(disregardCount >= 10) {
+			distance = distanceSensor.getDistance();
+			if(distance < 250) {
+				return true;
+			}
+		}
+		else {
+			disregardCount++;
+		}
+		return false;
 	}
 	
-	// Called once after isFinished returns true
 	protected void end() {
 	}
 	
-	// Called when another command which requires one or more of the same
-	// subsystems is scheduled to run
 	protected void interrupted() {
 	}
 }
