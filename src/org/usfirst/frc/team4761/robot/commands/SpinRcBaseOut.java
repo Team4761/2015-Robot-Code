@@ -10,7 +10,7 @@ public class SpinRcBaseOut extends Command {
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.rcGrabberBase.spinnerSet(-0.3);
+		Robot.rcGrabberBase.spinnerSet(-0.1);
 	}
 	
 	// Called repeatedly when this Command is scheduled to run
