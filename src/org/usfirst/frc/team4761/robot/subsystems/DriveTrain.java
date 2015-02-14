@@ -41,7 +41,6 @@ public class DriveTrain extends Subsystem {
 	 * @param x Power for moving on x-axis
 	 * @param y Power for moving on y-axis
 	 * @param rotate Rotation of the robot
-	 * @param deltaTime ¯\(°_o)/¯ 
 	 */
 	public void drive(double x, double y, double rotate) {
 		rotateAccumulator += rotate;
