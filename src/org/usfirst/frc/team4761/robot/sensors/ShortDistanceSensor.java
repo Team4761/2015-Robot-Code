@@ -20,4 +20,8 @@ public class ShortDistanceSensor extends DistanceSensor {
 		
 		return distance;
 	}
+	
+	public double getVoltage () {
+		return sensor.getVoltage();
+	}
 }
