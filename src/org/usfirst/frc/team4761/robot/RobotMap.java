@@ -54,6 +54,11 @@ public class RobotMap {
 	public static DigitalInput spinnerDI1 = new DigitalInput(0);
 	public static DigitalInput spinnerDI2 = new DigitalInput(1);
 	
+	/**
+	 * Digital inputs for the limit switch on the bottom of the elevator
+	 */
+	public static DigitalInput elevatorDI = new DigitalInput(2);
+	
 	public static TalonSRX mainConveyorBeltMotor = new TalonSRX(6);
 	public static TalonSRX elevatorConveyorBeltMotor = new TalonSRX(7);
 	public static VictorSP elevatorMotor = new VictorSP(5);
