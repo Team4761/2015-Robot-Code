@@ -22,7 +22,7 @@ public class DriveAlongStep extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		Robot.driveTrain.drive(0.15, -0.15, 0); // Update for higher speed
-		if(RobotMap.barrelDistanceSensor.getDistance() < 250) {
+		if(RobotMap.barrelDistanceSensor.getDistance() < 40) {
 			detectedBarrelCount++;
 		}
 	}

@@ -30,7 +30,7 @@ public class GoToBackEdgeOfBarrel extends Command {
     protected boolean isFinished() {
 		if (disregardCount >= 3) {
 			distance = distanceSensor.getDistance();
-			if (distance > 260) {
+			if (distance > 40) {
 				log.info("At back edge of barrel! Ending...");
 				return true;
 			}
