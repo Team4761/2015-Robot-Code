@@ -23,13 +23,12 @@ public class CheckForBarrel extends Command {
 	}
 
 	protected boolean isFinished() {
-		if(disregardCount >= 10) {
+		if (disregardCount >= 10) {
 			distance = distanceSensor.getDistance();
-			if(distance < 250) {
+			if (distance < 250) {
 				return true;
 			}
-		}
-		else {
+		} else {
 			disregardCount++;
 		}
 		return false;

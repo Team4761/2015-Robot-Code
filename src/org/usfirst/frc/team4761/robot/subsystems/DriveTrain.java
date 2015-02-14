@@ -24,7 +24,7 @@ public class DriveTrain extends Subsystem {
 	
 	public PIDController gyroPidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
 	
-	public DriveTrain() {
+	public DriveTrain () {
 		robotDrive.setInvertedMotor(MotorType.kFrontRight, true);
 		robotDrive.setInvertedMotor(MotorType.kRearRight, true);
 		
@@ -33,32 +33,31 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setSetpoint(0);
 	}
 	
-	public void initDefaultCommand() {
-	}
+	public void initDefaultCommand () {}
 	
 	// x and y = -1.0 - 1.0 & rotate is to infinity
-	public void drive(double x, double y, double rotate) {
+	public void drive (double x, double y, double rotate) {
 		rotateAccumulator += rotate;
 		gyroPidController.setSetpoint(rotateAccumulator);
 		
 		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), GyroSensor.getDegrees());
 	}
 	
-	public void stop() {
+	public void stop () {
 		robotDrive.drive(0, 0);
 	}
 	
 	// Get z-axis and scale it
-	public double getZ(Joystick joystick) {
+	private double getZ (Joystick joystick) {
 		return (-0.3 * joystick.getZ() + 0.5);
 	}
 	
 	// Calculate new speed based on the scaled z-axis
-	public double convert(double input, Joystick joystick) {
+	private double convert (double input, Joystick joystick) {
 		return (input * getZ(joystick));
 	}
 	
-	public void driveWithJoysticks(Joystick joystick1, Joystick joystick2) {
+	public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
 		double degrees = GyroSensor.getDegrees();
 		
 		System.out.println("Angle: " + degrees + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1));
@@ -73,7 +72,7 @@ public class DriveTrain extends Subsystem {
 			gyroPidController.setSetpoint(rotateAccumulator);
 			
 			robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), driveGyroPIDOutput.getValue(), degrees);
-		}else {
+		} else {
 			robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), 0, degrees);
 			
 			rotateAccumulator = GyroSensor.getDegrees(); // Reset the accumulator so the robot doesn't jerk when button two is released
