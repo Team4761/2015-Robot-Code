@@ -10,6 +10,8 @@ import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
 import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
 import org.usfirst.frc.team4761.robot.commands.DriveToStep;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
+import org.usfirst.frc.team4761.robot.commands.MainConveyorForward;
+import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
 
 /**
  * Command group that is run automatically when the robot enters autonomous
@@ -24,28 +26,18 @@ public class Autonomous extends CommandGroup {
 	Logger log = new Logger("Autonomous");
 	public Autonomous() {
 		//TODO: Accommodate for other robots getting to RCs before us
-		log.info("Started logging to file");
 		addParallel(new LogToFile());
-		log.info("Driving to step");
-		addSequential(new DriveToStep());
-		log.info("Adding parallel command drive along step.");
-		addParallel(new DriveAlongStep());
+		//addSequential(new DriveToStep());
+		//addParallel(new MainConveyorForward());
+		//addParallel(new DriveAlongStep());
 		
-		addParallel(new DriveBackAlongStep());
+		//addParallel(new DriveBackAlongStep());
 		
-		log.info("Going to next barrel");
 		addSequential(new GoToNextBarrel());
-		log.info("Barrel detected. Going to back edge");
 		addSequential(new GoToBackEdgeOfBarrel());
-		log.info("Picking up");
 		addSequential(new RcPickUp());
-		log.info("Picked up");
 		addSequential(new GoToNextBarrel());
-		log.info("Barrel detected. Going to back edge");
 		addSequential(new GoToBackEdgeOfBarrel());
-		log.info("Picking up");
 		addSequential(new RcPickUp());
-		log.info("Ending Autonomous");
-		addSequential(new ResetGyro());
 	}
 }

@@ -22,11 +22,9 @@ public class ResetGyro extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		// Needs to be tested to find appropriate value
-		System.out.println("Test1");
-		gyro.setDegrees(-90);
-		System.out.println("Test1");
-		Robot.driveTrain.setAccumulator(-90);
-		System.out.println("Test1");
+		gyro.setDegrees(0);
+		Robot.driveTrain.setAccumulator(0);
+		Robot.driveTrain.gyroPidController.setSetpoint(0);
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

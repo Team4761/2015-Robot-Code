@@ -3,6 +3,7 @@ package org.usfirst.frc.team4761.robot.commands;
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.MovingAverageCalculator;
 import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class GoToBackEdgeOfBarrel extends Command {
-	ShortDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
+	MediumDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
 	double distance;
 	int disregardCount = 0;
 	Logger log = new Logger("Go Back Edge of Barrel");
@@ -25,22 +26,24 @@ public class GoToBackEdgeOfBarrel extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-		if (disregardCount >= 3) {
+    	/*if (disregardCount >= 3) {
 			distance = distanceSensor.getDistance();
 			mac.add(distance);
-			if (mac.getAverage() > 40) {
+			if (mac.getAverage() > 30) {
 				log.info("At back edge of barrel! Ending...");
-				return true;
 			}
 		} else {
 			log.info("Not paying attention yet...");
 			disregardCount++;
-		}
-		return false;
+		}*/
+    }
+
+    // Make this return true when this Command no longer needs to run execute()
+    protected boolean isFinished() {
+    	if (distanceSensor.getDistance() > 50) {
+    		System.out.println("On back edge");
+    	}
+		return distanceSensor.getDistance() > 50;
     }
 
     // Called once after isFinished returns true

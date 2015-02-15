@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.MovingAverageCalculator;
 import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -17,7 +18,7 @@ public class BlindStopOuterConveyorBelt extends Command {
     private double distance;
 	private MovingAverageCalculator mac = new MovingAverageCalculator(10);
 	private boolean objectEntered;
-	ShortDistanceSensor distanceSensor = RobotMap.outerConveyorRearDistanceSensor;
+	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorToteDistanceSensor;
 
 	public BlindStopOuterConveyorBelt() {
         // Use requires() here to declare subsystem dependencies

@@ -1,8 +1,10 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
@@ -12,7 +14,7 @@ public class DriveToStep extends Command {
 	private double deltaTime = 0;
 	private long begin = 0, end = 0;
 	
-	ShortDistanceSensor distanceSensor = RobotMap.outerConveyorRearDistanceSensor;
+	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorToteDistanceSensor;
 	
 	public DriveToStep() {
 		requires(Robot.driveTrain);

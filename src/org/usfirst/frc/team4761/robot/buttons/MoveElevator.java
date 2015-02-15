@@ -33,7 +33,7 @@ public class MoveElevator extends Command {
     protected void execute() {
     	if (up) {
     		Robot.elevator.set(-speed);
-    	} else {
+    	} else if (RobotMap.elevatorDI.get()) {
     		Robot.elevator.set(speed);
     	}
     }
@@ -43,8 +43,7 @@ public class MoveElevator extends Command {
     	if (up) {
     		return !Robot.oi.buttons.getRawButton(6);
     	} else {
-    		//return !Robot.oi.buttons.getRawButton(5) || !RobotMap.elevatorDI.get();
-    		return !Robot.oi.buttons.getRawButton(5);
+    		return !Robot.oi.buttons.getRawButton(5) || !RobotMap.elevatorDI.get();
     	}
     }
 

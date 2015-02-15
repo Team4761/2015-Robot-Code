@@ -38,7 +38,9 @@ public class OI {
 		putData("Drive To Step", new DriveToStep());
 		putData("Drive Along Step", new DriveAlongStep());
 		putData("Go to next barrel", new GoToNextBarrel());
-		putData("Pick up RC", new RcPickUp());
+		putData("Go to barrel back", new GoToBackEdgeOfBarrel());
+		putData("Run Main Conveyor", new org.usfirst.frc.team4761.robot.commands.MainConveyorForward());
+		putData("Move To Stack Top", new MoveElevatorToStackTop());
 		
 		// Bind buttons for button boards
 		buttonManager.runWhilePressed(2, 2, new MainConveyorForward());
@@ -51,7 +53,7 @@ public class OI {
 		buttonManager.runWhilePressed(9, 2, new RCGrabberLeft());
 		
 		buttonManager.runWhilePressed(6, 2, new MoveElevator(true, 0.5));
-		buttonManager.runWhilePressed(5, 2, new MoveElevator(false, 0.25));
+		buttonManager.runWhilePressed(5, 2, new MoveElevator(false, 0.2));
 		
 		buttonManager.setToggle(10, 2, new WedgeToggle());
 		buttonManager.setToggle(11, 2, new RCGrabberToggle());

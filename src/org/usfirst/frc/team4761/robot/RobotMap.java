@@ -6,6 +6,7 @@ import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
+import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
@@ -29,7 +30,7 @@ public class RobotMap {
 	/**
 	 * A distance sensor that senses the barrels for auto-mode.
 	 */
-	public static final ShortDistanceSensor barrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(0));
+	public static final MediumDistanceSensor barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
 	
 	/**
 	 * A distance sensor on the elevator.
@@ -38,13 +39,13 @@ public class RobotMap {
 	
 	/**
 	 * Distance sensor on the rear of the outer conveyor belt. Used for
-	 * detecting something. TODO: Figure out what it's use is.
+	 * detecting something. TODO: Figure out what it's use is. Previously elevatorBarrelDistanceSensor
 	 */
-	public static final ShortDistanceSensor outerConveyorRearDistanceSensor = new ShortDistanceSensor(new AnalogInput(2));
+	public static final MediumDistanceSensor outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
 	
 	/**
 	 * Distance sensor on the front of the outer conveyor belt. Used for
-	 * detecting when the elevator is at the top of a tote stack.
+	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
 	 */
 	public static final ShortDistanceSensor outerConveyorFrontDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 
