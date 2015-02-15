@@ -1,9 +1,11 @@
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.*;
+
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
@@ -22,7 +24,7 @@ public class RobotMap {
 	public static RobotDrive robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 	
 	// New Gyro
-	public static final I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
+	public static final GyroSensor gyro = new GyroSensor();
 	
 	/**
 	 * A distance sensor that senses the barrels for auto-mode.

@@ -25,6 +25,7 @@ public class LogToFile extends Command {
 	protected void execute() {
 		log.dev("Towards Conveyor: " + Double.toString(elevatorToteDistanceSensor.getDistance()));
 		log.dev("Towards Totes: " + Double.toString(elevatorBarrelDistanceSensor.getDistance()));
+		log.dev("Gyro: " + Double.toString(GyroSensor.getDegrees()));
 	}
 	
 	protected boolean isFinished() {

@@ -13,8 +13,6 @@ import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
-import org.usfirst.frc.team4761.robot.buttons.WedgeIn;
-import org.usfirst.frc.team4761.robot.buttons.WedgeOut;
 import org.usfirst.frc.team4761.robot.buttons.WedgeToggle;
 import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
 import org.usfirst.frc.team4761.robot.commands.*;
@@ -76,7 +74,7 @@ public class OI {
 		buttonManager.runOnPress(3, 0, new RaiseRcGrabber());
 		buttonManager.runOnPress(2, 0, new LowerRcGrabber());
 		
-		buttonManager.runOnPress(11, 1, new WedgeOut());
-		buttonManager.runOnPress(10, 1, new WedgeIn());
+		buttonManager.runOnPress(11, 1, new PlowExtend());
+		buttonManager.runOnPress(10, 1, new PlowRetract());
 	}
 }

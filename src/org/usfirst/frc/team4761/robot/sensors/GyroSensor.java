@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4761.robot.sensors;
 
 import edu.wpi.first.wpilibj.I2C;
-import org.usfirst.frc.team4761.robot.RobotMap;
 
 /*
  * IMPORTANT!!!
@@ -17,7 +16,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 public class GyroSensor {
 	private static double degrees = 0; // The accumulated degrees from the get rotations per second function
 	
-	private I2C gyro = RobotMap.gyro;
+	private I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
 	public GyroSensor() {
 		gyro.write(0x6B, 0x00); // Power
