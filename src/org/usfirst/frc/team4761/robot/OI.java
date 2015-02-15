@@ -57,8 +57,8 @@ public class OI {
 		buttonManager.setToggle(11, 2, new RCGrabberToggle());
 		
 		// Bind buttons for joysticks
-		//buttonManager.onPress(2, 0, new TurnToZero());
-		//buttonManager.onPress(3, 0, new ResetGyro()); // CHECK BUTTON
+		buttonManager.runOnPress(9, 1, new TurnToZero());
+		buttonManager.runOnPress(8, 1, new ResetGyro());
 		buttonManager.runWhilePressed(11, 0, new MainConveyorForward());
 		buttonManager.runWhilePressed(10, 0, new MainConveyorBackward());
 		

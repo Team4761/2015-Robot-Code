@@ -84,4 +84,8 @@ public class DriveTrain extends Subsystem {
 			rotateAccumulator = GyroSensor.getDegrees(); // Reset the accumulator so the robot doesn't jerk when button two is released
 		}
 	}
+	
+	public void setAccumulator (double degrees) {
+		rotateAccumulator = degrees;
+	}
 }

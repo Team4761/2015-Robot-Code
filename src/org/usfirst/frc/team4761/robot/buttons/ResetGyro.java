@@ -13,7 +13,6 @@ public class ResetGyro extends Command {
 	public ResetGyro() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.driveTrain);
 	}
 	
 	// Called just before this Command runs the first time
@@ -23,9 +22,11 @@ public class ResetGyro extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		// Needs to be tested to find appropriate value
-		gyro.setDegrees(90);
-		Robot.driveTrain.gyroPidController.setSetpoint(90);
-		Robot.driveTrain.rotateAccumulator = 90;
+		System.out.println("Test1");
+		gyro.setDegrees(-90);
+		System.out.println("Test1");
+		Robot.driveTrain.setAccumulator(-90);
+		System.out.println("Test1");
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

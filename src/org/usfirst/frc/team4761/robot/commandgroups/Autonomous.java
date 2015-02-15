@@ -3,6 +3,7 @@ package org.usfirst.frc.team4761.robot.commandgroups;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commands.DriveAlongStep;
 import org.usfirst.frc.team4761.robot.commands.DriveBackAlongStep;
 import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
@@ -44,5 +45,7 @@ public class Autonomous extends CommandGroup {
 		addSequential(new GoToBackEdgeOfBarrel());
 		log.info("Picking up");
 		addSequential(new RcPickUp());*/
+		log.info("Ending Autonomous");
+		addSequential(new ResetGyro());
 	}
 }
