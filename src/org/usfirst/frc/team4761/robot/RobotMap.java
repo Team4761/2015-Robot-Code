@@ -38,13 +38,13 @@ public class RobotMap {
 	
 	/**
 	 * Distance sensor on the rear of the outer conveyor belt. Used for
-	 * detecting something. TODO: Figure out what it's use is. Previously elevatorBarrelDistanceSensor
+	 * detecting something. TODO: Figure out what it's use is.
 	 */
 	public static final ShortDistanceSensor outerConveyorRearDistanceSensor = new ShortDistanceSensor(new AnalogInput(2));
 	
 	/**
 	 * Distance sensor on the front of the outer conveyor belt. Used for
-	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
+	 * detecting when the elevator is at the top of a tote stack.
 	 */
 	public static final ShortDistanceSensor outerConveyorFrontDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 

@@ -12,6 +12,7 @@ public class RcPickUp extends CommandGroup {
 	Command moveConveyor = new MainConveyorForward();
 	
 	public RcPickUp() {
+		addSequential(new LowerRcGrabber());
 		addSequential(new RaiseRcGrabber());
 		addParallel(moveConveyor);
 		addSequential(new SpinRcBaseIn());
