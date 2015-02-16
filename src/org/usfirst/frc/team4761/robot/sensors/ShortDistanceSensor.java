@@ -3,7 +3,9 @@ package org.usfirst.frc.team4761.robot.sensors;
 import edu.wpi.first.wpilibj.AnalogInput;
 
 /**
- * GP2D120XJ00F distance sensor
+ * GP2D120XJ00F distance sensor. Wild fluctuation in output can be made more
+ * bearable with {@link org.usfirst.frc.team4761.robot.MovingAverageCalculator
+ * a Moving Average Calculator}.
  */
 public class ShortDistanceSensor extends DistanceSensor {
 	public ShortDistanceSensor(AnalogInput sensor) {
