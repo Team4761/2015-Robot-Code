@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.GyroPIDSource;
 import org.usfirst.frc.team4761.robot.RobotMap;
@@ -16,10 +18,9 @@ import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 public class DriveTrain extends Subsystem {
 	public double rotateAccumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
 	
+	private Logger log = RobotMap.log;
 	RobotDrive robotDrive = RobotMap.robotDrive;
-	
 	GyroPIDSource gyroSensor = new GyroPIDSource();
-	
 	public DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
 	
 	public PIDController gyroPidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
@@ -68,7 +69,7 @@ public class DriveTrain extends Subsystem {
 	public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
 		double degrees = GyroSensor.getDegrees();
 		
-		System.out.println("Angle: " + degrees + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1));
+		log.dev("Angle: " + degrees + " Accumulator: " + rotateAccumulator + " DrivePIDOutput: " + convert(driveGyroPIDOutput.getValue(), joystick1));
 		
 		// This button is too heavily integrated with DriveTrain to use ButtonManager.java
 		if (!(joystick2.getRawButton(2))) { // Hold down button two when sliding against walls
