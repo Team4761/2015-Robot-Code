@@ -24,7 +24,7 @@ public class ConveyorUntilBarrel extends Command { // TODO: Fix this disgusting 
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Robot.mainConveyorBelt.getDistance() < 5); // Distance sensor returns less than 5 cm, must be a barrel!
+        return (Robot.mainConveyorBelt.getDistance() < 50); // Distance sensor returns less than 50 cm, must be a barrel!
     }
 
     // Called once after isFinished returns true

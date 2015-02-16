@@ -26,7 +26,7 @@ public class ConveyorPassBarrel extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Robot.mainConveyorBelt.getDistance() > 15); // The distance is greater than 15 the barrel must be gone! TODO: Get a better and more exact number to compare to.
+        return (Robot.mainConveyorBelt.getDistance() > 50); // The distance is greater than 50 the barrel must be gone! TODO: Get a better and more exact number to compare to.
     }
 
     // Called once after isFinished returns true
