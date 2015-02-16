@@ -73,4 +73,6 @@ public class RobotMap {
 	public static VictorSP elevatorConveyorBeltMotor = new VictorSP(7);
 	public static VictorSP elevatorMotor1 = new VictorSP(8);
 	public static VictorSP elevatorMotor2 = new VictorSP(9);
+	
+	public static MediumDistanceSensor conveyorDistSensor = new MediumDistanceSensor(new AnalogInput(4));
 }
