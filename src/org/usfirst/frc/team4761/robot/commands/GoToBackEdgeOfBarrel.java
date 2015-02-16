@@ -26,16 +26,6 @@ public class GoToBackEdgeOfBarrel extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	/*if (disregardCount >= 3) {
-			distance = distanceSensor.getDistance();
-			mac.add(distance);
-			if (mac.getAverage() > 30) {
-				log.info("At back edge of barrel! Ending...");
-			}
-		} else {
-			log.info("Not paying attention yet...");
-			disregardCount++;
-		}*/
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -43,6 +33,7 @@ public class GoToBackEdgeOfBarrel extends Command {
     	if (distanceSensor.getDistance() > 50) {
     		System.out.println("On back edge");
     	}
+    	
 		return distanceSensor.getDistance() > 50;
     }
 

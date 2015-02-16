@@ -24,22 +24,13 @@ public class GoToNextBarrel extends Command {
 	}
 
 	protected void execute() {
-		/*if (disregardCount >= 5) {
-			distance = distanceSensor.getDistance();
-			mac.add(distance);
-			if (mac.getAverage() < 30) {
-				log.info("At barrel! Ending...");
-			}
-		} else {
-			log.info("Not paying attention yet...");
-			disregardCount++;
-		}*/
 	}
 
 	protected boolean isFinished() {
 		if (distanceSensor.getDistance() < 50) {
 			System.out.println("On front edge");
 		}
+		
 		return distanceSensor.getDistance() < 50;
 	}
 	
