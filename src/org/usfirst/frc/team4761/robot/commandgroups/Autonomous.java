@@ -11,6 +11,8 @@ import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
 import org.usfirst.frc.team4761.robot.commands.DriveToStep;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
 import org.usfirst.frc.team4761.robot.commands.MainConveyorForward;
+import org.usfirst.frc.team4761.robot.commands.PlowExtend;
+import org.usfirst.frc.team4761.robot.commands.PlowRetract;
 import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
 
 /**
@@ -28,11 +30,13 @@ public class Autonomous extends CommandGroup {
 		//TODO: Accommodate for other robots getting to RCs before us
 		addParallel(new LogToFile());
 		//addSequential(new DriveToStep());
+		addSequential(new PlowExtend());
 		//addParallel(new MainConveyorForward());
 		//addParallel(new DriveAlongStep());
 		
 		//addParallel(new DriveBackAlongStep());
 		
+		addSequential(new PlowRetract());
 		addSequential(new GoToNextBarrel());
 		addSequential(new GoToBackEdgeOfBarrel());
 		addSequential(new RcPickUp());
