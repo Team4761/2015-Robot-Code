@@ -30,18 +30,8 @@ public class RobotMap {
 	/**
 	 * A distance sensor that senses the barrels for auto-mode.
 	 */
-	public static final MediumDistanceSensor barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
-	
-	/**
-	 * A distance sensor on the elevator.
-	 */
-	public static final ShortDistanceSensor elevatorDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
-	
-	/**
-	 * Distance sensor on the rear of the outer conveyor belt. Used for
-	 * detecting something. TODO: Figure out what it's use is.
-	 */
-	public static final MediumDistanceSensor outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
+
+	public static final MediumDistanceSensor outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(1));
 	
 	/**
 	 * Distance sensor on the front of the outer conveyor belt. Used for
@@ -74,5 +64,5 @@ public class RobotMap {
 	public static VictorSP elevatorMotor1 = new VictorSP(8);
 	public static VictorSP elevatorMotor2 = new VictorSP(9);
 	
-	public static MediumDistanceSensor conveyorDistSensor = new MediumDistanceSensor(new AnalogInput(4));
+	public static MediumDistanceSensor conveyorDistSensor = new MediumDistanceSensor(new AnalogInput(2));
 }
