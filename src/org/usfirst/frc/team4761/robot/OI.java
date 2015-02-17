@@ -3,6 +3,8 @@ package org.usfirst.frc.team4761.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team4761.robot.buttons.LiftConveyerBackward;
+import org.usfirst.frc.team4761.robot.buttons.LiftConveyerForward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorBackward;
@@ -75,5 +77,14 @@ public class OI {
 		
 		buttonManager.runOnPress(11, 1, new PlowExtend());
 		buttonManager.runOnPress(10, 1, new PlowRetract());
+		
+		// PS3 Controller buttons
+		
+		/* buttonManager.runWhilePressed(5, 2, new LiftConveyerForward());
+		buttonManager.runWhilePressed(4, 2, new LiftConveyerBackward());
+		buttonManager.runOnPress(0, 2, new RaiseRcGrabber());
+		buttonManager.runOnPress(2, 2, new LowerRcGrabber()); */
+		
+		
 	}
 }
