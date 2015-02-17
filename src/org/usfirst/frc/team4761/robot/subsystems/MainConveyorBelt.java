@@ -13,7 +13,7 @@ import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
  */
 public class MainConveyorBelt extends Subsystem {
 	private static Talon speedController = RobotMap.mainConveyorBeltMotor;
-	private static MediumDistanceSensor sensor = RobotMap.conveyorDistSensor;
+	private static MediumDistanceSensor sensor = RobotMap.elevatorDistanceSensor;
 	
 	public void initDefaultCommand() {
 	}

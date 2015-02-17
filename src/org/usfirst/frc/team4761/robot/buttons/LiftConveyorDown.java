@@ -8,11 +8,14 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class LiftConveyorDown extends Command {
+	private int button, joystickNum;
 
-    public LiftConveyorDown() {
+    public LiftConveyorDown (int button, int joystickNum) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.liftConveyorBelt);
+    	this.button = button;
+    	this.joystickNum = joystickNum;
     }
 
     // Called just before this Command runs the first time
@@ -26,7 +29,7 @@ public class LiftConveyorDown extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return !Robot.oi.buttons.getRawButton(5);
+    	return !Robot.oi.joysticks[joystickNum].getRawButton(button);
     }
 
     // Called once after isFinished returns true
