@@ -1,13 +1,18 @@
 package org.usfirst.frc.team4761.robot.buttons;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4761.robot.Robot;
 
 public class MainConveyorForward extends Command {
+	private int button = 0;
+	private int joystickNum;
 	
-	public MainConveyorForward() {
+	public MainConveyorForward (int button, int joystickNum) {
 		requires(Robot.mainConveyorBelt);
+		this.button = button;
+		this.joystickNum = joystickNum;
 	}
 	
 	// Called just before this Command runs the first time
@@ -21,7 +26,7 @@ public class MainConveyorForward extends Command {
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return !Robot.oi.buttons.getRawButton(2);
+		return !Robot.oi.joysticks[joystickNum].getRawButton(button);
 	}
 	
 	// Called once after isFinished returns true

@@ -5,14 +5,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
-import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
  * If the distance sensor on the elevator is below the top of a stack of totes,
  * move the elevator up until it is level with the top of the stack.
  */
 public class MoveElevatorToStackTop extends Command {
-	boolean lowering = false;
 	MediumDistanceSensor sensor = RobotMap.outerConveyorToteDistanceSensor;
 	
 	public MoveElevatorToStackTop() {

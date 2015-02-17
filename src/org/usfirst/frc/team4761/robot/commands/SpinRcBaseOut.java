@@ -21,7 +21,7 @@ public class SpinRcBaseOut extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if (isTimedOut()) {
-			Robot.rcGrabberBase.spinnerSet(0.5);
+			Robot.rcGrabberBase.spinnerSet(1.0);
 		}
 	}
 	

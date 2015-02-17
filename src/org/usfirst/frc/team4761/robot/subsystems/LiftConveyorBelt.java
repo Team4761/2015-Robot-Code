@@ -12,10 +12,10 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 public class LiftConveyorBelt extends Subsystem {
 	private static VictorSP speedController = RobotMap.elevatorConveyorBeltMotor;
 	
-	public void initDefaultCommand() {
+	public void initDefaultCommand () {
 	}
 	
-	public void go(double speed) {
+	public void go (double speed) {
 		speedController.set(speed);
 	}
 }

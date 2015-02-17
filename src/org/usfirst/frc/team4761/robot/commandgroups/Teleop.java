@@ -13,7 +13,6 @@ public class Teleop extends CommandGroup {
 	
 	public Teleop() {
 		addParallel(new LogToFile());
-		addSequential(new ResetGyro());
 		addParallel(new DriveWithJoysticks());
 	}
 }

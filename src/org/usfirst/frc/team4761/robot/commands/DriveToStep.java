@@ -4,17 +4,15 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
-import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 /**
  * Drive the robot to the step.
  */
 public class DriveToStep extends Command {
-	private double deltaTime = 0;
-	private long begin = 0, end = 0;
-	
 	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorToteDistanceSensor;
+	GyroSensor gyro = new GyroSensor();
 	
 	public DriveToStep() {
 		requires(Robot.driveTrain);
@@ -22,29 +20,24 @@ public class DriveToStep extends Command {
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		setTimeout(1);
 	}
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		begin = System.currentTimeMillis() % 1000;
-		
-		Robot.driveTrain.drive(0.15, 0, deltaTime);
-		
-		deltaTime = (begin - end) / 1000.0;
-		end = System.currentTimeMillis() % 1000;
-		
-		if (distanceSensor.getDistance() < 10) {
-			setTimeout(0.5);
-		}
+		Robot.driveTrain.drive(0, -0.4, 0);
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return distanceSensor.getDistance() < 10 && isTimedOut();
+		return isTimedOut();
 	}
 	
 	// Called once after isFinished returns true
 	protected void end() {
+		gyro.setDegrees(90);
+		Robot.driveTrain.setAccumulator(90);
+		Robot.driveTrain.gyroPidController.setSetpoint(90);
 	}
 	
 	// Called when another command which requires one or more of the same

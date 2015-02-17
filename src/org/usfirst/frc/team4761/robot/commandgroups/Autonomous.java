@@ -6,6 +6,7 @@ import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commands.DriveAlongStep;
 import org.usfirst.frc.team4761.robot.commands.DriveBackAlongStep;
+import org.usfirst.frc.team4761.robot.commands.EngageTotes;
 import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
 import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
 import org.usfirst.frc.team4761.robot.commands.DriveToStep;
@@ -13,6 +14,11 @@ import org.usfirst.frc.team4761.robot.commands.LogToFile;
 import org.usfirst.frc.team4761.robot.commands.MainConveyorForward;
 import org.usfirst.frc.team4761.robot.commands.PlowExtend;
 import org.usfirst.frc.team4761.robot.commands.PlowRetract;
+import org.usfirst.frc.team4761.robot.commands.Rotate15;
+import org.usfirst.frc.team4761.robot.commands.RotateN15;
+import org.usfirst.frc.team4761.robot.commands.SpinRcBaseOut;
+import org.usfirst.frc.team4761.robot.commands.StayFlat;
+import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
 
 /**
@@ -27,21 +33,25 @@ import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
 public class Autonomous extends CommandGroup {
 	Logger log = new Logger("Autonomous");
 	public Autonomous() {
-		//TODO: Accommodate for other robots getting to RCs before us
+		addSequential(new ResetGyro());
+		
 		addParallel(new LogToFile());
-		//addSequential(new DriveToStep());
-		addSequential(new PlowExtend());
-		//addParallel(new MainConveyorForward());
-		//addParallel(new DriveAlongStep());
 		
-		//addParallel(new DriveBackAlongStep());
-		
-		addSequential(new PlowRetract());
-		addSequential(new GoToNextBarrel());
-		addSequential(new GoToBackEdgeOfBarrel());
-		addSequential(new RcPickUp());
-		addSequential(new GoToNextBarrel());
-		addSequential(new GoToBackEdgeOfBarrel());
-		addSequential(new RcPickUp());
+		//addParallel(new SpinRcBaseOut());
+		addParallel(new MainConveyorForward());
+		/*addSequential(new DriveToStep());
+		addSequential(new EngageTotes());
+		addSequential(new Rotate15());
+		addSequential(new RotateN15());
+		addSequential(new StayFlat());
+		// Make room for plow
+		addSequential(new PlowExtend()); // Tested*/
+		addParallel(new DriveAlongStep());
+		addSequential(new GoToNextBarrel()); // Tested
+		addSequential(new Stop());
+		addSequential(new RcPickUp()); // Tested
+		//addSequential(new GoToNextBarrel()); // Tested
+		//addSequential(new Stop());
+		//addSequential(new RcPickUp()); // Tested
 	}
 }

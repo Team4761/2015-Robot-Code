@@ -8,15 +8,21 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Command that does nothing and runs until it detects that an object has gone
- * on and gotten off the outer conveyor belt.
+ * Command that does nothing and runs until an object has entered and exited
+ * the field of view of the outer conveyor belt's rear distance sensor. Useful
+ * if the driver needs to position an RC on the lower distance sensor, but can
+ * not see and does not want to risk dropping the object.
  */
-public class DetectObjectLeftOuterConveyorBelt extends Command {
-	MovingAverageCalculator mac = new MovingAverageCalculator(15);
-	ShortDistanceSensor distanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
-	private double distance;
+public class BlindStopOuterConveyorBelt extends Command {
+
+    private double distance;
+	private MovingAverageCalculator mac = new MovingAverageCalculator(10);
 	private boolean objectEntered;
-    public DetectObjectLeftOuterConveyorBelt() {
+	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorToteDistanceSensor;
+
+	public BlindStopOuterConveyorBelt() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time

@@ -9,27 +9,22 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * Drive along the step
  */
 public class DriveAlongStep extends Command {
-	private static int detectedBarrelCount = 0;
 	public DriveAlongStep() {
 		requires(Robot.driveTrain);
 	}
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		setTimeout(7.5);
 	}
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.driveTrain.drive(0.15, -0.15, 0); // Update for higher speed
-		if (RobotMap.barrelDistanceSensor.getDistance() < 50) {
-			detectedBarrelCount++;
-		}
+		Robot.driveTrain.drive(-0.5, -0.15, 0);
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return detectedBarrelCount == 2;
+		return false;
 	}
 	
 	// Called once after isFinished returns true
