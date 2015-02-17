@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
-import org.usfirst.frc.team4761.robot.commandgroups.DriveToAutoZone;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;

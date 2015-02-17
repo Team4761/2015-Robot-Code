@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RotateN15 extends Command {
+public class RotateN extends Command {
 	GyroSensor gyro = new GyroSensor();
 
-    public RotateN15() {
+    public RotateN () {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.driveTrain);

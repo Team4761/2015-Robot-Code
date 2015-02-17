@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
@@ -27,6 +28,7 @@ public class LogToFile extends Command {
 	protected void execute() {
 		log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
 		log.dev("Towards Totes: " + Double.toString(outerConveyorToteDistanceSensor.getDistance()));
+		SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());
 	}
 	
 	protected boolean isFinished() {

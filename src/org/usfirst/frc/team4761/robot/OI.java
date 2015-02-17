@@ -75,7 +75,7 @@ public class OI {
 		// Bind buttons for XBox Controller
 		buttonManager.runWhilePressed(4, 2, new RaiseRcGrabber());
 		buttonManager.runWhilePressed(1, 2, new LowerRcGrabber());
-		buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(4, 2));
+		buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(3, 2));
 		buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
 	}
 }
