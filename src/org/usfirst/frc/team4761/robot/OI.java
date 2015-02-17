@@ -29,15 +29,10 @@ public class OI {
 	
 	ButtonManager buttonManager = new ButtonManager();
 	
-	public OI() {
-		
-		putData("RCPickUp", new RcPickUp());
-		putData("Drive To Step", new DriveToStep());
-		putData("Drive Along Step", new DriveAlongStep());
-		putData("Go to next barrel", new GoToNextBarrel());
-		putData("Go to barrel back", new GoToBackEdgeOfBarrel());
-		putData("Run Main Conveyor", new org.usfirst.frc.team4761.robot.commands.MainConveyorForward());
-		putData("Move To Stack Top", new MoveElevatorToStackTop());
+	public OI () {
+		putBoolean("Step Autonomous", false);
+		putBoolean("Three Barrels Autonomous", true);
+		putBoolean("Drive To Auto-Zone", false);
 		
 		// Bind buttons for button boards
 		/*buttonManager.runWhilePressed(2, 2, new MainConveyorForward(2, 2));

@@ -4,9 +4,12 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
+import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
+import org.usfirst.frc.team4761.robot.commandgroups.DriveToAutoZone;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
@@ -40,7 +43,6 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		teleop = new Teleop();
-		//autonomousCommand = new Autonomous();
 		autonomousCommand = new NoWedgeAuto();
 		
 		LogManager.setMinimumLevel(RobotMap.minLogLevel);
@@ -54,6 +56,15 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
+		// Assign autonomous
+		if (SmartDashboard.getBoolean("Step Autonomous")) {
+			autonomousCommand = new Autonomous();
+		} else if (SmartDashboard.getBoolean("Three Barrels Autonomous")) {
+			autonomousCommand = new NoWedgeAuto();
+		} else if (SmartDashboard.getBoolean("Drive To Auto-Zone")) {
+			autonomousCommand = new DriveToAuto();
+		}
+		
 		if (autonomousCommand != null) autonomousCommand.start();
 	}
 	
