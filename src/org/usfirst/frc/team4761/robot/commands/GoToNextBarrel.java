@@ -13,10 +13,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  */
 public class GoToNextBarrel extends Command {
 	MediumDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
-	double distance;
-	int disregardCount = 0;
-	Logger log = new Logger("Go To Next Barrel");
-	MovingAverageCalculator mac = new MovingAverageCalculator(10);
+	
 	public GoToNextBarrel() {
 	}
 	

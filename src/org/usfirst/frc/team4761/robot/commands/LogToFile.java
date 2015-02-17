@@ -15,7 +15,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  */
 public class LogToFile extends Command {
 	
-	private ShortDistanceSensor outerConveyorBarrelDistanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
+	private MediumDistanceSensor outerConveyorBarrelDistanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
 	private MediumDistanceSensor outerConveyorToteDistanceSensor = RobotMap.outerConveyorToteDistanceSensor;
 	private MediumDistanceSensor barrelSensor = RobotMap.barrelDistanceSensor;
 	private Logger log = RobotMap.log;
@@ -25,10 +25,8 @@ public class LogToFile extends Command {
 	}
 	
 	protected void execute() {
-		//log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
-		log.dev("Barrel is: " + Double.toString(barrelSensor.getDistance()));
-		//log.dev("Gyro: " + Double.toString(GyroSensor.getDegrees()));
-		//log.dev(Double.toString(barrelSensor.getDistance()) + " " + Double.toString(barrelSensor.getVoltage()));
+		log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
+		log.dev("Towards Totes: " + Double.toString(outerConveyorToteDistanceSensor.getDistance()));
 	}
 	
 	protected boolean isFinished() {

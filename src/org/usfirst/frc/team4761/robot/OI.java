@@ -3,8 +3,6 @@ package org.usfirst.frc.team4761.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team4761.robot.buttons.LiftConveyerBackward;
-import org.usfirst.frc.team4761.robot.buttons.LiftConveyerForward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorBackward;
@@ -26,8 +24,8 @@ import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2), new Joystick(3)};
-	public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
+	public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2)};
+	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
 	
 	ButtonManager buttonManager = new ButtonManager();
 	
@@ -60,6 +58,7 @@ public class OI {
 		// Bind buttons for joysticks
 		buttonManager.runOnPress(9, 1, new TurnToZero());
 		buttonManager.runOnPress(8, 1, new ResetGyro());
+		buttonManager.runOnPress(1, 1, new MoveElevatorToStackTop());
 		buttonManager.runWhilePressed(11, 0, new MainConveyorForward(11, 0));
 		buttonManager.runWhilePressed(10, 0, new MainConveyorBackward(10, 0));
 		
@@ -78,13 +77,10 @@ public class OI {
 		buttonManager.runOnPress(11, 1, new PlowExtend());
 		buttonManager.runOnPress(10, 1, new PlowRetract());
 		
-		// PS3 Controller buttons
-		
-		/* buttonManager.runWhilePressed(5, 2, new LiftConveyerForward());
-		buttonManager.runWhilePressed(4, 2, new LiftConveyerBackward());
-		buttonManager.runOnPress(0, 2, new RaiseRcGrabber());
-		buttonManager.runOnPress(2, 2, new LowerRcGrabber()); */
-		
-		
+		// Bind buttons for XBox Controller
+		buttonManager.runWhilePressed(4, 2, new RaiseRcGrabber());
+		buttonManager.runWhilePressed(1, 2, new LowerRcGrabber());
+		buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(4, 2));
+		buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
 	}
 }

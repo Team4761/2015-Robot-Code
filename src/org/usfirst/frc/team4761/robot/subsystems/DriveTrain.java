@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.GyroPIDSource;
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
@@ -79,8 +80,8 @@ public class DriveTrain extends Subsystem {
 		
 		log.dev("Angle: " + degrees);
 
-		robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), convert(joystick1.getX(), joystick1), degrees);
-		//robotDrive.mecanumDrive_Cartesian(convert(xBox.getX(GenericHID.Hand.kLeft), joystick1), convert(xBox.getY(GenericHID.Hand.kLeft), joystick1), convert(xBox.getX(GenericHID.Hand.kRight), joystick2), degrees);
+		//robotDrive.mecanumDrive_Cartesian(convert(joystick2.getX(), joystick2), convert(joystick2.getY(), joystick2), convert(joystick1.getX(), joystick1), degrees);
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(4), joystick1), degrees);
 	}
 	
 	public void setAccumulator (double degrees) {

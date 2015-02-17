@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DetectObjectLeftOuterConveyorBelt extends Command {
 	MovingAverageCalculator mac = new MovingAverageCalculator(15);
-	ShortDistanceSensor distanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
+	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
 	private double distance;
 	private boolean objectEntered;
     public DetectObjectLeftOuterConveyorBelt() {

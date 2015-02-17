@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
+import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
 import org.usfirst.frc.team4761.robot.subsystems.*;
@@ -39,7 +40,8 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		teleop = new Teleop();
-		autonomousCommand = new Autonomous();
+		//autonomousCommand = new Autonomous();
+		autonomousCommand = new NoWedgeAuto();
 		
 		LogManager.setMinimumLevel(RobotMap.minLogLevel);
 		

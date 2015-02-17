@@ -13,6 +13,5 @@ public class RcPickUp extends CommandGroup {
 		addSequential(new RaiseRcGrabber());
 		addSequential(new SpinRcBaseIn());
 		addSequential(new LowerRcGrabber());
-		addSequential(new SpinRcBaseOut());
 	}
 }
