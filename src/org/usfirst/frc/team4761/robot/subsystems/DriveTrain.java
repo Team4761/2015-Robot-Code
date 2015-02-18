@@ -25,18 +25,13 @@ public class DriveTrain extends Subsystem {
 	GyroPIDSource gyroSensor = new GyroPIDSource();
 	public DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
 	
-	public PIDController gyroPidController = new PIDController(0.01, 0.00025, 0.065, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
+	public PIDController gyroPidController = new PIDController(0.05, 0.00025, 0, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
 	
 	public DriveTrain () {
 		robotDrive.setInvertedMotor(MotorType.kFrontRight, true);
 		robotDrive.setInvertedMotor(MotorType.kRearRight, true);
 		
-		//gyroPidController.setAbsoluteTolerance(10.0);
-		//gyroPidController.setOutputRange(0.05, 1);
-		
 		gyroPidController.enable();
-		
-		gyroPidController.setSetpoint(0);
 	}
 	
 	public void initDefaultCommand () {}
@@ -53,12 +48,19 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setSetpoint(rotateAccumulator);
 		
 		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), GyroSensor.getDegrees());
+		//robotDrive.mecanumDrive_Cartesian(x, y, 0, GyroSensor.getDegrees());
 	}
 	
 	public void driveAbsolute (double x, double y, double degrees) {
 		gyroPidController.setSetpoint(degrees);
 		
-		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), GyroSensor.getDegrees());
+		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), 90);
+		//robotDrive.mecanumDrive_Cartesian(x, y, 0, GyroSensor.getDegrees());
+	}
+	
+	public void driveNoField (Joystick joystick1, Joystick joystick2) {
+		System.out.println("Not field oriented");
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(4), joystick1), 0);
 	}
 	
 	public void stop () {

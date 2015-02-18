@@ -3,6 +3,7 @@ package org.usfirst.frc.team4761.robot.commands;
 import org.usfirst.frc.team4761.robot.MovingAverageCalculator;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
+import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DetectObjectLeftOuterConveyorBelt extends Command {
 	MovingAverageCalculator mac = new MovingAverageCalculator(15);
-	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
+	ShortDistanceSensor distanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
 	private double distance;
 	private boolean objectEntered;
     public DetectObjectLeftOuterConveyorBelt() {

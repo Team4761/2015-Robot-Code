@@ -18,7 +18,7 @@ public class RaiseRcGrabber extends Command {
 	}
 	
 	protected void initialize() {
-		setTimeout(1.5);
+		setTimeout(1.2);
 		Robot.rcGrabber.set(DoubleSolenoid.Value.kReverse);
 	}
 	

@@ -16,7 +16,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  */
 public class LogToFile extends Command {
 	
-	private MediumDistanceSensor outerConveyorBarrelDistanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
+	private ShortDistanceSensor outerConveyorBarrelDistanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
 	private MediumDistanceSensor outerConveyorToteDistanceSensor = RobotMap.outerConveyorToteDistanceSensor;
 	private MediumDistanceSensor barrelSensor = RobotMap.barrelDistanceSensor;
 	private Logger log = RobotMap.log;
@@ -26,9 +26,14 @@ public class LogToFile extends Command {
 	}
 	
 	protected void execute() {
-		log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
-		log.dev("Towards Totes: " + Double.toString(outerConveyorToteDistanceSensor.getDistance()));
+		//log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
+		//log.dev("Towards Totes: " + Double.toString(outerConveyorToteDistanceSensor.getDistance()));
+		log.dev("Angle: " + Double.toString(GyroSensor.getDegrees()));
+		//log.dev("Setpoint: " + Double.toString(Robot.driveTrain.gyroPidController.getSetpoint()));
+		log.dev("Barrel: " + Double.toString(barrelSensor.getDistance()));
 		SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());
+		SmartDashboard.putNumber("Distance from barrel on conveyor", outerConveyorBarrelDistanceSensor.getDistance());
+		SmartDashboard.putNumber("Barrel: ", barrelSensor.getDistance());
 	}
 	
 	protected boolean isFinished() {

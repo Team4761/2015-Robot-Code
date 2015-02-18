@@ -14,8 +14,6 @@ import org.usfirst.frc.team4761.robot.commands.LogToFile;
 import org.usfirst.frc.team4761.robot.commands.MainConveyorForward;
 import org.usfirst.frc.team4761.robot.commands.PlowExtend;
 import org.usfirst.frc.team4761.robot.commands.PlowRetract;
-import org.usfirst.frc.team4761.robot.commands.Rotate15;
-import org.usfirst.frc.team4761.robot.commands.RotateN15;
 import org.usfirst.frc.team4761.robot.commands.SpinRcBaseOut;
 import org.usfirst.frc.team4761.robot.commands.StayFlat;
 import org.usfirst.frc.team4761.robot.commands.Stop;
@@ -41,8 +39,8 @@ public class Autonomous extends CommandGroup {
 		addParallel(new MainConveyorForward());
 		/*addSequential(new DriveToStep());
 		addSequential(new EngageTotes());
-		addSequential(new Rotate15());
-		addSequential(new RotateN15());
+		addSequential(new Rotate());
+		addSequential(new RotateN());
 		addSequential(new StayFlat());
 		// Make room for plow
 		addSequential(new PlowExtend()); // Tested*/

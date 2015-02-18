@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commandgroups;
 
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commands.DriveLeft;
+import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
 import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
 import org.usfirst.frc.team4761.robot.commands.MainConveyorForward;
@@ -26,11 +27,13 @@ public class NoWedgeAuto extends CommandGroup {
 		addParallel(new SpinRcBaseOut());
         addParallel(new DriveLeft());
         addSequential(new GoToNextBarrel());
+        addSequential(new GoToBackEdgeOfBarrel());
         addSequential(new Stop());
 		addSequential(new RcPickUp());
 		addParallel(new SpinRcBaseOut());
 		addParallel(new DriveLeft());
 		addSequential(new GoToNextBarrel());
+		addSequential(new GoToBackEdgeOfBarrel());
 		addSequential(new Stop());
 		addSequential(new RaiseRcGrabber());
     }

@@ -24,11 +24,11 @@ public class GoToNextBarrel extends Command {
 	}
 
 	protected boolean isFinished() {
-		if (distanceSensor.getDistance() < 50) {
+		if (distanceSensor.getDistance() < 60) {
 			System.out.println("On front edge");
 		}
 		
-		return distanceSensor.getDistance() < 50;
+		return distanceSensor.getDistance() < 60;
 	}
 	
 	protected void end() {

@@ -13,10 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class GoToBackEdgeOfBarrel extends Command {
 	MediumDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
-	double distance;
-	int disregardCount = 0;
-	Logger log = new Logger("Go Back Edge of Barrel");
-	MovingAverageCalculator mac = new MovingAverageCalculator(10);
+
     public GoToBackEdgeOfBarrel() {
     }
 
@@ -30,11 +27,11 @@ public class GoToBackEdgeOfBarrel extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (distanceSensor.getDistance() > 50) {
+    	if (distanceSensor.getDistance() > 60) {
     		System.out.println("On back edge");
     	}
     	
-		return distanceSensor.getDistance() > 50;
+		return distanceSensor.getDistance() > 60;
     }
 
     // Called once after isFinished returns true

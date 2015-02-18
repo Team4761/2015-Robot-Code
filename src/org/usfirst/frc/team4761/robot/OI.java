@@ -15,6 +15,7 @@ import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
 import org.usfirst.frc.team4761.robot.buttons.WedgeToggle;
 import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
+import org.usfirst.frc.team4761.robot.commandgroups.TurnInDown;
 import org.usfirst.frc.team4761.robot.commands.*;
 
 import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.*;
@@ -54,6 +55,7 @@ public class OI {
 		buttonManager.runOnPress(9, 1, new TurnToZero());
 		buttonManager.runOnPress(8, 1, new ResetGyro());
 		buttonManager.runOnPress(1, 1, new MoveElevatorToStackTop());
+		buttonManager.runOnPress(1, 0, new GoToElevatorConveyor());
 		buttonManager.runWhilePressed(11, 0, new MainConveyorForward(11, 0));
 		buttonManager.runWhilePressed(10, 0, new MainConveyorBackward(10, 0));
 		
@@ -72,10 +74,13 @@ public class OI {
 		buttonManager.runOnPress(11, 1, new PlowExtend());
 		buttonManager.runOnPress(10, 1, new PlowRetract());
 		
+		buttonManager.runOnPress(2, 1, new TurnInDown());
+		
 		// Bind buttons for XBox Controller
 		buttonManager.runWhilePressed(4, 2, new RaiseRcGrabber());
 		buttonManager.runWhilePressed(1, 2, new LowerRcGrabber());
 		buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(3, 2));
 		buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
+		buttonManager.runOnPress(6, 2, new TurnInDown());
 	}
 }

@@ -47,7 +47,7 @@ public class RobotMap {
 	 * Distance sensor on the front of the outer conveyor belt. Used for
 	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
 	 */
-	public static final MediumDistanceSensor outerConveyorBarrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));
+	public static final ShortDistanceSensor outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 
 	public static Logger log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 	public static Level minLogLevel = Level.DEV;
