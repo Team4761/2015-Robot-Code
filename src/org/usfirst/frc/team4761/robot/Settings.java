@@ -15,11 +15,13 @@ public class Settings  {
 					sc.close();
 					return Integer.parseInt(inp.split("\t")[1]);
 				}
+				
 				inp = sc.nextLine();
 			}
 		} catch (Exception ex) {
 			System.err.println("Error loading setting \"" + name + "\".");
 		}
+		
 		return 0;
 	}
 	
