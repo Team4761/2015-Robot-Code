@@ -9,10 +9,9 @@ public class Settings  {
 			File f = new File("settings.ini");
 			Scanner sc = new Scanner(new FileInputStream(f));
 			String inp = sc.nextLine();
-			while (inp!=null)
-			{
-				if (inp.split("\t")[0].equalsIgnoreCase(name))
-				{
+			
+			while (inp!=null) {
+				if (inp.split("\t")[0].equalsIgnoreCase(name)) {
 					sc.close();
 					return Integer.parseInt(inp.split("\t")[1]);
 				}
