@@ -20,6 +20,7 @@ public class Settings  {
 			}
 		} catch (Exception ex) {
 			System.err.println("Error loading setting \"" + name + "\".");
+			ex.printStackTrace();
 		}
 		
 		return 0;
@@ -33,6 +34,7 @@ public class Settings  {
 			out.close();
 		} catch (Exception ex) {
 			System.err.println("Error writing setting \"" + name + "\" to the config file.");
+			ex.printStackTrace();
 		}
 	}
 }
