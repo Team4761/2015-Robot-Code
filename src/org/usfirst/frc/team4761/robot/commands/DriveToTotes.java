@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot.commands;
 
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 
@@ -9,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveToTotes extends Command {
-	MediumDistanceSensor sensor = RobotMap.outerConveyorToteDistanceSensor;
+	MediumDistanceSensor sensor = Robot.robotMap.outerConveyorToteDistanceSensor;
 
     public DriveToTotes() {
         // Use requires() here to declare subsystem dependencies

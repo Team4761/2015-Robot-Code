@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 
@@ -12,8 +13,8 @@ import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
  * controller.
  */
 public class MainConveyorBelt extends Subsystem {
-	private static Talon speedController = RobotMap.mainConveyorBeltMotor;
-	private static MediumDistanceSensor sensor = RobotMap.elevatorDistanceSensor;
+	private static Talon speedController = Robot.robotMap.mainConveyorBeltMotor;
+	private static MediumDistanceSensor sensor = Robot.robotMap.elevatorDistanceSensor;
 	
 	public void initDefaultCommand() {
 	}

@@ -16,7 +16,7 @@ public class GyroSensor {
 	
 	private I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
-	public GyroSensor() {
+	public GyroSensor () {
 		gyro.write(0x6B, 0x00); // Power
 		gyro.write(0x1A, 0x26); // Basic Config
 		gyro.write(0x1B, 0x00); // Gyro Config

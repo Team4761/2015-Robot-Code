@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.MovingAverageCalculator;
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
@@ -18,7 +19,7 @@ public class BlindStopOuterConveyorBelt extends Command {
     private double distance;
 	private MovingAverageCalculator mac = new MovingAverageCalculator(10);
 	private boolean objectEntered;
-	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorToteDistanceSensor;
+	MediumDistanceSensor distanceSensor = Robot.robotMap.outerConveyorToteDistanceSensor;
 
 	public BlindStopOuterConveyorBelt() {
         // Use requires() here to declare subsystem dependencies

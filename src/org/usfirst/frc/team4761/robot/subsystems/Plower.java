@@ -2,6 +2,8 @@ package org.usfirst.frc.team4761.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
@@ -9,7 +11,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  */
 public class Plower extends Subsystem {
 	
-	private DoubleSolenoid solenoid = RobotMap.plowPneumatic;
+	private DoubleSolenoid solenoid = Robot.robotMap.plowPneumatic;
 	
 	public void initDefaultCommand() {
 	}

@@ -11,7 +11,7 @@ import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
  * move the elevator up until it is level with the top of the stack.
  */
 public class MoveElevatorToStackTop extends Command {
-	MediumDistanceSensor sensor = RobotMap.outerConveyorToteDistanceSensor;
+	MediumDistanceSensor sensor = Robot.robotMap.outerConveyorToteDistanceSensor;
 	
 	public MoveElevatorToStackTop() {
 		requires(Robot.elevator);

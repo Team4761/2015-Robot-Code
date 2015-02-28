@@ -2,6 +2,8 @@ package org.usfirst.frc.team4761.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
@@ -9,7 +11,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  */
 public class RcGrabber extends Subsystem {
 	
-	public DoubleSolenoid solenoid = RobotMap.rcPneumatic;
+	public DoubleSolenoid solenoid = Robot.robotMap.rcPneumatic;
 	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.

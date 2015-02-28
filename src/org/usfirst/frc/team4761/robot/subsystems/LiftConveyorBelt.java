@@ -3,6 +3,7 @@ package org.usfirst.frc.team4761.robot.subsystems;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
@@ -10,7 +11,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * top of a stack.
  */
 public class LiftConveyorBelt extends Subsystem {
-	private static VictorSP speedController = RobotMap.elevatorConveyorBeltMotor;
+	private static VictorSP speedController = Robot.robotMap.elevatorConveyorBeltMotor;
 	
 	public void initDefaultCommand () {
 	}

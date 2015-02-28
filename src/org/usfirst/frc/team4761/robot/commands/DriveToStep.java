@@ -11,7 +11,7 @@ import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
  * Drive the robot to the step.
  */
 public class DriveToStep extends Command {
-	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorToteDistanceSensor;
+	MediumDistanceSensor distanceSensor = Robot.robotMap.outerConveyorToteDistanceSensor;
 	GyroSensor gyro = new GyroSensor();
 	
 	public DriveToStep() {

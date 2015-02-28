@@ -22,13 +22,14 @@ import org.usfirst.frc.team4761.robot.subsystems.*;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	public static final DriveTrain driveTrain = new DriveTrain();
-	public static final Elevator elevator = new Elevator();
-	public static final MainConveyorBelt mainConveyorBelt = new MainConveyorBelt();
-	public static final Plower plower = new Plower();
-	public static final RcGrabber rcGrabber = new RcGrabber();
-	public static final RcGrabberBase rcGrabberBase = new RcGrabberBase();
-	public static final LiftConveyorBelt liftConveyorBelt = new LiftConveyorBelt();
+	public static DriveTrain driveTrain;
+	public static Elevator elevator;
+	public static MainConveyorBelt mainConveyorBelt;
+	public static Plower plower;
+	public static RcGrabber rcGrabber;
+	public static RcGrabberBase rcGrabberBase;
+	public static LiftConveyorBelt liftConveyorBelt;
+	public static RobotMap robotMap = new RobotMap();
 	
 	public static OI oi;
 	public Command teleop;
@@ -42,9 +43,19 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		teleop = new Teleop();
-		autonomousCommand = new NoWedgeAuto();
+		driveTrain = new DriveTrain();
 		
-		LogManager.setMinimumLevel(RobotMap.minLogLevel);
+		if (Robot.robotMap.robot.equals("NEW")) {
+			autonomousCommand = new NoWedgeAuto();
+			elevator = new Elevator();
+			mainConveyorBelt = new MainConveyorBelt();
+			plower = new Plower();
+			rcGrabber = new RcGrabber();
+			rcGrabberBase = new RcGrabberBase();
+			liftConveyorBelt = new LiftConveyorBelt();
+		}
+		
+		LogManager.setMinimumLevel(Robot.robotMap.minLogLevel);
 		
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
@@ -55,16 +66,18 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
-		// Assign autonomous
-		if (SmartDashboard.getBoolean("Step Autonomous")) {
-			autonomousCommand = new Autonomous();
-		} else if (SmartDashboard.getBoolean("Three Barrels Autonomous")) {
-			autonomousCommand = new NoWedgeAuto();
-		} else if (SmartDashboard.getBoolean("Drive To Auto-Zone")) {
-			autonomousCommand = new DriveToAuto();
-		}
+		if (Robot.robotMap.robot.equals("NEW")) {
+			// Assign autonomous
+			if (SmartDashboard.getBoolean("Step Autonomous")) {
+				autonomousCommand = new Autonomous();
+			} else if (SmartDashboard.getBoolean("Three Barrels Autonomous")) {
+				autonomousCommand = new NoWedgeAuto();
+			} else if (SmartDashboard.getBoolean("Drive To Auto-Zone")) {
+				autonomousCommand = new DriveToAuto();
+			}
 		
-		if (autonomousCommand != null) autonomousCommand.start();
+			if (autonomousCommand != null) autonomousCommand.start();
+		}
 	}
 	
 	/**

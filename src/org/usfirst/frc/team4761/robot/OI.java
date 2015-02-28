@@ -25,8 +25,11 @@ import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2)};
-	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
+	// With XBox controller
+	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2)};
+	
+	// Without XBox controller
+	public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
 	
 	ButtonManager buttonManager = new ButtonManager();
 	
@@ -51,36 +54,38 @@ public class OI {
 		buttonManager.setToggle(10, 2, new WedgeToggle());
 		buttonManager.setToggle(11, 2, new RCGrabberToggle());*/
 		
-		// Bind buttons for joysticks
-		buttonManager.runOnPress(9, 1, new TurnToZero());
-		buttonManager.runOnPress(8, 1, new ResetGyro());
-		buttonManager.runOnPress(1, 1, new MoveElevatorToStackTop());
-		buttonManager.runOnPress(1, 0, new GoToElevatorConveyor());
-		buttonManager.runWhilePressed(11, 0, new MainConveyorForward(11, 0));
-		buttonManager.runWhilePressed(10, 0, new MainConveyorBackward(10, 0));
-		
-		buttonManager.runWhilePressed(6, 0, new LiftConveyorForward(6, 0));
-		buttonManager.runWhilePressed(7, 0, new LiftConveyorBackward(7, 0));
-		
-		buttonManager.runWhilePressed(8, 0, new RCGrabberLeft(8, 0));
-		buttonManager.runWhilePressed(9, 0, new RCGrabberRight(9, 0));
-		
-		buttonManager.runWhilePressed(6, 1, new MoveElevator(true, 0.5, 6, 1));
-		buttonManager.runWhilePressed(7, 1, new MoveElevator(false, 0.25, 7, 1));
-		
-		buttonManager.runOnPress(3, 0, new RaiseRcGrabber());
-		buttonManager.runOnPress(2, 0, new LowerRcGrabber());
-		
-		buttonManager.runOnPress(11, 1, new PlowExtend());
-		buttonManager.runOnPress(10, 1, new PlowRetract());
-		
-		buttonManager.runOnPress(2, 1, new TurnInDown());
-		
-		// Bind buttons for XBox Controller
-		buttonManager.runWhilePressed(4, 2, new RaiseRcGrabber());
-		buttonManager.runWhilePressed(1, 2, new LowerRcGrabber());
-		buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(3, 2));
-		buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
-		buttonManager.runOnPress(6, 2, new TurnInDown());
+		if (Robot.robotMap.robot.equals("NEW")) {
+			// Bind buttons for joysticks
+			buttonManager.runOnPress(9, 1, new TurnToZero());
+			buttonManager.runOnPress(8, 1, new ResetGyro());
+			buttonManager.runOnPress(1, 1, new MoveElevatorToStackTop());
+			buttonManager.runOnPress(1, 0, new GoToElevatorConveyor());
+			buttonManager.runWhilePressed(11, 0, new MainConveyorForward(11, 0));
+			buttonManager.runWhilePressed(10, 0, new MainConveyorBackward(10, 0));
+			
+			buttonManager.runWhilePressed(6, 0, new LiftConveyorForward(6, 0));
+			buttonManager.runWhilePressed(7, 0, new LiftConveyorBackward(7, 0));
+			
+			buttonManager.runWhilePressed(8, 0, new RCGrabberLeft(8, 0));
+			buttonManager.runWhilePressed(9, 0, new RCGrabberRight(9, 0));
+			
+			buttonManager.runWhilePressed(6, 1, new MoveElevator(true, 0.5, 6, 1));
+			buttonManager.runWhilePressed(7, 1, new MoveElevator(false, 0.25, 7, 1));
+			
+			buttonManager.runOnPress(3, 0, new RaiseRcGrabber());
+			buttonManager.runOnPress(2, 0, new LowerRcGrabber());
+			
+			buttonManager.runOnPress(11, 1, new PlowExtend());
+			buttonManager.runOnPress(10, 1, new PlowRetract());
+			
+			buttonManager.runOnPress(2, 1, new TurnInDown());
+			
+			// Bind buttons for XBox Controller
+			buttonManager.runWhilePressed(4, 2, new RaiseRcGrabber());
+			buttonManager.runWhilePressed(1, 2, new LowerRcGrabber());
+			buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(3, 2));
+			buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
+			buttonManager.runOnPress(6, 2, new TurnInDown());
+		}
 	}
 }
