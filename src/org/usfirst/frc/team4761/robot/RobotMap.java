@@ -41,6 +41,7 @@ public class RobotMap {
 	
 	public VictorSP spinner;
 	
+	public DigitalInput someDI;
 	public DigitalInput spinnerDI1;
 	public DigitalInput spinnerDI2;
 	
