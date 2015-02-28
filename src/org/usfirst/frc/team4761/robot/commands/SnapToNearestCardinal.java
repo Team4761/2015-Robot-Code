@@ -1,9 +1,6 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
-import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
