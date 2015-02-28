@@ -12,12 +12,12 @@ public class ElevatorBarrelFixToggle extends Command {
 	
 	Boolean direction; // What direction to go in, True for upwards, False for downwards.
 	
-	Boolean	ROne, RTwo; // This will help with termination.
+	Boolean	rOne, rTwo; // This will help with termination.
     public ElevatorBarrelFixToggle() {
     	requires(Robot.elevator);
     	
-    	ROne = true;
-    	RTwo = true;
+    	rOne = true;
+    	rTwo = true;
     }
 
     // Called just before this Command runs the first time
@@ -26,7 +26,7 @@ public class ElevatorBarrelFixToggle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (ROne){
+    	if (rOne){
     		if (direction){
     			Robot.elevator.raise();
     		} else if (!direction){
@@ -35,7 +35,7 @@ public class ElevatorBarrelFixToggle extends Command {
     		
     		
     		if (RobotMap.elevatorMagnetDetectorDown.get()){
-    			ROne = false;
+    			rOne = false;
     			direction = false; // We now want to go downwards.
     			Robot.elevator.stop();
     		}
@@ -53,7 +53,7 @@ public class ElevatorBarrelFixToggle extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	if (RTwo){
+    	if (rTwo){
     		if (direction)
     			Robot.elevator.raise();
     		else
@@ -64,7 +64,7 @@ public class ElevatorBarrelFixToggle extends Command {
     		}
     		
     		if (RobotMap.elevatorMagnetDetectorUp.get()){
-    			RTwo = false;
+    			rTwo = false;
     			direction = false; // We should probably go down now.
     			Robot.elevator.stop();
     		}
