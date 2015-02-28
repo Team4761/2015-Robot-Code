@@ -43,6 +43,7 @@ public class RobotMap {
 	
 	public DigitalInput spinnerDI1;
 	public DigitalInput spinnerDI2;
+	public DigitalInput someDI;
 	
 	public DigitalInput elevatorDI;
 	
@@ -110,6 +111,8 @@ public class RobotMap {
 			 */
 			spinnerDI1 = new DigitalInput(8);
 			spinnerDI2 = new DigitalInput(9);
+			
+			someDI = new DigitalInput(0);
 			
 			/**
 			 * Digital inputs for the limit switches for the side of the robot (NOT IMPLEMENTED!!!).</br>
