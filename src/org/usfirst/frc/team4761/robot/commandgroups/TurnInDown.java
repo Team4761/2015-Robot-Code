@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.commands.LowerRcGrabber;
-import org.usfirst.frc.team4761.robot.commands.SpinRcBaseIn;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.SpinRcBaseIn;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

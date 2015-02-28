@@ -4,19 +4,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
-import org.usfirst.frc.team4761.robot.commands.DriveAlongStep;
-import org.usfirst.frc.team4761.robot.commands.DriveBackAlongStep;
 import org.usfirst.frc.team4761.robot.commands.EngageTotes;
 import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
 import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
-import org.usfirst.frc.team4761.robot.commands.DriveToStep;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
-import org.usfirst.frc.team4761.robot.commands.MainConveyorForward;
-import org.usfirst.frc.team4761.robot.commands.PlowExtend;
-import org.usfirst.frc.team4761.robot.commands.PlowRetract;
-import org.usfirst.frc.team4761.robot.commands.SpinRcBaseOut;
-import org.usfirst.frc.team4761.robot.commands.StayFlat;
 import org.usfirst.frc.team4761.robot.commands.Stop;
+import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MainConveyorForward;
+import org.usfirst.frc.team4761.robot.commands.drivetrain.DriveAlongStep;
+import org.usfirst.frc.team4761.robot.commands.drivetrain.DriveBackAlongStep;
+import org.usfirst.frc.team4761.robot.commands.drivetrain.DriveToStep;
+import org.usfirst.frc.team4761.robot.commands.drivetrain.StayFlat;
+import org.usfirst.frc.team4761.robot.commands.plower.PlowExtend;
+import org.usfirst.frc.team4761.robot.commands.plower.PlowRetract;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.SpinRcBaseOut;
 import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
 
 /**
