@@ -1,15 +1,19 @@
 package org.usfirst.frc.team4761.robot.commands.debug;
 
+import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.Robot;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Command that simply reads and logs the value of the digital input on port 0
  */
 public class ReadDi0Value extends Command {
 
+	private DigitalInput di = Robot.robotMap.someDI;
+	private Logger log = new Logger("Digital Input 0 Value");
     public ReadDi0Value() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -18,6 +22,7 @@ public class ReadDi0Value extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println(!di.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()
