@@ -4,13 +4,13 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Settings  {
-	public static int read(String name) {
+	public static int read (String name) {
 		try {
-			File f = new File("settings.ini");
+			File f = new File("/home/lvuser/settings.ini");
 			Scanner sc = new Scanner(new FileInputStream(f));
 			String inp = sc.nextLine();
 			
-			while (inp!=null) {
+			while (inp != null) {
 				if (inp.split("\t")[0].equalsIgnoreCase(name)) {
 					sc.close();
 					return Integer.parseInt(inp.split("\t")[1]);
@@ -26,15 +26,18 @@ public class Settings  {
 		return 0;
 	}
 	
-	public static void write(String name, int value) {
-		File f = new File("settings.ini");
+	public static void write (String name, int value) {
+		File f = new File("/home/lvuser/settings.ini");
 		try {
+			if (!f.exists()) {
+				f.createNewFile();
+			}
+			
 			PrintWriter out = new PrintWriter(new FileOutputStream(f));
 			out.println(name + "\t" + value);
 			out.close();
 		} catch (Exception ex) {
 			System.err.println("Error writing setting \"" + name + "\" to the config file.");
-			ex.printStackTrace();
 		}
 	}
 }

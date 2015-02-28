@@ -26,10 +26,10 @@ import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.*;
  */
 public class OI {
 	// With XBox controller
-	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2)};
+	public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2)};
 	
 	// Without XBox controller
-	public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
+	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
 	
 	ButtonManager buttonManager = new ButtonManager();
 	
@@ -38,23 +38,27 @@ public class OI {
 		putBoolean("Three Barrels Autonomous", true);
 		putBoolean("Drive To Auto-Zone", false);
 		
-		// Bind buttons for button boards
-		/*buttonManager.runWhilePressed(2, 2, new MainConveyorForward(2, 2));
-		buttonManager.runWhilePressed(1, 2, new MainConveyorBackward(1, 2));
+		putNumber("P", 0.025);
+		putNumber("I", 0);
+		putNumber("D", 0.02);
 		
-		buttonManager.runWhilePressed(12, 2, new LiftConveyorForward(12, 2));
-		buttonManager.runWhilePressed(13, 2, new LiftConveyorBackward(13, 2));
-		
-		buttonManager.runWhilePressed(8, 2, new RCGrabberRight(8, 2));
-		buttonManager.runWhilePressed(9, 2, new RCGrabberLeft(9, 2));
-		
-		buttonManager.runWhilePressed(6, 2, new MoveElevator(true, 0.5, 6, 2));
-		buttonManager.runWhilePressed(10, 2, new MoveElevator(false, 0.2, 10, 2));
-		
-		buttonManager.setToggle(10, 2, new WedgeToggle());
-		buttonManager.setToggle(11, 2, new RCGrabberToggle());*/
-		
-		if (Robot.robotMap.robot.equals("NEW")) {
+		if (Robot.robotMap.robot == 1) {
+			// Bind buttons for button boards
+			/*buttonManager.runWhilePressed(2, 2, new MainConveyorForward(2, 2));
+			buttonManager.runWhilePressed(1, 2, new MainConveyorBackward(1, 2));
+			
+			buttonManager.runWhilePressed(12, 2, new LiftConveyorForward(12, 2));
+			buttonManager.runWhilePressed(13, 2, new LiftConveyorBackward(13, 2));
+			
+			buttonManager.runWhilePressed(8, 2, new RCGrabberRight(8, 2));
+			buttonManager.runWhilePressed(9, 2, new RCGrabberLeft(9, 2));
+			
+			buttonManager.runWhilePressed(6, 2, new MoveElevator(true, 0.5, 6, 2));
+			buttonManager.runWhilePressed(10, 2, new MoveElevator(false, 0.2, 10, 2));
+			
+			buttonManager.setToggle(10, 2, new WedgeToggle());
+			buttonManager.setToggle(11, 2, new RCGrabberToggle());*/
+			
 			// Bind buttons for joysticks
 			buttonManager.runOnPress(9, 1, new TurnToZero());
 			buttonManager.runOnPress(8, 1, new ResetGyro());

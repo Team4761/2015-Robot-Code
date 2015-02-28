@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4761.robot.sensors;
 
+import org.usfirst.frc.team4761.robot.Robot;
+
 import edu.wpi.first.wpilibj.I2C;
 
 /**
@@ -54,8 +56,14 @@ public class GyroSensor {
 			int rotation = (highOrder << 8) + lowOrder;
 			
 			double newRotation = (rotation / 131.0) * deltaTime;
-			if (newRotation > 0.055 || newRotation < -0.055) { // Filter out noise
-				degrees += -newRotation;
+			if (Robot.robotMap.robot == 1) {
+				if (newRotation > 0.055 || newRotation < -0.055) { // Filter out noise
+					degrees += -newRotation;
+				}
+			} else {
+				if (newRotation > 0.1 || newRotation < -0.1) { // Filter out noise
+					degrees += -newRotation;
+				}
 			}
 			
 			return true;

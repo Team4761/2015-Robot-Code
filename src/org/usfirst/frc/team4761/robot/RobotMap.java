@@ -16,7 +16,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  * floating around.
  */
 public class RobotMap {
-	public String robot = "OLD";
+	public int robot = 1;
 	
 	public SpeedController leftFrontMotor;
 	public SpeedController leftRearMotor;
@@ -41,7 +41,6 @@ public class RobotMap {
 	
 	public VictorSP spinner;
 	
-	public DigitalInput someDI;
 	public DigitalInput spinnerDI1;
 	public DigitalInput spinnerDI2;
 	
@@ -53,11 +52,18 @@ public class RobotMap {
 	public VictorSP elevatorMotor2;
 	
 	public RobotMap () {
-		// Universal electronics
+		if (Settings.read("Robot") == 0) {
+			// 1 for new robot and 2 for old robot
+			Settings.write("Robot", 2);
+			robot = Settings.read("Robot");
+		} else {
+			robot = Settings.read("Robot");
+		}
+		// Universal objects
 		gyro = new GyroSensor();
 		
 		// Robot specific electronics
-		if (robot.equals("NEW")) {
+		if (robot == 1) {
 			leftFrontMotor = new VictorSP(3);
 			leftRearMotor = new VictorSP(1);
 			rightFrontMotor = new VictorSP(2);
