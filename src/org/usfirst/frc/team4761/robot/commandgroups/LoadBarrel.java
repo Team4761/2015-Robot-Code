@@ -1,8 +1,8 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.commands.ConveyorPassBarrel;
-import org.usfirst.frc.team4761.robot.commands.ConveyorUntilBarrel;
-import org.usfirst.frc.team4761.robot.commands.MoveElevatorToBottom;
+import org.usfirst.frc.team4761.robot.commands.conveyorbelts.ConveyorPassBarrel;
+import org.usfirst.frc.team4761.robot.commands.conveyorbelts.ConveyorUntilBarrel;
+import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToBottom;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
