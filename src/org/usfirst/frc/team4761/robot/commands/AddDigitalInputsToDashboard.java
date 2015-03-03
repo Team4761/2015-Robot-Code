@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+/**
+ * Adds the first ten digital inputs to Smart Dashboard.
+ */
 public class AddDigitalInputsToDashboard extends Command {
 	DigitalInput[] inputs = new DigitalInput[10];
 	protected void initialize() {

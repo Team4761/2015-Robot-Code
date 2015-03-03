@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Moves the lift conveyor backwards until a button is no longer pressed at full speed.
  */
 public class LiftConveyorBackward extends Command {
 	private int button = 0;

@@ -1,8 +1,9 @@
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.PIDOutput;
-
-// Dummy class to hold the output of the PID loop
+/**
+ * Dummy class to hold the output of the PID loop.
+ */
 public class DrivePIDOutput implements PIDOutput {
 	private double value = 0;
 	

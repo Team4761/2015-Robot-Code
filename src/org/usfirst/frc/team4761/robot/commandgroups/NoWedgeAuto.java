@@ -13,7 +13,7 @@ import org.usfirst.frc.team4761.robot.commands.rcgrabber.SpinRcBaseOut;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Autonomous mode where the wedge is not deployed.
+ * Picks up three RCs in a row.
  */
 public class NoWedgeAuto extends CommandGroup {
     

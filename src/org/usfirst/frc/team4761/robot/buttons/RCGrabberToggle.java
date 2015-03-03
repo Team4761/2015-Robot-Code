@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Toggles the RC Grabber position up or down.
  */
 public class RCGrabberToggle extends Command {
 

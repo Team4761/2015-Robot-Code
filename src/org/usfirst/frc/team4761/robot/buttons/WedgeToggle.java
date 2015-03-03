@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Toggles the wedge position in/out.
  */
 public class WedgeToggle extends Command {
 

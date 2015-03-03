@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Forces all Commands that require the drive-train to terminate.
  */
 public class Stop extends Command {
 

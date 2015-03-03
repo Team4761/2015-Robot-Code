@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Moves the RC Grabber left until the limit switch is hit.
  */
 public class RCGrabberLeft extends Command {
 	private int button = 0;

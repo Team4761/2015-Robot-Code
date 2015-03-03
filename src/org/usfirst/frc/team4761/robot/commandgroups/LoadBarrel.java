@@ -7,7 +7,7 @@ import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToBottom;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Load up a barrel onto the elevator from the conveyor belt.
+ * Loads a Barrel from the main conveyor onto the elevator.
  */
 public class LoadBarrel extends CommandGroup {
     

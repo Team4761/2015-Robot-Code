@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4761.robot.Robot;
 
 /**
- *
+ * Moves the lift conveyor forwards until a button is no longer pressed at full speed.
  */
 public class LiftConveyorForward extends Command {
 	private int button = 0;

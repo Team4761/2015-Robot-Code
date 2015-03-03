@@ -4,7 +4,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team4761.robot.Robot;
-
+/**
+ * Moves the main conveyor backwards until a button is no longer pressed at full speed.
+ */
 public class MainConveyorBackward extends Command {
 	private int button = 0;
 	private int joystickNum;

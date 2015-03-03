@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.commands.debug.ReadDi0Value;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * An autonomous mode for debugging. Feel free to add/remove stuff.
+ * Adds a 'ReadDi0Value' command to currently executing command group. 
  */
 public class DebugAutonomous extends CommandGroup {
     

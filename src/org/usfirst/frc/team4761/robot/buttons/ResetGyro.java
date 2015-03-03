@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
 /**
- *
+ * Resets the gyro position to 90 degrees.
  */
 public class ResetGyro extends Command {
 	GyroSensor gyro = new GyroSensor();

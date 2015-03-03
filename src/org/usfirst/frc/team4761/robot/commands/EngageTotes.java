@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Drives the robot slowly sideways for 1 second.
  */
 public class EngageTotes extends Command {
 
