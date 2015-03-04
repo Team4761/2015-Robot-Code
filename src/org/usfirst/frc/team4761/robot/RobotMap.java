@@ -91,11 +91,8 @@ public class RobotMap {
 			gyroSensor = new Gyro(0);
 			
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
-			
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));
-
 			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(4));
-			
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(5));
 		
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
