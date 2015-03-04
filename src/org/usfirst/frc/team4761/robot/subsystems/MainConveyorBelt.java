@@ -1,12 +1,10 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.TalonSRX;
-import edu.wpi.first.wpilibj.command.Subsystem;
-
 import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
+
+import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Conveyor belt for moving RCs through the robot. Uses a Talon SRX speed

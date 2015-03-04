@@ -1,15 +1,12 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Encoder;
-
-import edu.wpi.first.wpilibj.PIDController;
-
-import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
-
 import org.usfirst.frc.team4761.robot.ElevatorPIDOutput;
 import org.usfirst.frc.team4761.robot.Robot;
+
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  * Subsystem that can move up an down on guide rails. Used for moving RCs up

@@ -1,8 +1,9 @@
 package org.usfirst.frc.team4761.robot.buttons;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Resets the gyro position to 90 degrees.

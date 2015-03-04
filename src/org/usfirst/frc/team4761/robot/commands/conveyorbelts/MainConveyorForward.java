@@ -1,8 +1,8 @@
 package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team4761.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 public class MainConveyorForward extends Command {
 	
