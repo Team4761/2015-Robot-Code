@@ -31,17 +31,18 @@ public class Robot extends IterativeRobot {
 	public static RcGrabberBase rcGrabberBase;
 	public static LiftConveyorBelt liftConveyorBelt;
 	public static RobotMap robotMap = new RobotMap();
-	
+	public static Robot robot;
 	public static OI oi;
 	public Command teleop;
 	
-	Command autonomousCommand;
+	public Command autonomousCommand;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
+		robot = this;
 		oi = new OI();
 		teleop = new Teleop();
 		driveTrain = new DriveTrain();
@@ -92,12 +93,7 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to 
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		if (autonomousCommand != null) autonomousCommand.cancel();
-		teleop.start();
+		
 	}
 	
 	/**

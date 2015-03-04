@@ -97,6 +97,7 @@ public class OI {
 			buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(3, 2));
 			buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
 			buttonManager.runOnPress(10, 2, new SnapToNearestCardinal());
+			buttonManager.runOnPress(9, 2, new KillAuto());
 			buttonManager.runOnPress(6, 2, new TurnInDown());
 		}
 	}
