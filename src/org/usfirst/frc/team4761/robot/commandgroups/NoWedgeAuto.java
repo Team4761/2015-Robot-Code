@@ -1,5 +1,6 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
 import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
@@ -36,5 +37,7 @@ public class NoWedgeAuto extends CommandGroup {
 		addSequential(new GoToBackEdgeOfBarrel());
 		addSequential(new Stop());
 		addSequential(new RaiseRcGrabber());
+		
+		Robot.robot.autoDone = true;
     }
 }

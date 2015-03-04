@@ -12,6 +12,7 @@ import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
+import org.usfirst.frc.team4761.robot.commands.WatchForAutoEnd;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
 import org.usfirst.frc.team4761.robot.subsystems.*;
 
@@ -31,17 +32,19 @@ public class Robot extends IterativeRobot {
 	public static RcGrabberBase rcGrabberBase;
 	public static LiftConveyorBelt liftConveyorBelt;
 	public static RobotMap robotMap = new RobotMap();
-	
+	public static Robot robot;
 	public static OI oi;
+	public boolean autoDone = false;
 	public Command teleop;
 	
-	Command autonomousCommand;
+	public Command autonomousCommand;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
+		robot = this;
 		oi = new OI();
 		teleop = new Teleop();
 		driveTrain = new DriveTrain();
@@ -68,6 +71,7 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
+		new WatchForAutoEnd().start();
 		if (Robot.robotMap.robot == 1) {
 			// Assign autonomous
 			if (SmartDashboard.getBoolean("Step Autonomous")) {
@@ -92,12 +96,7 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-		// teleop starts running. If you want the autonomous to 
-		// continue until interrupted by another command, remove
-		// this line or comment it out.
-		if (autonomousCommand != null) autonomousCommand.cancel();
-		teleop.start();
+		
 	}
 	
 	/**
