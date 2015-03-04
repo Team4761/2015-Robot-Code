@@ -32,7 +32,7 @@ public class DriveTrain extends Subsystem {
 			robotDrive.setInvertedMotor(MotorType.kRearRight, true);
 		}
 		
-		gyroPidController.setSetpoint(GyroSensor.getDegrees());
+		gyroPidController.setSetpoint(Robot.robotMap.gyro.getAngle());
 		gyroPidController.enable();
 	}
 	
@@ -49,7 +49,7 @@ public class DriveTrain extends Subsystem {
 		rotateAccumulator += rotate;
 		gyroPidController.setSetpoint(rotateAccumulator);
 		
-		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), Robot.robotMap.gyroSensor.getAngle());
+		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), Robot.robotMap.gyro.getAngle());
 		//robotDrive.mecanumDrive_Cartesian(x, y, 0, GyroSensor.getDegrees());
 	}
 	
@@ -82,15 +82,16 @@ public class DriveTrain extends Subsystem {
 	public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
 		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
 		
-		double degrees = Robot.robotMap.gyroSensor.getAngle();
+		double degrees = Robot.robotMap.gyro.getAngle();
 		
 		log.dev("Angle: " + degrees + " Setpoint: " + gyroPidController.getSetpoint() + " XBox Turn: " + convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1));
 		
 		if (Robot.oi.joysticks[2].getRawAxis(4) >= 0.1 || Robot.oi.joysticks[2].getRawAxis(4) <= -0.1) {
-			gyroPidController.setSetpoint(GyroSensor.getDegrees() + (convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1)));
+			gyroPidController.setSetpoint(Robot.robotMap.gyro.getAngle() + (convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1)));
 		}
 
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), driveGyroPIDOutput.getValue(), degrees);
+		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), driveGyroPIDOutput.getValue(), degrees);
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(4), joystick1), degrees);
 	}
 	
 	public void setAccumulator (double degrees) {

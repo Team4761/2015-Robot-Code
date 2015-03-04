@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.sensors;
 
 import org.usfirst.frc.team4761.robot.Robot;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.I2C;
 
 /**
@@ -15,9 +16,23 @@ import edu.wpi.first.wpilibj.I2C;
  */
 public class GyroSensor {
 	private static double degrees = 0; // The accumulated degrees from the get rotations per second function
+	private double rotation = 0; // The degrees of the blue gyro
 	
 	private I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
+	public Gyro gyroSensor = new Gyro(0); // Blue Gyro
+	
+	// Blue Gyro
+	public double getAngle () {
+		rotation = gyroSensor.getAngle();
+		return rotation;
+	}
+	
+	public void setOffset (double offset) {
+		rotation += offset;
+	}
+	
+	// I2C gyro
 	public GyroSensor () {
 		gyro.write(0x6B, 0x00); // Power Config
 		gyro.write(0x1A, 0x26); // Basic Config
