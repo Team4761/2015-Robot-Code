@@ -61,6 +61,7 @@ public class GyroSensor {
 		degrees = rotation;
 	}
 	
+	// Not working yet
 	public boolean updateDegrees (double deltaTime) {
 		byte[] overflow = new byte[1];
 		gyro.read(0x3A, 1, overflow);

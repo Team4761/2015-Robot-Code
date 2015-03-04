@@ -28,7 +28,7 @@ public class LogToFile extends Command {
 	protected void execute() {
 		//log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
 		//log.dev("Towards Totes: " + Double.toString(outerConveyorToteDistanceSensor.getDistance()));
-		//log.dev("Angle: " + Double.toString(GyroSensor.getDegrees()));
+		log.dev("Angle: " + Double.toString(GyroSensor.getDegrees()));
 		//log.dev("Setpoint: " + Double.toString(Robot.driveTrain.gyroPidController.getSetpoint()));
 		//log.dev("Barrel: " + Double.toString(barrelSensor.getDistance()));
 		//SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());

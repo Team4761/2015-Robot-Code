@@ -11,6 +11,7 @@ import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.GyroPIDSource;
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
 /**
  * Base of the robot with wheels attached to it.
@@ -48,7 +49,7 @@ public class DriveTrain extends Subsystem {
 		rotateAccumulator += rotate;
 		gyroPidController.setSetpoint(rotateAccumulator);
 		
-		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), Robot.robotMap.gyro.getAngle());
+		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), GyroSensor.getDegrees());
 	}
 	
 	public void driveAbsolute (double x, double y, double degrees) {
@@ -80,7 +81,7 @@ public class DriveTrain extends Subsystem {
 	public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
 		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
 		
-		double degrees = Robot.robotMap.gyro.getAngle();
+		double degrees = GyroSensor.getDegrees();
 		
 		log.dev("Angle: " + degrees);
 		

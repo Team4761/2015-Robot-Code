@@ -58,7 +58,6 @@ public class Robot extends IterativeRobot {
 		
 		LogManager.setMinimumLevel(Robot.robotMap.minLogLevel);
 		
-		// We are using a different gyro
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
 	}
