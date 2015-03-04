@@ -12,6 +12,7 @@ import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
+import org.usfirst.frc.team4761.robot.commands.WatchForAutoEnd;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
 import org.usfirst.frc.team4761.robot.subsystems.*;
 
@@ -33,6 +34,7 @@ public class Robot extends IterativeRobot {
 	public static RobotMap robotMap = new RobotMap();
 	public static Robot robot;
 	public static OI oi;
+	public boolean autoDone = false;
 	public Command teleop;
 	
 	public Command autonomousCommand;
@@ -69,6 +71,7 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
+		new WatchForAutoEnd().start();
 		if (Robot.robotMap.robot == 1) {
 			// Assign autonomous
 			if (SmartDashboard.getBoolean("Step Autonomous")) {

@@ -4,23 +4,33 @@ import org.usfirst.frc.team4761.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class KillAuto extends Command {
+public class WatchForAutoEnd extends Command{
 
+	@Override
 	protected void initialize() {
-		Robot.robot.autoDone = true;
+		
 	}
+
+	@Override
 	protected void execute() {
 		
 	}
+
+	@Override
 	protected boolean isFinished() {
-		return true;
+		return Robot.robot.autoDone;
 	}
 
+	@Override
 	protected void end() {
-		
-	}
-	protected void interrupted() {
-		
+		if (Robot.robot.autonomousCommand != null)
+			Robot.robot.autonomousCommand.cancel();
+		Robot.robot.teleop.start();	
 	}
 
+	@Override
+	protected void interrupted() {
+		// TODO Auto-generated method stub
+		
+	}
 }
