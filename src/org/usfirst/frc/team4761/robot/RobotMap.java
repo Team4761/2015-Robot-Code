@@ -144,6 +144,7 @@ public class RobotMap {
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);
+			
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
 		} else {
@@ -155,6 +156,6 @@ public class RobotMap {
 			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 			minLogLevel = Level.DEV;
-		}
+			}
 	}
 }
