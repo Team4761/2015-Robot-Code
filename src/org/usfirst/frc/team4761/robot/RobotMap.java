@@ -29,10 +29,23 @@ public class RobotMap {
 	
 	public Gyro gyroSensor;
 	
+	/**
+	 * A distance sensor that senses the barrels for auto-mode.
+	 */
 	public MediumDistanceSensor barrelDistanceSensor;
+	/**
+	 * A distance sensor on the elevator.
+	 */
 	public MediumDistanceSensor elevatorDistanceSensor;
+	/**
+	 * Distance sensor on the rear of the outer conveyor belt. Used for
+	 * detecting something.
+	 */
 	public MediumDistanceSensor outerConveyorToteDistanceSensor;
-
+	/**
+	 * Distance sensor on the front of the outer conveyor belt. Used for
+	 * detecting when the elevator is at the top of a tote stack.
+	 */
 	public ShortDistanceSensor outerConveyorBarrelDistanceSensor;
 	
 	public Logger log;
@@ -77,26 +90,12 @@ public class RobotMap {
 			
 			gyroSensor = new Gyro(0);
 			
-			/**
-			 * A distance sensor that senses the barrels for auto-mode.
-			 */
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
 			
-			/**
-			 * A distance sensor on the elevator.
-			 */
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));
-			
-			/**
-			 * Distance sensor on the rear of the outer conveyor belt. Used for
-			 * detecting something.
-			 */
+
 			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(4));
 			
-			/**
-			 * Distance sensor on the front of the outer conveyor belt. Used for
-			 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
-			 */
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(5));
 		
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
