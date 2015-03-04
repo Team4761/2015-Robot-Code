@@ -1,24 +1,13 @@
 package org.usfirst.frc.team4761.robot;
 
+import edu.wpi.first.wpilibj.*;
+
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
-
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.VictorSP;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -37,26 +26,11 @@ public class RobotMap {
 	public RobotDrive robotDrive;
 	
 	public GyroSensor gyro;
-	
-	public Gyro gyroSensor;
-	
-	/**
-	 * A distance sensor that senses the barrels for auto-mode.
-	 */
+
 	public MediumDistanceSensor barrelDistanceSensor;
-	/**
-	 * A distance sensor on the elevator.
-	 */
 	public MediumDistanceSensor elevatorDistanceSensor;
-	/**
-	 * Distance sensor on the rear of the outer conveyor belt. Used for
-	 * detecting something.
-	 */
 	public MediumDistanceSensor outerConveyorToteDistanceSensor;
-	/**
-	 * Distance sensor on the front of the outer conveyor belt. Used for
-	 * detecting when the elevator is at the top of a tote stack.
-	 */
+
 	public ShortDistanceSensor outerConveyorBarrelDistanceSensor;
 	
 	public Logger log;
@@ -72,7 +46,6 @@ public class RobotMap {
 	public DigitalInput someDI;
 	
 	public DigitalInput elevatorDI;
-	public Encoder elevatorQuadEncoder;
 	
 	public Talon mainConveyorBeltMotor;
 	public VictorSP elevatorConveyorBeltMotor;
@@ -89,6 +62,8 @@ public class RobotMap {
 		}
 		// Universal objects
 		gyro = new GyroSensor();
+		gyro.gyroSensor.setSensitivity(0.008);
+		gyro.gyroSensor.reset();
 		
 		// Robot specific electronics
 		if (robot == 1) {
@@ -97,24 +72,30 @@ public class RobotMap {
 			rightFrontMotor = new VictorSP(2);
 			rightRearMotor = new VictorSP(0);
 			
-			
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
-			gyroSensor = new Gyro(0);
-			
+			/**
+			 * A distance sensor that senses the barrels for auto-mode.
+			 */
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
+			
+			/**
+			 * A distance sensor on the elevator.
+			 */
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));
+			
+			/**
+			 * Distance sensor on the rear of the outer conveyor belt. Used for
+			 * detecting something.
+			 */
 			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(4));
+			
+			/**
+			 * Distance sensor on the front of the outer conveyor belt. Used for
+			 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
+			 */
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(5));
 		
-			/**
-			 * An encoder sensor on the elevator to measure the distance covered by the elevator so we
-			 * can move to really specific locations with the elevator.
-			 */
-			
-			elevatorQuadEncoder = new Encoder(6, 7, false, EncodingType.k4X);
-			elevatorQuadEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
-			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
 			
@@ -144,7 +125,6 @@ public class RobotMap {
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);
-			
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
 		} else {
@@ -156,6 +136,6 @@ public class RobotMap {
 			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 			minLogLevel = Level.DEV;
-			}
+		}
 	}
 }
