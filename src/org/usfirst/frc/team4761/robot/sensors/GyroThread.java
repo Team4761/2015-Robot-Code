@@ -7,17 +7,9 @@ public class GyroThread implements Runnable {
 	
 	public void run() {
 		while (true) {
-			if (Robot.robotMap.gyro.updateDegrees(deltaTime)) {
-				deltaTime = 0.05;
-			} else {
-				deltaTime += 0.05;
-			}
-			
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			Robot.robotMap.gyro.updateDegrees(deltaTime);
+
+			System.out.println(GyroSensor.getDegrees());
 		}
 	}
 }

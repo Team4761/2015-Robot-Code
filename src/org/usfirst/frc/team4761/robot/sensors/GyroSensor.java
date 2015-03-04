@@ -19,13 +19,16 @@ public class GyroSensor {
 	private I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
 	public GyroSensor () {
-		gyro.write(0x6B, 0x00); // Power
+		gyro.write(0x6B, 0x00); // Power Config
 		gyro.write(0x1A, 0x26); // Basic Config
 		gyro.write(0x1B, 0x00); // Gyro Config
-		gyro.write(0x38, 0x01);
+		gyro.write(0x38, 0x11); // Interrupt Config
+		gyro.write(0x23, 0x10); // FIFO Config
+		gyro.write(0x6A, 0x04); // User Control (Turn off FIFO and reset it)
+		gyro.write(0x6A, 0x40); // User Control (Turn FIFO back on);
 	}
 	
-	private int uByteToInt(byte number) {
+	private int uByteToInt (byte number) {
 		int iNumber = number & 0b01111111;
 		
 		if (number < 0) {
@@ -35,15 +38,51 @@ public class GyroSensor {
 		return iNumber;
 	}
 	
-	public static double getDegrees() {
+	public static double getDegrees () {
 		return degrees;
 	}
 	
-	public void setDegrees(double rotation) {
+	public void setDegrees (double rotation) {
 		degrees = rotation;
 	}
 	
-	public boolean updateDegrees(double deltaTime) {
+	public boolean updateDegrees (double deltaTime) {
+		byte[] overflow = new byte[1];
+		gyro.read(0x3A, 1, overflow);
+		
+		if ((overflow[0] & 0b00010000) != 0) {
+			System.out.println("FIFO BUFFER HAS OVERFLOWED!!! THE GYRO WILL NOW BE INACCURATE UNTIL RESTART!!!");
+		}
+		
+		byte[] fifoCount = new byte[2];
+		gyro.read(0x72, 2, fifoCount);
+		int highOrder = uByteToInt(fifoCount[0]);
+		int lowOrder = uByteToInt(fifoCount[1]);
+		
+		int count = (highOrder << 8) + lowOrder;
+		
+		System.out.println("Count: " + count);
+		
+		if (count >= 2) { // FIFO registers are not empty
+			for (int i = 0; i < count; i += 2) {
+				byte[] highOrderByte = new byte[1];
+				gyro.read(0x74, 1, highOrderByte);
+				byte[] lowOrderByte = new byte[1];
+				gyro.read(0x74, 1, lowOrderByte);
+				
+				highOrder = (int) highOrderByte[0];
+				lowOrder = uByteToInt(lowOrderByte[0]);
+				
+				int rotation = ((highOrder << 8) + lowOrder) / 1000;
+				
+				degrees += -(rotation / 131.0);
+			}
+		}
+		
+		return false;
+	}
+	
+	public boolean updateDegreesOld (double deltaTime) {
 		byte[] dataReady = new byte[1];
 		gyro.read(0x3A, 1, dataReady);
 		
@@ -61,7 +100,8 @@ public class GyroSensor {
 					degrees += -newRotation;
 				}
 			} else {
-				if (newRotation > 0.1 || newRotation < -0.1) { // Filter out noise
+				System.out.println("Test");
+				if (newRotation > 0.2 || newRotation < -0.2) { // Filter out noise
 					degrees += -newRotation;
 				}
 			}
@@ -72,7 +112,7 @@ public class GyroSensor {
 		return false;
 	}
 	
-	public double getTemp() {
+	public double getTemp () {
 		byte[] bTemp = new byte[2];
 		gyro.read(0x41, 2, bTemp);
 		int highOrder = (int) bTemp[0];
