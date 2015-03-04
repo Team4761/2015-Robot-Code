@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
 /**
- * Resets the gyro position to 90 degrees.
+ * Resets the gyro position to 0 degrees.
  */
 public class ResetGyro extends Command {
 	GyroSensor gyro = new GyroSensor();
@@ -22,9 +22,9 @@ public class ResetGyro extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		// Needs to be tested to find appropriate value
-		gyro.setDegrees(90);
-		Robot.driveTrain.setAccumulator(90);
-		Robot.driveTrain.gyroPidController.setSetpoint(90);
+		Robot.robotMap.gyroSensor.reset();
+		Robot.driveTrain.setAccumulator(0);
+		Robot.driveTrain.gyroPidController.setSetpoint(0);
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

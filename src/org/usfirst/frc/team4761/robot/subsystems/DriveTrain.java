@@ -49,7 +49,7 @@ public class DriveTrain extends Subsystem {
 		rotateAccumulator += rotate;
 		gyroPidController.setSetpoint(rotateAccumulator);
 		
-		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), GyroSensor.getDegrees());
+		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), Robot.robotMap.gyroSensor.getAngle());
 		//robotDrive.mecanumDrive_Cartesian(x, y, 0, GyroSensor.getDegrees());
 	}
 	
@@ -82,7 +82,7 @@ public class DriveTrain extends Subsystem {
 	public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
 		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
 		
-		double degrees = GyroSensor.getDegrees();
+		double degrees = Robot.robotMap.gyroSensor.getAngle();
 		
 		log.dev("Angle: " + degrees + " Setpoint: " + gyroPidController.getSetpoint() + " XBox Turn: " + convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1));
 		
