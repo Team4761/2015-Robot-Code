@@ -1,8 +1,9 @@
 package org.usfirst.frc.team4761.robot.buttons;
 
-import org.usfirst.frc.team4761.robot.Robot;
-
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4761.robot.Robot;
 
 /**
  * Moves the lift conveyor forwards until a button is no longer pressed at full speed.

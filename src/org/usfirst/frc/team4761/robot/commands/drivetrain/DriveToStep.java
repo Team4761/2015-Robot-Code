@@ -1,10 +1,11 @@
 package org.usfirst.frc.team4761.robot.commands.drivetrain;
 
+import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
-
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Drive the robot to the step.

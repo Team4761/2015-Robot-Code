@@ -1,8 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
-import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
-
 import edu.wpi.first.wpilibj.PIDSource;
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 /**
  * Wrapper class for PIDSource.
  */

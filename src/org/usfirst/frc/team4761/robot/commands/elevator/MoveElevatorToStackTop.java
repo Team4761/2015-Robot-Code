@@ -1,9 +1,10 @@
 package org.usfirst.frc.team4761.robot.commands.elevator;
 
-import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
-
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 
 /**
  * If the distance sensor on the elevator is below the top of a stack of totes,

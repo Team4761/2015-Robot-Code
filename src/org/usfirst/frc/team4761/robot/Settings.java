@@ -1,9 +1,6 @@
 package org.usfirst.frc.team4761.robot;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -29,7 +26,6 @@ public class Settings  {
 				
 				inp = sc.nextLine();
 			}
-			sc.close();
 		} catch (Exception ex) {
 			System.err.println("Error loading setting \"" + name + "\".");
 			ex.printStackTrace();

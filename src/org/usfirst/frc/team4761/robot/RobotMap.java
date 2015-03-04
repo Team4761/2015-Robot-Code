@@ -62,7 +62,7 @@ public class RobotMap {
 		}
 		// Universal objects
 		gyro = new GyroSensor();
-		gyro.gyroSensor.setSensitivity(0.008);
+		gyro.gyroSensor.setSensitivity(0.007);
 		gyro.gyroSensor.reset();
 		
 		// Robot specific electronics

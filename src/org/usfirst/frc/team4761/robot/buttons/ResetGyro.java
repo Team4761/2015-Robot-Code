@@ -1,15 +1,12 @@
 package org.usfirst.frc.team4761.robot.buttons;
 
-import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
-
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4761.robot.Robot;
 
 /**
  * Resets the gyro position to 90 degrees.
  */
 public class ResetGyro extends Command {
-	GyroSensor gyro = new GyroSensor();
 	
 	public ResetGyro() {
 		// Use requires() here to declare subsystem dependencies
@@ -23,7 +20,7 @@ public class ResetGyro extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		// Needs to be tested to find appropriate value
-		Robot.robotMap.gyroSensor.reset();
+		Robot.robotMap.gyro.gyroSensor.reset();
 		Robot.robotMap.gyro.setOffset(90);
 		Robot.driveTrain.setAccumulator(90);
 		Robot.driveTrain.gyroPidController.setSetpoint(90);

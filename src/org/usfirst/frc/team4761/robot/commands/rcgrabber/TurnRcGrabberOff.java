@@ -1,9 +1,8 @@
 package org.usfirst.frc.team4761.robot.commands.rcgrabber;
 
-import org.usfirst.frc.team4761.robot.Robot;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team4761.robot.Robot;
 
 public class TurnRcGrabberOff extends Command {
 	

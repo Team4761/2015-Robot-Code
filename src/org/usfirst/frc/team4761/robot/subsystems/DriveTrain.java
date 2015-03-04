@@ -1,16 +1,16 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import org.simonandrews.robolog.Logger;
-import org.usfirst.frc.team4761.robot.DrivePIDOutput;
-import org.usfirst.frc.team4761.robot.GyroPIDSource;
-import org.usfirst.frc.team4761.robot.Robot;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.DrivePIDOutput;
+import org.usfirst.frc.team4761.robot.GyroPIDSource;
+import org.usfirst.frc.team4761.robot.Robot;
 
 /**
  * Base of the robot with wheels attached to it.
@@ -31,7 +31,7 @@ public class DriveTrain extends Subsystem {
 			robotDrive.setInvertedMotor(MotorType.kRearRight, true);
 		}
 		
-		gyroPidController.setSetpoint(Robot.robotMap.gyro.getAngle());
+		gyroPidController.setSetpoint(0);
 		gyroPidController.enable();
 	}
 	
@@ -49,7 +49,6 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setSetpoint(rotateAccumulator);
 		
 		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), Robot.robotMap.gyro.getAngle());
-		//robotDrive.mecanumDrive_Cartesian(x, y, 0, GyroSensor.getDegrees());
 	}
 	
 	public void driveAbsolute (double x, double y, double degrees) {
@@ -83,11 +82,11 @@ public class DriveTrain extends Subsystem {
 		
 		double degrees = Robot.robotMap.gyro.getAngle();
 		
-		log.dev("Angle: " + degrees + " Setpoint: " + gyroPidController.getSetpoint() + " XBox Turn: " + convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1));
+		log.dev("Angle: " + degrees);
 		
-		if (Robot.oi.joysticks[2].getRawAxis(4) >= 0.1 || Robot.oi.joysticks[2].getRawAxis(4) <= -0.1) {
+		/*if (Robot.oi.joysticks[2].getRawAxis(4) >= 0.1 || Robot.oi.joysticks[2].getRawAxis(4) <= -0.1) {
 			gyroPidController.setSetpoint(Robot.robotMap.gyro.getAngle() + (convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1)));
-		}
+		}*/
 
 		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), driveGyroPIDOutput.getValue(), degrees);
 		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(4), joystick1), degrees);

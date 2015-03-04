@@ -1,9 +1,10 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import org.usfirst.frc.team4761.robot.Robot;
-
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
  * Arm with a hook on the end that can grab RCs

@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
-import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putBoolean;
-import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putNumber;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
@@ -10,10 +10,13 @@ import org.usfirst.frc.team4761.robot.buttons.MainConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.MoveElevator;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberLeft;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
+import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
+import org.usfirst.frc.team4761.robot.buttons.WedgeToggle;
+import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
 import org.usfirst.frc.team4761.robot.commandgroups.TurnInDown;
-import org.usfirst.frc.team4761.robot.commands.KillAuto;
+import org.usfirst.frc.team4761.robot.commands.*;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
 import org.usfirst.frc.team4761.robot.commands.drivetrain.SnapToNearestCardinal;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
@@ -22,7 +25,7 @@ import org.usfirst.frc.team4761.robot.commands.plower.PlowRetract;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RaiseRcGrabber;
 
-import edu.wpi.first.wpilibj.Joystick;
+import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -94,8 +97,9 @@ public class OI {
 			buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(3, 2));
 			buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
 			buttonManager.runOnPress(10, 2, new SnapToNearestCardinal());
-			buttonManager.runOnPress(9, 2, new KillAuto());
 			buttonManager.runOnPress(6, 2, new TurnInDown());
+		} else {
+			buttonManager.runOnPress(8, 1, new ResetGyro());
 		}
 	}
 }

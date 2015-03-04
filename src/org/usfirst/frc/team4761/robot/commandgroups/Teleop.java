@@ -1,9 +1,9 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
+import edu.wpi.first.wpilibj.command.CommandGroup;
+
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
 import org.usfirst.frc.team4761.robot.commands.drivetrain.DriveWithJoysticks;
-
-import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  * The command that is run when the robot enters teleop mode.
