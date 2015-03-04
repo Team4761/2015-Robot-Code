@@ -1,6 +1,8 @@
 package org.usfirst.frc.team4761.robot;
 
 import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.PIDSource.PIDSourceParameter;
 
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
@@ -61,6 +63,7 @@ public class RobotMap {
 	public DigitalInput someDI;
 	
 	public DigitalInput elevatorDI;
+	public Encoder elevatorQuadEncoder;
 	
 	public Talon mainConveyorBeltMotor;
 	public VictorSP elevatorConveyorBeltMotor;
@@ -95,6 +98,14 @@ public class RobotMap {
 			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(4));
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(5));
 		
+			/**
+			 * An encoder sensor on the elevator to measure the distance covered by the elevator so we
+			 * can move to really specific locations with the elevator.
+			 */
+			
+			elevatorQuadEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+			elevatorQuadEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
 			
