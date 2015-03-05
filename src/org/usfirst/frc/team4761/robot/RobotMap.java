@@ -52,8 +52,8 @@ public class RobotMap {
 	public static VictorSP elevatorMotor1;
 	public static VictorSP elevatorMotor2;
 	
-	public static DigitalInput elevatorMagnetDetectorDown;
-	public static DigitalInput elevatorMagnetDetectorUp;
+	public DigitalInput elevatorMagnetDetectorDown;
+	public DigitalInput elevatorMagnetDetectorUp;
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -104,14 +104,14 @@ public class RobotMap {
 			 * to obtain the position of the elevator. In this case the down position.
 			 */
 			
-			elevatorMagnetDetectorDown = new DigitalInput(0);
+			elevatorMagnetDetectorDown = new DigitalInput(3);
 			
 			/**
 			 * A magnet sensor that detects when it is in proximity to a magnet. It is used
 			 * to obtain the position of the elevator. In this case the up position.
 			 */
 			
-			elevatorMagnetDetectorUp = new DigitalInput(1);
+			elevatorMagnetDetectorUp = new DigitalInput(4);
 			
 			/**
 			 * Distance sensor on the front of the outer conveyor belt. Used for
