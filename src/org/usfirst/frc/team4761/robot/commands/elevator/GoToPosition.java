@@ -24,16 +24,18 @@ public class GoToPosition extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.elevator.update();
+    	System.out.println("Stopped: " + (position==Robot.elevator.encoder.getRaw()));
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+    	return Math.abs(position-Robot.elevator.encoder.getRaw()) < 10;
         // return Robot.elevator.isFinished();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.elevator.stop();
     }
 
     // Called when another command which requires one or more of the same

@@ -87,6 +87,11 @@ public class RobotMap {
 		} else {
 			robot = Settings.read("Robot");
 		}
+		elevatorQuadEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+		elevatorQuadEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
+		elevatorMotor1 = new VictorSP(8);
+		elevatorMotor2 = new VictorSP(9);
+		System.out.println("Created encoder: " + elevatorQuadEncoder);
 		// Universal objects
 		gyro = new GyroSensor();
 		
@@ -100,7 +105,7 @@ public class RobotMap {
 			
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
-			gyroSensor = new Gyro(0);
+			//gyroSensor = new Gyro(0);
 			
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));
@@ -111,9 +116,6 @@ public class RobotMap {
 			 * An encoder sensor on the elevator to measure the distance covered by the elevator so we
 			 * can move to really specific locations with the elevator.
 			 */
-			
-			elevatorQuadEncoder = new Encoder(6, 7, false, EncodingType.k4X);
-			elevatorQuadEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
 			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
@@ -144,9 +146,6 @@ public class RobotMap {
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);
-			
-			elevatorMotor1 = new VictorSP(8);
-			elevatorMotor2 = new VictorSP(9);
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);

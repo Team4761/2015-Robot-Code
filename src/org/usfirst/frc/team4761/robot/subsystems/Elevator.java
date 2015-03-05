@@ -14,15 +14,31 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * and down, and putting them on top of piles.
  */
 public class Elevator extends Subsystem {
-	private static VictorSP speedController1 = Robot.robotMap.elevatorMotor1;
-	private static VictorSP speedController2 = Robot.robotMap.elevatorMotor2;
+	private VictorSP speedController1 = Robot.robotMap.elevatorMotor1;
+	private VictorSP speedController2 = Robot.robotMap.elevatorMotor2;
 	
-	private static Encoder encoder = Robot.robotMap.elevatorQuadEncoder;
+	public Encoder encoder;
 	
-	private static ElevatorPIDOutput pidOutput = new ElevatorPIDOutput();
+	private ElevatorPIDOutput pidOutput;// = new ElevatorPIDOutput();
 	
-	private static PIDController PIDController = new PIDController(1.0, 0.0, 0.0, encoder, pidOutput); 
-	
+	public PIDController PIdController;// = new PIDController(1.0, 0.0, 0.0, encoder, pidOutput); 
+	public Elevator()
+	{
+		super();
+		try
+		{
+			pidOutput = new ElevatorPIDOutput();
+			encoder = Robot.robotMap.elevatorQuadEncoder;
+			PIdController = new PIDController(1.0/10, 0.0, 0.0, encoder, pidOutput);
+			PIdController.enable();
+			PIdController.setPercentTolerance(10);
+		}
+		catch (Exception e)
+		{
+			System.out.println("Error creating obj");
+			e.printStackTrace();
+		}
+	}
 	public void initDefaultCommand() {
 	}
 	
@@ -47,16 +63,17 @@ public class Elevator extends Subsystem {
 	}
 
 	public void setPosition(double position){
-		PIDController.setSetpoint(position);
+		PIdController.setSetpoint(position);
 	}
 	
 	public void update(){ // I died inside.
+		System.err.println(pidOutput.getValue() + "Setpoint: " + PIdController.getSetpoint() + " Encoder: " + encoder.getRaw());
 		speedController1.set(pidOutput.getValue());
 		speedController2.set(pidOutput.getValue());
 	}
 	
 	public boolean isFinished(){
-		return PIDController.onTarget();
+		return PIdController.onTarget();
 	}
 }
 

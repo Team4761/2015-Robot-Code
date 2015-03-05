@@ -7,6 +7,7 @@ import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.commands.WatchForAutoEnd;
+import org.usfirst.frc.team4761.robot.commands.elevator.GoToPosition;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
 import org.usfirst.frc.team4761.robot.subsystems.LiftConveyorBelt;
@@ -36,7 +37,7 @@ public class Robot extends IterativeRobot {
 	public static RcGrabber rcGrabber;
 	public static RcGrabberBase rcGrabberBase;
 	public static LiftConveyorBelt liftConveyorBelt;
-	public static RobotMap robotMap = new RobotMap();
+	public static RobotMap robotMap;
 	public static Robot robot;
 	public static OI oi;
 	public boolean autoDone = false;
@@ -50,13 +51,14 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		robot = this;
+		robotMap = new RobotMap();
 		oi = new OI();
 		teleop = new Teleop();
 		driveTrain = new DriveTrain();
-		
+		elevator = new Elevator();
 		if (Robot.robotMap.robot == 1) {
 			autonomousCommand = new NoWedgeAuto();
-			elevator = new Elevator();
+
 			mainConveyorBelt = new MainConveyorBelt();
 			plower = new Plower();
 			rcGrabber = new RcGrabber();
@@ -76,6 +78,9 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
+		new GoToPosition(1000).start();
+		//elevator.set(0.5);
+		/*
 		new WatchForAutoEnd().start();
 		if (Robot.robotMap.robot == 1) {
 			// Assign autonomous
@@ -90,7 +95,7 @@ public class Robot extends IterativeRobot {
 			}
 		
 			if (autonomousCommand != null) autonomousCommand.start();
-		}
+		}*/
 	}
 	
 	/**
@@ -101,7 +106,6 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void teleopInit() {
-		
 	}
 	
 	/**
