@@ -1,8 +1,6 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commands.drivetrain.Drive;
-import org.usfirst.frc.team4761.robot.commands.drivetrain.ToAutoZone;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -12,7 +10,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class DriveToAuto extends CommandGroup {
     
     public  DriveToAuto() {
-    	addSequential(new ResetGyro());
-    	addSequential(new Drive(0.0, -.5, 0, 5));
+    	addSequential(new Drive(0.0, 0.4, 0, 3));
     }
 }
