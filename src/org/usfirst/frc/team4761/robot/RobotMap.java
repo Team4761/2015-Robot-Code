@@ -52,6 +52,9 @@ public class RobotMap {
 	public VictorSP elevatorMotor1;
 	public VictorSP elevatorMotor2;
 	
+	public static DigitalInput elevatorMagnetDetectorDown;
+	public static DigitalInput elevatorMagnetDetectorUp;
+	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
 			// 1 for new robot and 2 for old robot
@@ -96,6 +99,25 @@ public class RobotMap {
 			 */
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(5));
 		
+			/**
+			 * A magnet sensor that detects when it is in proximity to a magnet. It is used
+			 * to obtain the position of the elevator. In this case the down position.
+			 */
+			
+			elevatorMagnetDetectorDown = new DigitalInput(0);
+			
+			/**
+			 * A magnet sensor that detects when it is in proximity to a magnet. It is used
+			 * to obtain the position of the elevator. In this case the up position.
+			 */
+			
+			elevatorMagnetDetectorUp = new DigitalInput(1);
+			
+			/**
+			 * Distance sensor on the front of the outer conveyor belt. Used for
+			 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
+			 */
+			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
 			
