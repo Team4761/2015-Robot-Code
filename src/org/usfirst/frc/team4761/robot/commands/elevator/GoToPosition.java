@@ -29,7 +29,7 @@ public class GoToPosition extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Math.abs(position-Robot.elevator.encoder.getRaw()) < 10;
+    	return Math.abs(position-Robot.elevator.encoder.getRaw()) < 50;
         // return Robot.elevator.isFinished();
     }
 
