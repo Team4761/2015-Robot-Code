@@ -18,6 +18,7 @@ import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
 import org.usfirst.frc.team4761.robot.commandgroups.TurnInDown;
 import org.usfirst.frc.team4761.robot.commands.*;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
+import org.usfirst.frc.team4761.robot.commands.drivetrain.DriveToTotes;
 import org.usfirst.frc.team4761.robot.commands.drivetrain.SnapToNearestCardinal;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
 import org.usfirst.frc.team4761.robot.commands.plower.PlowExtend;
@@ -101,6 +102,7 @@ public class OI {
 			buttonManager.runOnPress(10, 2, new SnapToNearestCardinal());
 			buttonManager.runOnPress(6, 2, new TurnInDown());
 			buttonManager.runOnPress(8, 2, new Stop());
+			buttonManager.runOnPress(7, 2, new DriveToTotes());
 		} else {
 			buttonManager.runOnPress(8, 1, new ResetGyro());
 		}
