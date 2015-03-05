@@ -69,6 +69,8 @@ public class OI {
 			// Bind buttons for joysticks
 			buttonManager.runOnPress(9, 1, new TurnToZero());
 			buttonManager.runOnPress(8, 1, new ResetGyro());
+			buttonManager.runOnPress(3, 1, new KillAllCommands());
+			
 			buttonManager.runOnPress(1, 1, new MoveElevatorToStackTop());
 			buttonManager.runOnPress(1, 0, new GoToElevatorConveyor());
 			buttonManager.runWhilePressed(11, 0, new MainConveyorForward(11, 0));
