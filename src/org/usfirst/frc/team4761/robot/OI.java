@@ -100,6 +100,7 @@ public class OI {
 			buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
 			buttonManager.runOnPress(10, 2, new SnapToNearestCardinal());
 			buttonManager.runOnPress(6, 2, new TurnInDown());
+			buttonManager.runOnPress(8, 2, new Stop());
 		} else {
 			buttonManager.runOnPress(8, 1, new ResetGyro());
 		}
