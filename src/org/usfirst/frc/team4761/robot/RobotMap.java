@@ -104,14 +104,14 @@ public class RobotMap {
 			 * to obtain the position of the elevator. In this case the down position.
 			 */
 			
-			elevatorMagnetDetectorDown = new DigitalInput(0);
+			elevatorMagnetDetectorDown = new DigitalInput(3);
 			
 			/**
 			 * A magnet sensor that detects when it is in proximity to a magnet. It is used
 			 * to obtain the position of the elevator. In this case the up position.
 			 */
 			
-			elevatorMagnetDetectorUp = new DigitalInput(1);
+			elevatorMagnetDetectorUp = new DigitalInput(4);
 			
 			/**
 			 * Distance sensor on the front of the outer conveyor belt. Used for
@@ -131,14 +131,6 @@ public class RobotMap {
 			 */
 			spinnerDI1 = new DigitalInput(8);
 			spinnerDI2 = new DigitalInput(9);
-			
-			someDI = new DigitalInput(0);
-			
-			/**
-			 * Digital inputs for the limit switches for the side of the robot (NOT IMPLEMENTED!!!).</br>
-			 */
-			/*public static DigitalInput sideDI1 = new DigitalInput(0);
-			public static DigitalInput sideDI2 = new DigitalInput(1);*/
 			
 			/**
 			 * Digital input for the limit switch on the bottom of the elevator

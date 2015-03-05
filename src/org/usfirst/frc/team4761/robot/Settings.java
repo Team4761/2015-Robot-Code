@@ -7,6 +7,7 @@ import java.util.Scanner;
  * Reads and loads configuration settings from/to a file on the Robot.
  */
 public class Settings  {
+	
 	/**
 	 * Reads a setting from the config file.
 	 * @param name the name of the setting to read
@@ -33,6 +34,7 @@ public class Settings  {
 		
 		return 0;
 	}
+	
 	/**
 	 * Writes a setting out to the config file.
 	 * @param name the name of the setting to write
