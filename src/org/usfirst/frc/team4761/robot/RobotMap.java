@@ -52,8 +52,8 @@ public class RobotMap {
 	public static VictorSP elevatorMotor1;
 	public static VictorSP elevatorMotor2;
 	
-	public DigitalInput elevatorMagnetDetectorDown;
-	public DigitalInput elevatorMagnetDetectorUp;
+	public static DigitalInput elevatorMagnetDetectorDown;
+	public static DigitalInput elevatorMagnetDetectorUp;
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -65,8 +65,8 @@ public class RobotMap {
 		}
 		// Universal objects
 		gyro = new GyroSensor();
-		gyro.gyroSensor.setSensitivity(0.007);
-		gyro.gyroSensor.reset();
+		//gyro.gyroSensor.setSensitivity(0.007);
+		//gyro.gyroSensor.reset();
 		
 		// Robot specific electronics
 		if (robot == 1) {
@@ -80,38 +80,38 @@ public class RobotMap {
 			/**
 			 * A distance sensor that senses the barrels for auto-mode.
 			 */
-			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
+			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
 			
 			/**
 			 * A distance sensor on the elevator.
 			 */
-			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));
+			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(1));
 			
 			/**
 			 * Distance sensor on the rear of the outer conveyor belt. Used for
 			 * detecting something.
 			 */
-			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(4));
+			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
 			
 			/**
 			 * Distance sensor on the front of the outer conveyor belt. Used for
 			 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
 			 */
-			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(5));
+			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 		
 			/**
 			 * A magnet sensor that detects when it is in proximity to a magnet. It is used
 			 * to obtain the position of the elevator. In this case the down position.
 			 */
 			
-			elevatorMagnetDetectorDown = new DigitalInput(3);
+			elevatorMagnetDetectorDown = new DigitalInput(0);
 			
 			/**
 			 * A magnet sensor that detects when it is in proximity to a magnet. It is used
 			 * to obtain the position of the elevator. In this case the up position.
 			 */
 			
-			elevatorMagnetDetectorUp = new DigitalInput(4);
+			elevatorMagnetDetectorUp = new DigitalInput(1);
 			
 			/**
 			 * Distance sensor on the front of the outer conveyor belt. Used for

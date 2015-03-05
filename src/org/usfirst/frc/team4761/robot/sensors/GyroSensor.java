@@ -21,11 +21,11 @@ public class GyroSensor {
 	
 	private I2C gyro = new I2C(I2C.Port.kOnboard, 0x68);
 	
-	public Gyro gyroSensor = new Gyro(0); // Blue Gyro
+	//public Gyro gyroSensor = new Gyro(0); // Blue Gyro
 	
 	// Blue Gyro
 	public double getAngle () {
-		rotation = gyroSensor.getAngle();
+		//rotation = gyroSensor.getAngle();
 		return rotation;
 	}
 	
