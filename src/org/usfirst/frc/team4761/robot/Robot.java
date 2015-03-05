@@ -11,6 +11,7 @@ import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
+import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
 import org.usfirst.frc.team4761.robot.subsystems.*;
@@ -70,23 +71,26 @@ public class Robot extends IterativeRobot {
 		if (RobotMap.robot == 1) {
 			// Assign autonomous
 			int autoModeOverride = -1;
-			if (!(SmartDashboard.getBoolean("Step Autonomous")||SmartDashboard.getBoolean("Three Barrels Autonomous")||SmartDashboard.getBoolean("Drive To Auto-Zone")||SmartDashboard.getBoolean("Debug Autonomous")))
+			if (!(SmartDashboard.getBoolean("Step Autonomous") || SmartDashboard.getBoolean("Three Barrels Autonomous") || SmartDashboard.getBoolean("Drive To Auto-Zone") || SmartDashboard.getBoolean("Debug Autonomous")))
 					autoModeOverride = Settings.read("AutoMode");
-			if (SmartDashboard.getBoolean("Step Autonomous")||autoModeOverride==0) {
+			if (SmartDashboard.getBoolean("Step Autonomous") || autoModeOverride == 0) {
 				autonomousCommand = new Autonomous();
 				Settings.write("AutoMode", 0);
-			} else if (SmartDashboard.getBoolean("Three Barrels Autonomous")||autoModeOverride==1) {
+			} else if (SmartDashboard.getBoolean("Three Barrels Autonomous") || autoModeOverride == 1) {
 				autonomousCommand = new NoWedgeAuto();
 				Settings.write("AutoMode", 1);
-			} else if (SmartDashboard.getBoolean("Drive To Auto-Zone")||autoModeOverride==2) {
+			} else if (SmartDashboard.getBoolean("Drive To Auto-Zone") || autoModeOverride == 2) {
 				autonomousCommand = new DriveToAuto();
 				Settings.write("AutoMode", 2);
-			} else if (SmartDashboard.getBoolean("Debug Autonomous")||autoModeOverride==3) {
+			} else if (SmartDashboard.getBoolean("Debug Autonomous") || autoModeOverride == 3) {
 				autonomousCommand = new DebugAutonomous();
 				Settings.write("AutoMode", 3);
-			}
-			else
+			} else if (SmartDashboard.getBoolean("Push Tote and Barrel") || autoModeOverride == 4) {
+				autonomousCommand = new PushToAuto();
+				Settings.write("AutoMode", 4);
+			} else {
 				System.err.println("Missing/invalid auto selected!");
+			}
 		
 			if (autonomousCommand != null) autonomousCommand.start();
 		}
