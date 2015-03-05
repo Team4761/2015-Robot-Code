@@ -9,7 +9,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * Move {@link org.usfirst.frc.team4761.robot.subsystems.Elevator Elevator} down.
  */
 public class MoveElevatorToBottom extends Command {
-	DigitalInput di = Robot.robotMap.elevatorDI;
+	DigitalInput di = RobotMap.elevatorDI;
 	
 	public MoveElevatorToBottom() {
 		// Use requires() here to declare subsystem dependencies

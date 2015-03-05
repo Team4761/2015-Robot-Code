@@ -12,9 +12,9 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * the RC Grabber}.
  */
 public class RcGrabberBase extends Subsystem {
-	public DigitalInput in = Robot.robotMap.spinnerDI1;
-	public DigitalInput out = Robot.robotMap.spinnerDI2;
-	VictorSP spinner = Robot.robotMap.spinner;
+	public DigitalInput in = RobotMap.spinnerDI1;
+	public DigitalInput out = RobotMap.spinnerDI2;
+	VictorSP spinner = RobotMap.spinner;
 	
 	@Override
 	protected void initDefaultCommand() {

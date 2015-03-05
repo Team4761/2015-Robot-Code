@@ -1,13 +1,14 @@
 package org.usfirst.frc.team4761.robot.sensors;
 
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 public class GyroThread implements Runnable {
 	private double deltaTime = 0;
 	
 	public void run() {
 		while (true) {
-			if (Robot.robotMap.gyro.updateDegreesOld(deltaTime)) {
+			if (RobotMap.gyro.updateDegreesOld(deltaTime)) {
 				deltaTime = 0.05;
 			} else {
 				deltaTime += 0.05;

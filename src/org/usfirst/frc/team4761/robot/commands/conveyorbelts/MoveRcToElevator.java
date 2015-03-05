@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class MoveRcToElevator extends Command {
 
-	//ShortDistanceSensor loadSensor = Robot.robotMap.conveyorDistanceSensor;
+	//ShortDistanceSensor loadSensor = RobotMap.conveyorDistanceSensor;
 	
 	protected void initialize() {
 		requires(Robot.mainConveyorBelt);

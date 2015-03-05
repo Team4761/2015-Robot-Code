@@ -11,8 +11,8 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * and down, and putting them on top of piles.
  */
 public class Elevator extends Subsystem {
-	private static VictorSP speedController1 = Robot.robotMap.elevatorMotor1;
-	private static VictorSP speedController2 = Robot.robotMap.elevatorMotor2;
+	private static VictorSP speedController1 = RobotMap.elevatorMotor1;
+	private static VictorSP speedController2 = RobotMap.elevatorMotor2;
 	
 	public void initDefaultCommand() {
 	}

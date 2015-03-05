@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveToTotes extends Command {
-	MediumDistanceSensor sensor = Robot.robotMap.outerConveyorToteDistanceSensor;
+	MediumDistanceSensor sensor = RobotMap.outerConveyorToteDistanceSensor;
 
     public DriveToTotes() {
         // Use requires() here to declare subsystem dependencies
@@ -28,7 +28,7 @@ public class DriveToTotes extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.robotMap.outerConveyorToteDistanceSensor.getDistance() <= 30;
+    	return RobotMap.outerConveyorToteDistanceSensor.getDistance() <= 30;
     }
 
     // Called once after isFinished returns true

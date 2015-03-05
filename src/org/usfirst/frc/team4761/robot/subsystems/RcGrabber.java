@@ -11,7 +11,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  */
 public class RcGrabber extends Subsystem {
 	
-	public DoubleSolenoid solenoid = Robot.robotMap.rcPneumatic;
+	public DoubleSolenoid solenoid = RobotMap.rcPneumatic;
 	
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.

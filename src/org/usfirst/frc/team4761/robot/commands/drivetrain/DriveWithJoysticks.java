@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4761.robot.commands.drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
  * Drive the robot around, using joysticks to control it.
@@ -19,7 +21,7 @@ public class DriveWithJoysticks extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (!(Robot.oi.joysticks[2].getRawButton(5) && Robot.robotMap.outerConveyorToteDistanceSensor.getDistance() <= 30)) {
+		if (!(Robot.oi.joysticks[2].getRawButton(5) && RobotMap.outerConveyorToteDistanceSensor.getDistance() <= 30)) {
 			Robot.driveTrain.driveWithJoysticks(Robot.oi.joysticks[0], Robot.oi.joysticks[1]);
 		}
 	}

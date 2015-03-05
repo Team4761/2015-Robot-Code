@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class GoToElevatorConveyor extends Command {
-	private ShortDistanceSensor sensor = Robot.robotMap.outerConveyorBarrelDistanceSensor;
+	private ShortDistanceSensor sensor = RobotMap.outerConveyorBarrelDistanceSensor;
 	int passes = 0;
 
     public GoToElevatorConveyor() {

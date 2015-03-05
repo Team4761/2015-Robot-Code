@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * Executes until the robot passes the back edge of a barrel.
  */
 public class GoToBackEdgeOfBarrel extends Command {
-	MediumDistanceSensor distanceSensor = Robot.robotMap.barrelDistanceSensor;
+	MediumDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
 
     public GoToBackEdgeOfBarrel() {
     }

@@ -38,7 +38,7 @@ public class MoveElevator extends Command {
     protected void execute() {
     	if (up) {
     		Robot.elevator.set(-speed);
-    	} else if (Robot.robotMap.elevatorDI.get()) {
+    	} else if (RobotMap.elevatorDI.get()) {
     		Robot.elevator.set(speed);
     	}
     }
@@ -48,7 +48,7 @@ public class MoveElevator extends Command {
     	if (up) {
     		return !Robot.oi.joysticks[joystickNum].getRawButton(button);
     	} else {
-    		return !Robot.oi.joysticks[joystickNum].getRawButton(button) || !Robot.robotMap.elevatorDI.get();
+    		return !Robot.oi.joysticks[joystickNum].getRawButton(button) || !RobotMap.elevatorDI.get();
     	}
     }
 

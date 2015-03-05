@@ -13,7 +13,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  * Moves the robot forward until a barrel is detected.
  */
 public class GoToNextBarrel extends Command {
-	MediumDistanceSensor distanceSensor = Robot.robotMap.barrelDistanceSensor;
+	MediumDistanceSensor distanceSensor = RobotMap.barrelDistanceSensor;
 	
 	public GoToNextBarrel() {
 	}

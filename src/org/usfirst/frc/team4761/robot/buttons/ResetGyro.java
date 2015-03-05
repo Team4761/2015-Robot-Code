@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4761.robot.buttons;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
  * Resets the gyro position to 90 degrees.
@@ -20,10 +22,10 @@ public class ResetGyro extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		// Blue Gyro
-		/*Robot.robotMap.gyro.gyroSensor.reset();
-		Robot.robotMap.gyro.setOffset(90);*/
+		/*RobotMap.gyro.gyroSensor.reset();
+		RobotMap.gyro.setOffset(90);*/
 		// I2C Gyro
-		Robot.robotMap.gyro.setDegrees(90);
+		RobotMap.gyro.setDegrees(90);
 		Robot.driveTrain.setAccumulator(90);
 		Robot.driveTrain.gyroPidController.setSetpoint(90);
 	}

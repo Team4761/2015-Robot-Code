@@ -16,10 +16,10 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  */
 public class LogToFile extends Command {
 	
-	private ShortDistanceSensor outerConveyorBarrelDistanceSensor = Robot.robotMap.outerConveyorBarrelDistanceSensor;
-	private MediumDistanceSensor outerConveyorToteDistanceSensor = Robot.robotMap.outerConveyorToteDistanceSensor;
-	private MediumDistanceSensor barrelSensor = Robot.robotMap.barrelDistanceSensor;
-	private Logger log = Robot.robotMap.log;
+	private ShortDistanceSensor outerConveyorBarrelDistanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
+	private MediumDistanceSensor outerConveyorToteDistanceSensor = RobotMap.outerConveyorToteDistanceSensor;
+	private MediumDistanceSensor barrelSensor = RobotMap.barrelDistanceSensor;
+	private Logger log = RobotMap.log;
 	
 	protected void initialize() {
 		log.setLevel(Level.FATAL);

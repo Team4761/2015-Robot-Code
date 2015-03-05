@@ -50,7 +50,7 @@ public class OI {
 		putNumber("I", 0);
 		putNumber("D", 0.02);
 		
-		if (Robot.robotMap.robot == 1) {
+		if (RobotMap.robot == 1) {
 			// Bind buttons for button boards
 			/*buttonManager.runWhilePressed(2, 2, new MainConveyorForward(2, 2));
 			buttonManager.runWhilePressed(1, 2, new MainConveyorBackward(1, 2));

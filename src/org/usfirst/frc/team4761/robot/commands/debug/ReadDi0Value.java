@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commands.debug;
 
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ReadDi0Value extends Command {
 
-	private DigitalInput di = Robot.robotMap.someDI;
+	private DigitalInput di = RobotMap.someDI;
 	private Logger log = new Logger("Digital Input 0 Value");
     public ReadDi0Value() {
     }

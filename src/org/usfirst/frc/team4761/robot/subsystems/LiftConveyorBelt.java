@@ -11,7 +11,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
  * top of a stack.
  */
 public class LiftConveyorBelt extends Subsystem {
-	private static VictorSP speedController = Robot.robotMap.elevatorConveyorBeltMotor;
+	private static VictorSP speedController = RobotMap.elevatorConveyorBeltMotor;
 	
 	public void initDefaultCommand () {
 	}

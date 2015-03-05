@@ -16,41 +16,41 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
  * floating around.
  */
 public class RobotMap {
-	public int robot = 1;
+	public static int robot = 1;
 	
-	public SpeedController leftFrontMotor;
-	public SpeedController leftRearMotor;
-	public SpeedController rightFrontMotor;
-	public SpeedController rightRearMotor;
+	public static SpeedController leftFrontMotor;
+	public static SpeedController leftRearMotor;
+	public static SpeedController rightFrontMotor;
+	public static SpeedController rightRearMotor;
 	
-	public RobotDrive robotDrive;
+	public static RobotDrive robotDrive;
 	
-	public GyroSensor gyro;
+	public static GyroSensor gyro;
 
-	public MediumDistanceSensor barrelDistanceSensor;
-	public MediumDistanceSensor elevatorDistanceSensor;
-	public MediumDistanceSensor outerConveyorToteDistanceSensor;
+	public static MediumDistanceSensor barrelDistanceSensor;
+	public static MediumDistanceSensor elevatorDistanceSensor;
+	public static MediumDistanceSensor outerConveyorToteDistanceSensor;
 
-	public ShortDistanceSensor outerConveyorBarrelDistanceSensor;
+	public static ShortDistanceSensor outerConveyorBarrelDistanceSensor;
 	
-	public Logger log;
-	public Level minLogLevel;
+	public static Logger log;
+	public static Level minLogLevel;
 	
-	public DoubleSolenoid rcPneumatic;
-	public DoubleSolenoid plowPneumatic;
+	public static DoubleSolenoid rcPneumatic;
+	public static DoubleSolenoid plowPneumatic;
 	
-	public VictorSP spinner;
+	public static VictorSP spinner;
 	
-	public DigitalInput spinnerDI1;
-	public DigitalInput spinnerDI2;
-	public DigitalInput someDI;
+	public static DigitalInput spinnerDI1;
+	public static DigitalInput spinnerDI2;
+	public static DigitalInput someDI;
 	
-	public DigitalInput elevatorDI;
+	public static DigitalInput elevatorDI;
 	
-	public Talon mainConveyorBeltMotor;
-	public VictorSP elevatorConveyorBeltMotor;
-	public VictorSP elevatorMotor1;
-	public VictorSP elevatorMotor2;
+	public static Talon mainConveyorBeltMotor;
+	public static VictorSP elevatorConveyorBeltMotor;
+	public static VictorSP elevatorMotor1;
+	public static VictorSP elevatorMotor2;
 	
 	public static DigitalInput elevatorMagnetDetectorDown;
 	public static DigitalInput elevatorMagnetDetectorUp;

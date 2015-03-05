@@ -19,7 +19,7 @@ public class BlindStopOuterConveyorBelt extends Command {
     private double distance;
 	private MovingAverageCalculator mac = new MovingAverageCalculator(10);
 	private boolean objectEntered;
-	MediumDistanceSensor distanceSensor = Robot.robotMap.outerConveyorToteDistanceSensor;
+	MediumDistanceSensor distanceSensor = RobotMap.outerConveyorToteDistanceSensor;
 
 	public BlindStopOuterConveyorBelt() {
         // Use requires() here to declare subsystem dependencies

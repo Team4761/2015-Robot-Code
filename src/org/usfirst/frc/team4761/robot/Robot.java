@@ -46,7 +46,7 @@ public class Robot extends IterativeRobot {
 		teleop = new Teleop();
 		driveTrain = new DriveTrain();
 		
-		if (Robot.robotMap.robot == 1) {
+		if (RobotMap.robot == 1) {
 			autonomousCommand = new NoWedgeAuto();
 			elevator = new Elevator();
 			mainConveyorBelt = new MainConveyorBelt();
@@ -56,7 +56,7 @@ public class Robot extends IterativeRobot {
 			liftConveyorBelt = new LiftConveyorBelt();
 		}
 		
-		LogManager.setMinimumLevel(Robot.robotMap.minLogLevel);
+		LogManager.setMinimumLevel(RobotMap.minLogLevel);
 		
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
@@ -67,7 +67,7 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
-		if (Robot.robotMap.robot == 1) {
+		if (RobotMap.robot == 1) {
 			// Assign autonomous
 			if (SmartDashboard.getBoolean("Step Autonomous")) {
 				autonomousCommand = new Autonomous();

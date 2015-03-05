@@ -11,6 +11,7 @@ import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.GyroPIDSource;
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
 /**
@@ -19,15 +20,15 @@ import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 public class DriveTrain extends Subsystem {
 	public double rotateAccumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
 	
-	private Logger log = Robot.robotMap.log;
-	RobotDrive robotDrive = Robot.robotMap.robotDrive;
+	private Logger log = RobotMap.log;
+	RobotDrive robotDrive = RobotMap.robotDrive;
 	GyroPIDSource gyroSensor = new GyroPIDSource();
 	public DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
 	
 	public PIDController gyroPidController = new PIDController(0.025, 0, 0.02, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
 	
 	public DriveTrain () {
-		if (Robot.robotMap.robot == 1) {
+		if (RobotMap.robot == 1) {
 			robotDrive.setInvertedMotor(MotorType.kFrontRight, true);
 			robotDrive.setInvertedMotor(MotorType.kRearRight, true);
 		}
@@ -86,7 +87,7 @@ public class DriveTrain extends Subsystem {
 		log.dev("Angle: " + degrees);
 		
 		/*if (Robot.oi.joysticks[2].getRawAxis(4) >= 0.1 || Robot.oi.joysticks[2].getRawAxis(4) <= -0.1) {
-			gyroPidController.setSetpoint(Robot.robotMap.gyro.getAngle() + (convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1)));
+			gyroPidController.setSetpoint(RobotMap.gyro.getAngle() + (convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1)));
 		}*/
 
 		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), driveGyroPIDOutput.getValue(), degrees);
