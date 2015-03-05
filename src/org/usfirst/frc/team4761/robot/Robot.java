@@ -69,15 +69,24 @@ public class Robot extends IterativeRobot {
 	public void autonomousInit() {
 		if (RobotMap.robot == 1) {
 			// Assign autonomous
-			if (SmartDashboard.getBoolean("Step Autonomous")) {
+			int autoModeOverride = -1;
+			if (!(SmartDashboard.getBoolean("Step Autonomous")||SmartDashboard.getBoolean("Three Barrels Autonomous")||SmartDashboard.getBoolean("Drive To Auto-Zone")||SmartDashboard.getBoolean("Debug Autonomous")))
+					autoModeOverride = Settings.read("AutoMode");
+			if (SmartDashboard.getBoolean("Step Autonomous")||autoModeOverride==0) {
 				autonomousCommand = new Autonomous();
-			} else if (SmartDashboard.getBoolean("Three Barrels Autonomous")) {
+				Settings.write("AutoMode", 0);
+			} else if (SmartDashboard.getBoolean("Three Barrels Autonomous")||autoModeOverride==1) {
 				autonomousCommand = new NoWedgeAuto();
-			} else if (SmartDashboard.getBoolean("Drive To Auto-Zone")) {
+				Settings.write("AutoMode", 1);
+			} else if (SmartDashboard.getBoolean("Drive To Auto-Zone")||autoModeOverride==2) {
 				autonomousCommand = new DriveToAuto();
-			} else if (SmartDashboard.getBoolean("Debug Autonomous")) {
+				Settings.write("AutoMode", 2);
+			} else if (SmartDashboard.getBoolean("Debug Autonomous")||autoModeOverride==3) {
 				autonomousCommand = new DebugAutonomous();
+				Settings.write("AutoMode", 3);
 			}
+			else
+				System.err.println("Missing/invalid auto selected!");
 		
 			if (autonomousCommand != null) autonomousCommand.start();
 		}
