@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GoToPosition extends Command {
 
 	double position;
+	boolean negative = false;
 	
     public GoToPosition(double pos) {
         requires(Robot.elevator);
@@ -19,6 +20,8 @@ public class GoToPosition extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.elevator.setPosition(position);
+    	if (position > Robot.elevator.encoder.getRaw())
+    		negative = true;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,8 +32,10 @@ public class GoToPosition extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Math.abs(position-Robot.elevator.encoder.getRaw()) < 50;
-        // return Robot.elevator.isFinished();
+    	if (negative)
+    		return position <= Robot.elevator.encoder.getRaw();
+    	else
+    		return position >= Robot.elevator.encoder.getRaw();
     }
 
     // Called once after isFinished returns true
