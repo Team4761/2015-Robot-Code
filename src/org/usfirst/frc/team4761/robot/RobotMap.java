@@ -91,7 +91,6 @@ public class RobotMap {
 		elevatorQuadEncoder.setPIDSourceParameter(PIDSourceParameter.kRate);
 		elevatorMotor1 = new VictorSP(8);
 		elevatorMotor2 = new VictorSP(9);
-		System.out.println("Created encoder: " + elevatorQuadEncoder);
 		// Universal objects
 		gyro = new GyroSensor();
 		

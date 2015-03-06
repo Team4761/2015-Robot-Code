@@ -67,7 +67,7 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void update(){
-		System.err.println(pidOutput.getValue() + "Setpoint: " + pidController.getSetpoint() + " Encoder: " + encoder.getRaw());
+		//System.err.println(pidOutput.getValue() + "Setpoint: " + pidController.getSetpoint() + " Encoder: " + encoder.getRaw());
 		speedController1.set(pidOutput.getValue()/3);	
 		speedController2.set(pidOutput.getValue()/3);
 	}
