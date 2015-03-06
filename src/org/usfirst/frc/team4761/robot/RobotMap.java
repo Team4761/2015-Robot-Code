@@ -105,7 +105,7 @@ public class RobotMap {
 			
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
-			//gyroSensor = new Gyro(0);
+			//gyroSensor = new Gyro(0);	// This might break the gyro? Something else is supposedly using analog input 0...
 			
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));

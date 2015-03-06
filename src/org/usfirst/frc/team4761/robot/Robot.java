@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
 	public static RcGrabber rcGrabber;
 	public static RcGrabberBase rcGrabberBase;
 	public static LiftConveyorBelt liftConveyorBelt;
-	public static RobotMap robotMap;
+	public static RobotMap robotMap = new RobotMap();
 	public static Robot robot;
 	public static OI oi;
 	public boolean autoDone = false;
@@ -51,7 +51,6 @@ public class Robot extends IterativeRobot {
 	 */
 	public void robotInit() {
 		robot = this;
-		robotMap = new RobotMap();
 		oi = new OI();
 		teleop = new Teleop();
 		driveTrain = new DriveTrain();
@@ -78,9 +77,6 @@ public class Robot extends IterativeRobot {
 	}
 	
 	public void autonomousInit() {
-		new GoToPosition(1000).start();
-		//elevator.set(0.5);
-		/*
 		new WatchForAutoEnd().start();
 		if (Robot.robotMap.robot == 1) {
 			// Assign autonomous
@@ -95,7 +91,7 @@ public class Robot extends IterativeRobot {
 			}
 		
 			if (autonomousCommand != null) autonomousCommand.start();
-		}*/
+		}
 	}
 	
 	/**

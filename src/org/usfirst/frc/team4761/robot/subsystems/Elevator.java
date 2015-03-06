@@ -19,9 +19,9 @@ public class Elevator extends Subsystem {
 	
 	public Encoder encoder;
 	
-	private ElevatorPIDOutput pidOutput;// = new ElevatorPIDOutput();
+	private ElevatorPIDOutput pidOutput;
 	
-	public PIDController PIdController;// = new PIDController(1.0, 0.0, 0.0, encoder, pidOutput); 
+	public PIDController pidController; 
 	public Elevator()
 	{
 		super();
@@ -29,9 +29,9 @@ public class Elevator extends Subsystem {
 		{
 			pidOutput = new ElevatorPIDOutput();
 			encoder = Robot.robotMap.elevatorQuadEncoder;
-			PIdController = new PIDController(1.0/10, 0.0, 0.0, encoder, pidOutput);
-			PIdController.enable();
-			PIdController.setPercentTolerance(10);
+			pidController = new PIDController(1.0/10, 0.0, 0.0, encoder, pidOutput);
+			pidController.enable();
+			pidController.setPercentTolerance(10);
 		}
 		catch (Exception e)
 		{
@@ -63,17 +63,17 @@ public class Elevator extends Subsystem {
 	}
 
 	public void setPosition(double position){
-		PIdController.setSetpoint(position);
+		pidController.setSetpoint(position);
 	}
 	
-	public void update(){ // I died inside.
-		System.err.println(pidOutput.getValue() + "Setpoint: " + PIdController.getSetpoint() + " Encoder: " + encoder.getRaw());
-		speedController1.set(pidOutput.getValue()/3);
+	public void update(){
+		System.err.println(pidOutput.getValue() + "Setpoint: " + pidController.getSetpoint() + " Encoder: " + encoder.getRaw());
+		speedController1.set(pidOutput.getValue()/3);	
 		speedController2.set(pidOutput.getValue()/3);
 	}
 	
 	public boolean isFinished(){
-		return PIdController.onTarget();
+		return pidController.onTarget();
 	}
 }
 
