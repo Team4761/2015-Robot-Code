@@ -85,7 +85,7 @@ public class Robot extends IterativeRobot {
 			} else if (SmartDashboard.getBoolean("Debug Autonomous") || autoModeOverride == 3) {
 				autonomousCommand = new DebugAutonomous();
 				Settings.write("AutoMode", 3);
-			} else if (SmartDashboard.getBoolean("Push Tote and Barrel") || autoModeOverride == 4) {
+			} else if (SmartDashboard.getBoolean("Push Barrel To Auto-Zone") || autoModeOverride == 4) {
 				autonomousCommand = new PushToAuto();
 				Settings.write("AutoMode", 4);
 			} else {
