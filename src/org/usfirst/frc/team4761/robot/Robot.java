@@ -42,7 +42,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public Command teleop;
 	
-	Command autonomousCommand;
+	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -67,39 +67,42 @@ public class Robot extends IterativeRobot {
 		
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
+		autonomous = new Autonomous();
+		wedgeAuto = new NoWedgeAuto();
+		driveToAuto = new DriveToAuto();
+		debugAuto = new DebugAutonomous();
+		pushToAuto = new PushToAuto();
 	}
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		// Check autonomous
+		int autoModeOverride = -1;
+		if (!(SmartDashboard.getBoolean("Step Autonomous") || SmartDashboard.getBoolean("Three Barrels Autonomous") || SmartDashboard.getBoolean("Drive To Auto-Zone") || SmartDashboard.getBoolean("Debug Autonomous"))) {
+			autoModeOverride = Settings.read("AutoMode");
+		}
+		if (SmartDashboard.getBoolean("Step Autonomous") || autoModeOverride == 0) {
+			autonomousCommand = autonomous;
+			Settings.write("AutoMode", 0);
+		} else if (SmartDashboard.getBoolean("Three Barrels Autonomous") || autoModeOverride == 1) {
+			autonomousCommand = wedgeAuto;
+			Settings.write("AutoMode", 1);
+		} else if (SmartDashboard.getBoolean("Drive To Auto-Zone") || autoModeOverride == 2) {
+			autonomousCommand = driveToAuto;
+			Settings.write("AutoMode", 2);
+		} else if (SmartDashboard.getBoolean("Debug Autonomous") || autoModeOverride == 3) {
+			autonomousCommand = debugAuto;
+			Settings.write("AutoMode", 3);
+		} else if (SmartDashboard.getBoolean("Push Barrel To Auto-Zone") || autoModeOverride == 4) {
+			autonomousCommand = pushToAuto;
+			Settings.write("AutoMode", 4);
+		} else {
+			System.err.println("Missing/invalid auto selected!");
+		}
 	}
 	
 	public void autonomousInit() {
 		if (RobotMap.robot == 1) {
-			// Assign autonomous
-			int autoModeOverride = -1;
-			if (!(SmartDashboard.getBoolean("Step Autonomous") || SmartDashboard.getBoolean("Three Barrels Autonomous") || SmartDashboard.getBoolean("Drive To Auto-Zone") || SmartDashboard.getBoolean("Debug Autonomous"))) {
-				autoModeOverride = Settings.read("AutoMode");
-			}
-			
-			if (SmartDashboard.getBoolean("Step Autonomous") || autoModeOverride == 0) {
-				autonomousCommand = new Autonomous();
-				Settings.write("AutoMode", 0);
-			} else if (SmartDashboard.getBoolean("Three Barrels Autonomous") || autoModeOverride == 1) {
-				autonomousCommand = new NoWedgeAuto();
-				Settings.write("AutoMode", 1);
-			} else if (SmartDashboard.getBoolean("Drive To Auto-Zone") || autoModeOverride == 2) {
-				autonomousCommand = new DriveToAuto();
-				Settings.write("AutoMode", 2);
-			} else if (SmartDashboard.getBoolean("Debug Autonomous") || autoModeOverride == 3) {
-				autonomousCommand = new DebugAutonomous();
-				Settings.write("AutoMode", 3);
-			} else if (SmartDashboard.getBoolean("Push Barrel To Auto-Zone") || autoModeOverride == 4) {
-				autonomousCommand = new PushToAuto();
-				Settings.write("AutoMode", 4);
-			} else {
-				System.err.println("Missing/invalid auto selected!");
-			}
-		
 			if (autonomousCommand != null) autonomousCommand.start();
 		}
 	}
