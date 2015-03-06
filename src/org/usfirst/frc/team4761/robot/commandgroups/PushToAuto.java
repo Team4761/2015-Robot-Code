@@ -8,7 +8,7 @@ import org.usfirst.frc.team4761.robot.commands.rcgrabber.SpinRcBaseOut;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * An autonomous in which the robot drives to the auto zone and picks up a barrel on the way.
  */
 public class PushToAuto extends CommandGroup {
     

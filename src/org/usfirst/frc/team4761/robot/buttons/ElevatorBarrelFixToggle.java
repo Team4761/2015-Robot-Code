@@ -6,7 +6,10 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Toggle the elevator position to either down near the ground so that a rod can go into the
+ * hole on the top of a overturned barrel. The other position is the upright position in which
+ * the barrel has been adjusted to be right side standing up. And all of this is done with the use of
+ * magnets and magnet sensors.
  */
 public class ElevatorBarrelFixToggle extends Command {
 	
