@@ -68,7 +68,7 @@ public class OI {
 			
 			// Bind buttons for joysticks
 			buttonManager.runOnPress(9, 1, new TurnToZero());
-			buttonManager.runOnPress(8, 1, new ResetGyro());
+			buttonManager.runOnPress(8, 1, new ResetGyro(90));
 			buttonManager.runOnPress(3, 1, new KillAllCommands());
 			
 			buttonManager.runOnPress(1, 1, new MoveElevatorToStackTop());
@@ -103,7 +103,7 @@ public class OI {
 			buttonManager.runOnPress(8, 2, new Stop());
 			buttonManager.runOnPress(7, 2, new DriveToTotes());
 		} else {
-			buttonManager.runOnPress(8, 1, new ResetGyro());
+			buttonManager.runOnPress(8, 1, new ResetGyro(90));
 		}
 	}
 }

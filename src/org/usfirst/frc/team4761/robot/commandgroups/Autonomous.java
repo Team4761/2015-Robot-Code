@@ -22,7 +22,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class Autonomous extends CommandGroup {
 	Logger log = new Logger("Autonomous");
 	public Autonomous() {
-		addSequential(new ResetGyro());
+		addSequential(new ResetGyro(90));
 		
 		addParallel(new LogToFile());
 		

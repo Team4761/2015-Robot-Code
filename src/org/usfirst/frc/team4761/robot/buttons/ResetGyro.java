@@ -9,10 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * Resets the gyro position to 90 degrees.
  */
 public class ResetGyro extends Command {
-	
-	public ResetGyro() {
-		// Use requires() here to declare subsystem dependencies
-		// eg. requires(chassis);
+	static int degrees;
+	public ResetGyro(int degrees) {
+		this.degrees = degrees;
 	}
 	
 	// Called just before this Command runs the first time
@@ -23,11 +22,11 @@ public class ResetGyro extends Command {
 	protected void execute() {
 		// Blue Gyro
 		/*RobotMap.gyro.gyroSensor.reset();
-		RobotMap.gyro.setOffset(90);*/
+		RobotMap.gyro.setOffset(degrees);*/
 		// I2C Gyro
-		RobotMap.gyro.setDegrees(90);
-		Robot.driveTrain.setAccumulator(90);
-		Robot.driveTrain.gyroPidController.setSetpoint(90);
+		RobotMap.gyro.setDegrees(degrees);
+		Robot.driveTrain.setAccumulator(degrees);
+		Robot.driveTrain.gyroPidController.setSetpoint(degrees);
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

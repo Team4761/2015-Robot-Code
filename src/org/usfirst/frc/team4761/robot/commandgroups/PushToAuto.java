@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class PushToAuto extends CommandGroup {
     
     public  PushToAuto() {
-    	addSequential(new ResetGyro());
+    	addSequential(new ResetGyro(90));
     	addSequential(new RcPickUp());
     	addParallel(new SpinRcBaseOut());
     	addSequential(new Drive(0, -0.5, 0, 3, "ABSOLUTE"));
