@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot.buttons;
 
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -36,13 +37,13 @@ public class ElevatorBarrelFixToggle extends Command {
     		}
     		
     		
-    		if (Robot.robotMap.elevatorMagnetDetectorDown.get()){
+    		if (RobotMap.elevatorMagnetDetectorDown.get()){
     			rOne = false;
     			direction = false; // We now want to go downwards.
     			Robot.elevator.stop();
     		}
     		
-    		if (!Robot.robotMap.elevatorDI.get()){ // Apparently this must be inverted.
+    		if (!RobotMap.elevatorDI.get()){ // Apparently this must be inverted.
     			direction = true; // It hit the bottom it should go upwards.
     		}
     	}
@@ -61,11 +62,11 @@ public class ElevatorBarrelFixToggle extends Command {
     		else
     			Robot.elevator.lower();
     		
-    		if (Robot.robotMap.elevatorDI.get()){
+    		if (RobotMap.elevatorDI.get()){
     			direction = true; // Wrong way!
     		}
     		
-    		if (Robot.robotMap.elevatorMagnetDetectorUp.get()){
+    		if (RobotMap.elevatorMagnetDetectorUp.get()){
     			rTwo = false;
     			direction = false; // We should probably go down now.
     			Robot.elevator.stop();

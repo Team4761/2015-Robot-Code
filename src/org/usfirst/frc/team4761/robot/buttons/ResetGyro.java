@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ResetGyro extends Command {
 	static int degrees;
 	public ResetGyro(int degrees) {
-		this.degrees = degrees;
+		ResetGyro.degrees = degrees;
 	}
 	
 	// Called just before this Command runs the first time
