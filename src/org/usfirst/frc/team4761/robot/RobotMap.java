@@ -25,12 +25,26 @@ import edu.wpi.first.wpilibj.VictorSP;
  */
 public class RobotMap {
 	public static int robot = 1;
-	
+	/**
+	 * Speed controller that controls the left front motor on the drive train.
+	 */
 	public static SpeedController leftFrontMotor;
+	/**
+	 * Speed controller that controls the left rear motor on the drive train.
+	 */
 	public static SpeedController leftRearMotor;
+	/**
+	 * Speed controller that controls the right front motor on the drive train.
+	 */
 	public static SpeedController rightFrontMotor;
+	/**
+	 * Speed controller that controls the right rear motor on the drive train.
+	 */
 	public static SpeedController rightRearMotor;
 	
+	/**
+	 * Instance of RobotDrive for our drive train.
+	 */
 	public static RobotDrive robotDrive;
 	
 	public static GyroSensor gyro;
