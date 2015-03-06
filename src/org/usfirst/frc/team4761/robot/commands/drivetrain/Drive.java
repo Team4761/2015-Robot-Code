@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * A command to make the {@link org.usfirst.frc.team4761.robot.subsystems.DriveTrain DriveTrain} drive in a specified direction.
  */
 public class Drive extends Command {
 

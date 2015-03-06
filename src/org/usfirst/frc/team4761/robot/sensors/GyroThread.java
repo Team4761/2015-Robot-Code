@@ -3,6 +3,10 @@ package org.usfirst.frc.team4761.robot.sensors;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
+/**
+ * A thread to run to keep the gyro updated.
+ */
+
 public class GyroThread implements Runnable {
 	private double deltaTime = 0;
 	
