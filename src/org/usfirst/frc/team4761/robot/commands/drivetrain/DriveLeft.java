@@ -5,7 +5,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Drive the {@link org.usfirst.frc.team4761.robot.subsystems.DriveTrain DriveTrain} to the left.
  */
 public class DriveLeft extends Command {
 
