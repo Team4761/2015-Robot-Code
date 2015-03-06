@@ -27,6 +27,7 @@ public class Settings  {
 				
 				inp = sc.nextLine();
 			}
+			sc.close();
 		} catch (Exception ex) {
 			System.err.println("Error loading setting \"" + name + "\".");
 			ex.printStackTrace();
