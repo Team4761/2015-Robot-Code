@@ -72,6 +72,21 @@ public class Robot extends IterativeRobot {
 		driveToAuto = new DriveToAuto();
 		debugAuto = new DebugAutonomous();
 		pushToAuto = new PushToAuto();
+		int currentAuto = Settings.read("AutoMode");
+		switch (currentAuto)
+		{
+			case 0 :
+				SmartDashboard.putBoolean("Step Autonomous", true);
+			case 1 :
+				SmartDashboard.putBoolean("Three Barrels Autonomous", true);
+			case 2 :
+				SmartDashboard.putBoolean("Drive To Auto-Zone", true);
+			case 3 :
+				SmartDashboard.putBoolean("Debug Autonomous", true);
+			case 4 :
+				SmartDashboard.putBoolean("Push Barrel To Auto-Zone", true);
+				
+		}
 	}
 	
 	public void disabledPeriodic() {
