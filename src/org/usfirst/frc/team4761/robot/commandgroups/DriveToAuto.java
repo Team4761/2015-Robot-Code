@@ -10,6 +10,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class DriveToAuto extends CommandGroup {
     
     public  DriveToAuto() {
-    	addSequential(new Drive(0.0, 0.4, 0, 3));
+    	addSequential(new Drive(0.5, 0, 0, 3, "ABSOLUTE"));
     }
 }

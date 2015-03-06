@@ -55,6 +55,10 @@ public class RobotMap {
 	public static DigitalInput elevatorMagnetDetectorDown;
 	public static DigitalInput elevatorMagnetDetectorUp;
 	
+	public static AnalogInput flexSensor;
+	
+	public static I2C arduino;
+	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
 			// 1 for new robot and 2 for old robot
@@ -141,6 +145,11 @@ public class RobotMap {
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
+			
+			// Not on the robot yet
+			//flexSensor = new AnalogInput(4);
+			
+			arduino = new I2C(I2C.Port.kOnboard, 168);
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
@@ -150,6 +159,8 @@ public class RobotMap {
 			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 			minLogLevel = Level.DEV;
+			
+			arduino = new I2C(I2C.Port.kOnboard, 168);
 		}
 	}
 }

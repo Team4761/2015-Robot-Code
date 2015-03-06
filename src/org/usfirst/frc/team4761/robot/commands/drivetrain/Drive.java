@@ -11,12 +11,15 @@ public class Drive extends Command {
 
 	Double x, y, rotate;
 	Float time;
+	String type;
 	
-    public Drive(double x, double y, double rotate, float time) {
+	// Type can be NORMAL or ABSOLUTE
+    public Drive(double x, double y, double rotate, float time, String type) {
     	this.x = x;
     	this.y = y;
     	this.rotate = rotate;
     	this.time = time;
+    	this.type = type;
     	requires(Robot.driveTrain);
     }
     
@@ -56,7 +59,11 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.drive(x, y, rotate);
+    	if (type.equals("NORMAL")) {
+    		Robot.driveTrain.drive(x, y, rotate);
+    	} else {
+    		Robot.driveTrain.driveAbsolute(x, y, rotate);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
