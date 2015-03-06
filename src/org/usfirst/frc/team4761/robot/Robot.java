@@ -71,8 +71,10 @@ public class Robot extends IterativeRobot {
 		if (RobotMap.robot == 1) {
 			// Assign autonomous
 			int autoModeOverride = -1;
-			if (!(SmartDashboard.getBoolean("Step Autonomous") || SmartDashboard.getBoolean("Three Barrels Autonomous") || SmartDashboard.getBoolean("Drive To Auto-Zone") || SmartDashboard.getBoolean("Debug Autonomous")))
-					autoModeOverride = Settings.read("AutoMode");
+			if (!(SmartDashboard.getBoolean("Step Autonomous") || SmartDashboard.getBoolean("Three Barrels Autonomous") || SmartDashboard.getBoolean("Drive To Auto-Zone") || SmartDashboard.getBoolean("Debug Autonomous"))) {
+				autoModeOverride = Settings.read("AutoMode");
+			}
+			
 			if (SmartDashboard.getBoolean("Step Autonomous") || autoModeOverride == 0) {
 				autonomousCommand = new Autonomous();
 				Settings.write("AutoMode", 0);
