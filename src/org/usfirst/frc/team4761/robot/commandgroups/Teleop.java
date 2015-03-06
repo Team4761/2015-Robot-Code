@@ -1,10 +1,10 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import edu.wpi.first.wpilibj.command.CommandGroup;
-
 import org.usfirst.frc.team4761.robot.buttons.Rumble;
 import org.usfirst.frc.team4761.robot.commands.ControlLeds;
 import org.usfirst.frc.team4761.robot.commands.LogToFile;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  * The command that is run when the robot enters teleop mode.

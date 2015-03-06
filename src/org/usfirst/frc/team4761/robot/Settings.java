@@ -1,6 +1,9 @@
 package org.usfirst.frc.team4761.robot;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**

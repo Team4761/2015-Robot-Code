@@ -1,8 +1,8 @@
 package org.usfirst.frc.team4761.robot.commands.rcgrabber;
 
-import edu.wpi.first.wpilibj.command.Command;
-
 import org.usfirst.frc.team4761.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * A command that spins the {@link org.usfirst.frc.team4761.robot.subsystems.RcGrabberBase Barrel Grabber Base} inwards and

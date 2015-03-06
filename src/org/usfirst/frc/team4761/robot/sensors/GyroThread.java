@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4761.robot.sensors;
 
-import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**

@@ -1,7 +1,8 @@
 package org.usfirst.frc.team4761.robot.buttons;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4761.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Sets the accumulator to turn the robot to 0 degrees.

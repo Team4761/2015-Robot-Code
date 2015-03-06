@@ -1,9 +1,7 @@
 package org.usfirst.frc.team4761.robot.sensors;
 
-import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
-import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.I2C;
 
 /**

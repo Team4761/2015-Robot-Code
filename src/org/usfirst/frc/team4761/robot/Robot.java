@@ -1,11 +1,5 @@
 package org.usfirst.frc.team4761.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
@@ -14,7 +8,19 @@ import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
-import org.usfirst.frc.team4761.robot.subsystems.*;
+import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team4761.robot.subsystems.Elevator;
+import org.usfirst.frc.team4761.robot.subsystems.LiftConveyorBelt;
+import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
+import org.usfirst.frc.team4761.robot.subsystems.Plower;
+import org.usfirst.frc.team4761.robot.subsystems.RcGrabber;
+import org.usfirst.frc.team4761.robot.subsystems.RcGrabberBase;
+
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the

@@ -1,7 +1,6 @@
 package org.usfirst.frc.team4761.robot.commands.debug;
 
 import org.simonandrews.robolog.Logger;
-import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
