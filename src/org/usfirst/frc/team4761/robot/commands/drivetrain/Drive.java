@@ -24,31 +24,27 @@ public class Drive extends Command {
     }
     
     public Drive(DriveType type){
-    	switch(type){
-    	case LEFT:{
-    		x = -.15;
-    		y = 0.0;
-    		rotate = 0.0;
-    		break;
-    	}
-    	case RIGHT:{
-    		x = .15;
-    		y = 0.0;
-    		rotate = 0.0;
-    		break;
-    	}
-    	case FORWARD:{
-    		x = 0.0;
-    		y = .15;
-    		rotate = 0.0;
-    		break;
-    	}
-    	case BACKWARD:{
-    		x = 0.0;
-    		y = .15;
-    		rotate = 0.0;
-    		break;
-    	}
+    	switch (type) {
+	    	case LEFT:
+	    		x = -.15;
+	    		y = 0.0;
+	    		rotate = 0.0;
+	    		break;
+	    	case RIGHT:
+	    		x = .15;
+	    		y = 0.0;
+	    		rotate = 0.0;
+	    		break;
+	    	case FORWARD:
+	    		x = 0.0;
+	    		y = .15;
+	    		rotate = 0.0;
+	    		break;
+	    	case BACKWARD:
+	    		x = 0.0;
+	    		y = .15;
+	    		rotate = 0.0;
+	    		break;
     	}
     }
     
