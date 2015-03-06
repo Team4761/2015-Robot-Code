@@ -5,12 +5,13 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Sends I2C transmissions to the Arduino that turns the LEDs on and off in a
+ * pre-programmed pattern.
  */
-public class LEDs extends Command {
+public class ControlLeds extends Command {
 	int i;
 	
-    public LEDs() {
+    public ControlLeds() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
