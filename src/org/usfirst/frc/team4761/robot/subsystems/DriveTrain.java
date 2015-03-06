@@ -86,15 +86,9 @@ public class DriveTrain extends Subsystem {
 		SmartDashboard.putNumber("Angle: ", degrees);
 		
 		log.dev("Angle: " + degrees);
-		
-		/*if (Robot.oi.joysticks[2].getRawAxis(4) >= 0.1 || Robot.oi.joysticks[2].getRawAxis(4) <= -0.1) {
-			gyroPidController.setSetpoint(RobotMap.gyro.getAngle() + (convert(Robot.oi.joysticks[2].getRawAxis(4) * 5, joystick1)));
-		}*/
 
 		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), driveGyroPIDOutput.getValue(), degrees);
-		if (Robot.oi.joysticks[2].getRawAxis(0) < 0.05 && Robot.oi.joysticks[2].getRawAxis(1) < 0.05 && Robot.oi.joysticks[2].getRawAxis(4) < 0.05) {
-			robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(4), joystick1), degrees);
-		}
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(4), joystick1), degrees);
 	}
 	
 	public void setAccumulator (double degrees) {

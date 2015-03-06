@@ -41,7 +41,7 @@ public class OI {
 	
 	public OI () {
 		putBoolean("Step Autonomous", false);
-		putBoolean("Three Barrels Autonomous", true);
+		putBoolean("Three Barrels Autonomous", false);
 		putBoolean("Drive To Auto-Zone", false);
 		putBoolean("Push Barrel To Auto-Zone", false);
 		

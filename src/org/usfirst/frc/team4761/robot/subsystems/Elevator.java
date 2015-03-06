@@ -17,8 +17,8 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void raise () {
-		speedController1.set(-0.75);
-		speedController2.set(-0.75);
+		speedController1.set(-1);
+		speedController2.set(-1);
 	}
 	
 	public void lower () {

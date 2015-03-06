@@ -30,14 +30,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * directory.
  */
 public class Robot extends IterativeRobot {
-	public static DriveTrain driveTrain;
-	public static Elevator elevator;
-	public static MainConveyorBelt mainConveyorBelt;
-	public static Plower plower;
-	public static RcGrabber rcGrabber;
-	public static RcGrabberBase rcGrabberBase;
-	public static LiftConveyorBelt liftConveyorBelt;
 	public static RobotMap robotMap = new RobotMap();
+	public static DriveTrain driveTrain = new DriveTrain();
+	public static Elevator elevator = new Elevator();
+	public static MainConveyorBelt mainConveyorBelt = new MainConveyorBelt();
+	public static Plower plower = new Plower();
+	public static RcGrabber rcGrabber = new RcGrabber();
+	public static RcGrabberBase rcGrabberBase = new RcGrabberBase();
+	public static LiftConveyorBelt liftConveyorBelt = new LiftConveyorBelt();
 	
 	public static OI oi;
 	public Command teleop;
@@ -51,41 +51,33 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		teleop = new Teleop();
-		driveTrain = new DriveTrain();
 		
 		if (RobotMap.robot == 1) {
-			autonomousCommand = new NoWedgeAuto();
-			elevator = new Elevator();
-			mainConveyorBelt = new MainConveyorBelt();
-			plower = new Plower();
-			rcGrabber = new RcGrabber();
-			rcGrabberBase = new RcGrabberBase();
-			liftConveyorBelt = new LiftConveyorBelt();
+			autonomousCommand = new PushToAuto();
 		}
 		
 		LogManager.setMinimumLevel(RobotMap.minLogLevel);
 		
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
-		autonomous = new Autonomous();
+		autonomous = new PushToAuto();
 		wedgeAuto = new NoWedgeAuto();
 		driveToAuto = new DriveToAuto();
 		debugAuto = new DebugAutonomous();
 		pushToAuto = new PushToAuto();
 		int currentAuto = Settings.read("AutoMode");
-		switch (currentAuto)
-		{
-			case 0 :
+
+		switch (currentAuto) {
+			case 0:
 				SmartDashboard.putBoolean("Step Autonomous", true);
-			case 1 :
+			case 1:
 				SmartDashboard.putBoolean("Three Barrels Autonomous", true);
-			case 2 :
+			case 2:
 				SmartDashboard.putBoolean("Drive To Auto-Zone", true);
-			case 3 :
+			case 3:
 				SmartDashboard.putBoolean("Debug Autonomous", true);
-			case 4 :
-				SmartDashboard.putBoolean("Push Barrel To Auto-Zone", true);
-				
+			case 4:
+				SmartDashboard.putBoolean("Push Barrel To Auto-Zone", true);	
 		}
 	}
 	
