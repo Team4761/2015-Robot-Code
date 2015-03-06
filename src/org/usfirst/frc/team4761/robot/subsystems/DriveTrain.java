@@ -57,12 +57,11 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setSetpoint(degrees);
 		
 		robotDrive.mecanumDrive_Cartesian(x, y, degrees, 90);
-		//robotDrive.mecanumDrive_Cartesian(x, y, 0, GyroSensor.getDegrees());
 	}
 	
 	public void driveNoField (Joystick joystick1, Joystick joystick2) {
 		System.out.println("Not field oriented");
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(4), joystick1), 0);
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), Robot.oi.joysticks[0].getRawAxis(1)), convert(Robot.oi.joysticks[2].getRawAxis(1), Robot.oi.joysticks[0].getRawAxis(1)), convert(Robot.oi.joysticks[2].getRawAxis(4), Robot.oi.joysticks[0].getRawAxis(0)), 0);
 	}
 	
 	public void stop () {
@@ -70,16 +69,16 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	// Get z-axis and scale it
-	private double getZ (Joystick joystick) {
-		return (-0.3 * joystick.getZ() + 0.5);
+	private double useEquation (double axis) {
+		return (-0.3 * axis + 0.5);
 	}
 	
 	// Calculate new speed based on the scaled z-axis
-	private double convert (double input, Joystick joystick) {
-		return (input * getZ(joystick));
+	private double convert (double input, double axis) {
+		return (input * useEquation(axis));
 	}
 	
-	public void driveWithJoysticks (Joystick joystick1, Joystick joystick2) {
+	public void driveWithJoysticks () {
 		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
 		
 		double degrees = GyroSensor.getDegrees();
@@ -87,8 +86,7 @@ public class DriveTrain extends Subsystem {
 		
 		log.dev("Angle: " + degrees);
 
-		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), driveGyroPIDOutput.getValue(), degrees);
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(1), joystick2), convert(Robot.oi.joysticks[2].getRawAxis(4), joystick1), degrees);
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[0].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[0].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[0].getRawAxis(0)), degrees);
 	}
 	
 	public void setAccumulator (double degrees) {

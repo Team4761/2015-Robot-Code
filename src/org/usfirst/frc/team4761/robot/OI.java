@@ -10,8 +10,10 @@ import org.usfirst.frc.team4761.robot.buttons.MainConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.MoveElevator;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberLeft;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
+import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
+import org.usfirst.frc.team4761.robot.buttons.WedgeToggle;
 import org.usfirst.frc.team4761.robot.commandgroups.TurnInDown;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
@@ -31,11 +33,11 @@ import edu.wpi.first.wpilibj.Joystick;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	// With XBox controller
-	public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2)};
+	// With XBox controller and button board
+	public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
 	
-	// Without XBox controller
-	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
+	// With Joysticks
+	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2), new Joystick(3)};
 	
 	ButtonManager buttonManager = new ButtonManager();
 	
@@ -51,24 +53,30 @@ public class OI {
 		
 		if (RobotMap.robot == 1) {
 			// Bind buttons for button boards
-			/*buttonManager.runWhilePressed(2, 2, new MainConveyorForward(2, 2));
-			buttonManager.runWhilePressed(1, 2, new MainConveyorBackward(1, 2));
+			buttonManager.runWhilePressed(9, 1, new MainConveyorForward(9, 1));
+			buttonManager.runWhilePressed(8, 1, new MainConveyorBackward(8, 1));
 			
-			buttonManager.runWhilePressed(12, 2, new LiftConveyorForward(12, 2));
-			buttonManager.runWhilePressed(13, 2, new LiftConveyorBackward(13, 2));
+			buttonManager.runWhilePressed(11, 1, new LiftConveyorForward(11, 1));
+			buttonManager.runWhilePressed(10, 1, new LiftConveyorBackward(10, 1));
 			
-			buttonManager.runWhilePressed(8, 2, new RCGrabberRight(8, 2));
-			buttonManager.runWhilePressed(9, 2, new RCGrabberLeft(9, 2));
+			buttonManager.runWhilePressed(15, 1, new RCGrabberRight(8, 1));
+			buttonManager.runWhilePressed(14, 1, new RCGrabberLeft(9,1));
 			
-			buttonManager.runWhilePressed(6, 2, new MoveElevator(true, 0.5, 6, 2));
-			buttonManager.runWhilePressed(10, 2, new MoveElevator(false, 0.2, 10, 2));
+			buttonManager.runWhilePressed(13, 1, new MoveElevator(true, 1, 13, 1));
+			buttonManager.runWhilePressed(12, 1, new MoveElevator(false, 0.2, 12, 1));
 			
-			buttonManager.setToggle(10, 2, new WedgeToggle());
-			buttonManager.setToggle(11, 2, new RCGrabberToggle());*/
+			buttonManager.setToggle(2, 1, new WedgeToggle());
+			buttonManager.setToggle(1, 1, new RCGrabberToggle());
+			
+			buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
+			buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
+			buttonManager.runOnPress(7, 1, new TurnInDown());
+			
+			buttonManager.runOnPress(4, 1, new ResetGyro(90));
+			buttonManager.runOnPress(3, 1, new KillAllCommands());
 			
 			// Bind buttons for joysticks
-			buttonManager.runOnPress(9, 1, new TurnToZero());
-			buttonManager.runOnPress(8, 1, new ResetGyro(90));
+			/*buttonManager.runOnPress(8, 1, new ResetGyro(90));
 			buttonManager.runOnPress(3, 1, new KillAllCommands());
 			
 			buttonManager.runOnPress(1, 1, new MoveElevatorToStackTop());
@@ -91,19 +99,19 @@ public class OI {
 			buttonManager.runOnPress(11, 1, new PlowExtend());
 			buttonManager.runOnPress(10, 1, new PlowRetract());
 			
-			buttonManager.runOnPress(2, 1, new TurnInDown());
+			buttonManager.runOnPress(2, 1, new TurnInDown());*/
 			
 			// Bind buttons for XBox Controller
-			buttonManager.runWhilePressed(4, 2, new RaiseRcGrabber());
-			buttonManager.runWhilePressed(1, 2, new LowerRcGrabber());
-			buttonManager.runWhilePressed(3, 2, new RCGrabberLeft(3, 2));
-			buttonManager.runWhilePressed(2, 2, new RCGrabberRight(2, 2));
-			buttonManager.runOnPress(10, 2, new SnapToNearestCardinal());
-			buttonManager.runOnPress(6, 2, new TurnInDown());
-			buttonManager.runOnPress(8, 2, new Stop());
-			buttonManager.runOnPress(7, 2, new DriveToTotes());
+			buttonManager.runWhilePressed(4, 0, new RaiseRcGrabber());
+			buttonManager.runWhilePressed(1, 0, new LowerRcGrabber());
+			buttonManager.runWhilePressed(3, 0, new RCGrabberLeft(3, 0));
+			buttonManager.runWhilePressed(2, 0, new RCGrabberRight(2, 0));
+			buttonManager.runOnPress(10, 0, new SnapToNearestCardinal());
+			buttonManager.runOnPress(6, 0, new TurnInDown());
+			buttonManager.runOnPress(8, 0, new Stop());
+			buttonManager.runOnPress(7, 0, new DriveToTotes());
 		} else {
-			buttonManager.runOnPress(8, 1, new ResetGyro(90));
+			buttonManager.runOnPress(8, 0, new ResetGyro(90));
 		}
 	}
 }
