@@ -5,7 +5,9 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * A command that passes a barrel from one conveyer (main conveyer {@link org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt}) to the next
+ * or the lift conveyor {@link org.usfirst.frc.team4761.robot.subsystems.LiftConveyorBelt}.
+ * 
  */
 public class ConveyorPassBarrel extends Command {
 

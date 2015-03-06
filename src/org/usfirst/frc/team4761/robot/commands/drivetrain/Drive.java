@@ -5,7 +5,10 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * A command to make the {@link org.usfirst.frc.team4761.robot.subsystems.
+ * DriveTrain drive train} drive in a specified direction. You can either
+ * specify values manually yourself or simply use one of the prebuilt
+ * drivemodes defined by {@link DriveType}.
  */
 public class Drive extends Command {
 

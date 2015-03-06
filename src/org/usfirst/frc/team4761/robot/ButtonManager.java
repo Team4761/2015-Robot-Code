@@ -1,11 +1,10 @@
 package org.usfirst.frc.team4761.robot;
 
+import java.util.concurrent.CopyOnWriteArrayList;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
-
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Allows for easy mapping of Joystick buttons to the execution of commands.

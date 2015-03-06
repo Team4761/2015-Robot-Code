@@ -6,7 +6,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * A command to rumble the joystick.
  */
 public class Rumble extends Command {
 	private int button = 0;

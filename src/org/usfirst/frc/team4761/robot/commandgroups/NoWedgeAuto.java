@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class NoWedgeAuto extends CommandGroup {
     
     public NoWedgeAuto() {
-    	addSequential(new ResetGyro());
+    	addSequential(new ResetGyro(90));
     	addParallel(new LogToFile());
     	
     	addSequential(new SpinRcBaseOut());

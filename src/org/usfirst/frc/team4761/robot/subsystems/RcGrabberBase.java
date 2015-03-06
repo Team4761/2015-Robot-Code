@@ -1,11 +1,10 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
+import org.usfirst.frc.team4761.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
-import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
 
 /**
  * Motor that spins {@link org.usfirst.frc.team4761.robot.subsystems.RcGrabber

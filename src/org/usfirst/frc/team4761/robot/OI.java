@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putBoolean;
+import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putNumber;
 
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
@@ -10,13 +10,11 @@ import org.usfirst.frc.team4761.robot.buttons.MainConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.MoveElevator;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberLeft;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
-import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.buttons.TurnToZero;
-import org.usfirst.frc.team4761.robot.buttons.WedgeToggle;
-import org.usfirst.frc.team4761.robot.commandgroups.RcPickUp;
 import org.usfirst.frc.team4761.robot.commandgroups.TurnInDown;
-import org.usfirst.frc.team4761.robot.commands.*;
+import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
+import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
 import org.usfirst.frc.team4761.robot.commands.drivetrain.DriveToTotes;
 import org.usfirst.frc.team4761.robot.commands.drivetrain.SnapToNearestCardinal;
@@ -26,7 +24,7 @@ import org.usfirst.frc.team4761.robot.commands.plower.PlowRetract;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RaiseRcGrabber;
 
-import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.*;
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -70,7 +68,7 @@ public class OI {
 			
 			// Bind buttons for joysticks
 			buttonManager.runOnPress(9, 1, new TurnToZero());
-			buttonManager.runOnPress(8, 1, new ResetGyro());
+			buttonManager.runOnPress(8, 1, new ResetGyro(90));
 			buttonManager.runOnPress(3, 1, new KillAllCommands());
 			
 			buttonManager.runOnPress(1, 1, new MoveElevatorToStackTop());
@@ -105,7 +103,7 @@ public class OI {
 			buttonManager.runOnPress(8, 2, new Stop());
 			buttonManager.runOnPress(7, 2, new DriveToTotes());
 		} else {
-			buttonManager.runOnPress(8, 1, new ResetGyro());
+			buttonManager.runOnPress(8, 1, new ResetGyro(90));
 		}
 	}
 }
