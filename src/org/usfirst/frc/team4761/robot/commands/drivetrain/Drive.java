@@ -5,7 +5,8 @@ import org.usfirst.frc.team4761.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * Drive the robot. You can either specify values manually yourself or simply
+ * use one of the prebuilt drivemodes defined by {@link DriveType}.
  */
 public class Drive extends Command {
 
