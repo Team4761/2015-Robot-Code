@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
@@ -26,7 +27,9 @@ public class LogToFile extends Command {
 	protected void execute() {
 		//log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
 		//log.dev("Towards Totes: " + Double.toString(outerConveyorToteDistanceSensor.getDistance()));
-		log.dev("Angle: " + Double.toString(GyroSensor.getDegrees()));
+		//log.dev("Angle: " + Double.toString(GyroSensor.getDegrees()));
+		//log.dev("Slider 1: " + Double.toString(Robot.oi.joysticks[1].getRawAxis(0)));
+		//log.dev("Slider 1: " + Double.toString(Robot.oi.joysticks[1].getRawAxis(1)));
 		//log.dev("Setpoint: " + Double.toString(Robot.driveTrain.gyroPidController.getSetpoint()));
 		//log.dev("Barrel: " + Double.toString(barrelSensor.getDistance()));
 		//SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());

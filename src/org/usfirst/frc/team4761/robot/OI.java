@@ -59,11 +59,11 @@ public class OI {
 			buttonManager.runWhilePressed(11, 1, new LiftConveyorForward(11, 1));
 			buttonManager.runWhilePressed(10, 1, new LiftConveyorBackward(10, 1));
 			
-			buttonManager.runWhilePressed(15, 1, new RCGrabberRight(8, 1));
-			buttonManager.runWhilePressed(14, 1, new RCGrabberLeft(9,1));
+			buttonManager.runWhilePressed(15, 1, new RCGrabberRight(15, 1));
+			buttonManager.runWhilePressed(14, 1, new RCGrabberLeft(14, 1));
 			
-			buttonManager.runWhilePressed(13, 1, new MoveElevator(true, 1, 13, 1));
-			buttonManager.runWhilePressed(12, 1, new MoveElevator(false, 0.2, 12, 1));
+			buttonManager.runWhilePressed(18, 1, new MoveElevator(true, 0.65, 18, 1));
+			buttonManager.runWhilePressed(16, 1, new MoveElevator(false, 0.4, 16, 1));
 			
 			buttonManager.setToggle(2, 1, new WedgeToggle());
 			buttonManager.setToggle(1, 1, new RCGrabberToggle());
@@ -106,12 +106,12 @@ public class OI {
 			buttonManager.runWhilePressed(1, 0, new LowerRcGrabber());
 			buttonManager.runWhilePressed(3, 0, new RCGrabberLeft(3, 0));
 			buttonManager.runWhilePressed(2, 0, new RCGrabberRight(2, 0));
-			buttonManager.runOnPress(10, 0, new SnapToNearestCardinal());
-			buttonManager.runOnPress(6, 0, new TurnInDown());
-			buttonManager.runOnPress(8, 0, new Stop());
-			buttonManager.runOnPress(7, 0, new DriveToTotes());
+			//buttonManager.runOnPress(10, 0, new SnapToNearestCardinal());
+			//buttonManager.runOnPress(6, 0, new TurnInDown());
+			//buttonManager.runOnPress(8, 0, new Stop());
+			//buttonManager.runOnPress(7, 0, new DriveToTotes());
 		} else {
-			buttonManager.runOnPress(8, 0, new ResetGyro(90));
+			//buttonManager.runOnPress(8, 0, new ResetGyro(90));
 		}
 	}
 }

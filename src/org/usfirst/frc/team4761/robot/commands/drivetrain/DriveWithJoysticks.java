@@ -21,9 +21,9 @@ public class DriveWithJoysticks extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (!(Robot.oi.joysticks[2].getRawButton(5) && RobotMap.outerConveyorToteDistanceSensor.getDistance() <= 30)) {
+		//if (!(Robot.oi.joysticks[2].getRawButton(5) && RobotMap.outerConveyorToteDistanceSensor.getDistance() <= 30)) {
 			Robot.driveTrain.driveWithJoysticks();
-		}
+		//}
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

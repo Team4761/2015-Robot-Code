@@ -70,7 +70,7 @@ public class DriveTrain extends Subsystem {
 	
 	// Get z-axis and scale it
 	private double useEquation (double axis) {
-		return (-0.3 * axis + 0.5);
+		return (0.3 * (axis * 10) + 0.5);
 	}
 	
 	// Calculate new speed based on the scaled z-axis
@@ -85,8 +85,10 @@ public class DriveTrain extends Subsystem {
 		SmartDashboard.putNumber("Angle: ", degrees);
 		
 		log.dev("Angle: " + degrees);
-
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[0].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[0].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[0].getRawAxis(0)), degrees);
+		log.dev("Slider 1: " + useEquation(Robot.oi.joysticks[1].getRawAxis(0)));
+		log.dev("Slider 2: " + useEquation(Robot.oi.joysticks[1].getRawAxis(1)));
+		
+		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0)), degrees);
 	}
 	
 	public void setAccumulator (double degrees) {
