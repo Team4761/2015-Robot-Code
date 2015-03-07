@@ -25,47 +25,20 @@ import edu.wpi.first.wpilibj.VictorSP;
  */
 public class RobotMap {
 	public static int robot = 1;
-	/**
-	 * Speed controller that controls the left front motor on the drive train.
-	 */
+	
 	public static SpeedController leftFrontMotor;
-	/**
-	 * Speed controller that controls the left rear motor on the drive train.
-	 */
 	public static SpeedController leftRearMotor;
-	/**
-	 * Speed controller that controls the right front motor on the drive train.
-	 */
 	public static SpeedController rightFrontMotor;
-	/**
-	 * Speed controller that controls the right rear motor on the drive train.
-	 */
 	public static SpeedController rightRearMotor;
 	
-	/**
-	 * Instance of RobotDrive for our drive train.
-	 */
 	public static RobotDrive robotDrive;
 	
 	public static GyroSensor gyro;
 
-	/**
-	 * A distance sensor that senses the barrels for auto-mode.
-	 */
 	public static MediumDistanceSensor barrelDistanceSensor;
-	/**
-	 * A distance sensor on the elevator.
-	 */
 	public static MediumDistanceSensor elevatorDistanceSensor;
-	/**
-	 * Distance sensor on the rear of the outer conveyor belt. Used for
-	 * detecting something.
-	 */
 	public static MediumDistanceSensor outerConveyorToteDistanceSensor;
-	/**
-	 * Distance sensor on the front of the outer conveyor belt. Used for
-	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
-	 */
+
 	public static ShortDistanceSensor outerConveyorBarrelDistanceSensor;
 	
 	public static Logger log;
@@ -76,21 +49,10 @@ public class RobotMap {
 	
 	public static VictorSP spinner;
 	
-	/**
-	 * Digital input for the limit switches of the rcGrabberBase.
-	 */
 	public static DigitalInput spinnerDI1;
-	/**
-	 * Digital input for the limit switches of the rcGrabberBase.
-	 */
 	public static DigitalInput spinnerDI2;
-	/**
-	 * Digital input for detecting magnets?
-	 */
 	public static DigitalInput someDI;
-	/**
-	 * Digital input for the limit switch on the bottom of the elevator
-	 */
+	
 	public static DigitalInput elevatorDI;
 	
 	public static Talon mainConveyorBeltMotor;
@@ -98,15 +60,7 @@ public class RobotMap {
 	public static VictorSP elevatorMotor1;
 	public static VictorSP elevatorMotor2;
 	
-	/**
-	 * A magnet sensor that detects when it is in proximity to a magnet. It is used
-	 * to obtain the position of the elevator. In this case the down position.
-	 */
 	public static DigitalInput elevatorMagnetDetectorDown;
-	/**
-	 * A magnet sensor that detects when it is in proximity to a magnet. It is used
-	 * to obtain the position of the elevator. In this case the up position.
-	 */
 	public static DigitalInput elevatorMagnetDetectorUp;
 	
 	public static AnalogInput flexSensor;
@@ -137,13 +91,46 @@ public class RobotMap {
 			
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
+			/**
+			 * A distance sensor that senses the barrels for auto-mode.
+			 */
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
+			
+			/**
+			 * A distance sensor on the elevator.
+			 */
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(1));
+			
+			/**
+			 * Distance sensor on the rear of the outer conveyor belt. Used for
+			 * detecting something.
+			 */
 			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
+			
+			/**
+			 * Distance sensor on the front of the outer conveyor belt. Used for
+			 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
+			 */
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 		
+			/**
+			 * A magnet sensor that detects when it is in proximity to a magnet. It is used
+			 * to obtain the position of the elevator. In this case the down position.
+			 */
+			
 			elevatorMagnetDetectorDown = new DigitalInput(3);
+			
+			/**
+			 * A magnet sensor that detects when it is in proximity to a magnet. It is used
+			 * to obtain the position of the elevator. In this case the up position.
+			 */
+			
 			elevatorMagnetDetectorUp = new DigitalInput(4);
+			
+			/**
+			 * Distance sensor on the front of the outer conveyor belt. Used for
+			 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
+			 */
 			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
@@ -153,8 +140,15 @@ public class RobotMap {
 			
 			spinner = new VictorSP(4);
 			
+			/**
+			 * Digital inputs for the limit switches of the rcGrabberBase.</br>
+			 */
 			spinnerDI1 = new DigitalInput(8);
 			spinnerDI2 = new DigitalInput(9);
+			
+			/**
+			 * Digital input for the limit switch on the bottom of the elevator
+			 */
 			elevatorDI = new DigitalInput(2);
 			
 			mainConveyorBeltMotor = new Talon(6);

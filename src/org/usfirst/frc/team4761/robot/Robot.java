@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
 		
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
-		autonomous = new PushToAuto();
+		/*autonomous = new PushToAuto();
 		wedgeAuto = new NoWedgeAuto();
 		driveToAuto = new DriveToAuto();
 		debugAuto = new DebugAutonomous();
@@ -78,13 +78,13 @@ public class Robot extends IterativeRobot {
 				SmartDashboard.putBoolean("Debug Autonomous", true);
 			case 4:
 				SmartDashboard.putBoolean("Push Barrel To Auto-Zone", true);	
-		}
+		}*/
 	}
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		// Check autonomous
-		int autoModeOverride = -1;
+		/*int autoModeOverride = -1;
 		if (!(SmartDashboard.getBoolean("Step Autonomous") || SmartDashboard.getBoolean("Three Barrels Autonomous") || SmartDashboard.getBoolean("Drive To Auto-Zone") || SmartDashboard.getBoolean("Debug Autonomous"))) {
 			autoModeOverride = Settings.read("AutoMode");
 		}
@@ -105,7 +105,7 @@ public class Robot extends IterativeRobot {
 			Settings.write("AutoMode", 4);
 		} else {
 			System.err.println("Missing/invalid auto selected!");
-		}
+		}*/
 	}
 	
 	public void autonomousInit() {

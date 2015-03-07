@@ -59,8 +59,8 @@ public class OI {
 			buttonManager.runWhilePressed(11, 1, new LiftConveyorForward(11, 1));
 			buttonManager.runWhilePressed(10, 1, new LiftConveyorBackward(10, 1));
 			
-			buttonManager.runWhilePressed(15, 1, new RCGrabberRight(15, 1));
-			buttonManager.runWhilePressed(14, 1, new RCGrabberLeft(14, 1));
+			buttonManager.runWhilePressed(15, 1, new RCGrabberLeft(15, 1));
+			buttonManager.runWhilePressed(14, 1, new RCGrabberRight(14, 1));
 			
 			buttonManager.runWhilePressed(18, 1, new MoveElevator(true, 0.65, 18, 1));
 			buttonManager.runWhilePressed(16, 1, new MoveElevator(false, 0.4, 16, 1));
@@ -74,6 +74,7 @@ public class OI {
 			
 			buttonManager.runOnPress(4, 1, new ResetGyro(90));
 			buttonManager.runOnPress(3, 1, new KillAllCommands());
+			
 			
 			// Bind buttons for joysticks
 			/*buttonManager.runOnPress(8, 1, new ResetGyro(90));

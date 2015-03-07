@@ -25,7 +25,7 @@ public class RCGrabberRight extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if (!Robot.rcGrabberBase.outTriggered()) {
-    		Robot.rcGrabberBase.spinnerSet(1.0);
+    		Robot.rcGrabberBase.spinnerSet(0.6);
     	}
     }
 
