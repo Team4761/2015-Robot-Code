@@ -82,13 +82,12 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
 		
 		double degrees = GyroSensor.getDegrees();
-		SmartDashboard.putNumber("Angle: ", degrees);
 		
 		log.dev("Angle: " + degrees);
 		log.dev("Slider 1: " + useEquation(Robot.oi.joysticks[1].getRawAxis(0)));
 		log.dev("Slider 2: " + useEquation(Robot.oi.joysticks[1].getRawAxis(1)));
 		
-		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0)), degrees);
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0)), degrees);
 	}
 	
 	public void setAccumulator (double degrees) {
