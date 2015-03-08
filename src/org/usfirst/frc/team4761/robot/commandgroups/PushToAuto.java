@@ -18,6 +18,6 @@ public class PushToAuto extends CommandGroup {
     	addSequential(new SpinRcBaseOut());
     	addSequential(new RaiseRcGrabber());
     	addParallel(new SpinRcBaseIn());
-    	addSequential(new Drive(0, -0.5, 0, 3, "ABSOLUTE"));
+    	addSequential(new Drive(0, -0.5, 0, 6, "ABSOLUTE"));
     }
 }

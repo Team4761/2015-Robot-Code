@@ -35,6 +35,7 @@ public class LogToFile extends Command {
 		//log.dev("Barrel: " + Double.toString(barrelSensor.getDistance()));
 		SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
 		SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());
+		SmartDashboard.putNumber("Distance from barrel", outerConveyorBarrelDistanceSensor.getDistance());
 		//SmartDashboard.putNumber("Distance from barrel on conveyor", outerConveyorBarrelDistanceSensor.getDistance());
 		//SmartDashboard.putNumber("Barrel: ", barrelSensor.getDistance());
 	}
