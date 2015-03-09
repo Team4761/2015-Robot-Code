@@ -61,7 +61,7 @@ public class DriveTrain extends Subsystem {
 	
 	public void driveNoField (Joystick joystick1, Joystick joystick2) {
 		System.out.println("Not field oriented");
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), Robot.oi.joysticks[0].getRawAxis(1)), convert(Robot.oi.joysticks[2].getRawAxis(1), Robot.oi.joysticks[0].getRawAxis(1)), convert(Robot.oi.joysticks[2].getRawAxis(4), Robot.oi.joysticks[0].getRawAxis(0)), 0);
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), Robot.oi.joysticks[0].getRawAxis(1), 0), convert(Robot.oi.joysticks[2].getRawAxis(1), Robot.oi.joysticks[0].getRawAxis(1), 0), convert(Robot.oi.joysticks[2].getRawAxis(4), Robot.oi.joysticks[0].getRawAxis(0), 0), 0);
 	}
 	
 	public void stop () {
@@ -74,7 +74,10 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	// Calculate new speed based on the scaled z-axis
-	private double convert (double input, double axis) {
+	private double convert (double input, double axis, double override) {
+		if (override > 0) {
+			return (input * useEquation(axis)) * override;
+		}
 		return (input * useEquation(axis));
 	}
 	
@@ -88,7 +91,11 @@ public class DriveTrain extends Subsystem {
 		log.dev("Slider 2: " + useEquation(Robot.oi.joysticks[1].getRawAxis(1)));
 		
 		if (!Robot.oi.joysticks[0].getRawButton(6)) {
-			robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1)), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0)), degrees);
+			if (Robot.oi.joysticks[0].getRawButton(5)) {
+				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0.6), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0.2), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0.4), degrees);
+			} else {
+				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0), degrees);
+			}
 		}
 	}
 	
