@@ -34,12 +34,14 @@ public class GyroSensor {
 	// I2C gyro
 	public GyroSensor () {
 		gyro.write(0x6B, 0x00); // Power Config
-		gyro.write(0x1A, 0x26); // Basic Config
+		gyro.write(0x1A, 0x23); // Basic Config
 		gyro.write(0x1B, 0x00); // Gyro Config
 		gyro.write(0x38, 0x11); // Interrupt Config
 		gyro.write(0x23, 0x10); // FIFO Config
-		gyro.write(0x6A, 0x04); // User Control (Turn off FIFO and reset it)
+		gyro.write(0x6A, 0x40); // User Control (Disable FIFO)
+		gyro.write(0x6A, 0x04); // User Control (Reset FIFO)
 		gyro.write(0x6A, 0x40); // User Control (Turn FIFO back on);
+		gyro.write(0x19, 0x04); // Set sample rate to 200Hz
 	}
 	
 	private int uByteToInt (byte number) {
