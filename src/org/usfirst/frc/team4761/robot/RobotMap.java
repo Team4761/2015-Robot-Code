@@ -80,34 +80,28 @@ public class RobotMap {
 	 * Digital input for the limit switches of the rcGrabberBase.
 	 */
 	public static DigitalInput spinnerDI1;
+	
 	/**
 	 * Digital input for the limit switches of the rcGrabberBase.
 	 */
 	public static DigitalInput spinnerDI2;
-	/**
-	 * Digital input for detecting magnets?
-	 */
-	public static DigitalInput someDI;
+	
 	/**
 	 * Digital input for the limit switch on the bottom of the elevator
 	 */
-	public static DigitalInput elevatorDI;
+	public static DigitalInput elevatorBottom;
+	
+	public static DigitalInput elevatorAcceptTote1;
+	public static DigitalInput elevatorAcceptTote2;
+	
+	public static DigitalInput breakBeamBegin;
+	public static DigitalInput breakBeamClear;
+	public static DigitalInput breakBeamClear2;
 	
 	public static Talon mainConveyorBeltMotor;
 	public static VictorSP elevatorConveyorBeltMotor;
 	public static VictorSP elevatorMotor1;
 	public static VictorSP elevatorMotor2;
-	
-	/**
-	 * A magnet sensor that detects when it is in proximity to a magnet. It is used
-	 * to obtain the position of the elevator. In this case the down position.
-	 */
-	public static DigitalInput elevatorMagnetDetectorDown;
-	/**
-	 * A magnet sensor that detects when it is in proximity to a magnet. It is used
-	 * to obtain the position of the elevator. In this case the up position.
-	 */
-	public static DigitalInput elevatorMagnetDetectorUp;
 	
 	public static AnalogInput flexSensor;
 	
@@ -141,9 +135,6 @@ public class RobotMap {
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(1));
 			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
-		
-			elevatorMagnetDetectorDown = new DigitalInput(3);
-			elevatorMagnetDetectorUp = new DigitalInput(4);
 			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
@@ -155,7 +146,14 @@ public class RobotMap {
 			
 			spinnerDI1 = new DigitalInput(8);
 			spinnerDI2 = new DigitalInput(9);
-			elevatorDI = new DigitalInput(2);
+			
+			elevatorBottom = new DigitalInput(0);
+			elevatorAcceptTote1 = new DigitalInput(1);
+			elevatorAcceptTote2 = new DigitalInput(2);
+			
+			breakBeamBegin = new DigitalInput(3);
+			breakBeamClear = new DigitalInput(4);
+			breakBeamClear2 = new DigitalInput(5);
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);

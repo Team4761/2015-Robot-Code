@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * Move {@link org.usfirst.frc.team4761.robot.subsystems.Elevator Elevator} down.
  */
 public class MoveElevatorToBottom extends Command {
-	DigitalInput di = RobotMap.elevatorDI;
+	DigitalInput di = RobotMap.elevatorBottom;
 	
 	public MoveElevatorToBottom() {
 		// Use requires() here to declare subsystem dependencies

@@ -90,12 +90,16 @@ public class DriveTrain extends Subsystem {
 		log.dev("Slider 1: " + useEquation(Robot.oi.joysticks[1].getRawAxis(0)));
 		log.dev("Slider 2: " + useEquation(Robot.oi.joysticks[1].getRawAxis(1)));
 		
-		if (!Robot.oi.joysticks[0].getRawButton(6)) {
-			if (Robot.oi.joysticks[0].getRawButton(5)) {
-				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0.6), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0.2), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0.4), degrees);
-			} else {
-				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0), degrees);
+		if (RobotMap.robot == 1) {
+			if (!Robot.oi.joysticks[0].getRawButton(6)) {
+				if (Robot.oi.joysticks[0].getRawButton(5)) {
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0.6), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0.2), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0.4), degrees);
+				} else {
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0), degrees);
+				}
 			}
+		} else {
+			robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0), 0);
 		}
 	}
 	
