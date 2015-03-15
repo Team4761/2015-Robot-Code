@@ -18,4 +18,8 @@ public class LiftConveyorBelt extends Subsystem {
 	public void go (double speed) {
 		speedController.set(speed);
 	}
+
+	public void stop() {
+		speedController.set(0);
+	}
 }

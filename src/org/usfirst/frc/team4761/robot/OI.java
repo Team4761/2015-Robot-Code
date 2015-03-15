@@ -31,9 +31,6 @@ public class OI {
 	// With XBox controller and button board
 	public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
 	
-	// With Joysticks
-	//public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2), new Joystick(3)};
-	
 	ButtonManager buttonManager = new ButtonManager();
 	
 	public OI () {

@@ -17,11 +17,15 @@ public class MainConveyorBelt extends Subsystem {
 	public void initDefaultCommand() {
 	}
 	
-	public void go(double speed) {
+	public void go (double speed) {
 		speedController.set(speed);
 	}
 	
-	public double getDistance(){
+	public double getDistance () {
 		return sensor.getDistance();
+	}
+
+	public void stop() {
+		speedController.set(0);
 	}
 }
