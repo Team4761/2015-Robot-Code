@@ -1,46 +1,38 @@
 package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
 
 import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class GoToElevatorConveyor extends Command {
-	private boolean passedBeam = false;
+public class MoveElevatorConveyorForward extends Command {
 
-    public GoToElevatorConveyor() {
+    public MoveElevatorConveyorForward() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.mainConveyorBelt);
     	requires(Robot.liftConveyorBelt);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(5);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.breakBeamBegin.get() && !passedBeam) {
-    		passedBeam = true;
-    	}
-    	Robot.mainConveyorBelt.go(1);
-    	Robot.liftConveyorBelt.go(1);
+    	Robot.liftConveyorBelt.go(0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !RobotMap.breakBeamBegin.get() && passedBeam;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.mainConveyorBelt.go(0);
-    	Robot.liftConveyorBelt.go(0);
+    	Robot.liftConveyorBelt.stop();
     }
 
     // Called when another command which requires one or more of the same
