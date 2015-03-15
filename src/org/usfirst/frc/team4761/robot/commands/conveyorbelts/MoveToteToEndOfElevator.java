@@ -8,10 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LoadTote3 extends Command {
-	private boolean toteFound = false;
+public class MoveToteToEndOfElevator extends Command {
 
-    public LoadTote3() {
+    public MoveToteToEndOfElevator() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.liftConveyorBelt);
@@ -23,16 +22,12 @@ public class LoadTote3 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.breakBeamBegin.get() && !toteFound) {
-    		toteFound = true;
-    		setTimeout(1);
-    	}
     	Robot.liftConveyorBelt.backward();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return toteFound && isTimedOut();
+        return RobotMap.breakBeamBegin.get();
     }
 
     // Called once after isFinished returns true

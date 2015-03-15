@@ -16,22 +16,21 @@ public class SpinRcBaseIn extends Command {
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		setTimeout(5);
 	}
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.rcGrabberBase.spinnerSet(-0.6);
+		Robot.rcGrabberBase.goIn();
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return (Robot.rcGrabberBase.inTriggered() || isTimedOut());
+		return Robot.rcGrabberBase.inTriggered();
 	}
 	
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.rcGrabberBase.spinnerSet(0.0);
+		Robot.rcGrabberBase.stop();
 	}
 	
 	// Called when another command which requires one or more of the same

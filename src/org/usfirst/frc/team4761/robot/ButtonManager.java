@@ -68,14 +68,19 @@ public class ButtonManager {
 	 * @param joystick an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
 	 * @param command  an instance of a Command to be run
 	 */
-	public void runOnPress(int button, int joystick, Command command) {
+	public void runOnPress (int button, int joystick, Command command) {
 		checkInit();
 		new ButtonCommand(button, joystick, command, false);
 	}
 	
-	public void runWhilePressed(int button, int joystick, Command command) {
+	public void runWhilePressed (int button, int joystick, Command command) {
 		checkInit();
 		new ButtonCommand(button, joystick, command, false, true);
+	}
+	
+	public void runOnceOnHold (int button, int joystick, Command command) {
+		checkInit();
+		new ButtonCommand(button, joystick, command, false, false);
 	}
 	
 	private void checkInit() {
@@ -105,6 +110,10 @@ public class ButtonManager {
 									}
 								} else {
 									command.command.start();
+								}
+							} else {
+								if (!command.toggleable) {
+									command.command.cancel();
 								}
 							}
 						} else {
@@ -140,14 +149,14 @@ public class ButtonManager {
 				this.toggleable = toggleable;
 				stick = ButtonManager.joysticks[joystick];
 				ButtonManager.list.add(this);
-				this.repeat=repeat;
+				this.repeat = repeat;
 			} catch (Error e){
 				System.out.println("Error creating a ButtonCommand!");
 				e.printStackTrace();
 			}
 		}
-		public ButtonCommand(int button, int joystick, Command command, boolean toggleable)
-		{
+		
+		public ButtonCommand(int button, int joystick, Command command, boolean toggleable) {
 			this(button, joystick, command, toggleable, false);
 		}
 	}

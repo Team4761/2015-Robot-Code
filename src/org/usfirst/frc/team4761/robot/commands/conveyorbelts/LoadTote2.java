@@ -23,16 +23,16 @@ public class LoadTote2 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.breakBeamClear2.get() && !passedBeam) {
+    	if (RobotMap.breakBeamBegin.get() && !passedBeam) {
     		passedBeam = true;
     	} else {
-    		Robot.liftConveyorBelt.go(-1);
+    		Robot.liftConveyorBelt.backward();
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !RobotMap.breakBeamClear2.get() && passedBeam;
+        return !RobotMap.breakBeamBegin.get() && passedBeam;
     }
 
     // Called once after isFinished returns true

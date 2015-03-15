@@ -28,8 +28,9 @@ public class GoToElevatorConveyor extends Command {
     	if (RobotMap.breakBeamBegin.get() && !passedBeam) {
     		passedBeam = true;
     	}
-    	Robot.mainConveyorBelt.go(1);
-    	Robot.liftConveyorBelt.go(1);
+    	
+    	Robot.mainConveyorBelt.forward();
+    	Robot.liftConveyorBelt.forward();
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,8 +40,8 @@ public class GoToElevatorConveyor extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.mainConveyorBelt.go(0);
-    	Robot.liftConveyorBelt.go(0);
+    	Robot.mainConveyorBelt.stop();
+    	Robot.liftConveyorBelt.stop();
     }
 
     // Called when another command which requires one or more of the same

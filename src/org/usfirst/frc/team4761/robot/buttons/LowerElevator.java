@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
+package org.usfirst.frc.team4761.robot.buttons;
 
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
@@ -6,15 +6,23 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- *
+ * A command that moves the elevator either up or down.
  */
-public class LoadTote3 extends Command {
-	private boolean toteFound = false;
-
-    public LoadTote3() {
+public class LowerElevator extends Command {
+	private int button = 0;
+	private int joystickNum;
+	
+/**
+ * 
+ * @param up Boolean that determines whether or not to move the {@link org.usfirst.frc.team4761.robot.subsystems.Elevator elevator} upwards (True)
+ * or downwards (False);
+ */
+    public LowerElevator (int button, int joystickNum) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.liftConveyorBelt);
+    	requires(Robot.elevator);
+    	this.button = button;
+    	this.joystickNum = joystickNum;
     }
 
     // Called just before this Command runs the first time
@@ -23,21 +31,17 @@ public class LoadTote3 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.breakBeamBegin.get() && !toteFound) {
-    		toteFound = true;
-    		setTimeout(1);
-    	}
-    	Robot.liftConveyorBelt.backward();
+    	Robot.elevator.lower();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return toteFound && isTimedOut();
+    	return !Robot.oi.joysticks[joystickNum].getRawButton(button) || !RobotMap.elevatorBottom.get();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.liftConveyorBelt.stop();
+    	Robot.elevator.stop();
     }
 
     // Called when another command which requires one or more of the same

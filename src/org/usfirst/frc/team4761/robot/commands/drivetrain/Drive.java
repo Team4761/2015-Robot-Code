@@ -58,7 +58,7 @@ public class Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (type.equals("NORMAL")) {
+    	if (type.equals("PID")) {
     		Robot.driveTrain.drive(x, y, rotate);
     	} else {
     		Robot.driveTrain.driveAbsolute(x, y, rotate);
@@ -67,7 +67,7 @@ public class Drive extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (time!=null) {
+        if (time != null) {
         	return isTimedOut();
         } else {
         	return false;

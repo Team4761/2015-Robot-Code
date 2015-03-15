@@ -96,7 +96,6 @@ public class RobotMap {
 	
 	public static DigitalInput breakBeamBegin;
 	public static DigitalInput breakBeamClear;
-	public static DigitalInput breakBeamClear2;
 	
 	public static Talon mainConveyorBeltMotor;
 	public static VictorSP elevatorConveyorBeltMotor;
@@ -153,7 +152,6 @@ public class RobotMap {
 			
 			breakBeamBegin = new DigitalInput(3);
 			breakBeamClear = new DigitalInput(4);
-			breakBeamClear2 = new DigitalInput(5);
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);

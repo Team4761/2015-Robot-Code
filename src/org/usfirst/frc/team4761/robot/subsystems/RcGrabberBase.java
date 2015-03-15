@@ -30,7 +30,15 @@ public class RcGrabberBase extends Subsystem {
 		return !in.get();
 	}
 	
-	public void spinnerSet (Double speed) {
-		spinner.set(speed);
+	public void goIn () {
+		spinner.set(-0.6);
+	}
+	
+	public void goOut () {
+		spinner.set(0.6);
+	}
+	
+	public void stop () {
+		spinner.set(0);
 	}
 }

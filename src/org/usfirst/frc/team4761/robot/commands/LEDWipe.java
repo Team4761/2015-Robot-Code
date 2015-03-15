@@ -1,18 +1,17 @@
-package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
+package org.usfirst.frc.team4761.robot.commands;
 
-import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ElevatorConveyorBackward extends Command {
+public class LEDWipe extends Command {
 
-    public ElevatorConveyorBackward() {
+    public LEDWipe() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.liftConveyorBelt);
     }
 
     // Called just before this Command runs the first time
@@ -21,12 +20,12 @@ public class ElevatorConveyorBackward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.liftConveyorBelt.go(-1);
+    	RobotMap.arduino.transaction(new byte[]{86}, 1, null, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

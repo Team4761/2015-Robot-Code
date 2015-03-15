@@ -1,17 +1,15 @@
 package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
 
 import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LoadTote3 extends Command {
-	private boolean toteFound = false;
+public class ElevatorConveyorForward extends Command {
 
-    public LoadTote3() {
+    public ElevatorConveyorForward() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.liftConveyorBelt);
@@ -19,20 +17,17 @@ public class LoadTote3 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(5);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.breakBeamBegin.get() && !toteFound) {
-    		toteFound = true;
-    		setTimeout(1);
-    	}
-    	Robot.liftConveyorBelt.backward();
+    	Robot.liftConveyorBelt.go(0.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return toteFound && isTimedOut();
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

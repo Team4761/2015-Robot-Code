@@ -1,6 +1,5 @@
-package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
+package org.usfirst.frc.team4761.robot.commands;
 
-import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -8,13 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LoadTote3 extends Command {
-	private boolean toteFound = false;
+public class LEDGreen extends Command {
 
-    public LoadTote3() {
+    public LEDGreen() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.liftConveyorBelt);
     }
 
     // Called just before this Command runs the first time
@@ -23,26 +20,20 @@ public class LoadTote3 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.breakBeamBegin.get() && !toteFound) {
-    		toteFound = true;
-    		setTimeout(1);
-    	}
-    	Robot.liftConveyorBelt.backward();
+    	RobotMap.arduino.transaction(new byte[]{82}, 1, null, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return toteFound && isTimedOut();
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.liftConveyorBelt.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

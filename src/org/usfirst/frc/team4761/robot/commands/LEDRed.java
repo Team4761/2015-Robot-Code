@@ -1,16 +1,17 @@
-package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
+package org.usfirst.frc.team4761.robot.commands;
 
-import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ConveyorUntilBarrel extends Command { // TODO: Fix this disgusting naming.
-	
-    public ConveyorUntilBarrel(){
-    	requires(Robot.mainConveyorBelt);
+public class LEDRed extends Command {
+
+    public LEDRed() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
@@ -19,17 +20,16 @@ public class ConveyorUntilBarrel extends Command { // TODO: Fix this disgusting 
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.mainConveyorBelt.go(1);
+    	RobotMap.arduino.transaction(new byte[]{80}, 1, null, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Robot.mainConveyorBelt.getDistance() < 50); // Distance sensor returns less than 50 cm, must be a barrel!
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.mainConveyorBelt.go(0); // Stop it.
     }
 
     // Called when another command which requires one or more of the same

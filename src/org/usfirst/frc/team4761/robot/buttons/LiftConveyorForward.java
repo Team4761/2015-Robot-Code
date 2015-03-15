@@ -25,7 +25,7 @@ public class LiftConveyorForward extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.liftConveyorBelt.go(1);
+		Robot.liftConveyorBelt.forward();
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
@@ -35,7 +35,7 @@ public class LiftConveyorForward extends Command {
 	
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.liftConveyorBelt.go(0);
+		Robot.liftConveyorBelt.stop();
 	}
 	
 	// Called when another command which requires one or more of the same

@@ -59,11 +59,6 @@ public class DriveTrain extends Subsystem {
 		robotDrive.mecanumDrive_Cartesian(x, y, degrees, 90);
 	}
 	
-	public void driveNoField (Joystick joystick1, Joystick joystick2) {
-		System.out.println("Not field oriented");
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[2].getRawAxis(0), Robot.oi.joysticks[0].getRawAxis(1), 0), convert(Robot.oi.joysticks[2].getRawAxis(1), Robot.oi.joysticks[0].getRawAxis(1), 0), convert(Robot.oi.joysticks[2].getRawAxis(4), Robot.oi.joysticks[0].getRawAxis(0), 0), 0);
-	}
-	
 	public void stop () {
 		robotDrive.drive(0, 0);
 	}
@@ -81,14 +76,16 @@ public class DriveTrain extends Subsystem {
 		return (input * useEquation(axis));
 	}
 	
-	public void driveWithJoysticks () {
-		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
-		
+	public void driveWithJoysticks () {		
 		double degrees = GyroSensor.getDegrees();
 		
 		log.dev("Angle: " + degrees);
 		log.dev("Slider 1: " + useEquation(Robot.oi.joysticks[1].getRawAxis(0)));
 		log.dev("Slider 2: " + useEquation(Robot.oi.joysticks[1].getRawAxis(1)));
+		
+		// Used for testing PID for autonomous
+		//gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
+		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(driveGyroPIDOutput.getValue(), Robot.oi.joysticks[1].getRawAxis(0), 0), degrees);
 		
 		if (RobotMap.robot == 1) {
 			if (!Robot.oi.joysticks[0].getRawButton(6)) {

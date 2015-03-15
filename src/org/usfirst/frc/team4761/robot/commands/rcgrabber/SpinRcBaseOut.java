@@ -10,20 +10,18 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 
 public class SpinRcBaseOut extends Command {
+	
 	public SpinRcBaseOut() {
 		requires(Robot.rcGrabberBase);
 	}
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		setTimeout(1);
 	}
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (isTimedOut()) {
-			Robot.rcGrabberBase.spinnerSet(1.0);
-		}
+		Robot.rcGrabberBase.goOut();
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
@@ -33,7 +31,7 @@ public class SpinRcBaseOut extends Command {
 	
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.rcGrabberBase.spinnerSet(0.0);
+		Robot.rcGrabberBase.stop();
 	}
 	
 	// Called when another command which requires one or more of the same

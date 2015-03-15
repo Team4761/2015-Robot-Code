@@ -15,6 +15,14 @@ public class LiftConveyorBelt extends Subsystem {
 	public void initDefaultCommand () {
 	}
 	
+	public void forward () {
+		speedController.set(1);
+	}
+	
+	public void backward () {
+		speedController.set(-1);
+	}
+	
 	public void go (double speed) {
 		speedController.set(speed);
 	}

@@ -1,19 +1,19 @@
 package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
 
 import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * A command that passes a barrel from one conveyer (main conveyer {@link org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt}) to the next
- * or the lift conveyor {@link org.usfirst.frc.team4761.robot.subsystems.LiftConveyorBelt}.
- * 
+ *
  */
-public class ConveyorPassBarrel extends Command {
+public class MoveToteBackward extends Command {
 
-    public ConveyorPassBarrel() {
+    public MoveToteBackward() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     	requires(Robot.mainConveyorBelt);
-    	requires(Robot.liftConveyorBelt);
     }
 
     // Called just before this Command runs the first time
@@ -22,23 +22,22 @@ public class ConveyorPassBarrel extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.mainConveyorBelt.go(1);
-    	Robot.liftConveyorBelt.go(1);
+    	Robot.mainConveyorBelt.backward();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (Robot.mainConveyorBelt.getDistance() > 50); // The distance is greater than 50 the barrel must be gone! TODO: Get a better and more exact number to compare to.
+        return !RobotMap.breakBeamClear.get();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.mainConveyorBelt.go(0);
-    	Robot.liftConveyorBelt.go(0);
+    	Robot.mainConveyorBelt.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }
