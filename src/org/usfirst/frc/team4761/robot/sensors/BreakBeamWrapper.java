@@ -1,21 +1,35 @@
 package org.usfirst.frc.team4761.robot.sensors;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-
 /**
-* Represents a distance sensor which is acting as a break-beam sensor.
+* Wrapper around distance sensor which is acting as a break-beam sensor.
 */
-
-public class BreakBeamWrapper extends DistanceSensor {
+public class BreakBeamWrapper {
 	private double threshold = 50;	// half a meter default threshold
-
-	public BreakBeamWrapper(AnalogInput sensor) {
-		super(sensor);
+	private DistanceSensor sensor;
+	
+	public BreakBeamWrapper(DistanceSensor sensor) {
+		this.sensor = sensor;
 	}
-	public void setThreshold(double q) {
-		threshold = q;
+	/**
+	 * Gets threshold distance
+	 * @return Threshold distance in centimeters.
+	 */
+	public double getThreshold() {
+		return threshold;
 	}
+	/**
+	 * Sets the threshold distance
+	 * @param threshold Distance in centimeters.
+	 */
+	public void setThreshold(double threshold) {
+		this.threshold = threshold;
+	}
+	/**
+	 * Gets whether or not the distance sensor is detecting a distance less
+	 * than the threshold.
+	 * @return Past threshold? (t/f)
+	 */
 	public boolean get() {
-		return sensor.getVoltage() < threshold;
+		return sensor.getDistance() < threshold;
 	}
 }
