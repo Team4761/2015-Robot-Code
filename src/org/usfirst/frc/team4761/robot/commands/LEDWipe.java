@@ -16,11 +16,11 @@ public class LEDWipe extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	RobotMap.arduino.transaction(new byte[]{73}, 1, null, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	RobotMap.arduino.transaction(new byte[]{86}, 1, null, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()

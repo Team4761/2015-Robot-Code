@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * pre-programmed pattern.
  */
 public class TestLEDs extends Command {
-	int i;
+	int i = 72;
 	
     public TestLEDs() {
         // Use requires() here to declare subsystem dependencies
@@ -24,7 +24,6 @@ public class TestLEDs extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	i = 72;
     	if (isTimedOut()) {
     		i++;
         	RobotMap.arduino.transaction(new byte[]{(byte) i}, 1, null, 0);
@@ -34,7 +33,7 @@ public class TestLEDs extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (i >= 89) {
+    	if (i >= 90) {
     		return true;
     	}
     	

@@ -31,7 +31,7 @@ import edu.wpi.first.wpilibj.Joystick;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	// With XBox controller and button board
+	// With XBox controller, button board left, button board right
 	public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
 	
 	ButtonManager buttonManager = new ButtonManager();
