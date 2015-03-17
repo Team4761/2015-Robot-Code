@@ -7,6 +7,7 @@ import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
+import org.usfirst.frc.team4761.robot.commandgroups.TwoBarrelAutonomous;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
@@ -42,7 +43,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public Command teleop;
 	
-	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto;
+	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto, twoBarrelAutonomous;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -52,66 +53,35 @@ public class Robot extends IterativeRobot {
 		oi = new OI();
 		teleop = new Teleop();
 		
-		if (RobotMap.robot == 1) {
-			autonomousCommand = new PushToAuto();
-		}
-		
 		LogManager.setMinimumLevel(RobotMap.minLogLevel);
 		
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
-		/*autonomous = new PushToAuto();
+		
+		autonomousCommand = new PushToAuto();
+		
 		wedgeAuto = new NoWedgeAuto();
 		driveToAuto = new DriveToAuto();
 		debugAuto = new DebugAutonomous();
 		pushToAuto = new PushToAuto();
-		int currentAuto = Settings.read("AutoMode");
-
-		switch (currentAuto) {
-			case 0:
-				SmartDashboard.putBoolean("Step Autonomous", true);
-			case 1:
-				SmartDashboard.putBoolean("Three Barrels Autonomous", true);
-			case 2:
-				SmartDashboard.putBoolean("Drive To Auto-Zone", true);
-			case 3:
-				SmartDashboard.putBoolean("Debug Autonomous", true);
-			case 4:
-				SmartDashboard.putBoolean("Push Barrel To Auto-Zone", true);	
-		}*/
+		twoBarrelAutonomous = new TwoBarrelAutonomous();
 	}
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		// Check autonomous
-		/*int autoModeOverride = -1;
-		if (!(SmartDashboard.getBoolean("Step Autonomous") || SmartDashboard.getBoolean("Three Barrels Autonomous") || SmartDashboard.getBoolean("Drive To Auto-Zone") || SmartDashboard.getBoolean("Debug Autonomous"))) {
-			autoModeOverride = Settings.read("AutoMode");
-		}
-		if (SmartDashboard.getBoolean("Step Autonomous") || autoModeOverride == 0) {
-			autonomousCommand = autonomous;
-			Settings.write("AutoMode", 0);
-		} else if (SmartDashboard.getBoolean("Three Barrels Autonomous") || autoModeOverride == 1) {
-			autonomousCommand = wedgeAuto;
-			Settings.write("AutoMode", 1);
-		} else if (SmartDashboard.getBoolean("Drive To Auto-Zone") || autoModeOverride == 2) {
-			autonomousCommand = driveToAuto;
-			Settings.write("AutoMode", 2);
-		} else if (SmartDashboard.getBoolean("Debug Autonomous") || autoModeOverride == 3) {
-			autonomousCommand = debugAuto;
-			Settings.write("AutoMode", 3);
-		} else if (SmartDashboard.getBoolean("Push Barrel To Auto-Zone") || autoModeOverride == 4) {
+		
+		// Buttons are subject to change
+		if (oi.joysticks[1].getRawButton(1)) {
 			autonomousCommand = pushToAuto;
-			Settings.write("AutoMode", 4);
+		} else if (oi.joysticks[1].getRawButton(2)) {
+			autonomousCommand = twoBarrelAutonomous;
 		} else {
-			System.err.println("Missing/invalid auto selected!");
-		}*/
+			autonomousCommand = pushToAuto;
+		}
 	}
 	
 	public void autonomousInit() {
-		if (RobotMap.robot == 1) {
-			if (autonomousCommand != null) autonomousCommand.start();
-		}
+		if (autonomousCommand != null) autonomousCommand.start();
 	}
 	
 	/**
