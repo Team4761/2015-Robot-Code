@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public Command teleop;
 	
-	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto, twoBarrelAutonomous;
+	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -61,10 +61,9 @@ public class Robot extends IterativeRobot {
 		autonomousCommand = new PushToAuto();
 		
 		wedgeAuto = new NoWedgeAuto();
-		driveToAuto = new DriveToAuto();
 		debugAuto = new DebugAutonomous();
 		pushToAuto = new PushToAuto();
-		twoBarrelAutonomous = new TwoBarrelAutonomous();
+		twoBarrelAuto = new TwoBarrelAutonomous();
 	}
 	
 	public void disabledPeriodic() {
@@ -74,10 +73,12 @@ public class Robot extends IterativeRobot {
 		if (oi.joysticks[1].getRawButton(1)) {
 			autonomousCommand = pushToAuto;
 		} else if (oi.joysticks[1].getRawButton(2)) {
-			autonomousCommand = twoBarrelAutonomous;
+			autonomousCommand = twoBarrelAuto;
 		} else {
 			autonomousCommand = pushToAuto;
 		}
+		
+		//autonomousCommand = debugAuto; // Autonomous Chooser override
 	}
 	
 	public void autonomousInit() {
