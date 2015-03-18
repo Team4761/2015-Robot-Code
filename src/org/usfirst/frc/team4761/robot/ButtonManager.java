@@ -107,7 +107,7 @@ public class ButtonManager {
 						if (!command.fake) {
 							state = command.stick.getRawButton(command.button);
 						} else {
-							state = command.thing.get();
+							state = command.analog.get();
 						}
 						
 						if (!command.repeat) {
@@ -152,7 +152,7 @@ public class ButtonManager {
 		Command command;
 		boolean toggled = false, last = false, repeat, toggleable, canceled = false, fake = false;
 		Joystick stick;
-		AnalogToDigital thing;
+		AnalogToDigital analog;
 		private ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean repeat) {
 			try {
 				this.button = button;
@@ -172,8 +172,8 @@ public class ButtonManager {
 		}
 		
 		// Variable names are made by Jared. They are terrible variable names... 
-		public ButtonCommand(AnalogToDigital qwer, Command command) {
-			AnalogToDigital thing = qwer;
+		public ButtonCommand(AnalogToDigital input, Command command) {
+		this.analog = input;
 			fake = true;
 			toggleable = false;
 			repeat = false;
