@@ -171,7 +171,6 @@ public class ButtonManager {
 			this(button, joystick, command, toggleable, false);
 		}
 		
-		// Variable names are made by Jared. They are terrible variable names... 
 		public ButtonCommand(AnalogToDigital input, Command command) {
 		this.analog = input;
 			fake = true;
