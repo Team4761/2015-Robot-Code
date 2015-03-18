@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class DebugAutonomous extends CommandGroup {
     public  DebugAutonomous() {
-    	//TODO: replace with real port
-    	addSequential(new ReadDistanceSensor(new MediumDistanceSensor(new AnalogInput(0))));
+    	addParallel(new ReadDistanceSensor(new MediumDistanceSensor(new AnalogInput(2))));
+    	addParallel(new ReadDistanceSensor(new MediumDistanceSensor(new AnalogInput(3))));
     }
 }
