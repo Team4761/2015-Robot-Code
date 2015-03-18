@@ -168,6 +168,10 @@ public class RobotMap {
 			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 			minLogLevel = Level.DEV;
+			
+			// Ignore names. These are for testing
+			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
+			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));
 		}
 	}
 }
