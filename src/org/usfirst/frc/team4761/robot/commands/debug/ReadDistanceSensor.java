@@ -12,24 +12,21 @@ import edu.wpi.first.wpilibj.command.Command;
  * to the console.
  */
 public class ReadDistanceSensor extends Command {
-	private DistanceSensor distanceSensor1 = RobotMap.barrelDistanceSensor;
-	private DistanceSensor distanceSensor2 = RobotMap.outerConveyorToteDistanceSensor;
-	private String name1, name2;
+	private DistanceSensor distanceSensor1 = RobotMap.testDistanceSensor1;
+	private DistanceSensor distanceSensor2 = RobotMap.testDistanceSensor2;
 	
-    public ReadDistanceSensor(String name1, String name2) {
-    	this.name1 = name1;
-    	this.name2 = name2;
+    public ReadDistanceSensor() {
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("distance1,voltage1,distance2,voltage2,diff"); //CSV header
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println((double) (Math.abs(distanceSensor1.getDistance() - distanceSensor2.getDistance())));
-    	System.out.println("NAME: " + name1 + "DISTANCE: " + distanceSensor1.getDistance() + " | VOLTAGE: " + distanceSensor1.getVoltage());
-    	System.out.println("NAME: " + name2 + "DISTANCE: " + distanceSensor2.getDistance() + " | VOLTAGE: " + distanceSensor2.getVoltage());
+    	double diff = Math.abs(distanceSensor1.getDistance() - distanceSensor2.getDistance());
+    	System.out.println(distanceSensor1.getDistance() + "," + distanceSensor1.getVoltage() + "," + distanceSensor2.getDistance() + "" + distanceSensor2.getVoltage() + diff);
     }
 
     // Make this return true when this Command no longer needs to run execute()

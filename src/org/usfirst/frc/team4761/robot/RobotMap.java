@@ -106,6 +106,9 @@ public class RobotMap {
 	
 	public static I2C arduino;
 	
+	public static MediumDistanceSensor testDistanceSensor1;
+	public static MediumDistanceSensor testDistanceSensor2;
+	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
 			// 1 for new robot and 2 for old robot
@@ -169,9 +172,8 @@ public class RobotMap {
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
 			minLogLevel = Level.DEV;
 			
-			// Ignore names. These are for testing
-			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
-			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(3));
+			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
+			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
 		}
 	}
 }

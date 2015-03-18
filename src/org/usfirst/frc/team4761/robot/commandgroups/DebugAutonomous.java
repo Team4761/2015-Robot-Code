@@ -11,6 +11,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class DebugAutonomous extends CommandGroup {
 	
     public DebugAutonomous() {
-    	addParallel(new ReadDistanceSensor("port2", "port3"));
+    	addParallel(new ReadDistanceSensor());
     }
 }
