@@ -83,6 +83,11 @@ public class ButtonManager {
 		new ButtonCommand(button, joystick, command, false, false);
 	}
 	
+	public void runOnceOnHold (AnalogToDigital notReallyAbuttonButWereGoingToCallItOneForSimplicity, Command command) {
+		checkInit();
+		new ButtonCommand(notReallyAbuttonButWereGoingToCallItOneForSimplicity, command);
+	}
+	
 	private void checkInit() {
 		try {
 			if (!inited) {
@@ -98,7 +103,11 @@ public class ButtonManager {
 			try {
 				while (true) {
 					for (ButtonCommand command : list) {
-						boolean state = command.stick.getRawButton(command.button);
+						boolean state;
+						if (!command.fake)
+							state = command.stick.getRawButton(command.button);
+						else
+							state = command.thing.get();
 						if (!command.repeat) {
 							if (command.last == false && state == true) {
 								if (command.toggleable) {
@@ -139,9 +148,9 @@ public class ButtonManager {
 	private class ButtonCommand {
 		int button;
 		Command command;
-		boolean toggled = false, last = false, repeat, toggleable, canceled = false;
+		boolean toggled = false, last = false, repeat, toggleable, canceled = false, fake = false;
 		Joystick stick;
-		
+		AnalogToDigital thing;
 		private ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean repeat) {
 			try {
 				this.button = button;
@@ -158,6 +167,15 @@ public class ButtonManager {
 		
 		public ButtonCommand(int button, int joystick, Command command, boolean toggleable) {
 			this(button, joystick, command, toggleable, false);
+		}
+		
+		public ButtonCommand(AnalogToDigital qwer, Command command) {
+			AnalogToDigital thing = qwer;
+			fake = true;
+			toggleable = false;
+			repeat = false;
+			this.command = command;
+			ButtonManager.list.add(this)
 		}
 	}
 }
