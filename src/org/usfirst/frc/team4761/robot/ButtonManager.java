@@ -18,8 +18,7 @@ public class ButtonManager {
 	static JoystickButton[][] buttons = new JoystickButton[3][20];
 	static Joystick[] joysticks = {new Joystick(LEFT), new Joystick(RIGHT), new Joystick(BUTTONS)};
 	
-	public ButtonManager() {
-	}
+	public ButtonManager() {}
 	
 	private void init() {
 		try {
@@ -172,7 +171,7 @@ public class ButtonManager {
 		}
 		
 		public ButtonCommand(AnalogToDigital input, Command command) {
-		this.analog = input;
+			this.analog = input;
 			fake = true;
 			toggleable = false;
 			repeat = false;

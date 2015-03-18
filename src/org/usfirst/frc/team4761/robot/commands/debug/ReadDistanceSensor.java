@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ReadDistanceSensor extends Command {
 	private final DistanceSensor distanceSensor;
+	
     public ReadDistanceSensor(DistanceSensor distanceSensor) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

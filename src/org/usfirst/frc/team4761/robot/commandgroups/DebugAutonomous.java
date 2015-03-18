@@ -11,7 +11,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * here. If you put something in here, do not expect it to stay.
  */
 public class DebugAutonomous extends CommandGroup {
-    public  DebugAutonomous() {
+	
+    public DebugAutonomous() {
     	addParallel(new ReadDistanceSensor(new MediumDistanceSensor(new AnalogInput(2))));
     	addParallel(new ReadDistanceSensor(new MediumDistanceSensor(new AnalogInput(3))));
     }

@@ -1,9 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
 import org.simonandrews.robolog.LogManager;
-import org.usfirst.frc.team4761.robot.commandgroups.Autonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
-import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
@@ -21,7 +19,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -69,7 +66,7 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		
-		// Buttons are subject to change
+		// Buttons need to be changed when missile switches are wired
 		if (oi.joysticks[1].getRawButton(1)) {
 			autonomousCommand = pushToAuto;
 		} else if (oi.joysticks[1].getRawButton(2)) {
