@@ -11,11 +11,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  * here. If you put something in here, do not expect it to stay.
  */
 public class DebugAutonomous extends CommandGroup {
+	MediumDistanceSensor port2 = new MediumDistanceSensor(new AnalogInput(2));
+	MediumDistanceSensor port3 = new MediumDistanceSensor(new AnalogInput(3));
     public  DebugAutonomous() {
-    	MediumDistanceSensor port2 = new MediumDistanceSensor(new AnalogInput(2));
-    	MediumDistanceSensor port3 = new MediumDistanceSensor(new AnalogInput(3));
     	addParallel(new ReadDistanceSensor(port2, "port2"));
     	addParallel(new ReadDistanceSensor(port3, "port3"));
-    	System.out.println(port2.getDistance() - port3.getDistance());
     }
 }

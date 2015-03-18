@@ -1,7 +1,9 @@
 package org.usfirst.frc.team4761.robot.commands.debug;
 
 import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
+import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -11,6 +13,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ReadDistanceSensor extends Command {
 	private final DistanceSensor distanceSensor;
 	private final String name;
+	MediumDistanceSensor port2 = new MediumDistanceSensor(new AnalogInput(2));
+	MediumDistanceSensor port3 = new MediumDistanceSensor(new AnalogInput(3));
     public ReadDistanceSensor(DistanceSensor distanceSensor, String name) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -24,6 +28,7 @@ public class ReadDistanceSensor extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println(port2.getDistance() - port3.getDistance());
     	System.out.println("NAME: " + name + "DISTANCE: " + distanceSensor.getDistance() + " | VOLTAGE: " + distanceSensor.getVoltage());
     }
 
