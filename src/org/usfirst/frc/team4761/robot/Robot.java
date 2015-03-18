@@ -78,7 +78,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = pushToAuto;
 		}
 		
-		//autonomousCommand = debugAuto; // Autonomous Chooser override
+		autonomousCommand = debugAuto; // Autonomous Chooser override
 	}
 	
 	public void autonomousInit() {
