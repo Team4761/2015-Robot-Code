@@ -12,7 +12,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class DebugAutonomous extends CommandGroup {
     public  DebugAutonomous() {
-    	addParallel(new ReadDistanceSensor(new MediumDistanceSensor(new AnalogInput(2))));
-    	addParallel(new ReadDistanceSensor(new MediumDistanceSensor(new AnalogInput(3))));
+    	MediumDistanceSensor port2 = new MediumDistanceSensor(new AnalogInput(2));
+    	MediumDistanceSensor port3 = new MediumDistanceSensor(new AnalogInput(3));
+    	addParallel(new ReadDistanceSensor(port2, "port2"));
+    	addParallel(new ReadDistanceSensor(port3, "port3"));
+    	System.out.println(port2.getDistance() - port3.getDistance());
     }
 }

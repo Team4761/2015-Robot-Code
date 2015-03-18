@@ -10,10 +10,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ReadDistanceSensor extends Command {
 	private final DistanceSensor distanceSensor;
-    public ReadDistanceSensor(DistanceSensor distanceSensor) {
+	private final String name;
+    public ReadDistanceSensor(DistanceSensor distanceSensor, String name) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	this.distanceSensor = distanceSensor;
+    	this.name = name;
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +24,7 @@ public class ReadDistanceSensor extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	System.out.println("DISTANCE: " + distanceSensor.getDistance() + " | VOLTAGE: " + distanceSensor.getVoltage());
+    	System.out.println("NAME: " + name + "DISTANCE: " + distanceSensor.getDistance() + " | VOLTAGE: " + distanceSensor.getVoltage());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -37,5 +39,8 @@ public class ReadDistanceSensor extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    }
+    public double getDistance() {
+    	return distanceSensor.getDistance();
     }
 }
