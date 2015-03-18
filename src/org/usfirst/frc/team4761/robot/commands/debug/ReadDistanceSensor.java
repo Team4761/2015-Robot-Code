@@ -45,7 +45,4 @@ public class ReadDistanceSensor extends Command {
     // subsystems is scheduled to run
     protected void interrupted() {
     }
-    public double getDistance() {
-    	return distanceSensor.getDistance();
-    }
 }

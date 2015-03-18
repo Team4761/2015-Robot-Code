@@ -72,7 +72,7 @@ public class OI {
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());
 		
-		// Bind buttons for joysticks
+		// Bind buttons for joysticks (KEEP THESE HERE IN CASE OF BUTTON BOARD FAILURE)
 		/*buttonManager.runOnPress(8, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());
 		
