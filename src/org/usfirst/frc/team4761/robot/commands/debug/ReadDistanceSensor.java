@@ -2,9 +2,7 @@ package org.usfirst.frc.team4761.robot.commands.debug;
 
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
-import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**

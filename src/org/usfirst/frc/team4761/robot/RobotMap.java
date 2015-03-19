@@ -153,7 +153,7 @@ public class RobotMap {
 			elevatorAcceptTote1 = new DigitalInput(1);
 			elevatorAcceptTote2 = new DigitalInput(2);
 			
-			breakBeamBegin = new DigitalInput(3);
+			breakBeamBegin = new DigitalInput(13);
 			breakBeamClear = new DigitalInput(4);
 			
 			mainConveyorBeltMotor = new Talon(6);
@@ -174,6 +174,8 @@ public class RobotMap {
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
+			
+			breakBeamBegin = new DigitalInput(13);
 		}
 	}
 }

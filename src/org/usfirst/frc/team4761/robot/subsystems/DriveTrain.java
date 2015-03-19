@@ -7,7 +7,6 @@ import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
@@ -90,13 +89,13 @@ public class DriveTrain extends Subsystem {
 		if (RobotMap.robot == 1) {
 			if (!Robot.oi.joysticks[0].getRawButton(6)) {
 				if (Robot.oi.joysticks[0].getRawButton(5)) {
-					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0.6), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0.2), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0.4), degrees);
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(1), 0.6), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(1), 0.2), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(0), 0.4), degrees);
 				} else {
-					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0), degrees);
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(0), 0), degrees);
 				}
 			}
 		} else {
-			robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[1].getRawAxis(0), 0), 0);
+			robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(0), 0), 0);
 		}
 	}
 	

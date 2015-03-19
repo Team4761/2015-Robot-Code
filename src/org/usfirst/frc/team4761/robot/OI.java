@@ -32,7 +32,7 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class OI {
 	// With XBox controller, button board left, button board right
-	public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
+	public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2)};
 	
 	ButtonManager buttonManager = new ButtonManager();
 	

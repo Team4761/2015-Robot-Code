@@ -33,6 +33,7 @@ public class LogToFile extends Command {
 		//log.dev("Slider 1: " + Double.toString(Robot.oi.joysticks[1].getRawAxis(1)));
 		//log.dev("Setpoint: " + Double.toString(Robot.driveTrain.gyroPidController.getSetpoint()));
 		//log.dev("Barrel: " + Double.toString(barrelSensor.getDistance()));
+		log.dev("Break Beam: " + RobotMap.breakBeamBegin.get());
 		//SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
 		//SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());
 		//SmartDashboard.putNumber("Distance from barrel", outerConveyorBarrelDistanceSensor.getDistance());

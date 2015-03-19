@@ -67,9 +67,9 @@ public class Robot extends IterativeRobot {
 		Scheduler.getInstance().run();
 		
 		// Buttons need to be changed when missile switches are wired
-		if (oi.joysticks[1].getRawButton(1)) {
+		if (oi.joysticks[2].getRawButton(4)) {
 			autonomousCommand = pushToAuto;
-		} else if (oi.joysticks[1].getRawButton(2)) {
+		} else if (oi.joysticks[2].getRawButton(3)) {
 			autonomousCommand = twoBarrelAuto;
 		} else {
 			autonomousCommand = pushToAuto;
