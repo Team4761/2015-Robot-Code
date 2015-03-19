@@ -102,8 +102,6 @@ public class RobotMap {
 	public static VictorSP elevatorMotor1;
 	public static VictorSP elevatorMotor2;
 	
-	public static AnalogInput flexSensor;
-	
 	public static I2C arduino;
 	
 	public static MediumDistanceSensor testDistanceSensor1;
@@ -119,8 +117,6 @@ public class RobotMap {
 		}
 		// Universal objects
 		gyro = new GyroSensor();
-		//gyro.gyroSensor.setSensitivity(0.007);
-		//gyro.gyroSensor.reset();		
 		
 		arduino = new I2C(I2C.Port.kOnboard, 168);
 		
@@ -160,8 +156,6 @@ public class RobotMap {
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
-
-			flexSensor = new AnalogInput(4);
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
