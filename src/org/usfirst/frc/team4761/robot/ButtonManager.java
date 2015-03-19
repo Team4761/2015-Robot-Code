@@ -121,18 +121,11 @@ public class ButtonManager {
 								} else {
 									command.command.start();
 								}
-							} else {
-								if (!command.toggleable) {
-									command.command.cancel();
-								}
 							}
 						} else {
 							if (state) {
 								command.command.start();
 								command.canceled = false;
-							} else if (command.canceled == false){
-								//command.command.cancel();
-								//command.canceled = true;
 							}
 						}
 						command.last = state;

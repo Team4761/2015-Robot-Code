@@ -65,9 +65,11 @@ public class OI {
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
 		buttonManager.runOnPress(7, 1, new TurnInDown());
-		
-		buttonManager.runOnceOnHold(19, 1, new AutoTote(19, 1));
-		buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
+
+		//buttonManager.runOnceOnHold(19, 1, new AutoTote(19, 1));
+		//buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
+		buttonManager.runWhilePressed(19, 1, new AutoTote(19, 1));
+		buttonManager.runWhilePressed(17, 1, new AutoStack(17, 1));
 		
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());
@@ -99,8 +101,8 @@ public class OI {
 		buttonManager.runOnPress(2, 1, new TurnInDown());*/
 		
 		// Bind buttons for XBox Controller
-		buttonManager.runOnPress(4, 0, new RaiseRcGrabber());
-		buttonManager.runOnPress(1, 0, new LowerRcGrabber());
+		buttonManager.runWhilePressed(4, 0, new RaiseRcGrabber());
+		buttonManager.runWhilePressed(1, 0, new LowerRcGrabber());
 		buttonManager.runWhilePressed(3, 0, new RCGrabberLeft(3, 0));
 		buttonManager.runWhilePressed(2, 0, new RCGrabberRight(2, 0));
 		buttonManager.runOnPress(7, 0, new ResetGyro(90));

@@ -149,12 +149,12 @@ public class RobotMap {
 			spinnerDI1 = new DigitalInput(8);
 			spinnerDI2 = new DigitalInput(9);
 			
-			elevatorBottom = new DigitalInput(0);
-			elevatorAcceptTote1 = new DigitalInput(1);
-			elevatorAcceptTote2 = new DigitalInput(2);
+			elevatorBottom = new DigitalInput(2);
+			elevatorAcceptTote1 = new DigitalInput(1); // Random port
+			elevatorAcceptTote2 = new DigitalInput(0); // Random port
 			
-			breakBeamBegin = new DigitalInput(13);
-			breakBeamClear = new DigitalInput(4);
+			breakBeamBegin = new DigitalInput(3); // Random port
+			breakBeamClear = new DigitalInput(4); // Random port
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);

@@ -24,7 +24,7 @@ public class ReadDistanceSensor extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double diff = Math.abs(distanceSensor1.getDistance() - distanceSensor2.getDistance());
-    	System.out.println(distanceSensor1.getDistance() + "," + distanceSensor1.getVoltage() + "," + distanceSensor2.getDistance() + "," + distanceSensor2.getVoltage() + "," + diff);
+    	System.out.println(distanceSensor1.getDistance() + "," + distanceSensor1.getVoltage() + "," + distanceSensor2.getDistance() + "" + distanceSensor2.getVoltage() + diff);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -24,7 +24,7 @@ public class DriveTrain extends Subsystem {
 	GyroPIDSource gyroSensor = new GyroPIDSource();
 	public DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
 	
-	public PIDController gyroPidController = new PIDController(0.025, 0, 0.02, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
+	public PIDController gyroPidController = new PIDController(0.025, 0, 0, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
 	
 	public DriveTrain () {
 		if (RobotMap.robot == 1) {
@@ -78,24 +78,26 @@ public class DriveTrain extends Subsystem {
 	public void driveWithJoysticks () {		
 		double degrees = GyroSensor.getDegrees();
 		
-		log.dev("Angle: " + degrees);
-		log.dev("Slider 1: " + useEquation(Robot.oi.joysticks[1].getRawAxis(0)));
-		log.dev("Slider 2: " + useEquation(Robot.oi.joysticks[1].getRawAxis(1)));
+		log.dev("Rotate Joystick: " + convert(driveGyroPIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(1), 0));
+		log.dev("Slider 1: " + useEquation(Robot.oi.joysticks[2].getRawAxis(0)));
+		log.dev("Slider 2: " + useEquation(Robot.oi.joysticks[2].getRawAxis(1)));
 		
 		// Used for testing PID for autonomous
-		//gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
-		//robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[1].getRawAxis(1), 0), convert(driveGyroPIDOutput.getValue(), Robot.oi.joysticks[1].getRawAxis(0), 0), degrees);
+		/*rotateAccumulator += convert(driveGyroPIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(1), 0) * 5;
+		gyroPidController.setSetpoint(rotateAccumulator);
+		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(driveGyroPIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(1), 0), degrees);*/
 		
 		if (RobotMap.robot == 1) {
 			if (!Robot.oi.joysticks[0].getRawButton(6)) {
 				if (Robot.oi.joysticks[0].getRawButton(5)) {
-					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(1), 0.6), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(1), 0.2), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(0), 0.4), degrees);
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0.6), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0.2), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0.4), degrees);
 				} else {
-					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(0), 0), degrees);
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), degrees);
 				}
 			}
 		} else {
-			robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(1), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(0), 0), 0);
+			robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 0);
 		}
 	}
 	

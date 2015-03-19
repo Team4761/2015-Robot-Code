@@ -20,7 +20,7 @@ public class MainConveyorBelt extends Subsystem {
 	}
 	
 	public void backward () {
-		speedController.set(1);
+		speedController.set(-1);
 	}
 	
 	public void go (double speed) {

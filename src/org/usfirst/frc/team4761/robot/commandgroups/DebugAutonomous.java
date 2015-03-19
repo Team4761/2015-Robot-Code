@@ -13,6 +13,6 @@ public class DebugAutonomous extends CommandGroup {
 	
     public DebugAutonomous() {
     	addParallel(new LogToFile());
-    	addParallel(new ReadDistanceSensor());
+    	//addParallel(new ReadDistanceSensor());
     }
 }

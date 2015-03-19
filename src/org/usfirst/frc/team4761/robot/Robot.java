@@ -4,6 +4,7 @@ import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
+import org.usfirst.frc.team4761.robot.commandgroups.StopAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.commandgroups.TwoBarrelAutonomous;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
@@ -40,7 +41,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public Command teleop;
 	
-	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto;
+	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -61,6 +62,7 @@ public class Robot extends IterativeRobot {
 		debugAuto = new DebugAutonomous();
 		pushToAuto = new PushToAuto();
 		twoBarrelAuto = new TwoBarrelAutonomous();
+		stopAuto = new StopAutonomous();
 	}
 	
 	public void disabledPeriodic() {
@@ -71,6 +73,8 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = pushToAuto;
 		} else if (oi.joysticks[2].getRawButton(3)) {
 			autonomousCommand = twoBarrelAuto;
+		} else if (oi.joysticks[2].getRawButton(5)) {
+			autonomousCommand = stopAuto;
 		} else {
 			autonomousCommand = pushToAuto;
 		}
