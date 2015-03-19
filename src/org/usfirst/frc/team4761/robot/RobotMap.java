@@ -10,6 +10,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -106,6 +107,8 @@ public class RobotMap {
 	
 	public static MediumDistanceSensor testDistanceSensor1;
 	public static MediumDistanceSensor testDistanceSensor2;
+	
+	public static Encoder encoder = new Encoder(0, 1); // Random ports
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {

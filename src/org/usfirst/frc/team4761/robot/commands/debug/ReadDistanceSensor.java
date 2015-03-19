@@ -18,7 +18,7 @@ public class ReadDistanceSensor extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("distance1,voltage1,distance2,voltage2,diff"); //CSV header
+    	System.out.println("distance1,voltage1,distance2,voltage2,diff"); // CSV header
     }
 
     // Called repeatedly when this Command is scheduled to run
