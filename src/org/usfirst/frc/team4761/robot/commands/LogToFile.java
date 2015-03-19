@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.AnalogAxisToDigital;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
@@ -20,6 +21,7 @@ public class LogToFile extends Command {
 	private MediumDistanceSensor outerConveyorToteDistanceSensor = RobotMap.outerConveyorToteDistanceSensor;
 	private MediumDistanceSensor barrelSensor = RobotMap.barrelDistanceSensor;
 	private Logger log = RobotMap.log;
+	private AnalogAxisToDigital slowButton = new AnalogAxisToDigital(1, 1);
 	
 	protected void initialize() {
 		log.setLevel(Level.FATAL);
@@ -34,6 +36,8 @@ public class LogToFile extends Command {
 		//log.dev("Setpoint: " + Double.toString(Robot.driveTrain.gyroPidController.getSetpoint()));
 		//log.dev("Barrel: " + Double.toString(barrelSensor.getDistance()));
 		log.dev("Break Beam: " + RobotMap.breakBeamBegin.get());
+		log.dev("Slow Button: " + slowButton.get());
+		log.dev("Raw Slow Button: " + Robot.oi.joysticks[1].getRawAxis(1));
 		//SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
 		//SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());
 		//SmartDashboard.putNumber("Distance from barrel", outerConveyorBarrelDistanceSensor.getDistance());

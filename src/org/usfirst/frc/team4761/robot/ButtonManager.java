@@ -82,7 +82,7 @@ public class ButtonManager {
 		new ButtonCommand(button, joystick, command, false, false);
 	}
 	
-	public void runOnceOnHold (AnalogToDigital notReallyAbuttonButWereGoingToCallItOneForSimplicity, Command command) {
+	public void runOnceOnHold (AnalogAxisToDigital notReallyAbuttonButWereGoingToCallItOneForSimplicity, Command command) {
 		checkInit();
 		new ButtonCommand(notReallyAbuttonButWereGoingToCallItOneForSimplicity, command);
 	}
@@ -144,7 +144,7 @@ public class ButtonManager {
 		Command command;
 		boolean toggled = false, last = false, repeat, toggleable, canceled = false, fake = false;
 		Joystick stick;
-		AnalogToDigital analog;
+		AnalogAxisToDigital analog;
 		private ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean repeat) {
 			try {
 				this.button = button;
@@ -163,7 +163,7 @@ public class ButtonManager {
 			this(button, joystick, command, toggleable, false);
 		}
 		
-		public ButtonCommand(AnalogToDigital input, Command command) {
+		public ButtonCommand(AnalogAxisToDigital input, Command command) {
 			this.analog = input;
 			fake = true;
 			toggleable = false;

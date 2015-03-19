@@ -18,8 +18,6 @@ public class LowerElevator extends Command {
  * or downwards (False);
  */
     public LowerElevator (int button, int joystickNum) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     	requires(Robot.elevator);
     	this.button = button;
     	this.joystickNum = joystickNum;
