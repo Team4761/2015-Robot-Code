@@ -1,17 +1,19 @@
-package org.usfirst.frc.team4761.robot.buttons;
+package org.usfirst.frc.team4761.robot.commands.elevator;
 
 import org.usfirst.frc.team4761.robot.Robot;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Toggles the wedge position in/out.
+ *
  */
-public class WedgeToggle extends Command {
+public class MoveElevatorTo extends Command {
+	private int position = 0;
+	private boolean atPosition = false;
 
-    public WedgeToggle() {
-    	requires(Robot.plower);
+    public MoveElevatorTo (int position) {
+        requires(Robot.elevator);
+        this.position = position;
     }
 
     // Called just before this Command runs the first time
@@ -20,17 +22,16 @@ public class WedgeToggle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.plower.set(DoubleSolenoid.Value.kForward);
+    	atPosition = Robot.elevator.goTo(position);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return atPosition;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.plower.set(DoubleSolenoid.Value.kReverse);
     }
 
     // Called when another command which requires one or more of the same
