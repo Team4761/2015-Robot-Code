@@ -6,11 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * Tie up all subsystems, resulting in the termination of every command
- * currently running. We should probably find a better way to do this that does
- * not require all the subsystems to be hardcoded in.
+ * currently running. 
  */
 public class KillAllCommands extends Command {
-
+	//TODO: Find way to do this that does not require subsystems to be hardcoded in.
 	public KillAllCommands () {
 		requires(Robot.elevator);
 		requires(Robot.liftConveyorBelt);
