@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
+import java.io.File;
+
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
@@ -110,6 +112,12 @@ public class RobotMap {
 	
 	public static Encoder encoder = new Encoder(0, 1); // Random ports
 	
+	public static String logFilePath = "/home/lvuser/log.txt";
+	public static File logFile = new File(logFilePath);
+	
+	public static String settingsFilePath = "/home/lvuser/settings.ini";
+	public static File settingsFile = new File(settingsFilePath);
+	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
 			// 1 for new robot and 2 for old robot
@@ -137,7 +145,7 @@ public class RobotMap {
 			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 			
-			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
+			log = new Logger("4761", LoggingMode.LOG, logFilePath); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
 			
 			rcPneumatic = new DoubleSolenoid(0, 0, 1);
@@ -166,7 +174,7 @@ public class RobotMap {
 			rightRearMotor = new Victor(4);
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
-			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
+			log = new Logger("4761", LoggingMode.LOG, logFilePath);
 			minLogLevel = Level.DEV;
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));

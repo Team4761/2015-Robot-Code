@@ -18,7 +18,7 @@ public class Settings  {
 	 */
 	public static int read (String name) {
 		try {
-			File f = new File("/home/lvuser/settings.ini");
+			File f = RobotMap.settingsFile;
 			Scanner sc = new Scanner(new FileInputStream(f));
 			String inp = sc.nextLine();
 			
@@ -45,7 +45,7 @@ public class Settings  {
 	 * @param value the value of the setting to write
 	 */
 	public static void write (String name, int value) {
-		File f = new File("/home/lvuser/settings.ini");
+		File f = RobotMap.settingsFile;
 		try {
 			if (!f.exists()) {
 				f.createNewFile();
