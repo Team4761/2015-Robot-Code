@@ -42,9 +42,9 @@ public class OI {
 		putBoolean("Drive To Auto-Zone", false);
 		putBoolean("Push Barrel To Auto-Zone", false);
 		
-		putNumber("P", 0.025);
+		putNumber("P", 0.03);
 		putNumber("I", 0);
-		putNumber("D", 0.02);
+		putNumber("D", 0);
 		
 		// Bind buttons for button boards
 		buttonManager.runWhilePressed(9, 1, new MainConveyorForward(9, 1));

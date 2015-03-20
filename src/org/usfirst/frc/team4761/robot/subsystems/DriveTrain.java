@@ -24,7 +24,7 @@ public class DriveTrain extends Subsystem {
 	GyroPIDSource gyroSensor = new GyroPIDSource();
 	public DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
 	
-	public PIDController gyroPidController = new PIDController(0.025, 0, 0, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
+	public PIDController gyroPidController = new PIDController(0.03, 0, 0, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
 	
 	public DriveTrain () {
 		if (RobotMap.robot == 1) {
@@ -78,15 +78,16 @@ public class DriveTrain extends Subsystem {
 	public void driveWithJoysticks () {		
 		double degrees = GyroSensor.getDegrees();
 		
-		log.dev("Rotate Joystick: " + convert(driveGyroPIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(1), 0));
-		log.dev("Slider 1: " + useEquation(Robot.oi.joysticks[2].getRawAxis(0)));
-		log.dev("Slider 2: " + useEquation(Robot.oi.joysticks[2].getRawAxis(1)));
+		SmartDashboard.putNumber("Angle: ", degrees);
 		
 		// Used for testing PID for autonomous
-		/*rotateAccumulator += convert(driveGyroPIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(1), 0) * 5;
+		/*if (convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) > 0.075 || convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) < -0.075) {
+			rotateAccumulator += convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) * 3;
+		}
+		
 		gyroPidController.setSetpoint(rotateAccumulator);
 		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(driveGyroPIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(1), 0), degrees);*/
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), driveGyroPIDOutput.getValue(), degrees);*/
 		
 		if (RobotMap.robot == 1) {
 			if (!Robot.oi.joysticks[0].getRawButton(6)) {

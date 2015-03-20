@@ -62,7 +62,7 @@ public class RobotMap {
 	 * Distance sensor on the rear of the outer conveyor belt. Used for
 	 * detecting something.
 	 */
-	public static MediumDistanceSensor outerConveyorToteDistanceSensor;
+	public static DigitalInput stackTop;
 	/**
 	 * Distance sensor on the front of the outer conveyor belt. Used for
 	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
@@ -108,7 +108,7 @@ public class RobotMap {
 	public static MediumDistanceSensor testDistanceSensor1;
 	public static MediumDistanceSensor testDistanceSensor2;
 	
-	public static Encoder encoder = new Encoder(0, 1); // Random ports
+	public static Encoder encoder;
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -134,7 +134,7 @@ public class RobotMap {
 			
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(1));
-			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
+			stackTop = new DigitalInput(5); // Random port
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 			
 			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
@@ -159,6 +159,8 @@ public class RobotMap {
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
+			
+			//encoder = new Encoder(0, 1);
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);

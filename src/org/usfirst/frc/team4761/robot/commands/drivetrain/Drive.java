@@ -16,7 +16,7 @@ public class Drive extends Command {
 	Float time;
 	String type;
 	
-	// Type can be NORMAL or ABSOLUTE
+	// Type can be PID or ABSOLUTE
     public Drive(double x, double y, double rotate, float time, String type) {
     	this.x = x;
     	this.y = y;

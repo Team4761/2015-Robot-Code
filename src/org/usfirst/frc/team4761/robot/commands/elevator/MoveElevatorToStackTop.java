@@ -4,6 +4,7 @@ import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -11,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * move the elevator up until it is level with the top of the stack.
  */
 public class MoveElevatorToStackTop extends Command {
-	MediumDistanceSensor sensor = RobotMap.outerConveyorToteDistanceSensor;
+	private DigitalInput sensor = RobotMap.stackTop;
 	private boolean passedStack = false;
 	
 	public MoveElevatorToStackTop() {
@@ -24,9 +25,10 @@ public class MoveElevatorToStackTop extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (sensor.getDistance() > 80 && !passedStack) {
+		if (sensor.get() && !passedStack) {
 			passedStack = true;
 		}
+		
 		if (passedStack) {
 			Robot.elevator.lower();
 		} else {
@@ -36,7 +38,7 @@ public class MoveElevatorToStackTop extends Command {
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return sensor.getDistance() < 80 && passedStack; // Stop running when past last tote in stack
+		return sensor.get() && passedStack; // Stop running when past last tote in stack
 	}
 	
 	// Called once after isFinished returns true
