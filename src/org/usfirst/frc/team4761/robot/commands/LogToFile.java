@@ -5,10 +5,12 @@ import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.AnalogAxisToDigital;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * A command to utilize logging with simon's {@link org.simonandrews.robolog robolog library}.
@@ -25,21 +27,15 @@ public class LogToFile extends Command {
 	}
 	
 	protected void execute() {
-		//log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
-		//log.dev("Towards Totes: " + Double.toString(outerConveyorToteDistanceSensor.getDistance()));
-		//log.dev("Angle: " + Double.toString(GyroSensor.getDegrees()));
-		//log.dev("Slider 1: " + Double.toString(Robot.oi.joysticks[1].getRawAxis(0)));
-		//log.dev("Slider 1: " + Double.toString(Robot.oi.joysticks[1].getRawAxis(1)));
-		//log.dev("Setpoint: " + Double.toString(Robot.driveTrain.gyroPidController.getSetpoint()));
-		//log.dev("Barrel: " + Double.toString(barrelSensor.getDistance()));
 		log.dev("Break Beam: " + RobotMap.breakBeamBegin.get());
 		log.dev("Slow Button: " + slowButton.get());
 		log.dev("Raw Slow Button: " + Robot.oi.joysticks[1].getRawAxis(1));
-		//SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
-		//SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());
-		//SmartDashboard.putNumber("Distance from barrel", outerConveyorBarrelDistanceSensor.getDistance());
-		//SmartDashboard.putNumber("Distance from barrel on conveyor", outerConveyorBarrelDistanceSensor.getDistance());
-		//SmartDashboard.putNumber("Barrel: ", barrelSensor.getDistance());
+		SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
+		SmartDashboard.putBoolean("Elevator Bottom: ", RobotMap.elevatorBottom.get());
+		SmartDashboard.putBoolean("Elevator Accept Tote 1: ", RobotMap.elevatorAcceptTote1.get());
+		SmartDashboard.putBoolean("Elevator Accept Tote 2: ", RobotMap.elevatorAcceptTote2.get());
+		SmartDashboard.putBoolean("Break Beam Begin: ", RobotMap.breakBeamBegin.get());
+		SmartDashboard.putBoolean("Break Beam Clear: ", RobotMap.breakBeamClear.get());
 	}
 	
 	protected boolean isFinished() {

@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Base of the robot with wheels attached to it.
@@ -76,8 +77,6 @@ public class DriveTrain extends Subsystem {
 	
 	public void driveWithJoysticks () {		
 		double degrees = GyroSensor.getDegrees();
-		
-		SmartDashboard.putNumber("Angle: ", degrees);
 		
 		// Used for testing PID for autonomous
 		/*if (convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) > 0.075 || convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) < -0.075) {
