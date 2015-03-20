@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
+import java.io.File;
+
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
@@ -103,12 +105,43 @@ public class RobotMap {
 	public static VictorSP elevatorMotor1;
 	public static VictorSP elevatorMotor2;
 	
+	/**
+	 * Arduino used for controlling the LEDs on the robot. Connected through an
+	 * I2C interface.
+	 */
 	public static I2C arduino;
 	
+	/**
+	 * Distance sensor used for testing.
+	 */
 	public static MediumDistanceSensor testDistanceSensor1;
+	/**
+	 * Distance sensor used for testing.
+	 */
 	public static MediumDistanceSensor testDistanceSensor2;
 	
 	public static Encoder encoder;
+	
+	/**
+	 * Absolute path to the robots log file. Use {@link #logFile} in your code
+	 * instead of making your own Files.
+	 */
+	public static String logFilePath = "/home/lvuser/log.txt";
+	/**
+	 * File object that uses the path value provided by {@link #logFilePath}.
+	 */
+	public static File logFile = new File(logFilePath);
+	
+	/**
+	 * Absolute path to the robots settings file. Use {@link #settingsFile} in
+	 * your code instead of making your own Files.
+	 */
+	public static String settingsFilePath = "/home/lvuser/settings.ini";
+	/**
+	 * File object that uses the path value provided by {@link
+	 * #settingsFilePath}.
+	 */
+	public static File settingsFile = new File(settingsFilePath);
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -137,7 +170,7 @@ public class RobotMap {
 			stackTop = new DigitalInput(5); // Random port
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 			
-			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
+			log = new Logger("4761", LoggingMode.LOG, logFilePath); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
 			
 			rcPneumatic = new DoubleSolenoid(0, 0, 1);
@@ -168,7 +201,7 @@ public class RobotMap {
 			rightRearMotor = new Victor(4);
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
-			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
+			log = new Logger("4761", LoggingMode.LOG, logFilePath);
 			minLogLevel = Level.DEV;
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));

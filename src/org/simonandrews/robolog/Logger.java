@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.usfirst.frc.team4761.robot.RobotMap;
+
 /**
  * A class for doing logging stuff. You would make a new instance of it in your
  * own code and then use it to send log messages.
@@ -16,7 +18,7 @@ public class Logger {
 	private String lName;
 	private String msgFormat = "[%s] %s - %s";
 	
-	private File output = new File("/home/lvuser/log.txt");
+	private File output = RobotMap.logFile;
 	
 	private LoggingMode lMode = LoggingMode.CONSOLE;
 	

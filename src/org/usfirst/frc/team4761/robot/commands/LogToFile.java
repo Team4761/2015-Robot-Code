@@ -5,12 +5,10 @@ import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.AnalogAxisToDigital;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * A command to utilize logging with simon's {@link org.simonandrews.robolog robolog library}.
