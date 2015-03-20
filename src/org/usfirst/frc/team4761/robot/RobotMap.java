@@ -105,17 +105,42 @@ public class RobotMap {
 	public static VictorSP elevatorMotor1;
 	public static VictorSP elevatorMotor2;
 	
+	/**
+	 * Arduino used for controlling the LEDs on the robot. Connected through an
+	 * I2C interface.
+	 */
 	public static I2C arduino;
 	
+	/**
+	 * Distance sensor used for testing.
+	 */
 	public static MediumDistanceSensor testDistanceSensor1;
+	/**
+	 * Distance sensor used for testing.
+	 */
 	public static MediumDistanceSensor testDistanceSensor2;
 	
 	public static Encoder encoder = new Encoder(0, 1); // Random ports
 	
+	/**
+	 * Absolute path to the robots log file. Use {@link #logFile} in your code
+	 * instead of making your own Files.
+	 */
 	public static String logFilePath = "/home/lvuser/log.txt";
+	/**
+	 * File object that uses the path value provided by {@link #logFilePath}.
+	 */
 	public static File logFile = new File(logFilePath);
 	
+	/**
+	 * Absolute path to the robots settings file. Use {@link #settingsFile} in
+	 * your code instead of making your own Files.
+	 */
 	public static String settingsFilePath = "/home/lvuser/settings.ini";
+	/**
+	 * File object that uses the path value provided by {@link
+	 * #settingsFilePath}.
+	 */
 	public static File settingsFile = new File(settingsFilePath);
 	
 	public RobotMap () {
