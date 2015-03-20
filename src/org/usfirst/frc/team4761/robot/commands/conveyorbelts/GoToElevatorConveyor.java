@@ -2,7 +2,6 @@ package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
 
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 

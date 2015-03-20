@@ -4,17 +4,17 @@ import org.usfirst.frc.team4761.robot.commands.LEDGreen;
 import org.usfirst.frc.team4761.robot.commands.LEDRed;
 import org.usfirst.frc.team4761.robot.commands.LEDWipe;
 import org.usfirst.frc.team4761.robot.commands.StopForever;
-import org.usfirst.frc.team4761.robot.commands.elevator.AcceptTote1;
-import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToLoad;
-import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MoveToteBackward;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.ElevatorConveyorBackwardSlow;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.LoadTote2;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.LoadTote3;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MainConveyorBackward;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MoveTote1ForwardToClear;
+import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MoveToteBackward;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MoveToteToEndOfElevator;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.WatchTote1;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.WatchTote2;
+import org.usfirst.frc.team4761.robot.commands.elevator.AcceptTote1;
+import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToLoad;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
