@@ -18,17 +18,12 @@ public class LoadTote2 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	passedBeam = false;
     	setTimeout(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	/*if (!RobotMap.breakBeamBegin.get() && !passedBeam) {
-    		passedBeam = true;
-    	} else {*/
-    		Robot.liftConveyorBelt.backward();
-    	//}
+    	Robot.liftConveyorBelt.backward();
     }
 
     // Make this return true when this Command no longer needs to run execute()
