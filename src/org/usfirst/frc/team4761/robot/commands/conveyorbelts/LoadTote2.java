@@ -29,7 +29,6 @@ public class LoadTote2 extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	return RobotMap.breakBeamBegin.get() && isTimedOut();
-        //return RobotMap.breakBeamBegin.get() && passedBeam;
     }
 
     // Called once after isFinished returns true

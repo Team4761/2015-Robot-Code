@@ -10,14 +10,11 @@ import org.usfirst.frc.team4761.robot.commands.conveyorbelts.LoadTote2;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.LoadTote3;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MainConveyorBackward;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MoveTote1ForwardToClear;
-import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MoveToteBackward;
-import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MoveToteToEndOfElevator;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.StopLiftConveyor;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.StopMainConveyor;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.WatchTote1;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.WatchTote2;
 import org.usfirst.frc.team4761.robot.commands.elevator.AcceptTote1;
-import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToBottom;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToLoad;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;

@@ -25,8 +25,8 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void lower () {
-		speedController1.set(SmartDashboard.getNumber("Elevator Speed: "));
-		speedController2.set(SmartDashboard.getNumber("Elevator Speed: "));
+		speedController1.set(0.35);
+		speedController2.set(0.35);
 	}
 	
 	public void set (double speed) {

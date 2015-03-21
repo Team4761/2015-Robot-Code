@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * Toggles the wedge position in/out.
  */
 public class WedgeToggle extends Command {
+	int first = 0;
 
     public WedgeToggle() {
     	requires(Robot.plower);
@@ -36,5 +37,6 @@ public class WedgeToggle extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

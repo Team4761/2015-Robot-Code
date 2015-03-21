@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4761.robot;
 
-import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putBoolean;
 import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putNumber;
 
 import org.usfirst.frc.team4761.robot.buttons.AutoStack;
@@ -25,7 +24,6 @@ import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RaiseRcGrabber;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -63,7 +61,7 @@ public class OI {
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
 		buttonManager.runOnPress(7, 1, new TurnInDown());
 
-		buttonManager.runOnceOnHold(19, 1, new AutoTote(19, 1));
+		buttonManager.runOnPress(19, 1, new AutoTote(19, 1));
 		//buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
 		
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));

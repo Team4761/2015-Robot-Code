@@ -20,6 +20,7 @@ public class GoToElevatorConveyor extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	passedBeam = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -29,7 +30,7 @@ public class GoToElevatorConveyor extends Command {
     	}
     	
     	Robot.mainConveyorBelt.forward();
-    	Robot.liftConveyorBelt.forward();
+    	Robot.liftConveyorBelt.go(0.8);
     }
 
     // Make this return true when this Command no longer needs to run execute()
