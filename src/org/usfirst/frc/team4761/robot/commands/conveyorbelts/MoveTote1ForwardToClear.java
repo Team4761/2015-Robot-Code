@@ -18,24 +18,28 @@ public class MoveTote1ForwardToClear extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	setTimeout(1);
+    	Robot.mainConveyorBelt.forward();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.mainConveyorBelt.go(0.5);
+    	setTimeout(0.75);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !RobotMap.breakBeamClear.get();
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.mainConveyorBelt.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

@@ -6,10 +6,10 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class Wait extends Command {
-	private int time = 0;
+	private double time = 0;
 
-    public Wait (int time) {
-    	this.time = time;
+    public Wait (double d) {
+    	this.time = d;
     }
 
     // Called just before this Command runs the first time
