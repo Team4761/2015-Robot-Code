@@ -27,7 +27,7 @@ public class MoveElevatorToLoad extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return RobotMap.elevatorAcceptTote2.get();
+        return !RobotMap.elevatorAcceptTote2.get();
     }
 
     // Called once after isFinished returns true

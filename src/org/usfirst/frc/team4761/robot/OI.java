@@ -25,6 +25,7 @@ import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RaiseRcGrabber;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -37,14 +38,10 @@ public class OI {
 	ButtonManager buttonManager = new ButtonManager();
 	
 	public OI () {
-		putBoolean("Step Autonomous", false);
-		putBoolean("Three Barrels Autonomous", false);
-		putBoolean("Drive To Auto-Zone", false);
-		putBoolean("Push Barrel To Auto-Zone", false);
-		
 		putNumber("P", 0.03);
 		putNumber("I", 0);
 		putNumber("D", 0);
+		putNumber("Elevator Speed: ", 0.35);
 		
 		// Bind buttons for button boards
 		buttonManager.runWhilePressed(9, 1, new MainConveyorForward(9, 1));
@@ -66,10 +63,8 @@ public class OI {
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
 		buttonManager.runOnPress(7, 1, new TurnInDown());
 
-		//buttonManager.runOnceOnHold(19, 1, new AutoTote(19, 1));
+		buttonManager.runOnceOnHold(19, 1, new AutoTote(19, 1));
 		//buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
-		buttonManager.runWhilePressed(19, 1, new AutoTote(19, 1));
-		buttonManager.runWhilePressed(17, 1, new AutoStack(17, 1));
 		
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());

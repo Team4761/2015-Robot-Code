@@ -5,6 +5,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Subsystem that can move up an down on guide rails. Used for moving RCs up
@@ -24,8 +25,8 @@ public class Elevator extends Subsystem {
 	}
 	
 	public void lower () {
-		speedController1.set(0.4);
-		speedController2.set(0.4);
+		speedController1.set(SmartDashboard.getNumber("Elevator Speed: "));
+		speedController2.set(SmartDashboard.getNumber("Elevator Speed: "));
 	}
 	
 	public void set (double speed) {

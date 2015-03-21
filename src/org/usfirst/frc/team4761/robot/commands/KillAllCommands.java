@@ -9,7 +9,6 @@ import edu.wpi.first.wpilibj.command.Command;
  * currently running. 
  */
 public class KillAllCommands extends Command {
-	//TODO: Find way to do this that does not require subsystems to be hardcoded in.
 	public KillAllCommands () {
 		requires(Robot.elevator);
 		requires(Robot.liftConveyorBelt);
@@ -24,7 +23,10 @@ public class KillAllCommands extends Command {
 	}
 
 	protected void execute() {
-	
+		Robot.elevator.stop();
+		Robot.liftConveyorBelt.stop();
+		Robot.mainConveyorBelt.stop();
+		Robot.rcGrabberBase.stop();
 	}
 	
  	protected boolean isFinished() {

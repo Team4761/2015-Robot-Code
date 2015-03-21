@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class WatchTote2 extends Command {
+	private boolean timeout = false;
 
     public WatchTote2() {
         // Use requires() here to declare subsystem dependencies
@@ -17,20 +18,24 @@ public class WatchTote2 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	timeout = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if (!RobotMap.breakBeamBegin.get() && !timeout) {
+    		setTimeout(0.35);
+    		timeout = true;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return RobotMap.breakBeamClear.get();
+        return isTimedOut() && timeout;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.liftConveyorBelt.stop();
     }
 
     // Called when another command which requires one or more of the same

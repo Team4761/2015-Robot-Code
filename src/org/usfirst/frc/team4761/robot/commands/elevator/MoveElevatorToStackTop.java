@@ -21,24 +21,16 @@ public class MoveElevatorToStackTop extends Command {
 	
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.elevator.raise();
 	}
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (sensor.get() && !passedStack) {
-			passedStack = true;
-		}
-		
-		if (passedStack) {
-			Robot.elevator.lower();
-		} else {
-			Robot.elevator.raise();
-		}
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return sensor.get() && passedStack; // Stop running when past last tote in stack
+		return sensor.get(); // Stop running when past last tote in stack
 	}
 	
 	// Called once after isFinished returns true

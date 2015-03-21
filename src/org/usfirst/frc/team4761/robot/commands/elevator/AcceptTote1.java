@@ -20,7 +20,7 @@ public class AcceptTote1 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (!RobotMap.elevatorAcceptTote1.get()) {
+    	if (RobotMap.elevatorAcceptTote1.get()) {
     		Robot.elevator.lower();
     	} else {
     		Robot.elevator.stop();

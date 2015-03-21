@@ -74,12 +74,12 @@ public class ButtonManager {
 	
 	public void runWhilePressed (int button, int joystick, Command command) {
 		checkInit();
-		new ButtonCommand(button, joystick, command, false, true);
+		new ButtonCommand(button, joystick, command, false, true, false);
 	}
 	
 	public void runOnceOnHold (int button, int joystick, Command command) {
 		checkInit();
-		new ButtonCommand(button, joystick, command, false, false);
+		new ButtonCommand(button, joystick, command, false, false, true);
 	}
 	
 	public void runOnceOnHold (AnalogAxisToDigital notReallyAbuttonButWereGoingToCallItOneForSimplicity, Command command) {
@@ -110,7 +110,7 @@ public class ButtonManager {
 						}
 						
 						if (!command.repeat) {
-							if (command.last == false && state == true) {
+							if (!command.last && state) {
 								if (command.toggleable) {
 									command.toggled = !command.toggled;
 									if (command.toggled) {
@@ -120,6 +120,19 @@ public class ButtonManager {
 									}
 								} else {
 									command.command.start();
+								}
+							}
+						} else if (command.runOnce) { 
+							if (state) {
+								if (!command.running) {
+									command.command.cancel();
+									command.command.start();
+									command.running = true;
+								}
+							} else {
+								if (command.running) {
+									command.command.cancel();
+									command.running = false;
 								}
 							}
 						} else {
@@ -142,10 +155,10 @@ public class ButtonManager {
 	private class ButtonCommand {
 		int button;
 		Command command;
-		boolean toggled = false, last = false, repeat, toggleable, canceled = false, fake = false;
+		boolean toggled = false, last = false, repeat, toggleable, canceled = false, fake = false, runOnce = false, running = false;
 		Joystick stick;
 		AnalogAxisToDigital analog;
-		private ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean repeat) {
+		private ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean repeat, boolean runOnce) {
 			try {
 				this.button = button;
 				this.command = command;
@@ -153,6 +166,7 @@ public class ButtonManager {
 				stick = ButtonManager.joysticks[joystick];
 				ButtonManager.list.add(this);
 				this.repeat = repeat;
+				this.runOnce = runOnce;
 			} catch (Error e){
 				System.out.println("Error creating a ButtonCommand!");
 				e.printStackTrace();
@@ -160,7 +174,7 @@ public class ButtonManager {
 		}
 		
 		public ButtonCommand(int button, int joystick, Command command, boolean toggleable) {
-			this(button, joystick, command, toggleable, false);
+			this(button, joystick, command, toggleable, false, false);
 		}
 		
 		public ButtonCommand(AnalogAxisToDigital input, Command command) {

@@ -167,7 +167,7 @@ public class RobotMap {
 			
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(1));
-			stackTop = new DigitalInput(5); // Random port
+			stackTop = new DigitalInput(18); // 8 on MXP
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 			
 			log = new Logger("4761", LoggingMode.LOG, logFilePath); // Create an instance of our logging program
@@ -181,12 +181,12 @@ public class RobotMap {
 			spinnerDI1 = new DigitalInput(8);
 			spinnerDI2 = new DigitalInput(9);
 			
-			elevatorBottom = new DigitalInput(21); // 12 on MXP
-			elevatorAcceptTote1 = new DigitalInput(17); // 8
-			elevatorAcceptTote2 = new DigitalInput(20); // 11
+			elevatorBottom = new DigitalInput(21); // 11 on MXP
+			elevatorAcceptTote1 = new DigitalInput(19); // 9 on MXP
+			elevatorAcceptTote2 = new DigitalInput(23); // 13 MXP
 			
-			breakBeamBegin = new DigitalInput(19); // 10
-			breakBeamClear = new DigitalInput(22); // 13 on MXP
+			breakBeamBegin = new DigitalInput(20); // 10 on MXP
+			breakBeamClear = new DigitalInput(22); // 12 on MXP
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);

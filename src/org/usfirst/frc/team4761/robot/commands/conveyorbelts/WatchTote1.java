@@ -18,23 +18,24 @@ public class WatchTote1 extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	passingBeam = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.breakBeamClear.get() && !passingBeam) {
+    	if (!RobotMap.breakBeamClear.get() && !passingBeam) {
     		passingBeam = true;
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !RobotMap.breakBeamClear.get() && passingBeam;
+    	System.out.println("Passing: " + passingBeam + " Break Beam: " + RobotMap.breakBeamClear.get());
+        return RobotMap.breakBeamClear.get() && passingBeam;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.mainConveyorBelt.stop();
     }
 
     // Called when another command which requires one or more of the same
