@@ -25,7 +25,11 @@ public class LiftConveyorBackward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.liftConveyorBelt.go(-0.75);
+    	if (Robot.oi.joysticks[1].getRawAxis(4) < 0.05) {
+    		Robot.liftConveyorBelt.go(-0.75);
+    	} else {
+    		Robot.liftConveyorBelt.backward();
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
