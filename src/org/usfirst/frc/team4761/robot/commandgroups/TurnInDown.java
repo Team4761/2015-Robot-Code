@@ -14,6 +14,6 @@ public class TurnInDown extends CommandGroup {
     public TurnInDown() {
     	addSequential(new SpinRcBaseIn());
     	addSequential(new LowerRcGrabber());
-    	addSequential(new SpinRcBaseOut());
+    	//addSequential(new SpinRcBaseOut());
     }
 }
