@@ -14,7 +14,6 @@ import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.RaiseElevator;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
-import org.usfirst.frc.team4761.robot.buttons.WedgeToggle;
 import org.usfirst.frc.team4761.robot.commandgroups.TurnInDown;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
@@ -54,7 +53,6 @@ public class OI {
 		buttonManager.runWhilePressed(18, 1, new RaiseElevator(18, 1));
 		buttonManager.runWhilePressed(16, 1, new LowerElevator(16, 1));
 		
-		buttonManager.setToggle(2, 1, new WedgeToggle());
 		buttonManager.setToggle(1, 1, new RCGrabberToggle());
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());

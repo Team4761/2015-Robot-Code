@@ -13,7 +13,6 @@ public class KillAllCommands extends Command {
 		requires(Robot.elevator);
 		requires(Robot.liftConveyorBelt);
 		requires(Robot.mainConveyorBelt);
-		requires(Robot.plower);
 		//requires(Robot.rcGrabber);
 		requires(Robot.rcGrabberBase);
 	}
