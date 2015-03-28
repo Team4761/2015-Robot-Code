@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  * Spins the RC hook in and lowers it.
  */
-public class TurnInDown extends CommandGroup {
+public class LazyButton extends CommandGroup {
     
-    public TurnInDown() {
+    public LazyButton() {
     	addSequential(new SpinRcBaseIn());
     	addSequential(new LowerRcGrabber());
     	//addSequential(new SpinRcBaseOut());

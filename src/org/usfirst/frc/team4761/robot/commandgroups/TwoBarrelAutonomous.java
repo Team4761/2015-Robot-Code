@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class TwoBarrelAutonomous extends CommandGroup {
     
-    public TwoBarrelAutonomous() {
-    	addSequential(new ResetGyro(90));
+    public TwoBarrelAutonomous (int angle) {
+    	addSequential(new ResetGyro(angle));
     	addParallel(new MainConveyorForward());
     	// Drive
     	addSequential(new RcPickUp());

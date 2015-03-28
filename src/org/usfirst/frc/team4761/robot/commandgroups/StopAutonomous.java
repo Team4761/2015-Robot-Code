@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class StopAutonomous extends CommandGroup {
     
-    public  StopAutonomous() {
-    	addSequential(new ResetGyro(90));
+    public  StopAutonomous (int angle) {
+    	addSequential(new ResetGyro(angle));
         addParallel(new LogToFile());
     }
 }
