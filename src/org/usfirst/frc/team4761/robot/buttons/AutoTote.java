@@ -25,7 +25,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoTote extends CommandGroup {
     
     public AutoTote (int button, int joystickNum) {
-    	addParallel(new StopForever(button, joystickNum)); // Driver cannot move (THIS NEEDS TESTING!!!)
+    	/*addParallel(new StopForever(button, joystickNum)); // Driver cannot move (THIS NEEDS TESTING!!!)
     	addSequential(new AcceptTote1(false)); // Elevator to Accept Tote 1 (Magnet Sensor 1)
     	addParallel(new MainConveyorBackward()); // Main Conveyor on in
     	addParallel(new LiftConveyorBackward()); // Elevator Conveyor on in
@@ -63,6 +63,7 @@ public class AutoTote extends CommandGroup {
     	addSequential(new StopLiftConveyor());
     	
     	// Explosion of LEDs for 3 seconds
-    	//addParallel(new LEDWipe()); // LEDs turn off
+    	//addParallel(new LEDWipe()); // LEDs turn off*/
+    	addSequential(new TestButton());
     }
 }

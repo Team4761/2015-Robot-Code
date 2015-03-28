@@ -14,6 +14,7 @@ import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.RaiseElevator;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
+import org.usfirst.frc.team4761.robot.buttons.TestButton;
 import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
