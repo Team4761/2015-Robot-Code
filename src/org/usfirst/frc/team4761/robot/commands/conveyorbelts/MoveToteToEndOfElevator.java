@@ -27,7 +27,7 @@ public class MoveToteToEndOfElevator extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !RobotMap.breakBeamBegin.get();
+        return !RobotMap.breakBeamElevatorBegin.get();
     }
 
     // Called once after isFinished returns true

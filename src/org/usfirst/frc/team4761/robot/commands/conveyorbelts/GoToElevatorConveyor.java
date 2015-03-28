@@ -25,7 +25,7 @@ public class GoToElevatorConveyor extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (!RobotMap.breakBeamBegin.get() && !passedBeam) {
+    	if (!RobotMap.breakBeamElevatorBegin.get() && !passedBeam) {
     		passedBeam = true;
     	}
     	
@@ -35,7 +35,7 @@ public class GoToElevatorConveyor extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return RobotMap.breakBeamBegin.get() && passedBeam;
+        return RobotMap.breakBeamElevatorBegin.get() && passedBeam;
     }
 
     // Called once after isFinished returns true
