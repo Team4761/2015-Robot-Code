@@ -87,11 +87,9 @@ public class Robot extends IterativeRobot {
 		// Buttons need to be changed when missile switches are wired
 		if (autoMode == 4) {
 			sAuto = "PushToAuto";
-			System.out.println("You have choosen: PushToAuto");
 			autonomousCommand = pushToAuto;
 		} else {
 			sAuto = "StopAuto";
-			System.out.println("You have choosen: StopAuto");
 			autonomousCommand = stopAuto;
 		}
 		
