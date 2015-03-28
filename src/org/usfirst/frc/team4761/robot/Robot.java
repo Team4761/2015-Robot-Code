@@ -68,18 +68,31 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		
-		// Buttons need to be changed when missile switches are wired
+		int autoMode = 0;
 		if (oi.joysticks[2].getRawButton(4)) {
+			autoMode += 4;
+		}
+		
+		if (oi.joysticks[2].getRawButton(3)) {
+			autoMode += 2;
+		}
+		
+		if (oi.joysticks[2].getRawButton(5)) {
+			autoMode += 1;
+		}
+		
+		// Buttons need to be changed when missile switches are wired
+		if (autoMode == 4) {
+			System.out.println("You have choosen: PushToAuto");
 			autonomousCommand = pushToAuto;
-		} else if (oi.joysticks[2].getRawButton(3)) {
-			autonomousCommand = twoBarrelAuto;
-		} else if (oi.joysticks[2].getRawButton(5)) {
-			autonomousCommand = stopAuto;
 		} else {
-			autonomousCommand = pushToAuto;
+			System.out.println("You have choosen: StopAuto");
+			autonomousCommand = stopAuto;
 		}
 		
 		//autonomousCommand = debugAuto; // Autonomous Chooser override
+		
+		System.out.println("AutoMode: " + autoMode);
 	}
 	
 	public void autonomousInit() {
