@@ -14,7 +14,7 @@ import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.RaiseElevator;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
-import org.usfirst.frc.team4761.robot.commandgroups.TurnInDown;
+import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
@@ -57,7 +57,7 @@ public class OI {
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
-		buttonManager.runOnPress(7, 1, new TurnInDown());
+		buttonManager.runOnPress(7, 1, new LazyButton());
 
 		buttonManager.runOnPress(19, 1, new AutoTote(19, 1));
 		//buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
