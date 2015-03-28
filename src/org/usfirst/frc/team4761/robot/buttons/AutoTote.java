@@ -38,7 +38,6 @@ public class AutoTote extends CommandGroup {
     	addSequential(new WatchTote1()); // Stop Main Conveyor when we find and then lose sight of Tote 1 (Break Beam 1)
     	addSequential(new StopMainConveyor());
     	addSequential(new AcceptTote1(true));
-    	//addSequential(new MoveToteBackward()); // Move tote backwards until we lose sight of it (Break Beam 1)
     	
     	//addParallel(new LEDGreen()); // Ready LEDs turn on
     	// Human Player drops Tote 2
