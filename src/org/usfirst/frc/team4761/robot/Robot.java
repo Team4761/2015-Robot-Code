@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -68,6 +69,8 @@ public class Robot extends IterativeRobot {
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		
+		String sAuto = "StopAuto";
+		
 		int autoMode = 0;
 		if (oi.joysticks[2].getRawButton(4)) {
 			autoMode += 4;
@@ -83,9 +86,11 @@ public class Robot extends IterativeRobot {
 		
 		// Buttons need to be changed when missile switches are wired
 		if (autoMode == 4) {
+			sAuto = "PushToAuto";
 			System.out.println("You have choosen: PushToAuto");
 			autonomousCommand = pushToAuto;
 		} else {
+			sAuto = "StopAuto";
 			System.out.println("You have choosen: StopAuto");
 			autonomousCommand = stopAuto;
 		}
@@ -93,6 +98,8 @@ public class Robot extends IterativeRobot {
 		//autonomousCommand = debugAuto; // Autonomous Chooser override
 		
 		System.out.println("AutoMode: " + autoMode);
+		
+		SmartDashboard.putString("Autonomous Choosen: ", sAuto);
 	}
 	
 	public void autonomousInit() {
