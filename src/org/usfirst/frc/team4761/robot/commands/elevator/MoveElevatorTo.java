@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
+package org.usfirst.frc.team4761.robot.commands.elevator;
 
 import org.usfirst.frc.team4761.robot.Robot;
 
@@ -7,12 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ElevatorConveyorBackwardSlow extends Command {
+public class MoveElevatorTo extends Command {
+	private int position = 0;
+	private boolean atPosition = false;
 
-    public ElevatorConveyorBackwardSlow() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.liftConveyorBelt);
+    public MoveElevatorTo (int position) {
+        requires(Robot.elevator);
+        this.position = position;
     }
 
     // Called just before this Command runs the first time
@@ -21,12 +22,12 @@ public class ElevatorConveyorBackwardSlow extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.liftConveyorBelt.backward();
+    	atPosition = Robot.elevator.goTo(position);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return atPosition;
     }
 
     // Called once after isFinished returns true
