@@ -22,7 +22,7 @@ public class RCGrabberToggle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.rcGrabber.set(DoubleSolenoid.Value.kReverse);
+    	Robot.rcGrabber.set(DoubleSolenoid.Value.kForward);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -32,7 +32,7 @@ public class RCGrabberToggle extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.rcGrabber.set(DoubleSolenoid.Value.kForward);
+    	Robot.rcGrabber.set(DoubleSolenoid.Value.kReverse);
     }
 
     // Called when another command which requires one or more of the same

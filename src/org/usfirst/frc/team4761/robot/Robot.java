@@ -4,6 +4,7 @@ import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
+import org.usfirst.frc.team4761.robot.commandgroups.StopAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.commandgroups.TwoBarrelAutonomous;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
@@ -11,7 +12,6 @@ import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
 import org.usfirst.frc.team4761.robot.subsystems.LiftConveyorBelt;
 import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
-import org.usfirst.frc.team4761.robot.subsystems.Plower;
 import org.usfirst.frc.team4761.robot.subsystems.RcGrabber;
 import org.usfirst.frc.team4761.robot.subsystems.RcGrabberBase;
 
@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,7 +33,6 @@ public class Robot extends IterativeRobot {
 	public static DriveTrain driveTrain = new DriveTrain();
 	public static Elevator elevator = new Elevator();
 	public static MainConveyorBelt mainConveyorBelt = new MainConveyorBelt();
-	public static Plower plower = new Plower();
 	public static RcGrabber rcGrabber = new RcGrabber();
 	public static RcGrabberBase rcGrabberBase = new RcGrabberBase();
 	public static LiftConveyorBelt liftConveyorBelt = new LiftConveyorBelt();
@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public Command teleop;
 	
-	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto;
+	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -61,21 +61,41 @@ public class Robot extends IterativeRobot {
 		debugAuto = new DebugAutonomous();
 		pushToAuto = new PushToAuto();
 		twoBarrelAuto = new TwoBarrelAutonomous();
+		stopAuto = new StopAutonomous();
 	}
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 		
-		// Buttons need to be changed when missile switches are wired
-		if (oi.joysticks[1].getRawButton(1)) {
-			autonomousCommand = pushToAuto;
-		} else if (oi.joysticks[1].getRawButton(2)) {
-			autonomousCommand = twoBarrelAuto;
-		} else {
-			autonomousCommand = pushToAuto;
+		String sAuto = "StopAuto";
+		
+		int autoMode = 0;
+		if (oi.joysticks[2].getRawButton(4)) {
+			autoMode += 4;
 		}
 		
-		autonomousCommand = debugAuto; // Autonomous Chooser override
+		if (oi.joysticks[2].getRawButton(3)) {
+			autoMode += 2;
+		}
+		
+		if (oi.joysticks[2].getRawButton(5)) {
+			autoMode += 1;
+		}
+		
+		// Buttons need to be changed when missile switches are wired
+		if (autoMode == 4) {
+			sAuto = "PushToAuto";
+			autonomousCommand = pushToAuto;
+		} else {
+			sAuto = "StopAuto";
+			autonomousCommand = stopAuto;
+		}
+		
+		//autonomousCommand = debugAuto; // Autonomous Chooser override
+		
+		System.out.println("AutoMode: " + autoMode);
+		
+		SmartDashboard.putString("Autonomous Choosen: ", sAuto);
 	}
 	
 	public void autonomousInit() {

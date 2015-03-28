@@ -17,7 +17,7 @@ public class GyroThread implements Runnable {
 				deltaTime += 0.05;
 			}
 
-			System.out.println(GyroSensor.getDegrees());
+			//System.out.println(GyroSensor.getDegrees());
 			
 			try {
 				Thread.sleep(50);

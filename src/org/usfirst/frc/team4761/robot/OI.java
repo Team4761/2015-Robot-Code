@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4761.robot;
 
-import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putBoolean;
 import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putNumber;
 
 import org.usfirst.frc.team4761.robot.buttons.AutoStack;
@@ -15,7 +14,6 @@ import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.RaiseElevator;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
-import org.usfirst.frc.team4761.robot.buttons.WedgeToggle;
 import org.usfirst.frc.team4761.robot.commandgroups.TurnInDown;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
@@ -32,19 +30,15 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class OI {
 	// With XBox controller, button board left, button board right
-	public Joystick[] joysticks = {new Joystick(0), new Joystick(1)};
+	public Joystick[] joysticks = {new Joystick(0), new Joystick(1), new Joystick(2)};
 	
 	ButtonManager buttonManager = new ButtonManager();
 	
 	public OI () {
-		putBoolean("Step Autonomous", false);
-		putBoolean("Three Barrels Autonomous", false);
-		putBoolean("Drive To Auto-Zone", false);
-		putBoolean("Push Barrel To Auto-Zone", false);
-		
-		putNumber("P", 0.025);
+		putNumber("P", 0.03);
 		putNumber("I", 0);
-		putNumber("D", 0.02);
+		putNumber("D", 0);
+		putNumber("Elevator Speed: ", 0.35);
 		
 		// Bind buttons for button boards
 		buttonManager.runWhilePressed(9, 1, new MainConveyorForward(9, 1));
@@ -59,15 +53,14 @@ public class OI {
 		buttonManager.runWhilePressed(18, 1, new RaiseElevator(18, 1));
 		buttonManager.runWhilePressed(16, 1, new LowerElevator(16, 1));
 		
-		buttonManager.setToggle(2, 1, new WedgeToggle());
 		buttonManager.setToggle(1, 1, new RCGrabberToggle());
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
 		buttonManager.runOnPress(7, 1, new TurnInDown());
-		
-		buttonManager.runOnceOnHold(19, 1, new AutoTote(19, 1));
-		buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
+
+		buttonManager.runOnPress(19, 1, new AutoTote(19, 1));
+		//buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
 		
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());
@@ -99,8 +92,8 @@ public class OI {
 		buttonManager.runOnPress(2, 1, new TurnInDown());*/
 		
 		// Bind buttons for XBox Controller
-		buttonManager.runOnPress(4, 0, new RaiseRcGrabber());
-		buttonManager.runOnPress(1, 0, new LowerRcGrabber());
+		buttonManager.runWhilePressed(4, 0, new RaiseRcGrabber());
+		buttonManager.runWhilePressed(1, 0, new LowerRcGrabber());
 		buttonManager.runWhilePressed(3, 0, new RCGrabberLeft(3, 0));
 		buttonManager.runWhilePressed(2, 0, new RCGrabberRight(2, 0));
 		buttonManager.runOnPress(7, 0, new ResetGyro(90));

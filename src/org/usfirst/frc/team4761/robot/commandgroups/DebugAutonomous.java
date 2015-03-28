@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.commands.debug.ReadDistanceSensor;
+import org.usfirst.frc.team4761.robot.commands.LogToFile;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class DebugAutonomous extends CommandGroup {
 	
     public DebugAutonomous() {
-    	addParallel(new ReadDistanceSensor());
+    	addParallel(new LogToFile());
+    	//addParallel(new ReadDistanceSensor());
     }
 }

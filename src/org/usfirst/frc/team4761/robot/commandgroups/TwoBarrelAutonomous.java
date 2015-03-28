@@ -18,9 +18,11 @@ public class TwoBarrelAutonomous extends CommandGroup {
     public TwoBarrelAutonomous() {
     	addSequential(new ResetGyro(90));
     	addParallel(new MainConveyorForward());
+    	// Drive
     	addSequential(new RcPickUp());
     	addSequential(new GoToNextBarrel());
         addSequential(new GoToBackEdgeOfBarrel());
+        // Stop Driving
     	addSequential(new SpinRcBaseOut());
     	addSequential(new RaiseRcGrabber());
     	addParallel(new SpinRcBaseIn());

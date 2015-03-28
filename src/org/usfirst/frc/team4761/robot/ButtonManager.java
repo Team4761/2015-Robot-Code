@@ -82,7 +82,7 @@ public class ButtonManager {
 		new ButtonCommand(button, joystick, command, false, false, true);
 	}
 	
-	public void runOnceOnHold (AnalogToDigital notReallyAbuttonButWereGoingToCallItOneForSimplicity, Command command) {
+	public void runOnceOnHold (AnalogAxisToDigital notReallyAbuttonButWereGoingToCallItOneForSimplicity, Command command) {
 		checkInit();
 		new ButtonCommand(notReallyAbuttonButWereGoingToCallItOneForSimplicity, command);
 	}
@@ -108,45 +108,37 @@ public class ButtonManager {
 						} else {
 							state = command.analog.get();
 						}
-						if (!command.cancelable)
-						{
-							if (!command.repeat) {
-								if (command.last == false && state == true) {
-									if (command.toggleable) {
-										command.toggled = !command.toggled;
-										if (command.toggled) {
-											command.command.start();
-										} else {
-											command.command.cancel();
-										}
-									} else {
+						
+						if (!command.repeat) {
+							if (!command.last && state) {
+								if (command.toggleable) {
+									command.toggled = !command.toggled;
+									if (command.toggled) {
 										command.command.start();
-									}
-								} else {
-									if (!command.toggleable) {
+									} else {
 										command.command.cancel();
 									}
+								} else {
+									command.command.start();
+								}
+							}
+						} else if (command.runOnce) { 
+							if (state) {
+								if (!command.running) {
+									command.command.cancel();
+									command.command.start();
+									command.running = true;
 								}
 							} else {
-								if (state) {
-									command.command.start();
-									command.canceled = false;
-								} else if (command.canceled == false){
-								//	command.command.cancel();
-								//	command.canceled = true;
+								if (command.running) {
+									command.command.cancel();
+									command.running = false;
 								}
 							}
-						}
-						else
-						{
-							if (command.last == false && state == true && command.started == false)
-							{
+						} else {
+							if (state) {
 								command.command.start();
-								command.started = true;
-							}
-							if (command.last == true && state == false)
-							{
-								command.command.cancel();
+								command.canceled = false;
 							}
 						}
 						command.last = state;
@@ -163,10 +155,10 @@ public class ButtonManager {
 	private class ButtonCommand {
 		int button;
 		Command command;
-		boolean toggled = false, last = false, repeat, toggleable, canceled = false, fake = false, cancelable = false, started = false;
+		boolean toggled = false, last = false, repeat, toggleable, canceled = false, fake = false, runOnce = false, running = false;
 		Joystick stick;
-		AnalogToDigital analog;
-		private ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean repeat, boolean cancelable) {
+		AnalogAxisToDigital analog;
+		private ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean repeat, boolean runOnce) {
 			try {
 				this.button = button;
 				this.command = command;
@@ -174,7 +166,7 @@ public class ButtonManager {
 				stick = ButtonManager.joysticks[joystick];
 				ButtonManager.list.add(this);
 				this.repeat = repeat;
-				this.cancelable = cancelable;
+				this.runOnce = runOnce;
 			} catch (Error e){
 				System.out.println("Error creating a ButtonCommand!");
 				e.printStackTrace();
@@ -184,16 +176,12 @@ public class ButtonManager {
 		public ButtonCommand(int button, int joystick, Command command, boolean toggleable) {
 			this(button, joystick, command, toggleable, false, false);
 		}
-		public ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean cancelable)
-		{
-			this(button, joystick, command, toggleable, false, cancelable);
-		}
-		public ButtonCommand(AnalogToDigital input, Command command) {
+		
+		public ButtonCommand(AnalogAxisToDigital input, Command command) {
 			this.analog = input;
 			fake = true;
 			toggleable = false;
 			repeat = false;
-			cancelable = true;
 			this.command = command;
 			ButtonManager.list.add(this);
 		}

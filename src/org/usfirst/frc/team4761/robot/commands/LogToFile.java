@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot.commands;
 
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.AnalogAxisToDigital;
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
@@ -17,27 +18,28 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class LogToFile extends Command {
 	
 	private ShortDistanceSensor outerConveyorBarrelDistanceSensor = RobotMap.outerConveyorBarrelDistanceSensor;
-	private MediumDistanceSensor outerConveyorToteDistanceSensor = RobotMap.outerConveyorToteDistanceSensor;
 	private MediumDistanceSensor barrelSensor = RobotMap.barrelDistanceSensor;
 	private Logger log = RobotMap.log;
+	private AnalogAxisToDigital slowButton1 = new AnalogAxisToDigital(4, 1);
+	private AnalogAxisToDigital slowButton2 = new AnalogAxisToDigital(5, 1);
+
 	
 	protected void initialize() {
 		log.setLevel(Level.FATAL);
 	}
 	
 	protected void execute() {
-		//log.dev("Towards Conveyor: " + Double.toString(outerConveyorBarrelDistanceSensor.getDistance()));
-		//log.dev("Towards Totes: " + Double.toString(outerConveyorToteDistanceSensor.getDistance()));
-		//log.dev("Angle: " + Double.toString(GyroSensor.getDegrees()));
-		//log.dev("Slider 1: " + Double.toString(Robot.oi.joysticks[1].getRawAxis(0)));
-		//log.dev("Slider 1: " + Double.toString(Robot.oi.joysticks[1].getRawAxis(1)));
-		//log.dev("Setpoint: " + Double.toString(Robot.driveTrain.gyroPidController.getSetpoint()));
-		//log.dev("Barrel: " + Double.toString(barrelSensor.getDistance()));
-		//SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
-		//SmartDashboard.putNumber("Distance from totes", outerConveyorToteDistanceSensor.getDistance());
-		//SmartDashboard.putNumber("Distance from barrel", outerConveyorBarrelDistanceSensor.getDistance());
-		//SmartDashboard.putNumber("Distance from barrel on conveyor", outerConveyorBarrelDistanceSensor.getDistance());
-		//SmartDashboard.putNumber("Barrel: ", barrelSensor.getDistance());
+		/*log.dev("Slow Button 2: " + slowButton1.get());
+		log.dev("Slow Button 2: " + slowButton2.get());
+		log.dev("Raw Slow Button 1: " + Robot.oi.joysticks[1].getRawAxis(4));
+		log.dev("Raw Slow Button 2: " + Robot.oi.joysticks[1].getRawAxis(5));*/
+		SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
+		SmartDashboard.putBoolean("Elevator Bottom: ", RobotMap.elevatorBottom.get());
+		SmartDashboard.putBoolean("Elevator Accept Tote 1: ", RobotMap.elevatorAcceptTote1.get());
+		SmartDashboard.putBoolean("Elevator Accept Tote 2: ", RobotMap.elevatorAcceptTote2.get());
+		SmartDashboard.putBoolean("Break Beam Begin: ", RobotMap.breakBeamBegin.get());
+		SmartDashboard.putBoolean("Break Beam Clear: ", RobotMap.breakBeamClear.get());
+		SmartDashboard.putBoolean("Top of Stack: ", RobotMap.stackTop.get());
 	}
 	
 	protected boolean isFinished() {

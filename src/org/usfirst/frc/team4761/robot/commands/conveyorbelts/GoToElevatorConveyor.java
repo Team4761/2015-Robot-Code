@@ -2,7 +2,6 @@ package org.usfirst.frc.team4761.robot.commands.conveyorbelts;
 
 import org.usfirst.frc.team4761.robot.Robot;
 import org.usfirst.frc.team4761.robot.RobotMap;
-import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -21,21 +20,22 @@ public class GoToElevatorConveyor extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	passedBeam = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.breakBeamBegin.get() && !passedBeam) {
+    	if (!RobotMap.breakBeamBegin.get() && !passedBeam) {
     		passedBeam = true;
     	}
     	
     	Robot.mainConveyorBelt.forward();
-    	Robot.liftConveyorBelt.forward();
+    	Robot.liftConveyorBelt.go(0.8);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !RobotMap.breakBeamBegin.get() && passedBeam;
+        return RobotMap.breakBeamBegin.get() && passedBeam;
     }
 
     // Called once after isFinished returns true

@@ -9,19 +9,24 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class AcceptTote1 extends Command {
+	private boolean up = false;
 
-    public AcceptTote1() {
+	// up = false (down), true (up)
+    public AcceptTote1 (boolean up) {
     	requires(Robot.elevator);
+    	this.up = up;
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize () {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (!RobotMap.elevatorAcceptTote1.get()) {
+    	if (RobotMap.elevatorAcceptTote1.get() && !up) {
     		Robot.elevator.lower();
+    	} else if (RobotMap.elevatorAcceptTote1.get() && up) {
+    		Robot.elevator.raise();
     	} else {
     		Robot.elevator.stop();
     	}

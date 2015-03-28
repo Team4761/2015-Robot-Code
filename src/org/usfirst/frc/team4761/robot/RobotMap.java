@@ -1,5 +1,7 @@
 package org.usfirst.frc.team4761.robot;
 
+import java.io.File;
+
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
@@ -10,6 +12,7 @@ import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -61,7 +64,7 @@ public class RobotMap {
 	 * Distance sensor on the rear of the outer conveyor belt. Used for
 	 * detecting something.
 	 */
-	public static MediumDistanceSensor outerConveyorToteDistanceSensor;
+	public static DigitalInput stackTop;
 	/**
 	 * Distance sensor on the front of the outer conveyor belt. Used for
 	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
@@ -102,12 +105,43 @@ public class RobotMap {
 	public static VictorSP elevatorMotor1;
 	public static VictorSP elevatorMotor2;
 	
-	public static AnalogInput flexSensor;
-	
+	/**
+	 * Arduino used for controlling the LEDs on the robot. Connected through an
+	 * I2C interface.
+	 */
 	public static I2C arduino;
 	
+	/**
+	 * Distance sensor used for testing.
+	 */
 	public static MediumDistanceSensor testDistanceSensor1;
+	/**
+	 * Distance sensor used for testing.
+	 */
 	public static MediumDistanceSensor testDistanceSensor2;
+	
+	public static Encoder encoder;
+	
+	/**
+	 * Absolute path to the robots log file. Use {@link #logFile} in your code
+	 * instead of making your own Files.
+	 */
+	public static String logFilePath = "/home/lvuser/log.txt";
+	/**
+	 * File object that uses the path value provided by {@link #logFilePath}.
+	 */
+	public static File logFile = new File(logFilePath);
+	
+	/**
+	 * Absolute path to the robots settings file. Use {@link #settingsFile} in
+	 * your code instead of making your own Files.
+	 */
+	public static String settingsFilePath = "/home/lvuser/settings.ini";
+	/**
+	 * File object that uses the path value provided by {@link
+	 * #settingsFilePath}.
+	 */
+	public static File settingsFile = new File(settingsFilePath);
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -119,8 +153,6 @@ public class RobotMap {
 		}
 		// Universal objects
 		gyro = new GyroSensor();
-		//gyro.gyroSensor.setSensitivity(0.007);
-		//gyro.gyroSensor.reset();		
 		
 		arduino = new I2C(I2C.Port.kOnboard, 168);
 		
@@ -135,10 +167,10 @@ public class RobotMap {
 			
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
 			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(1));
-			outerConveyorToteDistanceSensor = new MediumDistanceSensor(new AnalogInput(2));
+			stackTop = new DigitalInput(18); // 8 on MXP
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 			
-			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt"); // Create an instance of our logging program
+			log = new Logger("4761", LoggingMode.LOG, logFilePath); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
 			
 			rcPneumatic = new DoubleSolenoid(0, 0, 1);
@@ -149,19 +181,19 @@ public class RobotMap {
 			spinnerDI1 = new DigitalInput(8);
 			spinnerDI2 = new DigitalInput(9);
 			
-			elevatorBottom = new DigitalInput(0);
-			elevatorAcceptTote1 = new DigitalInput(1);
-			elevatorAcceptTote2 = new DigitalInput(2);
+			elevatorBottom = new DigitalInput(21); // 11 on MXP
+			elevatorAcceptTote1 = new DigitalInput(19); // 9 on MXP
+			elevatorAcceptTote2 = new DigitalInput(23); // 13 MXP
 			
-			breakBeamBegin = new DigitalInput(3);
-			breakBeamClear = new DigitalInput(4);
+			breakBeamBegin = new DigitalInput(20); // 10 on MXP
+			breakBeamClear = new DigitalInput(22); // 12 on MXP
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
-
-			flexSensor = new AnalogInput(4);
+			
+			//encoder = new Encoder(0, 1);
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
@@ -169,11 +201,13 @@ public class RobotMap {
 			rightRearMotor = new Victor(4);
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
-			log = new Logger("4761", LoggingMode.LOG, "/home/lvuser/log.txt");
+			log = new Logger("4761", LoggingMode.LOG, logFilePath);
 			minLogLevel = Level.DEV;
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
+			
+			breakBeamBegin = new DigitalInput(13);
 		}
 	}
 }

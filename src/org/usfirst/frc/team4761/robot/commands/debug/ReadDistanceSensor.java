@@ -2,9 +2,7 @@ package org.usfirst.frc.team4761.robot.commands.debug;
 
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
-import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 
-import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -20,13 +18,13 @@ public class ReadDistanceSensor extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("distance1,voltage1,distance2,voltage2,diff"); //CSV header
+    	System.out.println("distance1,voltage1,distance2,voltage2,diff"); // CSV header
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double diff = Math.abs(distanceSensor1.getDistance() - distanceSensor2.getDistance());
-    	System.out.println(distanceSensor1.getDistance() + "," + distanceSensor1.getVoltage() + "," + distanceSensor2.getDistance() + "," + distanceSensor2.getVoltage() + "," + diff);
+    	System.out.println(distanceSensor1.getDistance() + "," + distanceSensor1.getVoltage() + "," + distanceSensor2.getDistance() + "" + distanceSensor2.getVoltage() + diff);
     }
 
     // Make this return true when this Command no longer needs to run execute()
