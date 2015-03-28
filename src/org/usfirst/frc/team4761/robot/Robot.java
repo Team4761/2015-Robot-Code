@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot;
 
 import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
+import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.StopAutonomous;
@@ -40,7 +41,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public Command teleop;
 	
-	Command autonomousCommand, autonomous, wedgeAuto, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;
+	Command autonomousCommand, autonomous, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -55,13 +56,13 @@ public class Robot extends IterativeRobot {
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
 		
-		autonomousCommand = new PushToAuto();
+		autonomousCommand = new PushToAuto(90);
 		
-		wedgeAuto = new NoWedgeAuto();
 		debugAuto = new DebugAutonomous();
-		pushToAuto = new PushToAuto();
-		twoBarrelAuto = new TwoBarrelAutonomous();
-		stopAuto = new StopAutonomous();
+		pushToAuto = new PushToAuto(90);
+		driveToAuto = new DriveToAuto(90);
+		twoBarrelAuto = new TwoBarrelAutonomous(90);
+		stopAuto = new StopAutonomous(90);
 	}
 	
 	public void disabledPeriodic() {
@@ -82,11 +83,26 @@ public class Robot extends IterativeRobot {
 			autoMode += 1;
 		}
 		
+		int angle = 90;
+		if (oi.joysticks[2].getRawButton(5)) {
+			angle = -90;
+		}
+		
+		pushToAuto = new PushToAuto(angle);
+		driveToAuto = new DriveToAuto(angle);
+		twoBarrelAuto = new TwoBarrelAutonomous(angle);
+		stopAuto = new StopAutonomous(angle);
+		
+		SmartDashboard.putNumber("Autonomous Angle: ", angle);
+		
 		// Buttons need to be changed when missile switches are wired
 		if (autoMode == 4) {
 			sAuto = "PushToAuto";
 			autonomousCommand = pushToAuto;
-		} else {
+		} else if (autoMode == 2) {
+			sAuto = "DriveToAuto";
+			autonomousCommand = driveToAuto;
+		}else {
 			sAuto = "StopAuto";
 			autonomousCommand = stopAuto;
 		}

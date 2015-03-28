@@ -97,7 +97,8 @@ public class RobotMap {
 	public static DigitalInput elevatorAcceptTote1;
 	public static DigitalInput elevatorAcceptTote2;
 	
-	public static DigitalInput breakBeamBegin;
+	public static DigitalInput breakBeamElevatorEnd;
+	public static DigitalInput breakBeamElevatorBegin;
 	public static DigitalInput breakBeamClear;
 	
 	public static Talon mainConveyorBeltMotor;
@@ -185,15 +186,14 @@ public class RobotMap {
 			elevatorAcceptTote1 = new DigitalInput(19); // 9 on MXP
 			elevatorAcceptTote2 = new DigitalInput(23); // 13 MXP
 			
-			breakBeamBegin = new DigitalInput(20); // 10 on MXP
+			breakBeamElevatorEnd = new DigitalInput(18); // Random Number (This is not on the robot yet)
+			breakBeamElevatorBegin = new DigitalInput(20); // 10 on MXP
 			breakBeamClear = new DigitalInput(22); // 12 on MXP
 			
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
-			
-			//encoder = new Encoder(0, 1);
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
@@ -206,8 +206,6 @@ public class RobotMap {
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
-			
-			breakBeamBegin = new DigitalInput(13);
 		}
 	}
 }
