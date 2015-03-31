@@ -8,6 +8,7 @@ import org.simonandrews.robolog.LoggingMode;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
+import org.usfirst.frc.team4761.robot.sensors.SupaDistanceSensor;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -51,7 +52,7 @@ public class RobotMap {
 	public static RobotDrive robotDrive;
 	
 	public static GyroSensor gyro;
-
+	
 	/**
 	 * A distance sensor that senses the barrels for auto-mode.
 	 */
@@ -144,6 +145,8 @@ public class RobotMap {
 	 */
 	public static File settingsFile = new File(settingsFilePath);
 	
+	public static SupaDistanceSensor wallDistanceSensor;
+	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
 			// 1 for new robot and 2 for old robot
@@ -193,7 +196,7 @@ public class RobotMap {
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
-			elevatorMotor2 = new VictorSP(9);
+			elevatorMotor2 = new VictorSP(9);			
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
@@ -206,6 +209,8 @@ public class RobotMap {
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
+			
+			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
 		}
 	}
 }

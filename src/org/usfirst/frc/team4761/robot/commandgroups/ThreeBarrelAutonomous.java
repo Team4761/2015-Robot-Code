@@ -15,9 +15,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  * Picks up three RCs in a row.
  */
-public class NoWedgeAuto extends CommandGroup {
+public class ThreeBarrelAutonomous extends CommandGroup {
     
-    public NoWedgeAuto() {
+    public ThreeBarrelAutonomous() {
     	addSequential(new ResetGyro(90));
     	addParallel(new LogToFile());
     	

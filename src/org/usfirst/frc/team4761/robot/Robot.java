@@ -3,7 +3,6 @@ package org.usfirst.frc.team4761.robot;
 import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
-import org.usfirst.frc.team4761.robot.commandgroups.NoWedgeAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.StopAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
