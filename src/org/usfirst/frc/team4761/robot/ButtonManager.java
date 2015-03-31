@@ -2,6 +2,8 @@ package org.usfirst.frc.team4761.robot;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
+import org.usfirst.frc.team4761.robot.commands.debug.PrintCommand;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,12 +13,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ButtonManager {
 	static boolean inited = false, buttonDown;
-	public static final int LEFT = 0, RIGHT = 1, BUTTONS = 2;
+	public static final int CONTROLLER = 0, BUTTONBOARD_ONE = 1, BUTTONBOARD_TWO = 2;
 	
 	static CopyOnWriteArrayList<ButtonCommand> list = new CopyOnWriteArrayList<ButtonCommand>();
 	
 	static JoystickButton[][] buttons = new JoystickButton[3][20];
-	static Joystick[] joysticks = {new Joystick(LEFT), new Joystick(RIGHT), new Joystick(BUTTONS)};
+	static Joystick[] joysticks = {new Joystick(CONTROLLER), new Joystick(BUTTONBOARD_ONE), new Joystick(BUTTONBOARD_TWO)};
 	
 	public ButtonManager() {}
 	
@@ -36,13 +38,6 @@ public class ButtonManager {
 		}
 	}
 	
-	/**
-	 * Starts the specified command whenever the button is pressed.
-	 *
-	 * @param button   an int specifying the button to be used
-	 * @param joystick an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
-	 * @param command  an instance of a Command to be run
-	 */
 	public void onPress(int button, int joystick, Command command) {
 		checkInit();
 		buttons[joystick][button].whenPressed(command);
@@ -78,45 +73,46 @@ public class ButtonManager {
 		}
 	}
 	
-	private class ButtonManagerHandler implements Runnable 
-	{
-		public void run() 
-		{
-			try 
-			{
-				while (true) 
-				{
-					for (ButtonCommand command : list)
-					{
+	public static void test() {
+		Robot.oi.buttonManager.setToggle      (1, ButtonManager.BUTTONBOARD_ONE, new PrintCommand("Toggle button test."));
+		Robot.oi.buttonManager.runOnPress     (2, ButtonManager.BUTTONBOARD_ONE, new PrintCommand("RoP test."));
+		Robot.oi.buttonManager.runWhilePressed(3, ButtonManager.BUTTONBOARD_ONE, new PrintCommand("RwP test."));
+		Robot.oi.buttonManager.runOnceOnHold  (4, ButtonManager.BUTTONBOARD_ONE, new PrintCommand("cRoP test."));
+		System.out.println(">> ButtonManager Test Initialized <<");
+	}
+	private class ButtonManagerHandler implements Runnable {
+		public void run() {
+			try {
+				while (true) {
+					for (ButtonCommand command : list) {
 						buttonDown = command.get();
-						if (command.type == ButtonCommand.TYPE_TOGGLEABLE)	// TOGGLEABLE button
-						{
-							if (command.pressed())	// on button press
-								command.store = !command.store;	// toggle state
-							if (command.store)
-								command.start();	// if toggled on, start command
-							else
-								command.stop();	// if toggled off, stop command
-						}
-						else if (command.type == ButtonCommand.TYPE_ROP)	// RUN ON PRESS button
-							if (command.pressed())
-								command.start();	// on button press, start command
-						else if (command.type == ButtonCommand.TYPE_RWP)	// RUN WHILE PRESS button
-							if (buttonDown)
-								command.start();	// if button is held down, start (or keep running) command
-						else if (command.type == ButtonCommand.TYPE_CROP)	// CANCELABLE RUN ON PRESS
-						{
-							if (buttonDown && !command.store)
-							{
-								command.start();	// if button is held down and the command has not finished executing, start command
-								command.store = true;
+						if (command.type == ButtonCommand.TYPE_TOGGLEABLE) {
+							if (command.pressed()) {
+								command.store = !command.store;
+								if (command.store) {
+									command.start();
+								} else {
+									command.stop();
+								}
 							}
-							else if (!buttonDown)
-							{
-								command.stop();	// if button is released, stop command and mark as finished
+						} else if (command.type == ButtonCommand.TYPE_ROP) {
+							if (command.pressed()) {
+								command.start();
+							}
+						} else if (command.type == ButtonCommand.TYPE_RWP) {
+							if (buttonDown) {
+								command.start();
+							}
+						} else if (command.type == ButtonCommand.TYPE_CROP) {
+							if (buttonDown && !command.store) {
+								command.start();
+								command.store = true;
+							} else if (!buttonDown) {
+								command.stop();
 								command.store = false;
 							}
 						}
+						command.last = buttonDown;
 					}
 					Thread.sleep(20);
 				}
@@ -135,34 +131,28 @@ public class ButtonManager {
 		boolean store = false, last = false;
 		static final int TYPE_TOGGLEABLE = 0, TYPE_ROP = 1, TYPE_RWP = 2, TYPE_CROP = 3;
 		private ButtonCommand(int button, int joystick, Command command, int type) {
-			try 
-			{
+			try {
 				this.button = button;
 				this.command = command;
 				this.type = type;
 				stick = ButtonManager.joysticks[joystick];
 				ButtonManager.list.add(this);
 			}
-			catch (Error e)
-			{
+			catch (Error e) {
 				System.out.println("Error creating a ButtonCommand!");
 				e.printStackTrace();
 			}
 		}
-		public boolean get()
-		{
+		public boolean get() {
 				return stick.getRawButton(button);
 		}
-		public void start()
-		{
+		public void start() {
 			command.start();
 		}
-		public void stop()
-		{
+		public void stop() {
 			command.cancel();
 		}
-		public boolean pressed()
-		{
+		public boolean pressed() {
 			return buttonDown && !last;
 		}
 	}
