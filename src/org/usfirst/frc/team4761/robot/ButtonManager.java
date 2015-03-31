@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  * Allows for easy mapping of Joystick buttons to the execution of commands.
  */
 public class ButtonManager {
-	static boolean inited = false;
+	static boolean inited = false, buttonDown;
 	public static final int LEFT = 0, RIGHT = 1, BUTTONS = 2;
 	
 	static CopyOnWriteArrayList<ButtonCommand> list = new CopyOnWriteArrayList<ButtonCommand>();
@@ -48,38 +48,24 @@ public class ButtonManager {
 		buttons[joystick][button].whenPressed(command);
 	}
 	
-	/**
-	 * Toggle the execution of the specified command whenever the button is pressed.
-	 *
-	 * @param button   an int specifying the button to be used
-	 * @param joystick an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
-	 * @param command  an instance of a Command to be run
-	 */
 	public void setToggle(int button, int joystick, Command command) {
 		checkInit();
-		new ButtonCommand(button, joystick, command, true);
+		new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_TOGGLEABLE);
 	}
 	
-	/**
-	 * Start the specified command whenever the button is pressed (alternative to onPress).
-	 *
-	 * @param button   an int specifying the button to be used
-	 * @param joystick an int specifying the Joystick to be used (LEFT_JOYSTICK, RIGHT_JOYSTICK, or BUTTON_BOARD)
-	 * @param command  an instance of a Command to be run
-	 */
 	public void runOnPress (int button, int joystick, Command command) {
 		checkInit();
-		new ButtonCommand(button, joystick, command, false);
+		new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_ROP);
 	}
 	
 	public void runWhilePressed (int button, int joystick, Command command) {
 		checkInit();
-		new ButtonCommand(button, joystick, command, false, true, false);
+		new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_RWP);
 	}
 	
 	public void runOnceOnHold (int button, int joystick, Command command) {
 		checkInit();
-		new ButtonCommand(button, joystick, command, false, false, true);
+		new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_CROP);
 	}
 	
 	private void checkInit() {
@@ -92,54 +78,45 @@ public class ButtonManager {
 		}
 	}
 	
-	private class ButtonManagerHandler implements Runnable {
-		public void run() {
-			try {
-				while (true) {
-					for (ButtonCommand command : list) {
-						boolean state = false;
-						if (!command.fake) {
-							state = command.stick.getRawButton(command.button);
+	private class ButtonManagerHandler implements Runnable 
+	{
+		public void run() 
+		{
+			try 
+			{
+				while (true) 
+				{
+					for (ButtonCommand command : list)
+					{
+						buttonDown = command.get();
+						if (command.type == ButtonCommand.TYPE_TOGGLEABLE)	// TOGGLEABLE button
+						{
+							if (command.pressed())	// on button press
+								command.store = !command.store;	// toggle state
+							if (command.store)
+								command.start();	// if toggled on, start command
+							else
+								command.stop();	// if toggled off, stop command
 						}
-						
-						if (!command.cancelable) {
-							if (!command.repeat) {
-								if (command.last == false && state == true) {
-									if (command.toggleable) {
-										command.toggled = !command.toggled;
-										if (command.toggled) {
-											command.command.start();
-										} else {
-											command.command.cancel();
-										}
-									} else {
-										command.command.start();
-									}
-								} else {
-									if (!command.toggleable) {
-										command.command.cancel();
-									}
-								}
-							} else {
-								if (state) {
-									command.command.start();
-									command.canceled = false;
-								} else if (command.canceled == false){
-									//command.command.cancel();
-									//command.canceled = true;
-								}
+						else if (command.type == ButtonCommand.TYPE_ROP)	// RUN ON PRESS button
+							if (command.pressed())
+								command.start();	// on button press, start command
+						else if (command.type == ButtonCommand.TYPE_RWP)	// RUN WHILE PRESS button
+							if (buttonDown)
+								command.start();	// if button is held down, start (or keep running) command
+						else if (command.type == ButtonCommand.TYPE_CROP)	// CANCELABLE RUN ON PRESS
+						{
+							if (buttonDown && !command.store)
+							{
+								command.start();	// if button is held down and the command has not finished executing, start command
+								command.store = true;
 							}
-						} else {
-							if (command.last == false && state == true && command.started == false) {
-								command.command.start();
-								command.started = true;
-							}
-							
-							if (command.last == true && state == false) {
-								command.command.cancel();
+							else if (!buttonDown)
+							{
+								command.stop();	// if button is released, stop command and mark as finished
+								command.store = false;
 							}
 						}
-						command.last = state;
 					}
 					Thread.sleep(20);
 				}
@@ -153,28 +130,40 @@ public class ButtonManager {
 	private class ButtonCommand {
 		int button;
 		Command command;
-		boolean toggled = false, last = false, repeat, toggleable, canceled = false, fake = false, cancelable = false, started = false;
 		Joystick stick;
-		private ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean repeat, boolean cancelable) {
-			try {
+		int type;
+		boolean store = false, last = false;
+		static final int TYPE_TOGGLEABLE = 0, TYPE_ROP = 1, TYPE_RWP = 2, TYPE_CROP = 3;
+		private ButtonCommand(int button, int joystick, Command command, int type) {
+			try 
+			{
 				this.button = button;
 				this.command = command;
-				this.toggleable = toggleable;
+				this.type = type;
 				stick = ButtonManager.joysticks[joystick];
 				ButtonManager.list.add(this);
-				this.repeat = repeat;
-				this.cancelable = cancelable;
-			} catch (Error e){
+			}
+			catch (Error e)
+			{
 				System.out.println("Error creating a ButtonCommand!");
 				e.printStackTrace();
 			}
 		}
-		
-		public ButtonCommand(int button, int joystick, Command command, boolean toggleable) {
-			this(button, joystick, command, toggleable, false, false);
+		public boolean get()
+		{
+				return stick.getRawButton(button);
 		}
-		public ButtonCommand(int button, int joystick, Command command, boolean toggleable, boolean cancelable) {
-			this(button, joystick, command, toggleable, false, cancelable);
+		public void start()
+		{
+			command.start();
+		}
+		public void stop()
+		{
+			command.cancel();
+		}
+		public boolean pressed()
+		{
+			return buttonDown && !last;
 		}
 	}
 }
