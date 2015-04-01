@@ -10,16 +10,20 @@ import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.SupaDistanceSensor;
 
+import com.kauailabs.navx_mxp.AHRS;
+
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -52,6 +56,11 @@ public class RobotMap {
 	public static RobotDrive robotDrive;
 	
 	public static GyroSensor gyro;
+	
+	// New-New Gyro stuff
+	public static SerialPort serial_port;
+
+	public static AHRS imu;
 	
 	/**
 	 * A distance sensor that senses the barrels for auto-mode.
@@ -211,6 +220,15 @@ public class RobotMap {
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
 			
 			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
+			
+			try {
+				serial_port = new SerialPort(57600,SerialPort.Port.kMXP);
+				
+				byte update_rate_hz = 50;
+				imu = new AHRS(serial_port,update_rate_hz);
+		    } catch( Exception ex ) {
+		    		
+		    }
 		}
 	}
 }
