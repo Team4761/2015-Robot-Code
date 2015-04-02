@@ -8,6 +8,8 @@ import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.StopAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.commandgroups.TwoBarrelAutonomous;
+import org.usfirst.frc.team4761.robot.commands.SendCameraImage;
+import org.usfirst.frc.team4761.robot.commands.SendGyroData;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
@@ -39,6 +41,7 @@ public class Robot extends IterativeRobot {
 	public static LiftConveyorBelt liftConveyorBelt = new LiftConveyorBelt();
 	
 	public static OI oi;
+	public static DataStreamManager dataManager;
 	public Command teleop;
 	
 	Command autonomousCommand, autonomous, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;
@@ -50,7 +53,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		teleop = new Teleop();
-		
+		dataManager = new DataStreamManager();
 		LogManager.setMinimumLevel(RobotMap.minLogLevel);
 		
 		Thread thread = new Thread(new GyroThread());
@@ -109,7 +112,7 @@ public class Robot extends IterativeRobot {
 		
 		//autonomousCommand = debugAuto; // Autonomous Chooser override
 		
-		System.out.println("AutoMode: " + autoMode);
+		//System.out.println("AutoMode: " + autoMode);
 		
 		SmartDashboard.putString("Autonomous Choosen: ", sAuto);
 	}
@@ -132,6 +135,8 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null) autonomousCommand.cancel();
 		teleop.start();
+		new SendCameraImage().start();
+		new SendGyroData().start();
 	}
 	
 	/**
