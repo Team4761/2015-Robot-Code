@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.RobotDrive.MotorType;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * Base of the robot with wheels attached to it.
@@ -25,7 +26,7 @@ public class DriveTrain extends Subsystem {
 	
 	public DrivePIDOutput driveDistancePIDOutput = new DrivePIDOutput();
 	public DistancePIDSource distanceSensor = new DistancePIDSource(RobotMap.wallDistanceSensor);
-	public PIDController distancePidController = new PIDController(0.05, 0.000001, 0, distanceSensor, driveDistancePIDOutput);
+	public PIDController distancePidController = new PIDController(0.325, 0.00005, 5, distanceSensor, driveDistancePIDOutput);
 	
 	public DriveTrain () {
 		if (RobotMap.robot == 1) {
@@ -36,7 +37,7 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setSetpoint(0);
 		gyroPidController.enable();
 		
-		distancePidController.setSetpoint(1.3);
+		distancePidController.setSetpoint(3);
 		distancePidController.enable();
 	}
 	
@@ -73,7 +74,7 @@ public class DriveTrain extends Subsystem {
 	
 	// Calculate new speed based on the scaled z-axis
 	private double convert (double input, double axis, double override) {
-		if (override > 0) {
+		if (override != 0) {
 			return (input * useEquation(axis)) * override;
 		}
 		return (input * useEquation(axis));
@@ -94,6 +95,12 @@ public class DriveTrain extends Subsystem {
 		//System.out.println("Driving At: " + convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), Math.abs(driveDistancePIDOutput.getValue())));
 		//System.out.println("PID Returns: " + Math.abs(driveDistancePIDOutput.getValue()));
 		
+		//distancePidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
+		
+		SmartDashboard.putNumber("Joystick: ", Robot.oi.joysticks[0].getRawAxis(1));
+		SmartDashboard.putNumber("PID: ", driveDistancePIDOutput.getValue());
+		SmartDashboard.putNumber("Send to Wheels: ", convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), -driveDistancePIDOutput.getValue()));
+		
 		if (RobotMap.robot == 1) {
 			if (!Robot.oi.joysticks[0].getRawButton(6)) {
 				if (Robot.oi.joysticks[0].getRawButton(5)) {
@@ -104,7 +111,11 @@ public class DriveTrain extends Subsystem {
 			}
 		} else {
 			if (Robot.oi.joysticks[0].getRawButton(5)) {
-				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), Math.abs(driveDistancePIDOutput.getValue())), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), Math.abs(driveDistancePIDOutput.getValue())), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), Math.abs(driveDistancePIDOutput.getValue())), degrees);
+				if (Math.abs(Robot.oi.joysticks[0].getRawAxis(1)) > 0.1) {
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(driveDistancePIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), degrees);
+				} else {
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
+				}
 			} else {
 				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
 			}

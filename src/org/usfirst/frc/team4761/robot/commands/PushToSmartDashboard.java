@@ -22,14 +22,15 @@ public class PushToSmartDashboard extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
+		/*SmartDashboard.putNumber("Angle: ", GyroSensor.getDegrees());
 		SmartDashboard.putBoolean("Elevator Bottom: ", RobotMap.elevatorBottom.get());
 		SmartDashboard.putBoolean("Elevator Accept Tote 1: ", RobotMap.elevatorAcceptTote1.get());
 		SmartDashboard.putBoolean("Elevator Accept Tote 2: ", RobotMap.elevatorAcceptTote2.get());
 		SmartDashboard.putBoolean("Break Beam Elevator Begin: ", RobotMap.breakBeamElevatorBegin.get());
 		SmartDashboard.putBoolean("Break Beam Elevator End: ", RobotMap.breakBeamElevatorEnd.get());
 		SmartDashboard.putBoolean("Break Beam Clear: ", RobotMap.breakBeamClear.get());
-		SmartDashboard.putBoolean("Top of Stack: ", RobotMap.stackTop.get());
+		SmartDashboard.putBoolean("Top of Stack: ", RobotMap.stackTop.get());*/
+		SmartDashboard.putNumber("Distance Sensor: ", RobotMap.wallDistanceSensor.getDistance());
     }
 
     // Make this return true when this Command no longer needs to run execute()
