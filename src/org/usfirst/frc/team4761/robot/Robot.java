@@ -101,7 +101,7 @@ public class Robot extends IterativeRobot {
 		} else if (autoMode == 2) {
 			sAuto = "DriveToAuto";
 			autonomousCommand = driveToAuto;
-		}else {
+		} else {
 			sAuto = "StopAuto";
 			autonomousCommand = stopAuto;
 		}

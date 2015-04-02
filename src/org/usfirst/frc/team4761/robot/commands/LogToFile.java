@@ -21,8 +21,8 @@ public class LogToFile extends Command {
 	}
 	
 	protected void execute() {
-		log.dev("Distance Sensor 2: " + RobotMap.testDistanceSensor1.getDistance());
-		log.dev("Distance Sensor 3: " + RobotMap.testDistanceSensor2.getDistance());
+		//log.dev("Distance Sensor 2: " + RobotMap.testDistanceSensor1.getDistance());
+		//log.dev("Distance Sensor 3: " + RobotMap.testDistanceSensor2.getDistance());
 		//log.dev("Distance Sensor: " + RobotMap.wallDistanceSensor.getDistance());
 		//log.dev("Distance Sensor Voltage: " + RobotMap.wallDistanceSensor.getVoltage());
 		SmartDashboard.putNumber("IMU_Yaw", RobotMap.imu.getYaw());

@@ -58,9 +58,9 @@ public class OI {
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
 		buttonManager.runOnPress(7, 1, new LazyButton());
 
-		buttonManager.runOnPress(19, 1, new AutoTote(19, 1));
-		//buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
-		
+		buttonManager.runOnceOnHold(17, 1, new AutoTote(19, 1));
+		buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
+
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());
 		

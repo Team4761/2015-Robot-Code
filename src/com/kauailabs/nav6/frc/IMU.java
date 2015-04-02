@@ -42,7 +42,7 @@ public class IMU extends SensorBase implements PIDSource, LiveWindowSendable, Ru
     SerialPort serial_port;
     float yaw_history[];
     int next_yaw_history_index;
-    double user_yaw_offset;
+    public double user_yaw_offset;
     ITable m_table;
     Thread m_thread;
     protected byte update_rate_hz;
