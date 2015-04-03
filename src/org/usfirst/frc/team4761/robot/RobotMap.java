@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
@@ -156,6 +157,8 @@ public class RobotMap {
 	
 	public static SupaDistanceSensor wallDistanceSensor;
 	
+	public static Servo servo;
+	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
 			// 1 for new robot and 2 for old robot
@@ -218,6 +221,8 @@ public class RobotMap {
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
+			
+			servo = new Servo(1); // Random channel
 			
 			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
 			
