@@ -26,7 +26,7 @@ public class DriveTrain extends Subsystem {
 	
 	public DrivePIDOutput driveDistancePIDOutput = new DrivePIDOutput();
 	public DistancePIDSource distanceSensor = new DistancePIDSource(RobotMap.wallDistanceSensor);
-	public PIDController distancePidController = new PIDController(0.325, 0.00005, 5, distanceSensor, driveDistancePIDOutput);
+	public PIDController distancePidController = new PIDController(0.3, 0, 2, distanceSensor, driveDistancePIDOutput);
 	
 	public DriveTrain () {
 		if (RobotMap.robot == 1) {
@@ -37,7 +37,7 @@ public class DriveTrain extends Subsystem {
 		gyroPidController.setSetpoint(0);
 		gyroPidController.enable();
 		
-		distancePidController.setSetpoint(3);
+		distancePidController.setSetpoint(1.75);
 		distancePidController.enable();
 	}
 	
@@ -112,7 +112,7 @@ public class DriveTrain extends Subsystem {
 		} else {
 			if (Robot.oi.joysticks[0].getRawButton(5)) {
 				if (Math.abs(Robot.oi.joysticks[0].getRawAxis(1)) > 0.1) {
-					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(driveDistancePIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), degrees);
+					robotDrive.mecanumDrive_Cartesian(0, convert(driveDistancePIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 0);
 				} else {
 					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
 				}
