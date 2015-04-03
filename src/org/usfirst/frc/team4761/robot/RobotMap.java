@@ -15,10 +15,12 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import com.kauailabs.navx_mxp.AHRS;
 
@@ -54,6 +56,12 @@ public class RobotMap {
 	
 	public static GyroSensor gyro;
 
+	// New-New Gyro stuff
+	public static SerialPort serial_port;
+	
+	public static AHRS imu;
+		
+	
 	/**
 	 * A distance sensor that senses the barrels for auto-mode.
 	 */
@@ -202,6 +210,14 @@ public class RobotMap {
 			rightFrontMotor = new Victor(3);
 			rightRearMotor = new Victor(4);
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
+			
+					
+			try {
+				serial_port = new SerialPort(57600,SerialPort.Port.kMXP);
+				
+				byte update_rate_hz = 50;
+				imu = new AHRS(serial_port,update_rate_hz);
+		    } catch( Exception ex ) {}
 			
 			log = new Logger("4761", LoggingMode.LOG, logFilePath);
 			minLogLevel = Level.DEV;

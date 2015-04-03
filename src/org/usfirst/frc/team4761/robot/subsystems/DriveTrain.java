@@ -49,7 +49,7 @@ public class DriveTrain extends Subsystem {
 		rotateAccumulator += rotate;
 		gyroPidController.setSetpoint(rotateAccumulator);
 		
-		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), GyroSensor.getDegrees());
+		robotDrive.mecanumDrive_Cartesian(x, y, driveGyroPIDOutput.getValue(), RobotMap.imu.getYaw());
 	}
 	
 	public void driveAbsolute (double x, double y, double degrees) {

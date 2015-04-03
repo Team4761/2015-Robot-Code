@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4761.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc.team4761.robot.*;
 
 public class SendGyroData extends Command
@@ -13,7 +14,7 @@ public class SendGyroData extends Command
 
 	@Override
 	protected void execute() {
-		x.data = Robot.robotMap.gyro.getAngle();
+		x.data = RobotMap.imu.getYaw();
 		Robot.dataManager.send(x);
 	}
 
