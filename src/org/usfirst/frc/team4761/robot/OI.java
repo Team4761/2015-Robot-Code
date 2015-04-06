@@ -20,8 +20,8 @@ import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.TestServo;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.RaiseRcGrabber;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberDown;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberUp;
 
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -90,8 +90,8 @@ public class OI {
 		buttonManager.runOnPress(2, 1, new TurnInDown());*/
 		
 		// Bind buttons for XBox Controller
-		buttonManager.runWhilePressed(4, 0, new RaiseRcGrabber());
-		buttonManager.runWhilePressed(1, 0, new LowerRcGrabber());
+		buttonManager.runWhilePressed(4, 0, new RcGrabberUp());
+		buttonManager.runWhilePressed(1, 0, new RcGrabberDown());
 		buttonManager.runWhilePressed(3, 0, new RCGrabberLeft(3, 0));
 		buttonManager.runWhilePressed(2, 0, new RCGrabberRight(2, 0));
 		buttonManager.runOnPress(7, 0, new ResetGyro(90));

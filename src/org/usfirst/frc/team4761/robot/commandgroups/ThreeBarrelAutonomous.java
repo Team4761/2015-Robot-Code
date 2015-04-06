@@ -7,7 +7,7 @@ import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MainConveyorForward;
 import org.usfirst.frc.team4761.robot.commands.debug.LogToFile;
 import org.usfirst.frc.team4761.robot.commands.drivetrain.DriveLeft;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.RaiseRcGrabber;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberUp;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.SpinRcBaseOut;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -35,6 +35,6 @@ public class ThreeBarrelAutonomous extends CommandGroup {
 		addSequential(new GoToNextBarrel());
 		addSequential(new GoToBackEdgeOfBarrel());
 		addSequential(new Stop());
-		addSequential(new RaiseRcGrabber());
+		addSequential(new RcGrabberUp());
     }
 }

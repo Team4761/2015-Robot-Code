@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.RaiseRcGrabber;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberDown;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberUp;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.SpinRcBaseIn;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class RcPickUp extends CommandGroup {
 	
 	public RcPickUp() {
-		addSequential(new RaiseRcGrabber());
+		addSequential(new RcGrabberUp());
 		addSequential(new SpinRcBaseIn());
-		addSequential(new LowerRcGrabber());
+		addSequential(new RcGrabberDown());
 	}
 }

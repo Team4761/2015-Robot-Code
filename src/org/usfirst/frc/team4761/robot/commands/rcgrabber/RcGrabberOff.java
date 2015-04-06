@@ -12,18 +12,16 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class RcGrabberOff extends Command {
 	
-	DoubleSolenoid solenoid = Robot.rcGrabber.solenoid;
-	
 	public RcGrabberOff() {
 		requires(Robot.rcGrabber);
 	}
 	
 	protected void initialize() {
 		setTimeout(1);
+		Robot.rcGrabber.set(DoubleSolenoid.Value.kOff);
 	}
 	
 	protected void execute() {
-		solenoid.set(DoubleSolenoid.Value.kOff);
 	}
 	
 	protected boolean isFinished() {

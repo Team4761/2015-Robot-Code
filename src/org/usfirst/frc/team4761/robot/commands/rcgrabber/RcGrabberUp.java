@@ -10,11 +10,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author mathias
  */
 
-public class RaiseRcGrabber extends Command {
+public class RcGrabberUp extends Command {
 	
-	DoubleSolenoid solenoid = Robot.rcGrabber.solenoid;
-	
-	public RaiseRcGrabber() {
+	public RcGrabberUp() {
 		requires(Robot.rcGrabber);
 	}
 	
