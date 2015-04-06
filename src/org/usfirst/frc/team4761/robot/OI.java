@@ -36,10 +36,6 @@ public class OI {
 	ButtonManager buttonManager = new ButtonManager();
 	
 	public OI () {
-		putNumber("P", 0.3);
-		putNumber("I", 0.00001);
-		putNumber("D", 5);
-		
 		// Bind buttons for button boards
 		buttonManager.runWhilePressed(9, 1, new MainConveyorForward(9, 1));
 		buttonManager.runWhilePressed(8, 1, new MainConveyorBackward(8, 1));
