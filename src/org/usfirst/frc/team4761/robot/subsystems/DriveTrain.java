@@ -82,29 +82,15 @@ public class DriveTrain extends Subsystem {
 	
 	public void driveWithJoysticks () {
 		double degrees = GyroSensor.getDegrees();
-		
-		// Used for testing PID for autonomous
-		/*if (convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) > 0.075 || convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) < -0.075) {
-			rotateAccumulator += convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) * 3;
-		}
-		
-		gyroPidController.setSetpoint(rotateAccumulator);
-		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), driveGyroPIDOutput.getValue(), degrees);*/
-		
-		//System.out.println("Driving At: " + convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), Math.abs(driveDistancePIDOutput.getValue())));
-		//System.out.println("PID Returns: " + Math.abs(driveDistancePIDOutput.getValue()));
-		
-		//distancePidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
-		
-		SmartDashboard.putNumber("Joystick: ", Robot.oi.joysticks[0].getRawAxis(1));
-		SmartDashboard.putNumber("PID: ", driveDistancePIDOutput.getValue());
-		SmartDashboard.putNumber("Send to Wheels: ", convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), -driveDistancePIDOutput.getValue()));
-		
+
 		if (RobotMap.robot == 1) {
 			if (!Robot.oi.joysticks[0].getRawButton(6)) {
 				if (Robot.oi.joysticks[0].getRawButton(5)) {
-					robotDrive.mecanumDrive_Cartesian(0, convert(driveDistancePIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 0);
+					if (Math.abs(Robot.oi.joysticks[0].getRawAxis(1)) > 0.1) {
+						robotDrive.mecanumDrive_Cartesian(0, convert(driveDistancePIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 0);
+					} else {
+						robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
+					}				
 				} else {
 					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), degrees);
 				}
