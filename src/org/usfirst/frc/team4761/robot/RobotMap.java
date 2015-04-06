@@ -222,7 +222,7 @@ public class RobotMap {
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
 			
-			servo = new Servo(1); // Random channel
+			servo = new Servo(0); // Random channel
 			
 			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
 			

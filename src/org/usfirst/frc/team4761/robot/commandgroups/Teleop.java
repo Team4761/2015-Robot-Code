@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.commands.LogToFile;
-import org.usfirst.frc.team4761.robot.commands.PushToSmartDashboard;
+import org.usfirst.frc.team4761.robot.commands.debug.LogToFile;
+import org.usfirst.frc.team4761.robot.commands.debug.PushToSmartDashboard;
 import org.usfirst.frc.team4761.robot.commands.drivetrain.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;

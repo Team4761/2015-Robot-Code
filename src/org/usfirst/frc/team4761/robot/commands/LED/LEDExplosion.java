@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.usfirst.frc.team4761.robot.commands.LED;
 
 import org.usfirst.frc.team4761.robot.RobotMap;
 
@@ -7,16 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LEDWipe extends Command {
+public class LEDExplosion extends Command {
 
-    public LEDWipe() {
+    public LEDExplosion() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	RobotMap.arduino.transaction(new byte[]{73}, 1, null, 0);
+    	setTimeout(10);
+    	RobotMap.arduino.transaction(new byte[]{89}, 1, null, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -25,7 +26,7 @@ public class LEDWipe extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return isTimedOut();
     }
 
     // Called once after isFinished returns true

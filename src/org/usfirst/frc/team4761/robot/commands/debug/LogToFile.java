@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.usfirst.frc.team4761.robot.commands.debug;
 
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;

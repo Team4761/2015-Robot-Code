@@ -1,33 +1,31 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.usfirst.frc.team4761.robot.commands.LED;
 
-import org.usfirst.frc.team4761.robot.Robot;
+import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
- * Drives the robot slowly sideways for 1 second.
+ *
  */
-public class EngageTotes extends Command {
+public class LEDWipe extends Command {
 
-    public EngageTotes() {
+    public LEDWipe() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(1);
+    	RobotMap.arduino.transaction(new byte[]{73}, 1, null, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.drive(-0.15, 0, 0);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return true;
     }
 
     // Called once after isFinished returns true

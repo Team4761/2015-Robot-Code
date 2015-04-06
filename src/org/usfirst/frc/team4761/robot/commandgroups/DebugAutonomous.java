@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.commands.LogToFile;
+import org.usfirst.frc.team4761.robot.commands.debug.LogToFile;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

@@ -55,7 +55,7 @@ public class OI {
 		
 		buttonManager.setToggle(1, 1, new RCGrabberToggle());
 		
-		buttonManager.runOnPress(2, 1, new TestServo());
+		buttonManager.setToggle(2, 1, new TestServo());
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());

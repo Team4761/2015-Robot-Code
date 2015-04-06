@@ -40,10 +40,8 @@ public class Robot extends IterativeRobot {
 	public static RcArm rcArm = new RcArm();
 	
 	public static OI oi;
-	public Command teleop;
-	
-	Command autonomousCommand, autonomous, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;
-	
+	public Command teleop, autonomousCommand, autonomous, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;
+		
 	/**
 	 * This function is run when the robot is first started up and should be
 	 * used for any initialization code.
@@ -56,14 +54,6 @@ public class Robot extends IterativeRobot {
 		
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
-		
-		autonomousCommand = new PushToAuto(90);
-		
-		debugAuto = new DebugAutonomous();
-		pushToAuto = new PushToAuto(90);
-		driveToAuto = new DriveToAuto(90);
-		twoBarrelAuto = new TwoBarrelAutonomous(90);
-		stopAuto = new StopAutonomous(90);
 	}
 	
 	public void disabledPeriodic() {
