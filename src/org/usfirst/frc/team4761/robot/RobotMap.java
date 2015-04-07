@@ -139,9 +139,7 @@ public class RobotMap {
 	 * Distance sensor used for testing.
 	 */
 	public static MediumDistanceSensor testDistanceSensor2;
-	
-	public static Encoder encoder;
-	
+
 	/**
 	 * Absolute path to the robots log file. Use {@link #logFile} in your code
 	 * instead of making your own Files.
@@ -167,7 +165,11 @@ public class RobotMap {
 	
 	public static SupaDistanceSensor wallDistanceSensor;
 	
+	/**
+	 * Stuff for the RcArm
+	 */
 	public static Servo servo;
+	public static VictorSP winch;
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -219,7 +221,10 @@ public class RobotMap {
 			mainConveyorBeltMotor = new Talon(6);
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
-			elevatorMotor2 = new VictorSP(9);			
+			elevatorMotor2 = new VictorSP(9);
+			
+			servo = new Servo(0);
+			winch = new VictorSP(9); // Random port (This is not on the robot yet)
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
@@ -232,8 +237,6 @@ public class RobotMap {
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
-			
-			servo = new Servo(0);
 			
 			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
 			
