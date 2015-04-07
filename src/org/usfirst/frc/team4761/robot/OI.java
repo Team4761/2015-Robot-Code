@@ -7,19 +7,19 @@ import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.ElevatorDown;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorForward;
+import org.usfirst.frc.team4761.robot.buttons.ElevatorUp;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberLeft;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberToggle;
-import org.usfirst.frc.team4761.robot.buttons.ElevatorUp;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.TestServo;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
-import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberDown;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberUp;
+import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberMove;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberType;
 
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -88,8 +88,8 @@ public class OI {
 		buttonManager.runOnPress(2, 1, new TurnInDown());*/
 		
 		// Bind buttons for XBox Controller
-		buttonManager.runWhilePressed(4, 0, new RcGrabberUp());
-		buttonManager.runWhilePressed(1, 0, new RcGrabberDown());
+		buttonManager.runWhilePressed(4, 0, new RcGrabberMove(RcGrabberType.UP));
+		buttonManager.runWhilePressed(1, 0, new RcGrabberMove(RcGrabberType.DOWN));
 		buttonManager.runWhilePressed(3, 0, new RcGrabberLeft(3, 0));
 		buttonManager.runWhilePressed(2, 0, new RcGrabberRight(2, 0));
 		buttonManager.runOnPress(7, 0, new ResetGyro(90));
