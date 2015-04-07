@@ -32,6 +32,7 @@ import edu.wpi.first.wpilibj.VictorSP;
  * floating around.
  */
 public class RobotMap {
+	
 	// 1 = New Robot and any other number = Old Robot
 	public static int robot = 1;
 	

@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
- *
+ * This is a arm on the robot that will grab recycling bins off the step. This is not on the robot yet.
  */
 public class RcArm extends Subsystem {
 	Servo servo = RobotMap.servo;
