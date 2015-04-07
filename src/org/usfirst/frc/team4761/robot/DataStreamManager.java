@@ -2,12 +2,15 @@ package org.usfirst.frc.team4761.robot;
 
 import java.net.*;
 import java.io.*;
+
+import org.usfirst.frc.team4761.robot.commands.SendGyroData;
 public class DataStreamManager implements Runnable
 {
 	ServerSocket ss;
 	Socket s;
 	ObjectOutputStream out;
 	boolean inited = false;
+	public boolean goodToSend = false;
 	public DataStreamManager()
 	{
 		try
@@ -44,6 +47,14 @@ public class DataStreamManager implements Runnable
 			System.out.println("A client has connected!");
 			out = new ObjectOutputStream(s.getOutputStream());
 			inited = true;
+
+			DataPacket pak = new DataPacket("Config", "No Image");
+			for (int x = 0; x < 10; x++)	// keep sending packet in case it is not registered (I know this is bad practice)
+			{
+				send(pak);
+				Thread.sleep(200);
+			}
+			goodToSend = true;
 		}
 		catch (Exception e)
 		{

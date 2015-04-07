@@ -217,7 +217,7 @@ public class RobotMap {
 				
 				byte update_rate_hz = 50;
 				imu = new AHRS(serial_port,update_rate_hz);
-		    } catch( Exception ex ) {}
+		    } catch( Exception ex ) {ex.printStackTrace();System.exit(0);}
 			
 			log = new Logger("4761", LoggingMode.LOG, logFilePath);
 			minLogLevel = Level.DEV;

@@ -26,6 +26,7 @@ public class SendCameraImage extends Command{
 
 	DataPacket packet;
 	AxisCamera cam;
+	int y = 0;
 	byte[] fakeImage = {	(byte)255, (byte)0, (byte)0, (byte)0, (byte)255, (byte)0, (byte)0, (byte)0, (byte)255, 
 							(byte)0, (byte)0, (byte)0, (byte)0, (byte)128, (byte)0, (byte)0, (byte)0, (byte)128,
 							(byte)0, (byte)0, (byte)0, (byte)128, (byte)128, (byte)128, (byte)255, (byte)255, (byte)255};
@@ -36,6 +37,10 @@ public class SendCameraImage extends Command{
 
 	@Override
 	protected void execute() {
+		if (!Robot.dataManager.goodToSend)
+			return;
+		if (y%10==0)
+		{
 		try {
 			readImage();
 			Robot.dataManager.send(packet);	// send it!
@@ -44,6 +49,8 @@ public class SendCameraImage extends Command{
 			Robot.dataManager.send(packet);
 			e.printStackTrace();
 		}
+		}
+		y++;
 		
 	}
 	public void readImage() throws Exception

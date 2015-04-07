@@ -135,7 +135,7 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null) autonomousCommand.cancel();
 		teleop.start();
-		new SendCameraImage().start();
+		//new SendCameraImage().start();
 		new SendGyroData().start();
 	}
 	

@@ -6,15 +6,19 @@ import org.usfirst.frc.team4761.robot.*;
 
 public class SendGyroData extends Command
 {
-	DataPacket x, y, z;
+	DataPacket x;
 	@Override
 	protected void initialize() {
-		x = new DataPacket("Gyro_X", 0);
+		x = new DataPacket("Gyro_X", 0f);
+		Robot.dataManager.send(x);
 	}
 
 	@Override
 	protected void execute() {
-		x.data = RobotMap.imu.getYaw();
+		if (!Robot.dataManager.goodToSend)
+			return;
+		DataPacket x = new DataPacket("Gyro_X", RobotMap.imu.getYaw());
+		System.out.println(RobotMap.imu.getYaw() + " = " + x.data);
 		Robot.dataManager.send(x);
 	}
 
