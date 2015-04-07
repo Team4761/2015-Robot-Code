@@ -32,19 +32,24 @@ import edu.wpi.first.wpilibj.VictorSP;
  * floating around.
  */
 public class RobotMap {
+	// 1 = New Robot and any other number = Old Robot
 	public static int robot = 1;
+	
 	/**
 	 * Speed controller that controls the left front motor on the drive train.
 	 */
 	public static SpeedController leftFrontMotor;
+	
 	/**
 	 * Speed controller that controls the left rear motor on the drive train.
 	 */
 	public static SpeedController leftRearMotor;
+	
 	/**
 	 * Speed controller that controls the right front motor on the drive train.
 	 */
 	public static SpeedController rightFrontMotor;
+	
 	/**
 	 * Speed controller that controls the right rear motor on the drive train.
 	 */
@@ -66,15 +71,18 @@ public class RobotMap {
 	 * A distance sensor that senses the barrels for auto-mode.
 	 */
 	public static MediumDistanceSensor barrelDistanceSensor;
+	
 	/**
 	 * A distance sensor on the elevator.
 	 */
 	public static MediumDistanceSensor elevatorDistanceSensor;
+	
 	/**
 	 * Distance sensor on the rear of the outer conveyor belt. Used for
 	 * detecting something.
 	 */
 	public static DigitalInput stackTop;
+	
 	/**
 	 * Distance sensor on the front of the outer conveyor belt. Used for
 	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
@@ -138,6 +146,7 @@ public class RobotMap {
 	 * instead of making your own Files.
 	 */
 	public static String logFilePath = "/home/lvuser/log.txt";
+	
 	/**
 	 * File object that uses the path value provided by {@link #logFilePath}.
 	 */
@@ -148,6 +157,7 @@ public class RobotMap {
 	 * your code instead of making your own Files.
 	 */
 	public static String settingsFilePath = "/home/lvuser/settings.ini";
+	
 	/**
 	 * File object that uses the path value provided by {@link
 	 * #settingsFilePath}.
@@ -166,6 +176,7 @@ public class RobotMap {
 		} else {
 			robot = Settings.read("Robot");
 		}
+		
 		// Universal objects
 		gyro = new GyroSensor();
 		
@@ -221,16 +232,16 @@ public class RobotMap {
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
 			
-			servo = new Servo(0); // Random channel
+			servo = new Servo(0);
 			
 			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
 			
 			try {
-				serial_port = new SerialPort(57600,SerialPort.Port.kMXP);
+				serial_port = new SerialPort(57600, SerialPort.Port.kMXP);
 				
 				byte update_rate_hz = 50;
-				imu = new AHRS(serial_port,update_rate_hz);
-		    } catch( Exception ex ) {
+				imu = new AHRS(serial_port, update_rate_hz);
+		    } catch(Exception ex) {
 		    		
 		    }
 		}
