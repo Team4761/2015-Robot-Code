@@ -26,7 +26,7 @@ public class Drive extends Command {
     	requires(Robot.driveTrain);
     }
     
-    public Drive (DriveType type){
+    public Drive (DriveType type) {
     	switch (type) {
 	    	case LEFT:
 	    		x = -.15;
