@@ -200,7 +200,7 @@ public class RobotMap {
 			breakBeamElevatorBegin = new DigitalInput(20); // 10 on MXP
 			breakBeamClear = new DigitalInput(22); // 12 on MXP
 			
-			mainConveyorBeltMotor = new Talon(6);
+			mainConveyorBeltMotor = new Talon(6); 
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
@@ -217,7 +217,7 @@ public class RobotMap {
 				
 				byte update_rate_hz = 50;
 				imu = new AHRS(serial_port,update_rate_hz);
-		    } catch( Exception ex ) {ex.printStackTrace();System.exit(0);}
+		    } catch( Exception ex ) {}
 			
 			log = new Logger("4761", LoggingMode.LOG, logFilePath);
 			minLogLevel = Level.DEV;
