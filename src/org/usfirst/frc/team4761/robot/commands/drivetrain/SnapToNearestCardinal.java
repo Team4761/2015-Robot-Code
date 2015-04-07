@@ -7,7 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * Sets the set-point of the PID to rotate the robot to the nearest cardinal direction.
  */
-public class SnapToNearestCardinal extends Command{
+public class SnapToNearestCardinal extends Command {
+	
     public SnapToNearestCardinal () {
     	requires(Robot.driveTrain);
     }
@@ -17,7 +18,7 @@ public class SnapToNearestCardinal extends Command{
 
     protected void execute() {
     	double orientation = Robot.driveTrain.gyroPidController.getSetpoint();
-    	long turnTo = Math.round(orientation/90);
+    	long turnTo = Math.round(orientation / 90);
     	Robot.driveTrain.gyroPidController.setSetpoint(turnTo);
     }
 
