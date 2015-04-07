@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * Moves the RC Grabber right until the limit switch is hit.
  */
-public class RCGrabberRight extends Command {
+public class RcGrabberRight extends Command {
 	private int button = 0;
 	private int joystickNum;
 
-    public RCGrabberRight (int button, int joystickNum) {
+    public RcGrabberRight (int button, int joystickNum) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	this.button = button;
