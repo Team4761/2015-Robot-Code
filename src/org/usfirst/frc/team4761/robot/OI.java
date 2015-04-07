@@ -1,7 +1,5 @@
 package org.usfirst.frc.team4761.robot;
 
-import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putNumber;
-
 import org.usfirst.frc.team4761.robot.buttons.AutoStack;
 import org.usfirst.frc.team4761.robot.buttons.AutoTote;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;

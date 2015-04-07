@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot.commands;
+package org.usfirst.frc.team4761.robot.commands.drivetrain;
 
 import org.usfirst.frc.team4761.robot.RobotMap;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;

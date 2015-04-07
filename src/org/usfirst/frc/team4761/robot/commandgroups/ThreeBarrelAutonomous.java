@@ -1,8 +1,8 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
-import org.usfirst.frc.team4761.robot.commands.GoToBackEdgeOfBarrel;
-import org.usfirst.frc.team4761.robot.commands.GoToNextBarrel;
+import org.usfirst.frc.team4761.robot.commands.drivetrain.GoToBackEdgeOfBarrel;
+import org.usfirst.frc.team4761.robot.commands.drivetrain.GoToNextBarrel;
 import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.MainConveyorForward;
 import org.usfirst.frc.team4761.robot.commands.debug.LogToFile;
