@@ -4,13 +4,13 @@ import org.usfirst.frc.team4761.robot.buttons.AutoStack;
 import org.usfirst.frc.team4761.robot.buttons.AutoTote;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
-import org.usfirst.frc.team4761.robot.buttons.LowerElevator;
+import org.usfirst.frc.team4761.robot.buttons.ElevatorDown;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorForward;
-import org.usfirst.frc.team4761.robot.buttons.RCGrabberLeft;
-import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
-import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
-import org.usfirst.frc.team4761.robot.buttons.RaiseElevator;
+import org.usfirst.frc.team4761.robot.buttons.RcGrabberLeft;
+import org.usfirst.frc.team4761.robot.buttons.RcGrabberRight;
+import org.usfirst.frc.team4761.robot.buttons.RcGrabberToggle;
+import org.usfirst.frc.team4761.robot.buttons.ElevatorUp;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
@@ -41,13 +41,13 @@ public class OI {
 		buttonManager.runWhilePressed(11, 1, new LiftConveyorForward(11, 1));
 		buttonManager.runWhilePressed(10, 1, new LiftConveyorBackward(10, 1));
 		
-		buttonManager.runWhilePressed(15, 1, new RCGrabberLeft(15, 1));
-		buttonManager.runWhilePressed(14, 1, new RCGrabberRight(14, 1));
+		buttonManager.runWhilePressed(15, 1, new RcGrabberLeft(15, 1));
+		buttonManager.runWhilePressed(14, 1, new RcGrabberRight(14, 1));
 		
-		buttonManager.runWhilePressed(18, 1, new RaiseElevator(18, 1));
-		buttonManager.runWhilePressed(16, 1, new LowerElevator(16, 1));
+		buttonManager.runWhilePressed(18, 1, new ElevatorUp(18, 1));
+		buttonManager.runWhilePressed(16, 1, new ElevatorDown(16, 1));
 		
-		buttonManager.setToggle(1, 1, new RCGrabberToggle());
+		buttonManager.setToggle(1, 1, new RcGrabberToggle());
 		
 		buttonManager.setToggle(2, 1, new TestServo());
 		
@@ -90,8 +90,8 @@ public class OI {
 		// Bind buttons for XBox Controller
 		buttonManager.runWhilePressed(4, 0, new RcGrabberUp());
 		buttonManager.runWhilePressed(1, 0, new RcGrabberDown());
-		buttonManager.runWhilePressed(3, 0, new RCGrabberLeft(3, 0));
-		buttonManager.runWhilePressed(2, 0, new RCGrabberRight(2, 0));
+		buttonManager.runWhilePressed(3, 0, new RcGrabberLeft(3, 0));
+		buttonManager.runWhilePressed(2, 0, new RcGrabberRight(2, 0));
 		buttonManager.runOnPress(7, 0, new ResetGyro(90));
 		buttonManager.runOnPress(8, 0, new Stop());
 	}

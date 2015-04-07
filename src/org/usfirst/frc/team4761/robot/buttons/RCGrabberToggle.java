@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  * Toggles the RC Grabber position up or down.
  */
-public class RCGrabberToggle extends Command {
+public class RcGrabberToggle extends Command {
 
-    public RCGrabberToggle() {
+    public RcGrabberToggle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.rcGrabber);

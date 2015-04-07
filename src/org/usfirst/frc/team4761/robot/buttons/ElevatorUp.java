@@ -1,14 +1,13 @@
 package org.usfirst.frc.team4761.robot.buttons;
 
 import org.usfirst.frc.team4761.robot.Robot;
-import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * A command that moves the elevator either up or down.
  */
-public class LowerElevator extends Command {
+public class ElevatorUp extends Command {
 	private int button = 0;
 	private int joystickNum;
 	
@@ -17,7 +16,7 @@ public class LowerElevator extends Command {
  * @param up Boolean that determines whether or not to move the {@link org.usfirst.frc.team4761.robot.subsystems.Elevator elevator} upwards (True)
  * or downwards (False);
  */
-    public LowerElevator (int button, int joystickNum) {
+    public ElevatorUp (int button, int joystickNum) {
     	requires(Robot.elevator);
     	this.button = button;
     	this.joystickNum = joystickNum;
@@ -29,14 +28,12 @@ public class LowerElevator extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (RobotMap.elevatorBottom.get()) {
-    		Robot.elevator.lower();
-    	}
+    	Robot.elevator.raise();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return !Robot.oi.joysticks[joystickNum].getRawButton(button) || !RobotMap.elevatorBottom.get();
+    	return !Robot.oi.joysticks[joystickNum].getRawButton(button);
     }
 
     // Called once after isFinished returns true
