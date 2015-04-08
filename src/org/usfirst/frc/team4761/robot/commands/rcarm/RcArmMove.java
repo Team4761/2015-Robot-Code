@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class RcArmMove extends Command {
-	boolean isServo = false;
+	String moveType = "SERVO";
 	double move = 0, timeout;
 	
 	public RcArmMove (RcArmType type) {
@@ -16,19 +16,19 @@ public class RcArmMove extends Command {
 		
     	switch (type) {
     		case WINCH_IN:
-    			isServo = false;
+    			moveType = "WINCH";
     			move = 1;
     			break;
     		case WINCH_OUT:
-    			isServo = false;
+    			moveType = "WINCH";
     			move = -1;
     			break;
     		case WINCH_STOP:
-    			isServo = false;
+    			moveType = "WINCH";
     			move = 0;
     			break;
     		case SERVO:
-    			isServo = true;
+    			moveType = "SERVO";
     			move = 90;
     			break;
     	}
@@ -37,24 +37,24 @@ public class RcArmMove extends Command {
     public RcArmMove (RcArmType type, double timeout) {
 		requires(Robot.rcArm);
 
-    	switch (type) {
-    		case WINCH_IN:
-    			isServo = false;
-    			move = 1;
-    			break;
-    		case WINCH_OUT:
-    			isServo = false;
-    			move = -1;
-    			break;
-    		case WINCH_STOP:
-    			isServo = false;
-    			move = 0;
-    			break;
-    		case SERVO:
-    			isServo = true;
-    			move = 90;
-    			break;
-    	}
+		switch (type) {
+			case WINCH_IN:
+				moveType = "WINCH";
+				move = 1;
+				break;
+			case WINCH_OUT:
+				moveType = "WINCH";
+				move = -1;
+				break;
+			case WINCH_STOP:
+				moveType = "WINCH";
+				move = 0;
+				break;
+			case SERVO:
+				moveType = "SERVO";
+				move = 90;
+				break;
+		}
     	
     	this.timeout = timeout;
     }
@@ -62,7 +62,7 @@ public class RcArmMove extends Command {
     public RcArmMove (double angle, double timeout) {
 		requires(Robot.rcArm);
 
-    	isServo = true;
+		moveType = "SERVO";
     	this.move = angle;
     	
     	this.timeout = timeout;
@@ -75,7 +75,7 @@ public class RcArmMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute () {
-    	if (isServo) {
+    	if (moveType.equals("SERVO")) {
     		Robot.rcArm.servoToAngle(move);
     	} else {
     		if (move == 1) {
@@ -99,7 +99,7 @@ public class RcArmMove extends Command {
 
     // Called once after isFinished returns true
     protected void end () {
-    	if (!isServo) {
+    	if (!moveType.equals("WINCH")) {
     		Robot.rcArm.winchStop();
     	}
     }
