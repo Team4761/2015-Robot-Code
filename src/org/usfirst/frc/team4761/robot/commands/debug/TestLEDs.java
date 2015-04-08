@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot.commands.LED;
+package org.usfirst.frc.team4761.robot.commands.debug;
 
 import org.usfirst.frc.team4761.robot.RobotMap;
 
