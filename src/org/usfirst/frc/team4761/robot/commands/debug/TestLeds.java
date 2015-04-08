@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
  * Sends I2C transmissions to the Arduino that turns the LEDs on and off in a
  * pre-programmed pattern.
  */
-public class TestLEDs extends Command {
+public class TestLeds extends Command {
 	int i = 72;
 	
-    public TestLEDs() {
+    public TestLeds() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
