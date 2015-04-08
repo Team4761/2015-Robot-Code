@@ -29,6 +29,10 @@ public class RcArm extends Subsystem {
     	winch.set(-1);
     }
     
+    public void stop () {
+    	winch.set(0);
+    }
+    
     public void servoToAngle (double angle) {
     	servo.setAngle(angle);
     }
