@@ -15,15 +15,15 @@ public class RcArmMove extends Command {
 		requires(Robot.rcArm);
 		
     	switch (type) {
-    		case IN:
+    		case WINCH_IN:
     			isServo = false;
     			move = 1;
     			break;
-    		case OUT:
+    		case WINCH_OUT:
     			isServo = false;
     			move = -1;
     			break;
-    		case STOP:
+    		case WINCH_STOP:
     			isServo = false;
     			move = 0;
     			break;
@@ -38,15 +38,15 @@ public class RcArmMove extends Command {
 		requires(Robot.rcArm);
 
     	switch (type) {
-    		case IN:
+    		case WINCH_IN:
     			isServo = false;
     			move = 1;
     			break;
-    		case OUT:
+    		case WINCH_OUT:
     			isServo = false;
     			move = -1;
     			break;
-    		case STOP:
+    		case WINCH_STOP:
     			isServo = false;
     			move = 0;
     			break;
@@ -79,11 +79,11 @@ public class RcArmMove extends Command {
     		Robot.rcArm.servoToAngle(move);
     	} else {
     		if (move == 1) {
-    			Robot.rcArm.in();
+    			Robot.rcArm.winchIn();
     		} else if (move == -1) {
-    			Robot.rcArm.out();
+    			Robot.rcArm.winchOut();
     		} else {
-    			Robot.rcArm.stop();
+    			Robot.rcArm.winchStop();
     		}
     	}
     }
@@ -100,7 +100,7 @@ public class RcArmMove extends Command {
     // Called once after isFinished returns true
     protected void end () {
     	if (!isServo) {
-    		Robot.rcArm.stop();
+    		Robot.rcArm.winchStop();
     	}
     }
 

@@ -94,7 +94,6 @@ public class RobotMap {
 	public static Level minLogLevel;
 	
 	public static DoubleSolenoid rcPneumatic;
-	public static DoubleSolenoid plowPneumatic;
 	
 	public static VictorSP spinner;
 	
@@ -170,6 +169,7 @@ public class RobotMap {
 	 */
 	public static Servo servo;
 	public static VictorSP winch;
+	public static DoubleSolenoid pusher;
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -203,7 +203,6 @@ public class RobotMap {
 			minLogLevel = Level.DEV;
 			
 			rcPneumatic = new DoubleSolenoid(0, 0, 1);
-			plowPneumatic = new DoubleSolenoid(0, 6, 7);
 			
 			spinner = new VictorSP(4);
 			
@@ -225,6 +224,7 @@ public class RobotMap {
 			
 			servo = new Servo(0);
 			winch = new VictorSP(9); // Random port (This is not on the robot yet)
+			pusher = new DoubleSolenoid(0, 6, 7); // This is not on the robot
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);

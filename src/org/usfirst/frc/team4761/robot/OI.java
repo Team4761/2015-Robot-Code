@@ -15,9 +15,9 @@ import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
-import org.usfirst.frc.team4761.robot.commands.TestServo;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
-import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;;
+import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
+import org.usfirst.frc.team4761.robot.commands.rcarm.TestServo;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberMove;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberType;
 
