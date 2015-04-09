@@ -1,13 +1,13 @@
 package org.usfirst.frc.team4761.robot;
 
 import org.simonandrews.robolog.LogManager;
-import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.StopAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.commandgroups.TwoBarrelAutonomous;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
+import org.usfirst.frc.team4761.robot.subsystems.CanCrusher;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
 import org.usfirst.frc.team4761.robot.subsystems.LiftConveyorBelt;
@@ -38,6 +38,7 @@ public class Robot extends IterativeRobot {
 	public static RcGrabberBase rcGrabberBase = new RcGrabberBase();
 	public static LiftConveyorBelt liftConveyorBelt = new LiftConveyorBelt();
 	public static RcArm rcArm = new RcArm();
+	public static CanCrusher canCrusher = new CanCrusher();
 	
 	public static OI oi;
 	public Command teleop, autonomousCommand, autonomous, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;
@@ -75,7 +76,7 @@ public class Robot extends IterativeRobot {
 		}
 		
 		int angle = 90;
-		if (oi.joysticks[2].getRawButton(5)) {
+		if (!oi.joysticks[2].getRawButton(2)) {
 			angle = -90;
 		}
 		

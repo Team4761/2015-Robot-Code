@@ -2,6 +2,8 @@ package org.usfirst.frc.team4761.robot.buttons;
 
 import org.usfirst.frc.team4761.robot.commands.StopForever;
 import org.usfirst.frc.team4761.robot.commands.Wait;
+import org.usfirst.frc.team4761.robot.commands.cancrusher.CanCrusherCycle;
+import org.usfirst.frc.team4761.robot.commands.cancrusher.CanCrusherRetract;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.LoadTote2;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.LoadTote3;
@@ -22,6 +24,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoTote extends CommandGroup {
     
     public AutoTote (int button, int joystickNum) {
+    	addSequential(new CanCrusherRetract());
+    	
     	addParallel(new StopForever(button, joystickNum)); // Driver cannot move (THIS NEEDS TESTING!!!)
     	addSequential(new AcceptTote1(false)); // Elevator to Accept Tote 1 (Magnet Sensor 1)
     	addParallel(new MainConveyorBackward()); // Main Conveyor on in
@@ -60,5 +64,7 @@ public class AutoTote extends CommandGroup {
     	
     	// Explosion of LEDs for 3 seconds
     	//addParallel(new LEDWipe()); // LEDs turn off
+    	
+    	addSequential(new CanCrusherCycle());
     }
 }

@@ -16,7 +16,7 @@ public class LogToFile extends Command {
 	
 	protected void initialize() {
 		log.setLevel(Level.FATAL);
-        RobotMap.imu.zeroYaw();
+        //RobotMap.imu.zeroYaw();
         setTimeout(0.5);
 	}
 	
@@ -25,7 +25,9 @@ public class LogToFile extends Command {
 		//log.dev("Distance Sensor 3: " + RobotMap.testDistanceSensor2.getDistance());
 		//log.dev("Distance Sensor: " + RobotMap.wallDistanceSensor.getDistance());
 		//log.dev("Distance Sensor Voltage: " + RobotMap.wallDistanceSensor.getVoltage());
-		SmartDashboard.putNumber("IMU_Yaw", RobotMap.imu.getYaw());
+		//SmartDashboard.putNumber("IMU_Yaw", RobotMap.imu.getYaw());
+		//System.out.println(RobotMap.wallDistanceSensor.getDistance());
+		System.out.println(RobotMap.mousetrapFired.get());
 	}
 	
 	protected boolean isFinished() {

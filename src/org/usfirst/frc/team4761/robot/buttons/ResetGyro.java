@@ -26,7 +26,7 @@ public class ResetGyro extends Command {
 		Robot.driveTrain.gyroPidController.setSetpoint(degrees);
 		
 		// Used for the New-New Gyro (MIGHT HAVE TO BE REMOVED FOR COMPETITION)
-		RobotMap.imu.user_yaw_offset = degrees;
+		//RobotMap.imu.user_yaw_offset = degrees;
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

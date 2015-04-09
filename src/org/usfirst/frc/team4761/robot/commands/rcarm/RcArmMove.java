@@ -31,6 +31,18 @@ public class RcArmMove extends Command {
     			moveType = "SERVO";
     			move = 90;
     			break;
+    		case EXTEND:
+    			moveType = "PNEUMATIC";
+    			move = 1;
+    			break;
+    		case RETRACT:
+    			moveType = "PNEUMATIC";
+    			move = -1;
+    			break;
+    		case OFF:
+    			moveType = "PNEUMATIC";
+    			move = 0;
+    			break;
     	}
     }
 	
@@ -52,8 +64,20 @@ public class RcArmMove extends Command {
 				break;
 			case SERVO:
 				moveType = "SERVO";
-				move = 90;
+				move = 255;
 				break;
+			case EXTEND:
+    			moveType = "PNEUMATIC";
+    			move = 1;
+    			break;
+    		case RETRACT:
+    			moveType = "PNEUMATIC";
+    			move = -1;
+    			break;
+    		case OFF:
+    			moveType = "PNEUMATIC";
+    			move = 0;
+    			break;
 		}
     	
     	this.timeout = timeout;
@@ -77,13 +101,21 @@ public class RcArmMove extends Command {
     protected void execute () {
     	if (moveType.equals("SERVO")) {
     		Robot.rcArm.servoToAngle(move);
-    	} else {
+    	} else if (moveType.equals("WINCH")) {
     		if (move == 1) {
     			Robot.rcArm.winchIn();
     		} else if (move == -1) {
     			Robot.rcArm.winchOut();
     		} else {
     			Robot.rcArm.winchStop();
+    		}
+    	} else {
+    		if (move == 1) {
+    			Robot.rcArm.extendPusher();
+    		} else if (move == -1) {
+    			Robot.rcArm.retractPusher();
+    		} else {
+    			Robot.rcArm.pusherOff();
     		}
     	}
     }

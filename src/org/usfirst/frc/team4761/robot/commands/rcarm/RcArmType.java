@@ -5,7 +5,7 @@ public enum RcArmType {
 	WINCH_OUT,
 	WINCH_STOP,
 	SERVO,
-	PUSHER_IN,
-	PUSHER_OUT,
-	PUSHER_OFF
+	EXTEND,
+	RETRACT,
+	OFF
 }

@@ -18,6 +18,7 @@ public class ButtonManager {
 	static CopyOnWriteArrayList<ButtonCommand> list = new CopyOnWriteArrayList<ButtonCommand>();
 	
 	static JoystickButton[][] buttons = new JoystickButton[3][20];
+	
 	static Joystick[] joysticks = {new Joystick(CONTROLLER), new Joystick(BUTTONBOARD_ONE), new Joystick(BUTTONBOARD_TWO)};
 	
 	public ButtonManager() {}

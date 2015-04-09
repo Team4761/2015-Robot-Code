@@ -2,6 +2,7 @@ package org.usfirst.frc.team4761.robot;
 
 import org.usfirst.frc.team4761.robot.buttons.AutoStack;
 import org.usfirst.frc.team4761.robot.buttons.AutoTote;
+import org.usfirst.frc.team4761.robot.buttons.CanCrusherToggle;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.ElevatorDown;
@@ -17,11 +18,14 @@ import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
+import org.usfirst.frc.team4761.robot.commands.rcarm.RcArmMove;
+import org.usfirst.frc.team4761.robot.commands.rcarm.RcArmType;
 import org.usfirst.frc.team4761.robot.commands.rcarm.TestServo;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberMove;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberType;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -49,13 +53,13 @@ public class OI {
 		
 		buttonManager.setToggle(1, 1, new RcGrabberToggle());
 		
-		buttonManager.setToggle(2, 1, new TestServo());
+		buttonManager.setToggle(2, 1, new CanCrusherToggle());
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
 		buttonManager.runOnPress(7, 1, new LazyButton());
 
-		buttonManager.runOnceOnHold(17, 1, new AutoTote(19, 1));
+		buttonManager.runOnceOnHold(19, 1, new AutoTote(19, 1));
 		buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
 
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
@@ -94,5 +98,12 @@ public class OI {
 		buttonManager.runWhilePressed(2, 0, new RcGrabberRight(2, 0));
 		buttonManager.runOnPress(7, 0, new ResetGyro(90));
 		buttonManager.runOnPress(8, 0, new Stop());
+		
+		SmartDashboard.putData("Extend Pusher", new RcArmMove(RcArmType.EXTEND));
+		SmartDashboard.putData("Retract Pusher", new RcArmMove(RcArmType.RETRACT));
+		SmartDashboard.putData("Open Servo", new RcArmMove(255,0));
+		SmartDashboard.putData("Close Servo", new RcArmMove(0, 0));
+		SmartDashboard.putData("Winch In", new RcArmMove(RcArmType.WINCH_IN, 1));
+		SmartDashboard.putData("Winch Out", new RcArmMove(RcArmType.WINCH_OUT, 1));
 	}
 }

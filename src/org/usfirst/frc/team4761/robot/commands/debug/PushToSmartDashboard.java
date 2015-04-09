@@ -30,7 +30,7 @@ public class PushToSmartDashboard extends Command {
 		SmartDashboard.putBoolean("Break Beam Elevator End: ", RobotMap.breakBeamElevatorEnd.get());
 		SmartDashboard.putBoolean("Break Beam Clear: ", RobotMap.breakBeamClear.get());
 		SmartDashboard.putBoolean("Top of Stack: ", RobotMap.stackTop.get());*/
-		SmartDashboard.putNumber("Distance Sensor: ", RobotMap.wallDistanceSensor.getDistance());
+		//SmartDashboard.putNumber("Distance Sensor: ", RobotMap.wallDistanceSensor.getDistance());
     }
 
     // Make this return true when this Command no longer needs to run execute()

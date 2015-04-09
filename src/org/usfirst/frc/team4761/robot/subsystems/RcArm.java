@@ -4,6 +4,7 @@ import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -12,20 +13,24 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class RcArm extends Subsystem {
 	private Servo servo = RobotMap.servo;
-	private VictorSP winch = RobotMap.winch;
-    private DoubleSolenoid pusher = RobotMap.pusher;
-
+	private Talon winch = RobotMap.winch;
+	private DoubleSolenoid pusher = RobotMap.pusher;
+	
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     
     public void winchIn () {
-    	winch.set(1);
+    	if (RobotMap.mousetrapFired.get()) {
+    		retractPusher();
+    	}
+    	
+    	winch.set(0.3);
     }
     
     public void winchOut () {
-    	winch.set(-1);
+    	winch.set(-0.3);
     }
     
     public void winchStop () {
@@ -36,15 +41,17 @@ public class RcArm extends Subsystem {
     	servo.setAngle(angle);
     }
     
-    public void pusherIn () {
-    	pusher.set(DoubleSolenoid.Value.kForward);
+    public void extendPusher () {    	
+    	if (!RobotMap.mousetrapFired.get()) {
+    		pusher.set(DoubleSolenoid.Value.kForward);
+    	}
     }
     
-    public void pusherOut () {
+    public void retractPusher () {
     	pusher.set(DoubleSolenoid.Value.kReverse);
     }
     
-    public void pusherStop () {
+    public void pusherOff () {
     	pusher.set(DoubleSolenoid.Value.kOff);
     }
 }

@@ -85,15 +85,15 @@ public class DriveTrain extends Subsystem {
 
 		if (RobotMap.robot == 1) {
 			if (!Robot.oi.joysticks[0].getRawButton(6)) {
-				if (Robot.oi.joysticks[0].getRawButton(5)) {
+				/*if (Robot.oi.joysticks[0].getRawButton(5)) {
 					if (Math.abs(Robot.oi.joysticks[0].getRawAxis(1)) > 0.1) {
 						robotDrive.mecanumDrive_Cartesian(0, convert(driveDistancePIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 0);
 					} else {
 						robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
 					}				
-				} else {
+				} else {*/
 					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), degrees);
-				}
+				//}
 			}
 		} else {
 			if (Robot.oi.joysticks[0].getRawButton(5)) {
@@ -106,6 +106,9 @@ public class DriveTrain extends Subsystem {
 				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
 			}
 		}
+		
+		System.out.println(Robot.oi.joysticks[0].getRawAxis(2));
+		System.out.println(Robot.oi.joysticks[0].getRawAxis(3));
 	}
 	
 	public void setAccumulator (double degrees) {

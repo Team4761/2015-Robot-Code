@@ -15,7 +15,6 @@ import com.kauailabs.navx_mxp.AHRS;
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SerialPort;
@@ -162,14 +161,21 @@ public class RobotMap {
 	 */
 	public static File settingsFile = new File(settingsFilePath);
 	
-	public static SupaDistanceSensor wallDistanceSensor;
+	//public static SupaDistanceSensor wallDistanceSensor;
+	public static ShortDistanceSensor wallDistanceSensor;
 	
 	/**
 	 * Stuff for the RcArm
 	 */
 	public static Servo servo;
-	public static VictorSP winch;
+	public static Talon winch;
 	public static DoubleSolenoid pusher;
+	public static DigitalInput mousetrapFired;
+	
+	/**
+	 * RC Alignment Tool
+	 */
+	public static DoubleSolenoid crusher;
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -195,7 +201,6 @@ public class RobotMap {
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
 			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
-			elevatorDistanceSensor = new MediumDistanceSensor(new AnalogInput(1));
 			stackTop = new DigitalInput(18); // 8 on MXP
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 			
@@ -213,7 +218,7 @@ public class RobotMap {
 			elevatorAcceptTote1 = new DigitalInput(19); // 9 on MXP
 			elevatorAcceptTote2 = new DigitalInput(23); // 13 MXP
 			
-			breakBeamElevatorEnd = new DigitalInput(18); // Random Number (This is not on the robot yet)
+			//breakBeamElevatorEnd = new DigitalInput(18); // Random Number (This is not on the robot yet)
 			breakBeamElevatorBegin = new DigitalInput(20); // 10 on MXP
 			breakBeamClear = new DigitalInput(22); // 12 on MXP
 			
@@ -222,9 +227,14 @@ public class RobotMap {
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
 			
-			servo = new Servo(0);
-			winch = new VictorSP(9); // Random port (This is not on the robot yet)
-			pusher = new DoubleSolenoid(0, 6, 7); // This is not on the robot
+			//wallDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
+			
+			//servo = new Servo(0);
+			winch = new Talon(5);
+			pusher = new DoubleSolenoid(0, 4, 5);
+			mousetrapFired = new DigitalInput(0);
+			
+			crusher = new DoubleSolenoid(0, 6, 7);
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
@@ -237,17 +247,13 @@ public class RobotMap {
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
-			
-			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
-			
+						
 			try {
 				serial_port = new SerialPort(57600, SerialPort.Port.kMXP);
 				
 				byte update_rate_hz = 50;
 				imu = new AHRS(serial_port, update_rate_hz);
-		    } catch(Exception ex) {
-		    		
-		    }
+		    } catch(Exception ex) {}
 		}
 	}
 }
