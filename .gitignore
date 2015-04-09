@@ -11,6 +11,10 @@ bin/
 .project
 .settings/
 
+#Gradle
+build/
+.gradle/
+
 #IntelliJ
 .idea/
 *.eml
