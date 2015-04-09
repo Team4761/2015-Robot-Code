@@ -37,6 +37,6 @@ public class DistanceSensor {
 	 * can detect
 	 */
 	public double getDistance() {
-		return (Double) null;
+		return -1;
 	}
 }

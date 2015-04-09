@@ -20,13 +20,13 @@ public class ResetGyro extends Command {
 	
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		// Blue Gyro
-		/*RobotMap.gyro.gyroSensor.reset();
-		RobotMap.gyro.setOffset(degrees);*/
 		// I2C Gyro
 		RobotMap.gyro.setDegrees(degrees);
 		Robot.driveTrain.setAccumulator(degrees);
 		Robot.driveTrain.gyroPidController.setSetpoint(degrees);
+		
+		// Used for the New-New Gyro (MIGHT HAVE TO BE REMOVED FOR COMPETITION)
+		RobotMap.imu.user_yaw_offset = degrees;
 	}
 	
 	// Make this return true when this Command no longer needs to run execute()

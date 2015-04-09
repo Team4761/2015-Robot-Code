@@ -17,7 +17,7 @@ public class RcGrabber extends Subsystem {
 		//setDefaultCommand(new MySpecialCommand());
 	}
 	
-	public void set(DoubleSolenoid.Value value) {
+	public void set (DoubleSolenoid.Value value) {
 		solenoid.set(value);
 	}
 }

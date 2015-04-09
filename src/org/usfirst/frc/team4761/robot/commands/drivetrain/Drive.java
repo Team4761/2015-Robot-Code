@@ -17,7 +17,7 @@ public class Drive extends Command {
 	String type;
 	
 	// Type can be PID or ABSOLUTE
-    public Drive(double x, double y, double rotate, float time, String type) {
+    public Drive (double x, double y, double rotate, float time, String type) {
     	this.x = x;
     	this.y = y;
     	this.rotate = rotate;
@@ -26,7 +26,7 @@ public class Drive extends Command {
     	requires(Robot.driveTrain);
     }
     
-    public Drive(DriveType type){
+    public Drive (DriveType type) {
     	switch (type) {
 	    	case LEFT:
 	    		x = -.15;
@@ -57,7 +57,7 @@ public class Drive extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute () {
     	if (type.equals("PID")) {
     		Robot.driveTrain.drive(x, y, rotate);
     	} else {
@@ -66,8 +66,8 @@ public class Drive extends Command {
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        if (time != null) {
+    protected boolean isFinished () {
+        if (time != null && time != 0) {
         	return isTimedOut();
         } else {
         	return false;

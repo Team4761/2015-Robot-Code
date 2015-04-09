@@ -1,26 +1,25 @@
 package org.usfirst.frc.team4761.robot;
 
-import static edu.wpi.first.wpilibj.smartdashboard.SmartDashboard.putNumber;
-
 import org.usfirst.frc.team4761.robot.buttons.AutoStack;
 import org.usfirst.frc.team4761.robot.buttons.AutoTote;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
-import org.usfirst.frc.team4761.robot.buttons.LowerElevator;
+import org.usfirst.frc.team4761.robot.buttons.ElevatorDown;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.MainConveyorForward;
-import org.usfirst.frc.team4761.robot.buttons.RCGrabberLeft;
-import org.usfirst.frc.team4761.robot.buttons.RCGrabberRight;
-import org.usfirst.frc.team4761.robot.buttons.RCGrabberToggle;
-import org.usfirst.frc.team4761.robot.buttons.RaiseElevator;
+import org.usfirst.frc.team4761.robot.buttons.ElevatorUp;
+import org.usfirst.frc.team4761.robot.buttons.RcGrabberLeft;
+import org.usfirst.frc.team4761.robot.buttons.RcGrabberRight;
+import org.usfirst.frc.team4761.robot.buttons.RcGrabberToggle;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.RaiseRcGrabber;
+import org.usfirst.frc.team4761.robot.commands.rcarm.TestServo;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberMove;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberType;
 
 import edu.wpi.first.wpilibj.Joystick;
 
@@ -35,11 +34,6 @@ public class OI {
 	ButtonManager buttonManager = new ButtonManager();
 	
 	public OI () {
-		putNumber("P", 0.03);
-		putNumber("I", 0);
-		putNumber("D", 0);
-		putNumber("Elevator Speed: ", 0.35);
-		
 		// Bind buttons for button boards
 		buttonManager.runWhilePressed(9, 1, new MainConveyorForward(9, 1));
 		buttonManager.runWhilePressed(8, 1, new MainConveyorBackward(8, 1));
@@ -47,21 +41,23 @@ public class OI {
 		buttonManager.runWhilePressed(11, 1, new LiftConveyorForward(11, 1));
 		buttonManager.runWhilePressed(10, 1, new LiftConveyorBackward(10, 1));
 		
-		buttonManager.runWhilePressed(15, 1, new RCGrabberLeft(15, 1));
-		buttonManager.runWhilePressed(14, 1, new RCGrabberRight(14, 1));
+		buttonManager.runWhilePressed(15, 1, new RcGrabberLeft(15, 1));
+		buttonManager.runWhilePressed(14, 1, new RcGrabberRight(14, 1));
 		
-		buttonManager.runWhilePressed(18, 1, new RaiseElevator(18, 1));
-		buttonManager.runWhilePressed(16, 1, new LowerElevator(16, 1));
+		buttonManager.runWhilePressed(18, 1, new ElevatorUp(18, 1));
+		buttonManager.runWhilePressed(16, 1, new ElevatorDown(16, 1));
 		
-		buttonManager.setToggle(1, 1, new RCGrabberToggle());
+		buttonManager.setToggle(1, 1, new RcGrabberToggle());
+		
+		buttonManager.setToggle(2, 1, new TestServo());
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
 		buttonManager.runOnPress(7, 1, new LazyButton());
 
-		buttonManager.runOnPress(19, 1, new AutoTote(19, 1));
-		//buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
-		
+		buttonManager.runOnceOnHold(17, 1, new AutoTote(19, 1));
+		buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
+
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());
 		
@@ -92,10 +88,10 @@ public class OI {
 		buttonManager.runOnPress(2, 1, new TurnInDown());*/
 		
 		// Bind buttons for XBox Controller
-		buttonManager.runWhilePressed(4, 0, new RaiseRcGrabber());
-		buttonManager.runWhilePressed(1, 0, new LowerRcGrabber());
-		buttonManager.runWhilePressed(3, 0, new RCGrabberLeft(3, 0));
-		buttonManager.runWhilePressed(2, 0, new RCGrabberRight(2, 0));
+		buttonManager.runWhilePressed(4, 0, new RcGrabberMove(RcGrabberType.UP));
+		buttonManager.runWhilePressed(1, 0, new RcGrabberMove(RcGrabberType.DOWN));
+		buttonManager.runWhilePressed(3, 0, new RcGrabberLeft(3, 0));
+		buttonManager.runWhilePressed(2, 0, new RcGrabberRight(2, 0));
 		buttonManager.runOnPress(7, 0, new ResetGyro(90));
 		buttonManager.runOnPress(8, 0, new Stop());
 	}

@@ -1,6 +1,6 @@
 package org.usfirst.frc.team4761.robot.subsystems;
 
-import org.simonandrews.robolog.Logger;
+import org.usfirst.frc.team4761.robot.DistancePIDSource;
 import org.usfirst.frc.team4761.robot.DrivePIDOutput;
 import org.usfirst.frc.team4761.robot.GyroPIDSource;
 import org.usfirst.frc.team4761.robot.Robot;
@@ -19,12 +19,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrain extends Subsystem {
 	public double rotateAccumulator = 0; // Where the robot wants to be based on all of the accumulated values of the joystick
 	
-	private Logger log = RobotMap.log;
-	RobotDrive robotDrive = RobotMap.robotDrive;
-	GyroPIDSource gyroSensor = new GyroPIDSource();
+	public RobotDrive robotDrive = RobotMap.robotDrive;
+	public GyroPIDSource gyroSensor = new GyroPIDSource();
 	public DrivePIDOutput driveGyroPIDOutput = new DrivePIDOutput();
+	public PIDController gyroPidController = new PIDController(0.03, 0, 0, gyroSensor, driveGyroPIDOutput);
 	
-	public PIDController gyroPidController = new PIDController(0.03, 0, 0, gyroSensor, driveGyroPIDOutput); // (P, I, D, input, output)
+	public DrivePIDOutput driveDistancePIDOutput = new DrivePIDOutput();
+	public DistancePIDSource distanceSensor = new DistancePIDSource(RobotMap.wallDistanceSensor);
+	public PIDController distancePidController = new PIDController(0.3, 0, 2, distanceSensor, driveDistancePIDOutput);
 	
 	public DriveTrain () {
 		if (RobotMap.robot == 1) {
@@ -34,6 +36,9 @@ public class DriveTrain extends Subsystem {
 		
 		gyroPidController.setSetpoint(0);
 		gyroPidController.enable();
+		
+		distancePidController.setSetpoint(1.75);
+		distancePidController.enable();
 	}
 	
 	public void initDefaultCommand () {}
@@ -69,34 +74,37 @@ public class DriveTrain extends Subsystem {
 	
 	// Calculate new speed based on the scaled z-axis
 	private double convert (double input, double axis, double override) {
-		if (override > 0) {
+		if (override != 0) {
 			return (input * useEquation(axis)) * override;
 		}
 		return (input * useEquation(axis));
 	}
 	
-	public void driveWithJoysticks () {		
+	public void driveWithJoysticks () {
 		double degrees = GyroSensor.getDegrees();
-		
-		// Used for testing PID for autonomous
-		/*if (convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) > 0.075 || convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) < -0.075) {
-			rotateAccumulator += convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0) * 3;
-		}
-		
-		gyroPidController.setSetpoint(rotateAccumulator);
-		gyroPidController.setPID(SmartDashboard.getNumber("P"), SmartDashboard.getNumber("I"), SmartDashboard.getNumber("D"));
-		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), driveGyroPIDOutput.getValue(), degrees);*/
-		
+
 		if (RobotMap.robot == 1) {
 			if (!Robot.oi.joysticks[0].getRawButton(6)) {
 				if (Robot.oi.joysticks[0].getRawButton(5)) {
-					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0.6), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0.2), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0.4), degrees);
+					if (Math.abs(Robot.oi.joysticks[0].getRawAxis(1)) > 0.1) {
+						robotDrive.mecanumDrive_Cartesian(0, convert(driveDistancePIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 0);
+					} else {
+						robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
+					}				
 				} else {
 					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), degrees);
 				}
 			}
 		} else {
-			robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 0);
+			if (Robot.oi.joysticks[0].getRawButton(5)) {
+				if (Math.abs(Robot.oi.joysticks[0].getRawAxis(1)) > 0.1) {
+					robotDrive.mecanumDrive_Cartesian(0, convert(driveDistancePIDOutput.getValue(), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 0);
+				} else {
+					robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
+				}
+			} else {
+				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
+			}
 		}
 	}
 	

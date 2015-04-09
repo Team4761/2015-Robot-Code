@@ -8,6 +8,9 @@ import org.simonandrews.robolog.LoggingMode;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
+import org.usfirst.frc.team4761.robot.sensors.SupaDistanceSensor;
+
+import com.kauailabs.navx_mxp.AHRS;
 
 import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -15,6 +18,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.Servo;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
@@ -27,19 +32,25 @@ import edu.wpi.first.wpilibj.VictorSP;
  * floating around.
  */
 public class RobotMap {
+	
+	// 1 = New Robot and any other number = Old Robot
 	public static int robot = 1;
+	
 	/**
 	 * Speed controller that controls the left front motor on the drive train.
 	 */
 	public static SpeedController leftFrontMotor;
+	
 	/**
 	 * Speed controller that controls the left rear motor on the drive train.
 	 */
 	public static SpeedController leftRearMotor;
+	
 	/**
 	 * Speed controller that controls the right front motor on the drive train.
 	 */
 	public static SpeedController rightFrontMotor;
+	
 	/**
 	 * Speed controller that controls the right rear motor on the drive train.
 	 */
@@ -51,20 +62,28 @@ public class RobotMap {
 	public static RobotDrive robotDrive;
 	
 	public static GyroSensor gyro;
+	
+	// New-New Gyro stuff
+	public static SerialPort serial_port;
 
+	public static AHRS imu;
+	
 	/**
 	 * A distance sensor that senses the barrels for auto-mode.
 	 */
 	public static MediumDistanceSensor barrelDistanceSensor;
+	
 	/**
 	 * A distance sensor on the elevator.
 	 */
 	public static MediumDistanceSensor elevatorDistanceSensor;
+	
 	/**
 	 * Distance sensor on the rear of the outer conveyor belt. Used for
 	 * detecting something.
 	 */
 	public static DigitalInput stackTop;
+	
 	/**
 	 * Distance sensor on the front of the outer conveyor belt. Used for
 	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
@@ -75,7 +94,6 @@ public class RobotMap {
 	public static Level minLogLevel;
 	
 	public static DoubleSolenoid rcPneumatic;
-	public static DoubleSolenoid plowPneumatic;
 	
 	public static VictorSP spinner;
 	
@@ -120,14 +138,13 @@ public class RobotMap {
 	 * Distance sensor used for testing.
 	 */
 	public static MediumDistanceSensor testDistanceSensor2;
-	
-	public static Encoder encoder;
-	
+
 	/**
 	 * Absolute path to the robots log file. Use {@link #logFile} in your code
 	 * instead of making your own Files.
 	 */
 	public static String logFilePath = "/home/lvuser/log.txt";
+	
 	/**
 	 * File object that uses the path value provided by {@link #logFilePath}.
 	 */
@@ -138,11 +155,21 @@ public class RobotMap {
 	 * your code instead of making your own Files.
 	 */
 	public static String settingsFilePath = "/home/lvuser/settings.ini";
+	
 	/**
 	 * File object that uses the path value provided by {@link
 	 * #settingsFilePath}.
 	 */
 	public static File settingsFile = new File(settingsFilePath);
+	
+	public static SupaDistanceSensor wallDistanceSensor;
+	
+	/**
+	 * Stuff for the RcArm
+	 */
+	public static Servo servo;
+	public static VictorSP winch;
+	public static DoubleSolenoid pusher;
 	
 	public RobotMap () {
 		if (Settings.read("Robot") == 0) {
@@ -152,6 +179,7 @@ public class RobotMap {
 		} else {
 			robot = Settings.read("Robot");
 		}
+		
 		// Universal objects
 		gyro = new GyroSensor();
 		
@@ -175,7 +203,6 @@ public class RobotMap {
 			minLogLevel = Level.DEV;
 			
 			rcPneumatic = new DoubleSolenoid(0, 0, 1);
-			plowPneumatic = new DoubleSolenoid(0, 6, 7);
 			
 			spinner = new VictorSP(4);
 			
@@ -194,6 +221,10 @@ public class RobotMap {
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
+			
+			servo = new Servo(0);
+			winch = new VictorSP(9); // Random port (This is not on the robot yet)
+			pusher = new DoubleSolenoid(0, 6, 7); // This is not on the robot
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
@@ -206,6 +237,17 @@ public class RobotMap {
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
+			
+			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
+			
+			try {
+				serial_port = new SerialPort(57600, SerialPort.Port.kMXP);
+				
+				byte update_rate_hz = 50;
+				imu = new AHRS(serial_port, update_rate_hz);
+		    } catch(Exception ex) {
+		    		
+		    }
 		}
 	}
 }

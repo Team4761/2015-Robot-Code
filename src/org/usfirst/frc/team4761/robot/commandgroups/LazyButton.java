@@ -1,8 +1,7 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.LowerRcGrabber;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.SpinRcBaseIn;
-import org.usfirst.frc.team4761.robot.commands.rcgrabber.SpinRcBaseOut;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberMove;
+import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberType;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -12,8 +11,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class LazyButton extends CommandGroup {
     
     public LazyButton() {
-    	addSequential(new SpinRcBaseIn());
-    	addSequential(new LowerRcGrabber());
+    	addSequential(new RcGrabberMove(RcGrabberType.IN));
+    	addSequential(new RcGrabberMove(RcGrabberType.DOWN, 1));
     	//addSequential(new SpinRcBaseOut());
     }
 }
