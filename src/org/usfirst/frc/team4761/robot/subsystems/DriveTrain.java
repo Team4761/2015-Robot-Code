@@ -63,6 +63,10 @@ public class DriveTrain extends Subsystem {
 		robotDrive.mecanumDrive_Cartesian(x, y, degrees, 90);
 	}
 	
+	public void driveAbsoluteJoysticks () {
+		robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), 90);
+	}
+	
 	public void stop () {
 		robotDrive.drive(0, 0);
 	}
@@ -106,9 +110,6 @@ public class DriveTrain extends Subsystem {
 				robotDrive.mecanumDrive_Cartesian(convert(Robot.oi.joysticks[0].getRawAxis(0), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(1), Robot.oi.joysticks[2].getRawAxis(0), 0), convert(Robot.oi.joysticks[0].getRawAxis(4), Robot.oi.joysticks[2].getRawAxis(1), 0), RobotMap.imu.getYaw());
 			}
 		}
-		
-		System.out.println(Robot.oi.joysticks[0].getRawAxis(2));
-		System.out.println(Robot.oi.joysticks[0].getRawAxis(3));
 	}
 	
 	public void setAccumulator (double degrees) {

@@ -2,7 +2,7 @@ package org.usfirst.frc.team4761.robot;
 
 import org.usfirst.frc.team4761.robot.buttons.AutoStack;
 import org.usfirst.frc.team4761.robot.buttons.AutoTote;
-import org.usfirst.frc.team4761.robot.buttons.CanCrusherToggle;
+import org.usfirst.frc.team4761.robot.buttons.CanCrusherHold;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.ElevatorDown;
@@ -17,6 +17,7 @@ import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
+import org.usfirst.frc.team4761.robot.commands.debug.TestCommand;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
 import org.usfirst.frc.team4761.robot.commands.rcarm.RcArmMove;
 import org.usfirst.frc.team4761.robot.commands.rcarm.RcArmType;
@@ -53,7 +54,7 @@ public class OI {
 		
 		buttonManager.setToggle(1, 1, new RcGrabberToggle());
 		
-		buttonManager.setToggle(2, 1, new CanCrusherToggle());
+		buttonManager.runOnceOnHold(2, 1, new CanCrusherHold(2, 1));
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
@@ -64,6 +65,8 @@ public class OI {
 
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());
+		
+		buttonManager.runWhilePressed(0, 0, new TestCommand(0, 0), true);
 		
 		// Bind buttons for joysticks (KEEP THESE HERE IN CASE OF BUTTON BOARD FAILURE)
 		/*buttonManager.runOnPress(8, 1, new ResetGyro(90));

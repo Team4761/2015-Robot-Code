@@ -17,7 +17,7 @@ public class ButtonManager {
 	
 	static CopyOnWriteArrayList<ButtonCommand> list = new CopyOnWriteArrayList<ButtonCommand>();
 	
-	static JoystickButton[][] buttons = new JoystickButton[3][20];
+	static JoystickButton[][] buttons = new JoystickButton[3][30];
 	
 	static Joystick[] joysticks = {new Joystick(CONTROLLER), new Joystick(BUTTONBOARD_ONE), new Joystick(BUTTONBOARD_TWO)};
 	
@@ -59,6 +59,15 @@ public class ButtonManager {
 		new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_RWP);
 	}
 	
+	public void runWhilePressed (int button, int joystick, Command command, boolean pov) {
+		checkInit();
+		if (pov) {
+			new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_RWP, true);
+		} else {
+			new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_RWP);
+		}
+	}
+	
 	public void runOnceOnHold (int button, int joystick, Command command) {
 		checkInit();
 		new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_CROP);
@@ -87,6 +96,7 @@ public class ButtonManager {
 				while (true) {
 					for (ButtonCommand command : list) {
 						buttonDown = command.get();
+						
 						if (command.type == ButtonCommand.TYPE_TOGGLEABLE) {
 							if (command.pressed()) {
 								command.store = !command.store;
@@ -129,9 +139,10 @@ public class ButtonManager {
 		Command command;
 		Joystick stick;
 		int type;
-		boolean store = false, last = false;
+		boolean store = false, last = false, pov = false;
 		static final int TYPE_TOGGLEABLE = 0, TYPE_ROP = 1, TYPE_RWP = 2, TYPE_CROP = 3;
-		private ButtonCommand(int button, int joystick, Command command, int type) {
+		
+		private ButtonCommand (int button, int joystick, Command command, int type) {
 			try {
 				this.button = button;
 				this.command = command;
@@ -144,15 +155,44 @@ public class ButtonManager {
 				e.printStackTrace();
 			}
 		}
-		public boolean get() {
-				return stick.getRawButton(button);
+		
+		private ButtonCommand (int button, int joystick, Command command, int type, boolean pov) {
+			try {
+				if (pov) {
+					this.pov = true;
+				}
+				
+				this.button = button;
+				this.command = command;
+				this.type = type;
+				stick = ButtonManager.joysticks[joystick];
+				ButtonManager.list.add(this);
+			} catch (Error e) {
+				System.out.println("Error creating a ButtonCommand!");
+				e.printStackTrace();
+			}
 		}
+		
+		public boolean get() {
+			if (this.pov) {
+				if (stick.getPOV() == button) {
+					return true;
+				} else {
+					return false;
+				}
+			}
+			
+			return stick.getRawButton(button);
+		}
+		
 		public void start() {
 			command.start();
 		}
+		
 		public void stop() {
 			command.cancel();
 		}
+		
 		public boolean pressed() {
 			return buttonDown && !last;
 		}

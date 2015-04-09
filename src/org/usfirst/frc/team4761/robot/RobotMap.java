@@ -5,6 +5,7 @@ import java.io.File;
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.simonandrews.robolog.LoggingMode;
+import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
@@ -132,11 +133,12 @@ public class RobotMap {
 	/**
 	 * Distance sensor used for testing.
 	 */
-	public static MediumDistanceSensor testDistanceSensor1;
+	public static DistanceSensor testDistanceSensor1;
+	
 	/**
 	 * Distance sensor used for testing.
 	 */
-	public static MediumDistanceSensor testDistanceSensor2;
+	public static DistanceSensor testDistanceSensor2;
 
 	/**
 	 * Absolute path to the robots log file. Use {@link #logFile} in your code
@@ -200,9 +202,7 @@ public class RobotMap {
 			
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
 			
-			barrelDistanceSensor = new MediumDistanceSensor(new AnalogInput(0));
 			stackTop = new DigitalInput(18); // 8 on MXP
-			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 			
 			log = new Logger("4761", LoggingMode.LOG, logFilePath); // Create an instance of our logging program
 			minLogLevel = Level.DEV;
@@ -235,6 +235,8 @@ public class RobotMap {
 			mousetrapFired = new DigitalInput(0);
 			
 			crusher = new DoubleSolenoid(0, 6, 7);
+			
+			testDistanceSensor1 = new ShortDistanceSensor(new AnalogInput(2));
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);

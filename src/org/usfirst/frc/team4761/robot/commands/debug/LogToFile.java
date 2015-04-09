@@ -3,7 +3,9 @@ package org.usfirst.frc.team4761.robot.commands.debug;
 import org.simonandrews.robolog.Level;
 import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.RobotMap;
+import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -21,13 +23,8 @@ public class LogToFile extends Command {
 	}
 	
 	protected void execute() {
-		//log.dev("Distance Sensor 2: " + RobotMap.testDistanceSensor1.getDistance());
-		//log.dev("Distance Sensor 3: " + RobotMap.testDistanceSensor2.getDistance());
-		//log.dev("Distance Sensor: " + RobotMap.wallDistanceSensor.getDistance());
-		//log.dev("Distance Sensor Voltage: " + RobotMap.wallDistanceSensor.getVoltage());
-		//SmartDashboard.putNumber("IMU_Yaw", RobotMap.imu.getYaw());
-		//System.out.println(RobotMap.wallDistanceSensor.getDistance());
-		System.out.println(RobotMap.mousetrapFired.get());
+		System.out.println("2: " + RobotMap.testDistanceSensor1.getDistance());
+		//System.out.println(RobotMap.mousetrapFired.get());
 	}
 	
 	protected boolean isFinished() {

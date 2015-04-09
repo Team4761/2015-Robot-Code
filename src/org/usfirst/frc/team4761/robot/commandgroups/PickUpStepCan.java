@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4761.robot.commandgroups;
 
-import org.usfirst.frc.team4761.robot.commands.CheckMousetrap;
 import org.usfirst.frc.team4761.robot.commands.Wait;
+import org.usfirst.frc.team4761.robot.commands.rcarm.CheckMousetrap;
 import org.usfirst.frc.team4761.robot.commands.rcarm.RcArmMove;
 import org.usfirst.frc.team4761.robot.commands.rcarm.RcArmType;
 
