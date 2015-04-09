@@ -1,5 +1,93 @@
-ant.importBuild 'build.xml'
+apply plugin: "java"
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.5'
+    gradleVersion = "1.5"
+}
+
+// Team information
+int teamNumber = 4761
+
+// Deployment information
+String username = "lvuser"
+String password = ""
+String deployDir = "/home/lvuser"
+String deployKillCommand= ". /etc/profile.d/natinst-path.sh; /usr/local/frc/bin/frcKillRobot.sh -t -r"
+String debugFlagDir = "/tmp/"
+String debugFlagCommand = "chown lvuser:ni " + debugFlagDir + "frcdebug"
+String commandDir = "/home/lvuser/"
+String version = "current"
+String roboRioJreDir = "/usr/local/frc/JRE"
+
+// Libraries to use
+String wpilib = System.getProperty("user.home") + "/wpilib/java/" + version
+String wpilibLib = wpilib + "/lib"
+String wpilibJar = wpilibLib + "/WPILib.jar"
+String wpilibSources = wpilibLib + "/WPILib-sources.jar"
+String networkTablesJar = wpilibLib + "/NetworkTables.jar"
+String networkTablesSources = wpilibLib + "/NetworkTables-sources.jar"
+// String jnaJar = wpilibLib + "/jna-4.0.0.jar"
+// String jnaeratorJar = wpilibLib + "/jnaerator-runtime.jar"
+// String classpath = wpilibJar + ":" + networkTablesJar + ":" + jnaJar + ":" + jnaeratorJar
+String classpath = wpilibJar + ":" + networkTablesJar
+int roboRioAllowedImages = 23
+
+// Ant support
+String wpilibAntDir = wpilib + "/ant"
+String jschJar = wpilibAntDir + "/jsch-0.1.50.jar"
+String classLoaderTaskJar = wpilibAntDir + "/ant-classloadertask.jar"
+
+// Build information
+String jar = "FRCUserProgram.jar"
+String srcDir = "src"
+String buildDir = "build"
+String buildJars = buildDir + "/jars"
+String distDir = "dist"
+String distJar = distDir + "/" + jar
+
+// Simulation Information
+String simulationDistJar = distDir + "/FRCUserProgramSim.jar"
+String wpilibSim = wpilib + "/sim"
+String wpilibSimLib = wpilibSim + "/lib"
+String wpilibSimTools = wpilibSim + "/tools"
+
+evaluationDependsOn("lib/RoboLog")
+dependencies {
+	compile fileTree(dir: wpilibLib, include: "WPILib.jar")
+	compile fileTree(dir: wpilibLib, include: "NetworkTables.jar")
+	compile project("lib/RoboLog")
+}
+
+def locationIsReachable = {
+	String hostname ->
+	ant.condition(property: "locationisreachable")  {
+		isreachable(host: hostname, timeout: 2)
+	}
+	ant.properties.locationisreachable
+}
+
+task frcGetTargetIp << {
+	String target = "roboRIO-" + teamNumber + ".local"
+	println "Trying Target: " + target
+	if(locationIsReachable(target)) {
+		println "roboRIO found via mDNS"
+	}
+	else {
+		println "roboRIO not found via mDNS, falling back to static USB"
+		target = "172.22.11.2"
+		if(locationIsReachable(target)) {
+			println "roboRIO found via static USB"
+		}
+		else {
+			int ipUpper = teamNumber / 100
+			int ipLower = teamNumber % 100
+			target = "10." + ipUpper + "." + ipLower + ".2"
+			println "roboRIO not found via USB, falling back to static address of " + target
+			if(locationIsReachable(target)) {
+				println "roboRIO found via Ethernet static"
+			}
+			else {
+				throw new GradleException("roboRIO not found, please check that the roboRIO is connected, imaged and that the team number is set properly in Eclipse")
+			}
+		}
+	}
 }
