@@ -59,13 +59,9 @@ public class ButtonManager {
 		new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_RWP);
 	}
 	
-	public void runWhilePressed (int button, int joystick, Command command, boolean pov) {
+	public void runWhilePressedPOV (int button, int joystick, Command command) {
 		checkInit();
-		if (pov) {
-			new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_RWP, true);
-		} else {
-			new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_RWP);
-		}
+		new ButtonCommand(button, joystick, command, ButtonCommand.TYPE_RWP, true);
 	}
 	
 	public void runOnceOnHold (int button, int joystick, Command command) {
