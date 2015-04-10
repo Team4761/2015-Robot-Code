@@ -17,6 +17,6 @@ public class PushToAuto extends CommandGroup {
     	addSequential(new RcGrabberMove(RcGrabberType.OUT));
     	addSequential(new RcGrabberMove(RcGrabberType.UP, 1.2));
     	addSequential(new RcGrabberMove(RcGrabberType.IN));
-    	addSequential(new Drive(0, -0.5, 0, 6, "ABSOLUTE"));
+    	addSequential(new Drive(-0.1, -0.5, 0, 6, "ABSOLUTE"));
     }
 }

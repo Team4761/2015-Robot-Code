@@ -19,9 +19,6 @@ import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
 import org.usfirst.frc.team4761.robot.commands.debug.TestCommand;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
-import org.usfirst.frc.team4761.robot.commands.rcarm.RcArmMove;
-import org.usfirst.frc.team4761.robot.commands.rcarm.RcArmType;
-import org.usfirst.frc.team4761.robot.commands.rcarm.TestServo;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberMove;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberType;
 
@@ -53,8 +50,6 @@ public class OI {
 		buttonManager.runWhilePressed(16, 1, new ElevatorDown(16, 1));
 		
 		buttonManager.setToggle(1, 1, new RcGrabberToggle());
-		
-		buttonManager.runOnceOnHold(2, 1, new CanCrusherHold(2, 1));
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
@@ -101,12 +96,5 @@ public class OI {
 		buttonManager.runWhilePressed(2, 0, new RcGrabberRight(2, 0));
 		buttonManager.runOnPress(7, 0, new ResetGyro(90));
 		buttonManager.runOnPress(8, 0, new Stop());
-		
-		SmartDashboard.putData("Extend Pusher", new RcArmMove(RcArmType.EXTEND));
-		SmartDashboard.putData("Retract Pusher", new RcArmMove(RcArmType.RETRACT));
-		SmartDashboard.putData("Open Servo", new RcArmMove(255,0));
-		SmartDashboard.putData("Close Servo", new RcArmMove(0, 0));
-		SmartDashboard.putData("Winch In", new RcArmMove(RcArmType.WINCH_IN, 1));
-		SmartDashboard.putData("Winch Out", new RcArmMove(RcArmType.WINCH_OUT, 1));
 	}
 }

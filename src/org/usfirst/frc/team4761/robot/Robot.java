@@ -12,7 +12,6 @@ import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
 import org.usfirst.frc.team4761.robot.subsystems.LiftConveyorBelt;
 import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
-import org.usfirst.frc.team4761.robot.subsystems.RcArm;
 import org.usfirst.frc.team4761.robot.subsystems.RcGrabber;
 import org.usfirst.frc.team4761.robot.subsystems.RcGrabberBase;
 
@@ -37,7 +36,6 @@ public class Robot extends IterativeRobot {
 	public static RcGrabber rcGrabber = new RcGrabber();
 	public static RcGrabberBase rcGrabberBase = new RcGrabberBase();
 	public static LiftConveyorBelt liftConveyorBelt = new LiftConveyorBelt();
-	public static RcArm rcArm = new RcArm();
 	public static CanCrusher canCrusher = new CanCrusher();
 	
 	public static OI oi;
