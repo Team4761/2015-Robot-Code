@@ -7,6 +7,11 @@ task wrapper(type: Wrapper) {
 // Team information
 int teamNumber = 4761
 
+// Project specific info
+String projectPackage = "org.usfirst.frc.team4761.robot"
+String robotClass = projectPackage + ".Robot"
+String simulationWorldFile = "/usr/share/frcsim/worlds/GearsBotDemo.world"
+
 // Deployment information
 String username = "lvuser"
 String password = ""
@@ -37,7 +42,7 @@ String jschJar = wpilibAntDir + "/jsch-0.1.50.jar"
 String classLoaderTaskJar = wpilibAntDir + "/ant-classloadertask.jar"
 
 // Build information
-String jar = "FRCUserProgram.jar"
+String releaseJar = "FRCUserProgram.jar"
 String srcDir = "src"
 String buildDir = "build"
 String buildJars = buildDir + "/jars"
@@ -49,6 +54,19 @@ String simulationDistJar = distDir + "/FRCUserProgramSim.jar"
 String wpilibSim = wpilib + "/sim"
 String wpilibSimLib = wpilibSim + "/lib"
 String wpilibSimTools = wpilibSim + "/tools"
+
+jar.manifest.mainAttributes(
+	/*
+	 * Not all of these attributes may be necessary or correct. I
+	 * just copied values over from an existing JAR I had laying
+	 * around.
+	 */
+	"Manifest-Version": "1.0",
+	"Ant-Version": "Apache Ant 1.9.2",
+	"Main-Class": "edu.wpi.first.wpilibj.RobotBase",
+	"Robot-Class": robotClass,
+	"Class-Path": "."
+)
 
 evaluationDependsOn("lib/RoboLog")
 dependencies {
