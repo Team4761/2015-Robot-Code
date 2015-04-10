@@ -167,12 +167,9 @@ public class RobotMap {
 	public static ShortDistanceSensor wallDistanceSensor;
 	
 	/**
-	 * Stuff for the RcArm
+	 * Stuff for the RcPickerUpper
 	 */
 	public static Servo servo;
-	public static Talon winch;
-	public static DoubleSolenoid pusher;
-	public static DigitalInput mousetrapFired;
 	
 	/**
 	 * RC Alignment Tool
@@ -229,12 +226,7 @@ public class RobotMap {
 			
 			//wallDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
 			
-			//servo = new Servo(0);
-			winch = new Talon(5);
-			pusher = new DoubleSolenoid(0, 4, 5);
-			mousetrapFired = new DigitalInput(0);
-			
-			crusher = new DoubleSolenoid(0, 6, 7);
+			servo = new Servo(5);
 			
 			testDistanceSensor1 = new ShortDistanceSensor(new AnalogInput(2));
 		} else {

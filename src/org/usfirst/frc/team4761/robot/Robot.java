@@ -7,13 +7,13 @@ import org.usfirst.frc.team4761.robot.commandgroups.StopAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.Teleop;
 import org.usfirst.frc.team4761.robot.commandgroups.TwoBarrelAutonomous;
 import org.usfirst.frc.team4761.robot.sensors.GyroThread;
-import org.usfirst.frc.team4761.robot.subsystems.CanCrusher;
 import org.usfirst.frc.team4761.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4761.robot.subsystems.Elevator;
 import org.usfirst.frc.team4761.robot.subsystems.LiftConveyorBelt;
 import org.usfirst.frc.team4761.robot.subsystems.MainConveyorBelt;
 import org.usfirst.frc.team4761.robot.subsystems.RcGrabber;
 import org.usfirst.frc.team4761.robot.subsystems.RcGrabberBase;
+import org.usfirst.frc.team4761.robot.subsystems.RcPickerUpper;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	public static RcGrabber rcGrabber = new RcGrabber();
 	public static RcGrabberBase rcGrabberBase = new RcGrabberBase();
 	public static LiftConveyorBelt liftConveyorBelt = new LiftConveyorBelt();
-	public static CanCrusher canCrusher = new CanCrusher();
+	public static RcPickerUpper rcPickerUpper = new RcPickerUpper();
 	
 	public static OI oi;
 	public Command teleop, autonomousCommand, autonomous, driveToAuto, debugAuto, pushToAuto, twoBarrelAuto, stopAuto;

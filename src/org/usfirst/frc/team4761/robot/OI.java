@@ -12,6 +12,7 @@ import org.usfirst.frc.team4761.robot.buttons.ElevatorUp;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberLeft;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberToggle;
+import org.usfirst.frc.team4761.robot.buttons.RcPickerUpperToggle;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
@@ -50,6 +51,7 @@ public class OI {
 		buttonManager.runWhilePressed(16, 1, new ElevatorDown(16, 1));
 		
 		buttonManager.setToggle(1, 1, new RcGrabberToggle());
+		buttonManager.setToggle(2, 1, new RcPickerUpperToggle());
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
