@@ -2,7 +2,6 @@ package org.usfirst.frc.team4761.robot;
 
 import org.usfirst.frc.team4761.robot.buttons.AutoStack;
 import org.usfirst.frc.team4761.robot.buttons.AutoTote;
-import org.usfirst.frc.team4761.robot.buttons.CanCrusherHold;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorBackward;
 import org.usfirst.frc.team4761.robot.buttons.LiftConveyorForward;
 import org.usfirst.frc.team4761.robot.buttons.ElevatorDown;
