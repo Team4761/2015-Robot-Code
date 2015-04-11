@@ -25,6 +25,7 @@ public class LogToFile extends Command {
 	protected void execute() {
 		System.out.println("2: " + RobotMap.testDistanceSensor1.getDistance());
 		//System.out.println(RobotMap.mousetrapFired.get());
+		System.out.println(RobotMap.breakBeamElevatorBegin.get());
 	}
 	
 	protected boolean isFinished() {

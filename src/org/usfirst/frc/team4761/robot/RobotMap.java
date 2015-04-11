@@ -9,7 +9,6 @@ import org.usfirst.frc.team4761.robot.sensors.DistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
-import org.usfirst.frc.team4761.robot.sensors.SupaDistanceSensor;
 
 import com.kauailabs.navx_mxp.AHRS;
 

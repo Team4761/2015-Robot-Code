@@ -28,4 +28,3 @@ public class RcPickerUpper extends Subsystem {
     	servo.set(0);
     }
 }
-

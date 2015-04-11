@@ -145,8 +145,7 @@ public class ButtonManager {
 				this.type = type;
 				stick = ButtonManager.joysticks[joystick];
 				ButtonManager.list.add(this);
-			}
-			catch (Error e) {
+			} catch (Error e) {
 				System.out.println("Error creating a ButtonCommand!");
 				e.printStackTrace();
 			}

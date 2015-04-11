@@ -11,19 +11,18 @@ import org.usfirst.frc.team4761.robot.buttons.ElevatorUp;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberLeft;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberToggle;
-import org.usfirst.frc.team4761.robot.buttons.RcPickerUpperToggle;
+import org.usfirst.frc.team4761.robot.buttons.RcPickerUpperHold;
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
 import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
-import org.usfirst.frc.team4761.robot.commands.debug.TestCommand;
+import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToPickup;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberMove;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberType;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -50,14 +49,15 @@ public class OI {
 		buttonManager.runWhilePressed(16, 1, new ElevatorDown(16, 1));
 		
 		buttonManager.setToggle(1, 1, new RcGrabberToggle());
-		buttonManager.setToggle(2, 1, new RcPickerUpperToggle());
+		buttonManager.runWhilePressed(2, 1, new RcPickerUpperHold(2, 1));
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
 		buttonManager.runOnPress(7, 1, new LazyButton());
 
 		buttonManager.runOnceOnHold(19, 1, new AutoTote(19, 1));
-		buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
+		//buttonManager.runOnceOnHold(17, 1, new AutoStack(17, 1));
+		buttonManager.runOnPress(17, 1, new MoveElevatorToPickup());
 
 		buttonManager.runOnPress(4, 1, new ResetGyro(90));
 		buttonManager.runOnPress(3, 1, new KillAllCommands());

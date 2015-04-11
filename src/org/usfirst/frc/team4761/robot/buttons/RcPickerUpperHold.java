@@ -7,13 +7,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RcPickerUpperToggle extends Command {
-
-    public RcPickerUpperToggle() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.rcPickerUpper);
-    }
+public class RcPickerUpperHold extends Command {
+	private int button = 0;
+	private int joystickNum;
+	
+	public RcPickerUpperHold (int button, int joystickNum) {
+		requires(Robot.rcPickerUpper);
+		this.button = button;
+		this.joystickNum = joystickNum;
+	}
 
     // Called just before this Command runs the first time
     protected void initialize() {
@@ -26,7 +28,7 @@ public class RcPickerUpperToggle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+		return !Robot.oi.joysticks[joystickNum].getRawButton(button);
     }
 
     // Called once after isFinished returns true
