@@ -56,18 +56,22 @@ String wpilibSim = wpilib + "/sim"
 String wpilibSimLib = wpilibSim + "/lib"
 String wpilibSimTools = wpilibSim + "/tools"
 
-jar.manifest.mainAttributes(
-	/*
-	 * Not all of these attributes may be necessary or correct. I
-	 * just copied values over from an existing JAR I had laying
-	 * around.
-	 */
-	"Manifest-Version": "1.0",
-	"Ant-Version": "Apache Ant 1.9.2",
-	"Main-Class": "edu.wpi.first.wpilibj.RobotBase",
-	"Robot-Class": robotClass,
-	"Class-Path": "."
-)
+jar {
+	manifest {
+		mainAttributes(
+			/*
+			* Not all of these attributes may be necessary or correct. I
+			* just copied values over from an existing JAR I had laying
+			* around.
+			*/
+			"Manifest-Version": "1.0",
+			"Ant-Version": "Apache Ant 1.9.2",
+			"Main-Class": "edu.wpi.first.wpilibj.RobotBase",
+			"Robot-Class": robotClass,
+			"Class-Path": "."
+		)
+	}
+}
 
 repositories {
 	mavenCentral()
