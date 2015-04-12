@@ -1,21 +1,17 @@
 package org.usfirst.frc.team4761.robot.commands.debug;
 
-import org.simonandrews.robolog.Level;
-import org.simonandrews.robolog.Logger;
 import org.usfirst.frc.team4761.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
- * A command to utilize logging with simon's {@link org.simonandrews.robolog robolog library}.
+ * A command that logs the IMU's yaw value to SmartDashboard
  */
 public class LogToFile extends Command {
-	private Logger log = RobotMap.log;
 	private double rotation = 0;
 	
 	protected void initialize() {
-		log.setLevel(Level.FATAL);
         RobotMap.imu.zeroYaw();
         setTimeout(0.5);
 	}

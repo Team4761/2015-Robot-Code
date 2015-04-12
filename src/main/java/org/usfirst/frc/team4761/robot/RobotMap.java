@@ -2,9 +2,6 @@ package org.usfirst.frc.team4761.robot;
 
 import java.io.File;
 
-import org.simonandrews.robolog.Level;
-import org.simonandrews.robolog.Logger;
-import org.simonandrews.robolog.LoggingMode;
 import org.usfirst.frc.team4761.robot.sensors.GyroSensor;
 import org.usfirst.frc.team4761.robot.sensors.MediumDistanceSensor;
 import org.usfirst.frc.team4761.robot.sensors.ShortDistanceSensor;
@@ -89,9 +86,6 @@ public class RobotMap {
 	 * detecting when the elevator is at the top of a tote stack. Previously elevatorToteDistanceSensor
 	 */
 	public static ShortDistanceSensor outerConveyorBarrelDistanceSensor;
-	
-	public static Logger log;
-	public static Level minLogLevel;
 	
 	public static DoubleSolenoid rcPneumatic;
 	
@@ -199,9 +193,6 @@ public class RobotMap {
 			stackTop = new DigitalInput(18); // 8 on MXP
 			outerConveyorBarrelDistanceSensor = new ShortDistanceSensor(new AnalogInput(3));
 			
-			log = new Logger("4761", LoggingMode.LOG, logFilePath); // Create an instance of our logging program
-			minLogLevel = Level.DEV;
-			
 			rcPneumatic = new DoubleSolenoid(0, 0, 1);
 			
 			spinner = new VictorSP(4);
@@ -231,9 +222,6 @@ public class RobotMap {
 			rightFrontMotor = new Victor(3);
 			rightRearMotor = new Victor(4);
 			robotDrive = new RobotDrive(leftFrontMotor, leftRearMotor, rightFrontMotor, rightRearMotor);
-			
-			log = new Logger("4761", LoggingMode.LOG, logFilePath);
-			minLogLevel = Level.DEV;
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));

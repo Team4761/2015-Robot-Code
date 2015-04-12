@@ -1,6 +1,5 @@
 package org.usfirst.frc.team4761.robot;
 
-import org.simonandrews.robolog.LogManager;
 import org.usfirst.frc.team4761.robot.commandgroups.DebugAutonomous;
 import org.usfirst.frc.team4761.robot.commandgroups.DriveToAuto;
 import org.usfirst.frc.team4761.robot.commandgroups.PushToAuto;
@@ -49,8 +48,6 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		oi = new OI();
 		teleop = new Teleop();
-		
-		LogManager.setMinimumLevel(RobotMap.minLogLevel);
 		
 		Thread thread = new Thread(new GyroThread());
 		thread.start();
