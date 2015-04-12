@@ -60,6 +60,7 @@ task prepareJarEnvironment(type: Copy) {
 	from wpilibLib
 	destinationDir = file(buildJars)
 	include "**/*.jar"
+	exclude "**/*-sources.jar"
 }
 
 jar {
