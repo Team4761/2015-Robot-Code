@@ -135,13 +135,9 @@ public class RobotMap {
 	public static DistanceSensor testDistanceSensor1;
 	
 	/**
-	 * Distance sensor used for testing.
+	 * Distance sensors used for testing.
 	 */
-<<<<<<< HEAD
 	public static DistanceSensor testDistanceSensor2;
-=======
-	public static MediumDistanceSensor testDistanceSensor2;
->>>>>>> aedfc96b7286aa5ee1311568489d39418552b142
 
 	/**
 	 * Absolute path to the robots log file. Use {@link #logFile} in your code
@@ -232,18 +228,11 @@ public class RobotMap {
 			elevatorConveyorBeltMotor = new VictorSP(7);
 			elevatorMotor1 = new VictorSP(8);
 			elevatorMotor2 = new VictorSP(9);
-			
-<<<<<<< HEAD
 			//wallDistanceSensor = new ShortDistanceSensor(new AnalogInput(1));
 			
 			servo = new Servo(5);
 			
 			testDistanceSensor1 = new ShortDistanceSensor(new AnalogInput(2));
-=======
-			servo = new Servo(0);
-			winch = new VictorSP(9); // Random port (This is not on the robot yet)
-			pusher = new DoubleSolenoid(0, 6, 7); // This is not on the robot
->>>>>>> aedfc96b7286aa5ee1311568489d39418552b142
 		} else {
 			leftFrontMotor = new Victor(1);
 			leftRearMotor = new Victor(2);
@@ -256,13 +245,9 @@ public class RobotMap {
 			
 			testDistanceSensor1 = new MediumDistanceSensor(new AnalogInput(2));
 			testDistanceSensor2 = new MediumDistanceSensor(new AnalogInput(3));
-<<<<<<< HEAD
-						
-=======
 			
-			wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
+			//wallDistanceSensor = new SupaDistanceSensor(new AnalogInput(0));
 			
->>>>>>> aedfc96b7286aa5ee1311568489d39418552b142
 			try {
 				serial_port = new SerialPort(57600, SerialPort.Port.kMXP);
 				

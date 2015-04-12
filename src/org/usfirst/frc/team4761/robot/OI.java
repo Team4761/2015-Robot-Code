@@ -11,10 +11,7 @@ import org.usfirst.frc.team4761.robot.buttons.ElevatorUp;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberLeft;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberRight;
 import org.usfirst.frc.team4761.robot.buttons.RcGrabberToggle;
-<<<<<<< HEAD
 import org.usfirst.frc.team4761.robot.buttons.RcPickerUpperHold;
-=======
->>>>>>> aedfc96b7286aa5ee1311568489d39418552b142
 import org.usfirst.frc.team4761.robot.buttons.ResetGyro;
 import org.usfirst.frc.team4761.robot.commandgroups.LazyButton;
 import org.usfirst.frc.team4761.robot.commands.KillAllCommands;
@@ -22,10 +19,6 @@ import org.usfirst.frc.team4761.robot.commands.Stop;
 import org.usfirst.frc.team4761.robot.commands.conveyorbelts.GoToElevatorConveyor;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToPickup;
 import org.usfirst.frc.team4761.robot.commands.elevator.MoveElevatorToStackTop;
-<<<<<<< HEAD
-=======
-import org.usfirst.frc.team4761.robot.commands.rcarm.TestServo;
->>>>>>> aedfc96b7286aa5ee1311568489d39418552b142
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberMove;
 import org.usfirst.frc.team4761.robot.commands.rcgrabber.RcGrabberType;
 
@@ -56,12 +49,7 @@ public class OI {
 		buttonManager.runWhilePressed(16, 1, new ElevatorDown(16, 1));
 		
 		buttonManager.setToggle(1, 1, new RcGrabberToggle());
-<<<<<<< HEAD
 		buttonManager.runWhilePressed(2, 1, new RcPickerUpperHold(2, 1));
-=======
-		
-		buttonManager.setToggle(2, 1, new TestServo());
->>>>>>> aedfc96b7286aa5ee1311568489d39418552b142
 		
 		buttonManager.runOnPress(5, 1, new MoveElevatorToStackTop());
 		buttonManager.runOnPress(6, 1, new GoToElevatorConveyor());
