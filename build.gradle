@@ -81,13 +81,11 @@ repositories {
 	mavenCentral()
 }
 
-evaluationDependsOn("lib/RoboLog")
 dependencies {
 	compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.2'
 	compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.2'
 	compile fileTree(dir: wpilibLib, include: "WPILib.jar")
 	compile fileTree(dir: wpilibLib, include: "NetworkTables.jar")
-	compile project("lib/RoboLog")
 }
 
 def locationIsReachable = {
