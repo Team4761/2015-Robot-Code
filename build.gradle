@@ -97,7 +97,7 @@ def locationIsReachable = {
 	ant.properties.locationisreachable
 }
 
-task frcGetTargetIp << {
+task getTargetIp << {
 	String target = "roboRIO-" + teamNumber + ".local"
 	println "Trying Target: " + target
 	if(locationIsReachable(target)) {
