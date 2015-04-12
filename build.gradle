@@ -57,6 +57,8 @@ String wpilibSimLib = wpilibSim + "/lib"
 String wpilibSimTools = wpilibSim + "/tools"
 
 jar {
+	archiveName = releaseJar
+	destinationDir = file(distDir)
 	manifest {
 		mainAttributes(
 			"Main-Class": "edu.wpi.first.wpilibj.RobotBase",
