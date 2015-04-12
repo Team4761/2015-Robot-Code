@@ -82,7 +82,7 @@ dependencies {
 def locationIsReachable = {
 	String hostname ->
 	ant.condition(property: "locationisreachable")  {
-		isreachable(host: hostname, timeout: 2)
+		isreachable(host: hostname, timeout: 5)
 	}
 	ant.properties.locationisreachable
 }
