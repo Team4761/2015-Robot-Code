@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot.commands.LED;
+package org.usfirst.frc.team4761.robot.commands.led;
 
 import org.usfirst.frc.team4761.robot.RobotMap;
 
@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LEDGreen extends Command {
+public class LedGreen extends Command {
 
-    public LEDGreen() {
+    public LedGreen() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

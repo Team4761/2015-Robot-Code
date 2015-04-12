@@ -14,8 +14,15 @@ public class PushToAuto extends CommandGroup {
     
     public PushToAuto (int angle) {
     	addSequential(new ResetGyro(angle));
+<<<<<<< HEAD
     	addSequential(new RcGrabberMove(RcGrabberType.UP, 1.2));
     	addSequential(new RcGrabberMove(RcGrabberType.IN));
     	addSequential(new Drive(-0.05, -0.5, 0.025, 8, "ABSOLUTE"));
+=======
+    	addSequential(new RcGrabberMove(RcGrabberType.OUT));
+    	addSequential(new RcGrabberMove(RcGrabberType.UP, 1.2));
+    	addSequential(new RcGrabberMove(RcGrabberType.IN));
+    	addSequential(new Drive(0, -0.5, 0, 6, "ABSOLUTE"));
+>>>>>>> aedfc96b7286aa5ee1311568489d39418552b142
     }
 }

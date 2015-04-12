@@ -1,4 +1,4 @@
-package org.usfirst.frc.team4761.robot.commands.LED;
+package org.usfirst.frc.team4761.robot.commands.led;
 
 import org.usfirst.frc.team4761.robot.RobotMap;
 
@@ -7,17 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LEDRed extends Command {
+public class LedExplosion extends Command {
 
-    public LEDRed() {
+    public LedExplosion() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(5);
-    	RobotMap.arduino.transaction(new byte[]{80}, 1, null, 0);
+    	setTimeout(10);
+    	RobotMap.arduino.transaction(new byte[]{89}, 1, null, 0);
     }
 
     // Called repeatedly when this Command is scheduled to run
