@@ -45,10 +45,10 @@ String classLoaderTaskJar = wpilibAntDir + "/ant-classloadertask.jar"
 // Build information
 String releaseJar = "FRCUserProgram.jar"
 String srcDir = "src"
-String buildDir = "build"
+String buildDir = "frc-build"
 String buildJars = buildDir + "/jars"
-String distDir = "dist"
-String distJar = distDir + "/" + jar
+String distDir = "frc-dist"
+String distJar = distDir + "/" + releaseJar
 
 // Simulation Information
 String simulationDistJar = distDir + "/FRCUserProgramSim.jar"
