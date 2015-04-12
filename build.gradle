@@ -45,9 +45,9 @@ String classLoaderTaskJar = wpilibAntDir + "/ant-classloadertask.jar"
 // Build information
 String releaseJar = "FRCUserProgram.jar"
 String srcDir = "src"
-String buildDir = "frc-build"
+String buildDir = "frc-build" // Just 'build' would conflict with Gradle
 String buildJars = buildDir + "/jars"
-String distDir = "frc-dist"
+String distDir = "frc-dist" // Staying consistent with buildDir
 String distJar = distDir + "/" + releaseJar
 
 // Simulation Information
@@ -56,7 +56,15 @@ String wpilibSim = wpilib + "/sim"
 String wpilibSimLib = wpilibSim + "/lib"
 String wpilibSimTools = wpilibSim + "/tools"
 
+task prepareJarEnvironment(type: Copy) {
+	from wpilibLib
+	destinationDir = file(buildJars)
+	include "**/*.jar"
+}
+
 jar {
+	dependsOn(prepareJarEnvironment)
+
 	archiveName = releaseJar
 	destinationDir = file(distDir)
 	manifest {
