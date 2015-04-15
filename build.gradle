@@ -1,8 +1,21 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath "org.hidetake:gradle-ssh-plugin:1.1.2"
+	}
+}
+
+apply plugin: "org.hidetake.ssh"
+
 apply plugin: "eclipse"
 apply plugin: "java"
 
 task wrapper(type: Wrapper) {
-    gradleVersion = "1.5"
+	gradleVersion = "1.5"
 }
 
 // Team information
@@ -96,8 +109,10 @@ def locationIsReachable = {
 	ant.properties.locationisreachable
 }
 
+String target
+
 task getTargetIp << {
-	String target = "roboRIO-" + teamNumber + ".local"
+	target = "roboRIO-" + teamNumber + ".local"
 	println "Trying Target: " + target
 	if(locationIsReachable(target)) {
 		println "roboRIO found via mDNS"
@@ -119,6 +134,42 @@ task getTargetIp << {
 			else {
 				throw new GradleException("roboRIO not found, please check that the roboRIO is connected, imaged and that the team number is set properly in Eclipse")
 			}
+		}
+	}
+}
+
+remotes {
+	roboRio {
+		host = target
+		user = username
+		password = password
+	}
+	roboRioAdmin {
+		host = target
+		user = "admin"
+		password = password
+	}
+}
+
+task deploy(dependsOn: [jar, getTargetIp]) << {
+	println "Copying code over"
+	ssh.run {
+		session(remotes.roboRio) {
+			put from: distJar, into: deployDir
+			execute "killall netconsole-host"
+			put from: wpilibAntDir + "/robotCommand", into: commandDir
+		}
+		session(remotes.roboRioAdmin) {
+			put from: wpilibAntDir + "/netconsole-host", into: "/usr/local/frc/bin"
+		}
+	}
+}
+
+task run(dependsOn: deploy) << {
+	println "Starting program"
+	ssh.run {
+		session(remotes.roboRio) {
+			execute deployKillCommand
 		}
 	}
 }
